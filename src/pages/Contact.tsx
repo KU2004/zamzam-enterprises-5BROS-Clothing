@@ -219,7 +219,7 @@ export default function Contact() {
                   name="name"
                   type="text"
                   required
-                  className="mt-2 w-full border-b border-border bg-transparent py-3 text-sm focus:border-gold focus:outline-none transition"
+                  className="mt-2 w-full border-b-2 border-gold/70 bg-transparent py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none focus:ring-0 transition-colors"
                 />
               </label>
               <label className="block">
@@ -230,7 +230,7 @@ export default function Contact() {
                   name="email"
                   type="email"
                   required
-                  className="mt-2 w-full border-b border-border bg-transparent py-3 text-sm focus:border-gold focus:outline-none transition"
+                  className="mt-2 w-full border-b-2 border-gold/70 bg-transparent py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none focus:ring-0 transition-colors"
                 />
               </label>
               <label className="block sm:col-span-2">
@@ -243,7 +243,7 @@ export default function Contact() {
                       <PopoverTrigger asChild>
                         <button
                           type="button"
-                          className="flex w-full items-center gap-3 rounded-none border-b border-border bg-transparent py-3 px-3 text-left text-sm focus:border-gold focus:outline-none transition"
+                          className="flex w-full items-center gap-3 rounded-none border-b-2 border-gold/70 bg-transparent py-3 px-3 text-left text-sm focus:border-gold focus:outline-none transition"
                         >
                           {selectedFlag ? (
                             <img
@@ -314,7 +314,7 @@ export default function Contact() {
                     name="phone"
                     type="tel"
                     required
-                    className="w-full border-b border-border bg-transparent py-3 text-sm focus:border-gold focus:outline-none transition"
+                    className="w-full border-b-2 border-gold/70 bg-transparent py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none focus:ring-0 transition-colors"
                   />
                 </div>
               </label>
@@ -326,7 +326,7 @@ export default function Contact() {
                   name="message"
                   required
                   rows={5}
-                  className="mt-2 w-full border-b border-border bg-transparent py-3 text-sm focus:border-gold focus:outline-none transition resize-none"
+                  className="mt-2 w-full border-b-2 border-gold/70 bg-transparent py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none focus:ring-0 transition-colors resize-none"
                 />
               </label>
               <div className="flex items-center gap-6 mt-2">
