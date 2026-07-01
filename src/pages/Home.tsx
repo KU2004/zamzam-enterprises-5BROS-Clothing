@@ -14,6 +14,8 @@ import {
 import { FadeUp } from "../components/FadeUp";
 import { Counter } from "../components/Counter";
 import { SideNav } from "../components/SideNav";
+import { DesktopClientMarquee } from "../components/DesktopClientMarquee";
+import { MobileClientMarquee } from "../components/MobileClientMarquee";
 import hero1 from "../assets/hero-1.jpg";
 import hero2 from "../assets/hero-2.jpg";
 import hero3 from "../assets/hero-3.jpg";
@@ -478,7 +480,7 @@ export default function Home() {
       </section>
 
       {/* CLIENTS MARQUEE */}
-      <section id="clients" className="py-20 border-y border-border bg-muted/30 overflow-hidden">
+      <section id="clients" className="overflow-hidden border-y border-border bg-muted/30 py-20">
         <div className="container-luxe mb-10 flex items-center justify-between">
           <p className="gold-label">
             <span className="gold-line" /> Featured Clients
@@ -486,26 +488,11 @@ export default function Home() {
           <Link to="/clients" className="hidden md:inline text-[11px] uppercase tracking-[0.22em] text-muted-foreground hover:text-foreground">View all</Link>
         </div>
         <div className="relative">
-          <div className="flex marquee-track gap-20 whitespace-nowrap">
-            {[...clientLogos, ...clientLogos].map((c, i) => {
-              const isFeatureLogo = c.name === "GS CALTEX" || c.name === "PROJECT FLOORS";
-              return (
-                <div
-                  key={i}
-                  className={`flex items-center justify-center shrink-0 overflow-hidden rounded-3xl border border-white/10 bg-white/5 ${
-                    isFeatureLogo ? "h-44 w-84 min-w-84" : "h-40 w-[18rem] min-w-[18rem]"
-                  }`}
-                >
-                  <img
-                    src={c.logo}
-                    alt={c.name}
-                    className={`h-full w-auto object-contain opacity-80 hover:opacity-100 transition-opacity ${
-                      isFeatureLogo ? "max-h-[92%]" : ""
-                    }`}
-                  />
-                </div>
-              );
-            })}
+          <div className="hidden lg:block">
+            <DesktopClientMarquee />
+          </div>
+          <div className="block lg:hidden">
+            <MobileClientMarquee />
           </div>
         </div>
       </section>
