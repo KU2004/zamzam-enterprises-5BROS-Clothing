@@ -1,15 +1,26 @@
 import { Link } from "react-router-dom";
-import {
-  Globe,
-  Users,
-  Share2,
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import CONTACT from "../lib/contactInfo";
 import IndiaFlag from "../assets/flags/in.svg";
 import logo from "../assets/logo.png";
+
+const socialLinks = [
+  {
+    href: "https://facebook.com/YOUR_PAGE",
+    label: "Facebook",
+    iconSrc: "https://cdn.simpleicons.org/facebook/ffffff",
+  },
+  {
+    href: "https://instagram.com/YOUR_USERNAME",
+    label: "Instagram",
+    iconSrc: "https://cdn.simpleicons.org/instagram/ffffff",
+  },
+  {
+    href: "https://wa.me/917306333312",
+    label: "WhatsApp",
+    iconSrc: "https://cdn.simpleicons.org/whatsapp/ffffff",
+  },
+];
 
 export function Footer() {
   return (
@@ -27,14 +38,16 @@ export function Footer() {
               uniforms, and private label collections for brands worldwide.
             </p>
             <div className="flex flex-wrap items-center gap-3">
-              {[Globe, Users, Share2].map((Icon, i) => (
+              {socialLinks.map((social) => (
                 <a
-                  key={i}
-                  href="#"
-                  aria-label="social"
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
                   className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/70 transition hover:border-gold hover:text-gold focus-visible:ring-2 focus-visible:ring-gold/40"
                 >
-                  <Icon size={16} />
+                  <img src={social.iconSrc} alt="" aria-hidden="true" className="h-4 w-4 object-contain" />
                 </a>
               ))}
             </div>
