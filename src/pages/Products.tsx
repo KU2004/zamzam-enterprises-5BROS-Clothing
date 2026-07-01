@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import { useMemo } from "react";
 import { FadeUp } from "../components/FadeUp";
 
 // Round Neck Images
@@ -435,9 +435,7 @@ const categories = [
   "Corporate",
 ] as const;
 
-const getInitialCategory = (): (typeof categories)[number] => {
-  if (typeof window === "undefined") return "All";
-  const params = new URLSearchParams(window.location.search);
+const getCategoryFromParams = (params: URLSearchParams): (typeof categories)[number] => {
   const category = params.get("cat");
   return category && categories.includes(category as typeof categories[number])
     ? (category as typeof categories[number])
@@ -445,29 +443,17 @@ const getInitialCategory = (): (typeof categories)[number] => {
 };
 
 export default function Products() {
-  const [cat, setCat] = useState<(typeof categories)[number]>(() => getInitialCategory());
-
-  useEffect(() => {
-    const syncCategory = () => {
-      setCat(getInitialCategory());
-    };
-
-    const handlePopState = () => syncCategory();
-    window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
-  }, []);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const cat = getCategoryFromParams(searchParams);
 
   const updateCategory = (value: (typeof categories)[number]) => {
-    setCat(value);
-    if (typeof window === "undefined") return;
-
-    const url = new URL(window.location.href);
+    const nextParams = new URLSearchParams(searchParams);
     if (value === "All") {
-      url.searchParams.delete("cat");
+      nextParams.delete("cat");
     } else {
-      url.searchParams.set("cat", value);
+      nextParams.set("cat", value);
     }
-    window.history.replaceState({}, "", `${url.pathname}${url.search ? `?${url.searchParams.toString()}` : ""}`);
+    setSearchParams(nextParams, { replace: true });
   };
 
   const items = useMemo(() => catalogue.filter((i) => cat === "All" || i.cat === cat), [cat]);
