@@ -212,7 +212,21 @@
   }
 }
 @utility marquee-track {
-  animation: marquee 8s linear infinite;
+  animation: marquee 24s linear infinite;
+}
+
+@keyframes mobile-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.mobile-marquee-track {
+  animation: mobile-marquee 18s linear infinite;
+  will-change: transform;
 }
 
 @keyframes kenburns {
