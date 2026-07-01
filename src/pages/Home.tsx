@@ -30,15 +30,6 @@ import pOver from "../assets/product-oversized.jpg";
 import pHood from "../assets/product-hoodie.jpg";
 import pUni from "../assets/product-uniform.jpg";
 import pSport from "../assets/product-sports.jpg";
-import carrierLogo from "../assets/carrier.jpeg";
-import gulfLogo from "../assets/gulf.png";
-import safeproLogo from "../assets/safepro.jpeg";
-import gscaltexLogo from "../assets/gscaltex.png";
-import projectFloorsLogo from "../assets/projectfloors.jpeg";
-import swarajLogo from "../assets/swaraj.png";
-import alRajeahLogo from "../assets/al-rajeh.png";
-import ensoOilsLogo from "../assets/ensooils.png";
-import gEnergyLogo from "../assets/g-energy.png";
 import video1 from "../videos/video1.mp4";
 import video2 from "../videos/video2.mp4";
 import video3 from "../videos/video3.mp4";
@@ -107,17 +98,6 @@ const why = [
   { icon: Globe2, title: "Export Ready", desc: "MSME, GST, DGFT & APEDA certified." },
 ];
 
-const clientLogos = [
-  { name: "CARRIER", logo: carrierLogo },
-  { name: "GULF", logo: gulfLogo },
-  { name: "SAFEPRO", logo: safeproLogo },
-  { name: "GS CALTEX", logo: gscaltexLogo },
-  { name: "PROJECT FLOORS", logo: projectFloorsLogo },
-  { name: "SWARAJ", logo: swarajLogo },
-  { name: "AL-RAJEH", logo: alRajeahLogo },
-  { name: "ENSO OILS & LUBRICANTS", logo: ensoOilsLogo },
-  { name: "G-ENERGY", logo: gEnergyLogo },
-  ];
 
   const videos = [video1, video2, video3, video4, video5, video6];
 
