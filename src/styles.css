@@ -224,9 +224,61 @@
   }
 }
 
+.mobile-client-marquee {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.06));
+  box-shadow: 0 40px 120px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(18px);
+  padding: 1.25rem;
+}
+.mobile-client-marquee::before,
+.mobile-client-marquee::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(4rem);
+  opacity: 0.55;
+}
+.mobile-client-marquee::before {
+  width: 12rem;
+  height: 12rem;
+  top: -4rem;
+  left: -4rem;
+  background: rgba(245, 158, 11, 0.28);
+}
+.mobile-client-marquee::after {
+  width: 14rem;
+  height: 14rem;
+  bottom: -5rem;
+  right: -5rem;
+  background: rgba(56, 189, 248, 0.18);
+}
+.mobile-client-marquee .mobile-marquee-track {
+  padding: 0.75rem 0;
+}
+.client-logo-card {
+  animation: float-slow 16s ease-in-out infinite alternate;
+}
+
 .mobile-marquee-track {
   animation: mobile-marquee 18s linear infinite;
   will-change: transform;
+}
+
+@keyframes float-slow {
+  from {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 @keyframes kenburns {
