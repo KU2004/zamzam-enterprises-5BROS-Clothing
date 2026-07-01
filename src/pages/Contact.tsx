@@ -177,6 +177,8 @@ export default function Contact() {
       }
 
       setSent(true);
+      setErr(null);
+
       e.currentTarget.reset();
       setCountrySearch("");
       setSelectedPhoneCountry(null);
@@ -336,50 +338,49 @@ export default function Contact() {
                   className="mt-2 w-full border-b-2 border-gold/70 bg-transparent py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none focus:ring-0 transition-colors resize-none"
                 />
               </label>
-<div className="mt-4">
-  <button
-    type="submit"
-    className="bg-charcoal text-charcoal-foreground px-8 py-4 text-[11px] uppercase tracking-[0.22em] hover:bg-gold hover:text-charcoal transition"
-  >
-    <span className="font-semibold">
-      {sent ? "Inquiry Submitted" : "Send Inquiry"}
-    </span>
-  </button>
 
-  {sent && (
-    <div className="mt-6 rounded-xl border border-green-300 bg-green-50 p-6">
-      <h3 className="text-xl font-semibold text-green-700">
-        🎉 Thank You!
-      </h3>
+              <div className="mt-4 space-y-4">
+                <button
+                  type="submit"
+                  className="bg-charcoal text-charcoal-foreground px-8 py-4 text-[11px] uppercase tracking-[0.22em] transition hover:bg-gold hover:text-charcoal"
+                >
+                  <span className="font-semibold">
+                    {sent ? "Inquiry Submitted" : "Send Inquiry"}
+                  </span>
+                </button>
 
-      <p className="mt-3 text-sm text-green-700 leading-6">
-        Your inquiry has been submitted successfully.
-      </p>
+                {sent && (
+                  <div className="rounded-xl border border-green-300 bg-green-50 p-6">
+                    <h3 className="text-xl font-semibold text-green-700">
+                      🎉 Thank You!
+                    </h3>
 
-      <p className="mt-2 text-sm text-green-700 leading-6">
-        Our team has received your request and will contact you within
-        <strong> 24 business hours.</strong>
-      </p>
+                    <p className="mt-3 text-sm leading-6 text-green-700">
+                      Your inquiry has been submitted successfully.
+                    </p>
 
-      <p className="mt-2 text-sm text-green-700 leading-6">
-        Thank you for choosing <strong>5BROS Clothing</strong>.
-        We look forward to working with you.
-      </p>
-    </div>
-  )}
+                    <p className="mt-2 text-sm leading-6 text-green-700">
+                      Our team has received your request and will contact you within
+                      <strong> 24 business hours.</strong>
+                    </p>
 
-  {err && (
-    <div className="mt-6 rounded-xl border border-red-300 bg-red-50 p-6">
-      <h3 className="text-xl font-semibold text-red-700">
-        Submission Failed
-      </h3>
+                    <p className="mt-2 text-sm leading-6 text-green-700">
+                      Thank you for choosing <strong>5BROS Clothing</strong>.
+                      We look forward to working with you.
+                    </p>
+                  </div>
+                )}
 
-      <p className="mt-2 text-sm text-red-700">
-        {err}
-      </p>
-    </div>
-  )}
-</div>            
+                {err && (
+                  <div className="rounded-xl border border-red-300 bg-red-50 p-6">
+                    <h3 className="text-xl font-semibold text-red-700">
+                      Submission Failed
+                    </h3>
+
+                    <p className="mt-2 text-sm text-red-700">{err}</p>
+                  </div>
+                )}
+              </div>
             </form>
           </FadeUp>
 
