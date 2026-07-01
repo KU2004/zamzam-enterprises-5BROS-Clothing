@@ -172,8 +172,13 @@ export default function Contact() {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed");
+      const result = await response.json();
+
+      console.log("Status:", response.status);
+      console.log("Result:", result);
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Submission failed");
       }
 
       setSent(true);
@@ -183,7 +188,9 @@ export default function Contact() {
       setCountrySearch("");
       setSelectedPhoneCountry(null);
       setCountryPopoverOpen(false);
-    } catch {
+    } catch (error) {
+      console.error("Submit Error:", error);
+
       setSent(false);
       setErr("Failed to send inquiry. Please try again.");
     }
