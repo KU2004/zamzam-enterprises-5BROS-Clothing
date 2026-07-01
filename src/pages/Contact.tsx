@@ -49,7 +49,6 @@ import FlagCV from "../assets/flags/cv.svg";
 import { Clock, Mail, MapPin, Phone, ChevronDown } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "../components/ui/popover";
 import CONTACT from "../lib/contactInfo";
-import { supabase } from "../lib/supabase";
 
 
 const schema = z.object({
@@ -156,28 +155,36 @@ export default function Contact() {
     }
 
     setErr(null);
+    setSent(false);
 
-    const { error } = await supabase.from("contact_inquiries").insert([
-      {
-        name: r.data.name,
-        email: r.data.email,
-        country_code: Number(r.data.phoneCountry.replace("+", "")),
-        phone: r.data.phone,
-        message: r.data.message,
-      },
-    ]);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: r.data.name,
+          email: r.data.email,
+          phone: r.data.phone,
+          countryCode: r.data.phoneCountry,
+          message: r.data.message,
+        }),
+      });
 
-    if (error) {
+      if (!response.ok) {
+        throw new Error("Failed");
+      }
+
+      setSent(true);
+      e.currentTarget.reset();
+      setCountrySearch("");
+      setSelectedPhoneCountry(null);
+      setCountryPopoverOpen(false);
+    } catch {
       setSent(false);
       setErr("Failed to send inquiry. Please try again.");
-      return;
     }
-
-    setSent(true);
-    e.currentTarget.reset();
-    setCountrySearch("");
-    setSelectedPhoneCountry(null);
-    setCountryPopoverOpen(false);
   };
 
   return (
@@ -331,13 +338,8 @@ export default function Contact() {
               </label>
               <div className="flex items-center gap-6 mt-2">
                 <button className="bg-charcoal text-charcoal-foreground px-8 py-4 text-[11px] uppercase tracking-[0.22em] hover:bg-gold hover:text-charcoal transition">
-                  <span className="font-semibold">Send inquiry</span>
+                  <span className="font-semibold">{sent ? "Inquiry sent" : "Send inquiry"}</span>
                 </button>
-                {sent && (
-                  <span className="text-sm text-gold">
-                    Thanks — we'll be in touch soon.
-                  </span>
-                )}
                 {err && <span className="text-sm text-destructive">{err}</span>}
               </div>
             </form>
