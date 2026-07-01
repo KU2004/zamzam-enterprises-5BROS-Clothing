@@ -184,10 +184,11 @@ export default function Contact() {
       setSent(true);
       setErr(null);
 
-      e.currentTarget.reset();
-      setCountrySearch("");
-      setSelectedPhoneCountry(null);
-      setCountryPopoverOpen(false);
+      // Temporarily removed to isolate the error
+      // e.currentTarget.reset();
+      // setCountrySearch("");
+      // setSelectedPhoneCountry(null);
+      // setCountryPopoverOpen(false);
     } catch (error) {
       console.error("Submit Error:", error);
 
