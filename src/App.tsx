@@ -8,11 +8,13 @@ import Clients from "./pages/Clients";
 import Products from "./pages/Products";
 import Infrastructure from "./pages/Infrastructure";
 import Contact from "./pages/Contact";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
+        <ScrollToTop />
         <Nav />
         <main className="flex-1">
           <Routes>
