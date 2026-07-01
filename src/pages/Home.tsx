@@ -316,46 +316,58 @@ export default function Home() {
       </section>
 
       {/* PRODUCT CATEGORIES */}
-      <section id="products" className="py-28 md:py-36 bg-muted/40">
-        <div className="container-luxe">
-          <FadeUp className="max-w-2xl">
-            <p className="gold-label">
-              <span className="gold-line" /> Collections
-            </p>
-            <h2 className="mt-6 font-display text-4xl md:text-5xl">Product Categories</h2>
-            <p className="mt-5 text-muted-foreground">
-              A complete catalogue of essentials, athletic and corporate apparel — fully customisable.
-            </p>
-          </FadeUp>
+{/* PRODUCT CATEGORIES */}
+<section id="products" className="py-28 md:py-36 bg-muted/40">
+  <div className="container-luxe">
+    <FadeUp className="max-w-2xl">
+      <p className="gold-label">
+        <span className="gold-line" /> Collections
+      </p>
 
-          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {products.map((p, i) => (
-              <FadeUp key={p.name} delay={i * 80}>
-                <a href={`/products?cat=${encodeURIComponent(p.cat)}`} className="group block">
-                  <div className="relative aspect-4/5 overflow-hidden bg-muted">
-                    <img
-                      src={p.img}
-                      alt={p.name}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                      <span className="inline-flex items-center gap-2 bg-gold px-4 py-2 text-[10px] uppercase tracking-[0.2em] text-charcoal">
-                        Quick View <ArrowRight size={12} />
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mt-5 flex items-center justify-between">
-                    <h3 className="font-display text-xl">{p.name}</h3>
-                  </div>
-                </a>
-              </FadeUp>
-            ))}
-          </div>
-        </div>
-      </section>
+      <h2 className="mt-6 font-display text-4xl md:text-5xl">
+        Product Categories
+      </h2>
 
+      <p className="mt-5 text-muted-foreground">
+        A complete catalogue of essentials, athletic and corporate apparel —
+        fully customisable.
+      </p>
+    </FadeUp>
+
+    <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {products.map((p, i) => (
+        <FadeUp key={p.name} delay={i * 80}>
+          <Link
+            to={`/products?cat=${encodeURIComponent(p.cat)}`}
+            className="group block"
+          >
+            <div className="relative aspect-4/5 overflow-hidden bg-muted">
+              <img
+                src={p.img}
+                alt={p.name}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+
+              <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                <span className="inline-flex items-center gap-2 bg-gold px-4 py-2 text-[10px] uppercase tracking-[0.2em] text-charcoal">
+                  Quick View
+                  <ArrowRight size={12} />
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-5 flex items-center justify-between">
+              <h3 className="font-display text-xl">{p.name}</h3>
+            </div>
+          </Link>
+        </FadeUp>
+      ))}
+    </div>
+  </div>
+</section>
       {/* FABRICS */}
       <section
         id="fabrics"
