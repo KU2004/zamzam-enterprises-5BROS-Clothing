@@ -16,15 +16,23 @@ const socialLinks = [
     iconSrc: "https://cdn.simpleicons.org/instagram/ffffff",
   },
   {
-    href: "https://wa.me/917306333312",
-    label: "WhatsApp",
-    iconSrc: "https://cdn.simpleicons.org/whatsapp/ffffff",
+    href: "https://youtube.com/@YOUR_CHANNEL",
+    label: "YouTube",
+    iconSrc: "https://cdn.simpleicons.org/youtube/ffffff",
+  },
+  {
+    href: "https://linkedin.com/company/YOUR_COMPANY",
+    label: "LinkedIn",
+    iconSrc: "https://cdn.jsdelivr.net/npm/simple-icons@11/icons/linkedin.svg",
   },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-charcoal text-charcoal-foreground font-semibold">
+    <footer
+      className="bg-charcoal text-charcoal-foreground"
+      style={{ fontFamily: '"Poppins", system-ui, sans-serif' }}
+    >
       <div className="container-luxe py-20">
         <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
           <div className="space-y-6 p-7">
@@ -33,7 +41,7 @@ export function Footer() {
                 <img src={logo} alt="5BROS logo" className="h-14 w-14 object-contain" />
               </div>
             </div>
-            <p className="text-base leading-8 text-white/80">
+            <p className="text-xl leading-9 text-white/80">
               Premium apparel manufacturing partner crafting custom garments,
               uniforms, and private label collections for brands worldwide.
             </p>
@@ -47,20 +55,25 @@ export function Footer() {
                   aria-label={social.label}
                   className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/70 transition hover:border-gold hover:text-gold focus-visible:ring-2 focus-visible:ring-gold/40"
                 >
-                  <img src={social.iconSrc} alt="" aria-hidden="true" className="h-4 w-4 object-contain" />
+                  <img
+                    src={social.iconSrc}
+                    alt=""
+                    aria-hidden="true"
+                    className={`h-4 w-4 object-contain${social.label === "LinkedIn" ? " invert" : ""}`}
+                  />
                 </a>
               ))}
             </div>
           </div>
 
           <div className="space-y-6 p-7">
-            <h4 className="font-display text-base uppercase tracking-[0.25em] text-gold">
+            <h4 className="font-display text-lg uppercase tracking-[0.25em] text-gold">
               Quick Links
             </h4>
-            <ul className="space-y-3 text-base leading-8 text-white/85">
+            <ul className="space-y-3 text-xl leading-9 text-white/85">
               {[
                 ["/", "Home"],
-                ["/about", "About"],
+                ["/about", "About Us"],
                 ["/products", "Products"],
                 ["/infrastructure", "Infrastructure"],
                 ["/contact", "Contact"],
@@ -78,10 +91,10 @@ export function Footer() {
           </div>
 
           <div className="space-y-6 p-7">
-            <h4 className="font-display text-base uppercase tracking-[0.25em] text-gold">
+            <h4 className="font-display text-lg uppercase tracking-[0.25em] text-gold">
               Products
             </h4>
-            <ul className="space-y-3 text-base leading-8 text-white/85">
+            <ul className="space-y-3 text-xl leading-9 text-white/85">
               {[
                 ["Round Neck", "Round Neck"],
                 ["Polo", "Polo"],
@@ -103,10 +116,10 @@ export function Footer() {
           </div>
 
           <div className="space-y-6 p-7">
-            <h4 className="font-display text-base uppercase tracking-[0.25em] text-gold">
+            <h4 className="font-display text-lg uppercase tracking-[0.25em] text-gold">
               Get in touch
             </h4>
-            <address className="not-italic space-y-4 text-base leading-8 text-white/80">
+            <address className="not-italic space-y-4 text-xl leading-9 text-white/80">
               <div className="flex items-start gap-3">
                 <MapPin size={16} className="mt-1 text-gold shrink-0" />
                 <span className="text-white/85">{CONTACT.addressFull}</span>
@@ -118,7 +131,7 @@ export function Footer() {
               {CONTACT.phones.map((phone) => (
                 <div key={phone} className="flex items-start gap-3">
                   <Phone size={16} className="mt-1 text-gold shrink-0" />
-                  <span className="text-white/85 flex items-center gap-2">
+                  <span className="text-lg text-white/85 flex items-center gap-2">
                     <img
                       src={IndiaFlag}
                       alt="India flag"
@@ -131,7 +144,7 @@ export function Footer() {
             </address>
             <Link
               to="/contact"
-              className="mt-4 inline-flex items-center justify-center rounded-full bg-gold px-8 py-3 text-sm uppercase tracking-[0.2em] text-charcoal transition hover:bg-gold/90"
+              className="mt-4 inline-flex items-center justify-center rounded-full bg-gold px-8 py-3 text-base uppercase tracking-[0.2em] text-charcoal transition hover:bg-gold/90"
             >
               Contact
             </Link>
@@ -140,7 +153,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10 bg-white/5/5">
-        <div className="container-luxe py-6 flex flex-col gap-2 md:flex-row items-center justify-between text-sm leading-6 uppercase tracking-[0.2em] text-white/70">
+        <div className="container-luxe py-6 flex flex-col gap-2 md:flex-row items-center justify-between text-lg leading-6 uppercase tracking-[0.2em] text-white/70">
           <span>© 2026 5BROS Clothing. All rights reserved.</span>
           <span>Crafted in India · Delivered worldwide</span>
         </div>
