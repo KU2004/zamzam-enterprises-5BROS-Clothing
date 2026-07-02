@@ -95,7 +95,7 @@ const why = [
   { icon: Award, title: "Private Label", desc: "Full OEM & ODM with your branding." },
   { icon: Headphones, title: "Dedicated Manager", desc: "One point of contact, always." },
   { icon: CheckCircle2, title: "Fast Turnaround", desc: "Pilot in weeks, scale in months." },
-  { icon: Globe2, title: "Export Ready", desc: "MSME, GST, DGFT & APEDA certified." },
+  { icon: Globe2, title: "Export Ready", desc: "MSME, GST, DGFT & AEPC certified." },
 ];
 
 
@@ -389,11 +389,7 @@ export default function Home() {
                   href="/contact"
                   className="group block rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-8 transition-all duration-300 hover:bg-white/20 hover:shadow-xl hover:shadow-black/10 cursor-pointer"
                 >
-                  <span className="text-[11px] uppercase tracking-[0.22em] text-black font-bold">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-
-                  <p className="mt-3 font-display text-lg text-black font-semibold">
+                  <p className="font-display text-lg text-black font-semibold">
                     {f}
                   </p>
                 </a>
@@ -421,8 +417,7 @@ export default function Home() {
                   href="/contact"
                   className="group block rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-8 transition-all duration-300 hover:bg-white/20 hover:shadow-xl hover:shadow-black/10 cursor-pointer"
                 >
-                  <div className="font-display text-4xl text-gold font-semibold">{String(i + 1).padStart(2, "0")}</div>
-                  <p className="mt-4 font-display font-semibold text-lg text-black">{p}</p>
+                  <p className="font-display font-semibold text-lg text-black">{p}</p>
                   <span className="mt-3 block h-px w-8 bg-black/20" />
                 </a>
               </FadeUp>
