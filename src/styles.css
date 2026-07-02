@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 @source "../src";
 @import "tw-animate-css";
@@ -50,7 +51,7 @@
   --color-charcoal: var(--charcoal);
   --color-charcoal-foreground: var(--charcoal-foreground);
   --font-display: "Poppins", system-ui, sans-serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-sans: "Poppins", system-ui, sans-serif;
 }
 
 :root {
@@ -135,7 +136,7 @@
 
   html,
   body {
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", system-ui, sans-serif;
   }
 
   body {
