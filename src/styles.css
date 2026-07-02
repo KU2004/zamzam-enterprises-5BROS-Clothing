@@ -212,7 +212,7 @@
   }
 }
 @utility marquee-track {
-  animation: marquee 24s linear infinite;
+  will-change: transform;
 }
 
 @keyframes mobile-marquee {
