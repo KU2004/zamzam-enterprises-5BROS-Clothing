@@ -143,7 +143,7 @@ export default function Home() {
                     to="/products"
                     className="group inline-flex items-center gap-3 bg-gold px-7 py-4 text-[11px] uppercase tracking-[0.22em] text-charcoal hover:bg-gold-soft transition"
                   >
-                    Explore Products <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                    Enquire Now <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
               </div>
