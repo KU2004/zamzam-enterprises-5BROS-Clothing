@@ -235,7 +235,7 @@ export default function Home() {
               know-how, delivered through one disciplined supply chain.
             </p>
             <Link to="/about" className="mt-8 inline-flex items-center gap-2 text-sm uppercase tracking-[0.2em] text-foreground border-b border-gold pb-1 hover:gap-3 transition-all">
-              Discover our story <ArrowRight size={14} />
+              Discover About Us <ArrowRight size={14} />
             </Link>
           </FadeUp>
 
