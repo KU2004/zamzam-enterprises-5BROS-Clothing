@@ -3,25 +3,25 @@ import { useMemo } from "react";
 import { FadeUp } from "../components/FadeUp";
 
 // Round Neck Images
-import roundneck1 from "../assets/roundneck1.jpeg";
-import roundneck2 from "../assets/roundneck2.jpeg";
+import roundneck1 from "../assets/roundneck4.jpeg";
+import roundneck2 from "../assets/roundneck5.jpeg";
 import roundneck3 from "../assets/roundneck3.jpeg";
-import roundneck4 from "../assets/roundneck4.jpeg";
-import roundneck5 from "../assets/roundneck5.jpeg";
+import roundneck4 from "../assets/roundneck1.jpeg";
+import roundneck5 from "../assets/roundneck2.jpeg";
 import roundneck6 from "../assets/roundneck6.jpeg";
 import roundneck7 from "../assets/roundneck7.jpeg";
 import roundneck8 from "../assets/roundneck8.jpeg";
 
 // Polo Images
-import polo1 from "../assets/polo1.jpeg";
-import polo2 from "../assets/polo2.jpeg";
-import polo3 from "../assets/polo3.jpeg";
-import polo4 from "../assets/polo4.jpeg";
-import polo5 from "../assets/polo5.jpeg";
+import polo1 from "../assets/polo7.jpeg";
+import polo2 from "../assets/polo8.jpeg";
+import polo3 from "../assets/polo9.jpeg";
+import polo4 from "../assets/polo1.jpeg";
+import polo5 from "../assets/polo2.jpeg";
 import polo6 from "../assets/polo6.jpeg";
-import polo7 from "../assets/polo7.jpeg";
-import polo8 from "../assets/polo8.jpeg";
-import polo9 from "../assets/polo9.jpeg";
+import polo7 from "../assets/polo4.jpeg";
+import polo8 from "../assets/polo5.jpeg";
+import polo9 from "../assets/polo3.jpeg";
 import polo10 from "../assets/polo10.jpeg";
 import polo11 from "../assets/polo11.jpeg";
 
@@ -503,20 +503,19 @@ export default function Products() {
             <p className="text-sm text-muted-foreground mb-6">
               {items.length} products
             </p>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
               {items.map((p, i) => (
-                <FadeUp key={p.name + i} delay={i * 40}>
+                <FadeUp key={p.cat + i} delay={i * 40}>
                   <article className="group">
-                    <div className="relative aspect-square overflow-hidden bg-muted">
+                    <div className="relative aspect-[3/4] overflow-hidden bg-muted">
                       <img
                         src={p.img}
-                        alt={p.name}
+                        alt={p.cat}
                         loading="lazy"
-                        className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        className="h-full w-full object-cover object-top transition-transform duration-1000 group-hover:scale-110"
                       />
                     </div>
                     <div className="mt-4">
-                      <h3 className="mt-1 font-display text-lg">{p.name}</h3>
                       <p className="text-xs text-muted-foreground mt-1">
                         {p.fabric} · {p.gsm} · MOQ {p.moq}
                       </p>
