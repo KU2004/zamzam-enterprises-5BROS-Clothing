@@ -475,7 +475,7 @@ export default function Products() {
 
       <section className="py-16 md:py-24 bg-background">
         <div className="container-luxe grid gap-10 lg:grid-cols-[260px_1fr]">
-          <aside className="space-y-8">
+          <aside className="space-y-8 order-last lg:order-0">
             <div>
               <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
                 Category
@@ -499,7 +499,7 @@ export default function Products() {
             </div>
           </aside>
 
-          <div>
+          <div className="order-first lg:order-0">
             <p className="text-sm text-muted-foreground mb-6">
               {items.length} products
             </p>
