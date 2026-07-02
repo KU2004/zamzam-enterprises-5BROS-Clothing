@@ -23,7 +23,7 @@ import brand1 from "../assets/brand1.png";
 import brand2 from "../assets/brand2.png";
 import brand3 from "../assets/brand3.png";
 import pRound from "../assets/product-roundneck.jpg";
-import manfuBg from "../assets/manfu-bg.png";
+import processImg from "../assets/Process.png";
 import pPolo from "../assets/product-polo.jpg";
 import pOver from "../assets/product-oversized.jpg";
 import pHood from "../assets/product-hoodie.jpg";
@@ -35,7 +35,6 @@ import video3 from "../videos/video3.mp4";
 import video4 from "../videos/video4.mp4";
 import video5 from "../videos/video5.mp4";
 import video6 from "../videos/video6.mp4";
-import contactBg from "../assets/contactbg.png";
 import indiaMap from "../assets/indiamap.png";
 import fabricBg from "../assets/cotton-bg.png";
 
@@ -143,7 +142,7 @@ export default function Home() {
                     to="/products"
                     className="group inline-flex items-center gap-3 bg-gold px-7 py-4 text-[11px] uppercase tracking-[0.22em] text-charcoal hover:bg-gold-soft transition"
                   >
-                    Enquire Now <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                    Explore Products <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
               </div>
@@ -176,9 +175,9 @@ export default function Home() {
               <span className="gold-line" /> Our Brands
             </p>
           </div>
-          <div className="mt-10 grid gap-6 grid-cols-1 sm:grid-cols-3 items-stretch">
-            <div className="h-full">
-              <div className="block h-full overflow-hidden rounded-[2rem] container1 p-0 shadow-lg shadow-black/5">
+          <div className="mt-10 grid gap-6 grid-cols-1 sm:grid-cols-3 items-center">
+            <div className="h-32 flex items-center justify-end">
+              <div className="block h-full overflow-hidden">
                 <div className="relative h-full w-full overflow-hidden">
                   <img
                     src={brand1}
@@ -189,8 +188,8 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="h-full">
-              <div className="block h-full overflow-hidden rounded-[2rem] container1 p-0 shadow-lg shadow-black/5">
+            <div className="h-20 flex items-center justify-center -mx-2">
+              <div className="block h-full overflow-hidden">
                 <div className="relative h-full w-full overflow-hidden">
                   <img
                     src={brand2}
@@ -201,8 +200,8 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="h-full">
-              <div className="block h-full overflow-hidden rounded-[2rem] container1 p-0 shadow-lg shadow-black/5">
+            <div className="h-20 flex items-center justify-start -ml-3">
+              <div className="block h-full overflow-hidden">
                 <div className="relative h-full w-full overflow-hidden">
                   <img
                     src={brand3}
@@ -256,8 +255,7 @@ export default function Home() {
       </section>
 
       {/* MODELS SHOWCASE */}
-      <section id="products" className="relative py-28 md:py-36 bg-background overflow-hidden">
-        <img src={contactBg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-100" />
+      <section id="products" className="relative py-28 md:py-36 bg-amber-50 overflow-hidden">
         <div className="container-luxe relative z-10">
           <FadeUp className="max-w-2xl">
             <p className="gold-label">
@@ -383,14 +381,20 @@ export default function Home() {
           <div className="mt-14 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
             {fabrics.map((f, i) => (
               <FadeUp key={f} delay={i * 50}>
-                <a
-                  href="/contact"
-                  className="group block rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-8 transition-all duration-300 hover:bg-white/20 hover:shadow-xl hover:shadow-black/10 cursor-pointer"
-                >
-                  <p className="font-display text-lg text-black font-semibold">
-                    {f}
-                  </p>
-                </a>
+                <div className="relative group">
+                  <a
+                    href="/contact"
+                    className="block rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-8 transition-all duration-300 hover:bg-white/20 hover:shadow-xl hover:shadow-black/10 cursor-pointer"
+                  >
+                    <p className="font-display text-lg text-black font-semibold">
+                      {f}
+                    </p>
+                  </a>
+
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                    <ArrowRight size={18} className="text-gold opacity-90 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
               </FadeUp>
             ))}
           </div>
@@ -399,8 +403,6 @@ export default function Home() {
 
       {/* PROCESS */}
       <section id="process" className="relative py-28 md:py-36 bg-white text-black">
-        <img src={manfuBg} alt="Manufacturing process background" className="absolute inset-0 h-full w-full object-cover opacity-180" />
-        <div className="absolute inset-0 bg-white/60" />
         <div className="relative z-10 container-luxe">
           <FadeUp className="max-w-2xl">
             <p className="gold-label">
@@ -408,19 +410,32 @@ export default function Home() {
             </p>
             <h2 className="mt-6 font-display font-semibold text-4xl md:text-5xl text-black">A disciplined eight-stage journey.</h2>
           </FadeUp>
-          <ol className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {process.map((p, i) => (
-              <FadeUp key={p} delay={i * 60}>
-                <a
-                  href="/contact"
-                  className="group block rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-8 transition-all duration-300 hover:bg-white/20 hover:shadow-xl hover:shadow-black/10 cursor-pointer"
-                >
-                  <p className="font-display font-semibold text-lg text-black">{p}</p>
-                  <span className="mt-3 block h-px w-8 bg-black/20" />
-                </a>
-              </FadeUp>
-            ))}
-          </ol>
+
+          <div className="mt-16">
+            <div className="lg:hidden rounded-[2rem] bg-amber-50 p-6">
+              <div className="grid gap-4">
+                {process.map((p) => (
+                  <div key={p} className="rounded-[1.75rem] border border-black/10 bg-white p-5 shadow-sm">
+                    <div className="flex items-center justify-between gap-4">
+                      <p className="font-display font-semibold text-base text-black">{p}</p>
+                      <ArrowRight size={18} className="text-gold" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="hidden lg:block">
+              <div className="relative h-screen overflow-hidden rounded-[2rem] border border-border bg-white/60">
+                <img
+                  src={processImg}
+                  alt="Manufacturing process"
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
