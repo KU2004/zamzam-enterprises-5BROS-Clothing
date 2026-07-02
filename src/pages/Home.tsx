@@ -142,7 +142,7 @@ export default function Home() {
                     to="/products"
                     className="group inline-flex items-center gap-3 bg-gold px-7 py-4 text-[11px] uppercase tracking-[0.22em] text-charcoal hover:bg-gold-soft transition"
                   >
-                    Explore Products <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                    Enquire Now <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
               </div>
@@ -168,7 +168,24 @@ export default function Home() {
       </section>
 
       {/* BRANDS */}
-      <section id="brands" className="py-28 md:py-36 bg-background">
+      {/* Mobile: compact single-line logos (visible on mobile only) */}
+      <section id="brands-mobile" className="block lg:hidden py-8 bg-background">
+        <div className="container-luxe">
+          <div className="flex items-center gap-4 overflow-x-auto">
+            <div className="flex-shrink-0 h-12 w-28 flex items-center justify-center">
+              <img src={brand1} alt="Brand 1" className="h-full w-full object-contain" loading="lazy" />
+            </div>
+            <div className="flex-shrink-0 h-12 w-28 flex items-center justify-center">
+              <img src={brand2} alt="Brand 2" className="h-full w-full object-contain" loading="lazy" />
+            </div>
+            <div className="flex-shrink-0 h-12 w-28 flex items-center justify-center">
+              <img src={brand3} alt="Brand 3" className="h-full w-full object-contain" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="brands" className="hidden lg:block py-28 md:py-36 bg-background">
         <div className="container-luxe">
           <div className="max-w-3xl">
             <p className="gold-label">
@@ -382,18 +399,12 @@ export default function Home() {
             {fabrics.map((f, i) => (
               <FadeUp key={f} delay={i * 50}>
                 <div className="relative group">
-                  <a
-                    href="/contact"
-                    className="block rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-8 transition-all duration-300 hover:bg-white/20 hover:shadow-xl hover:shadow-black/10 cursor-pointer"
-                  >
+                  <div className="block rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-8 transition-all duration-300 hover:bg-white/20 hover:shadow-xl hover:shadow-black/10 cursor-pointer">
                     <p className="font-display text-lg text-black font-semibold">
                       {f}
                     </p>
-                  </a>
-
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <ArrowRight size={18} className="text-gold opacity-90 transition-transform group-hover:translate-x-1" />
                   </div>
+
                 </div>
               </FadeUp>
             ))}
@@ -416,10 +427,7 @@ export default function Home() {
               <div className="grid gap-4">
                 {process.map((p) => (
                   <div key={p} className="rounded-[1.75rem] border border-black/10 bg-white p-5 shadow-sm">
-                    <div className="flex items-center justify-between gap-4">
-                      <p className="font-display font-semibold text-base text-black">{p}</p>
-                      <ArrowRight size={18} className="text-gold" />
-                    </div>
+                    <p className="font-display font-semibold text-base text-black">{p}</p>
                   </div>
                 ))}
               </div>
