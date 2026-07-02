@@ -20,7 +20,7 @@ const socialLinks = [
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/",
-    imageSrc: "https://cdn.simpleicons.org/linkedin/ffffff",
+    imageSrc: "https://cdn.jsdelivr.net/npm/simple-icons@11/icons/linkedin.svg",
     className:
       "bg-[#0A66C2] hover:shadow-[0_12px_28px_rgba(10,102,194,0.35)]",
     ariaLabel: "Open LinkedIn",
@@ -62,7 +62,7 @@ export function FloatingSocialButtons() {
       `}</style>
 
       <TooltipProvider delayDuration={180}>
-        <div className="fixed bottom-4 left-1/2 z-120 flex max-w-[calc(100vw-1.5rem)] -translate-x-1/2 flex-wrap justify-center gap-2 sm:bottom-5 sm:gap-2.5">
+        <div className="fixed right-3 top-1/2 z-120 flex -translate-y-1/2 flex-col gap-2 sm:right-4 sm:gap-2.5">
           {socialLinks.map((link, index) => {
             return (
               <Tooltip key={link.label}>
@@ -85,7 +85,7 @@ export function FloatingSocialButtons() {
                     />
                   </a>
                 </TooltipTrigger>
-                <TooltipContent side="top" className="rounded-full border border-white/10 bg-slate-900/95 px-3 py-1.5 text-xs text-white shadow-lg">
+                <TooltipContent side="left" className="rounded-full border border-white/10 bg-slate-900/95 px-3 py-1.5 text-xs text-white shadow-lg">
                   {link.label}
                 </TooltipContent>
               </Tooltip>
