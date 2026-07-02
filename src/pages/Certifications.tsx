@@ -13,7 +13,7 @@ const certs = [
   { code: "MSME", t: "Ministry of Micro, Small & Medium Enterprises", img: msme },
   { code: "GST", t: "Goods & Services Tax Registered", img: gst },
   { code: "DGFT", t: "Directorate General of Foreign Trade", img: dgft },
-  { code: "APEDA", t: "Agricultural & Processed Food Products Export", img: logoAepc },
+  { code: "AEPC", t: "Agricultural & Processed Food Products Export", img: logoAepc },
   { code: "ZED", t: "Zero Defect Zero Effect — Bronze", img: zed },
   { code: "ISO", t: "ISO Certified Manufacturing Practices", img: mumbai },
 ];
