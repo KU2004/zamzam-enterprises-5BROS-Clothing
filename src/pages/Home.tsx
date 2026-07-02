@@ -399,7 +399,7 @@ export default function Home() {
 
       {/* PROCESS */}
       <section id="process" className="relative py-28 md:py-36 bg-white text-black">
-        <img src={manfuBg} alt="Manufacturing process background" className="absolute inset-0 h-full w-full object-cover opacity-150" />
+        <img src={manfuBg} alt="Manufacturing process background" className="absolute inset-0 h-full w-full object-cover opacity-180" />
         <div className="absolute inset-0 bg-white/60" />
         <div className="relative z-10 container-luxe">
           <FadeUp className="max-w-2xl">
