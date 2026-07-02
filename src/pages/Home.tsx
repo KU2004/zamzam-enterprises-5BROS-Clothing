@@ -7,7 +7,6 @@ import {
   Globe2,
   Headphones,
   Package,
-  Shield,
   Sparkles,
   Truck,
 } from "lucide-react";
