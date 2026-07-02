@@ -90,7 +90,6 @@ const process = [
 const why = [
   { icon: Sparkles, title: "Premium Materials", desc: "Hand-picked yarns and certified fabrics." },
   { icon: Package, title: "Low MOQ", desc: "Flexible order quantities for emerging brands." },
-  { icon: Shield, title: "In-house QC", desc: "Multi-stage inspection on every batch." },
   { icon: Truck, title: "Global Shipping", desc: "Documentation and logistics handled end-to-end." },
   { icon: Award, title: "Private Label", desc: "Full OEM & ODM with your branding." },
   { icon: Headphones, title: "Dedicated Manager", desc: "One point of contact, always." },
