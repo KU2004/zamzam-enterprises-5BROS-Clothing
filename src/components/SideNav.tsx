@@ -35,7 +35,7 @@ export function SideNav() {
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed right-6 top-1/2 -translate-y-1/2 z-40 p-3 bg-gold hover:bg-gold-soft text-charcoal rounded-lg transition-all duration-300 hover:shadow-lg"
+        className="fixed right-6 top-24 z-130 p-3 bg-gold hover:bg-gold-soft text-charcoal rounded-lg transition-all duration-300 hover:shadow-lg"
         aria-label="Toggle navigation"
       >
         {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -43,7 +43,7 @@ export function SideNav() {
 
       {/* Side Navigation Panel */}
       <div
-        className={`fixed right-0 top-0 h-screen w-64 bg-charcoal/95 backdrop-blur-sm text-charcoal-foreground z-30 transition-transform duration-500 ease-out overflow-y-auto ${
+        className={`fixed right-0 top-0 h-screen w-64 bg-charcoal/95 backdrop-blur-sm text-charcoal-foreground z-50 transition-transform duration-500 ease-out overflow-y-auto ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -71,7 +71,7 @@ export function SideNav() {
       {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/40 z-20 transition-opacity duration-300"
+          className="fixed inset-0 bg-black/40 z-40 transition-opacity duration-300"
           onClick={() => setIsOpen(false)}
         />
       )}
