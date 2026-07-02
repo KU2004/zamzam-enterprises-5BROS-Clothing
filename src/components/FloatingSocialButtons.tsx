@@ -4,7 +4,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/t
 const socialLinks = [
   {
     label: "Facebook",
-    href: "https://facebook.com/",
+    href: "https://www.facebook.com/share/164PnQtF1D5/",
     imageSrc: "https://cdn.simpleicons.org/facebook/ffffff",
     className:
       "bg-[#1877F2] hover:shadow-[0_12px_28px_rgba(24,119,242,0.35)]",
@@ -12,7 +12,7 @@ const socialLinks = [
   },
   {
     label: "Instagram",
-    href: "https://instagram.com/",
+    href: "https://www.instagram.com/5bros_clothing?utm_source=qr&igsh=MXp6aDAzMGJ5a2pv",
     imageSrc: "https://cdn.simpleicons.org/instagram/ffffff",
     className:
       "bg-[linear-gradient(135deg,#f58529_0%,#dd2a7b_50%,#8134af_100%)] hover:shadow-[0_12px_28px_rgba(221,42,123,0.35)]",
@@ -28,7 +28,7 @@ const socialLinks = [
   },
   {
     label: "YouTube",
-    href: "https://www.youtube.com/",
+    href: "https://youtube.com/@simnani-enterprises-5?si=CIRgJ2PtTdkty19t",
     imageSrc: "https://cdn.simpleicons.org/youtube/ffffff",
     className:
       "bg-[#FF0000] hover:shadow-[0_12px_28px_rgba(255,0,0,0.35)]",
