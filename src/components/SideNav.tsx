@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface NavItem {
   label: string;
@@ -22,6 +21,15 @@ const navItems: NavItem[] = [
 export function SideNav() {
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    const handleToggle = () => {
+      setIsOpen((prev) => !prev);
+    };
+
+    window.addEventListener("toggle-sidenav", handleToggle);
+    return () => window.removeEventListener("toggle-sidenav", handleToggle);
+  }, []);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -32,15 +40,6 @@ export function SideNav() {
 
   return (
     <>
-      {/* Toggle Button */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed right-6 top-24 z-130 p-3 bg-gold hover:bg-gold-soft text-charcoal rounded-lg transition-all duration-300 hover:shadow-lg"
-        aria-label="Toggle navigation"
-      >
-        {isOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
-
       {/* Side Navigation Panel */}
       <div
         className={`fixed right-0 top-0 h-screen w-64 bg-charcoal/95 backdrop-blur-sm text-charcoal-foreground z-50 transition-transform duration-500 ease-out overflow-y-auto ${
