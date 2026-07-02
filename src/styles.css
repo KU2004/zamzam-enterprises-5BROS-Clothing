@@ -135,8 +135,21 @@
   }
 
   html,
-  body {
+  body,
+  #root {
     font-family: "Poppins", system-ui, sans-serif;
+  }
+
+  body,
+  button,
+  input,
+  textarea,
+  select,
+  p,
+  span,
+  li,
+  a {
+    font-family: inherit;
   }
 
   body {
