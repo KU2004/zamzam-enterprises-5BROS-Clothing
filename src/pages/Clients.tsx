@@ -12,14 +12,14 @@ import gEnergyLogo from "../assets/g-energy.png";
 
 
 const clients = [
-  { name: "Carrier", logo: carrierLogo },
-  { name: "Gulf", logo: gulfLogo },
-  { name: "SafePro", logo: safeproLogo },
+  { name: "g-energy", logo: gEnergyLogo },
   { name: "GS Caltex", logo: gscaltexLogo },
+  { name: "Carrier", logo: carrierLogo },
   { name: "Project Floors", logo: projectFloorsLogo },
+  { name: "SafePro", logo: safeproLogo },
   { name: "al-rajeh", logo: alRajeahLogo },
   { name: "enso oils & lubricants", logo: ensoOilsLogo },
-  { name: "g-energy", logo: gEnergyLogo },
+  { name: "Gulf", logo: gulfLogo },
 ];
 
 const showcase = [
@@ -63,31 +63,23 @@ export default function Clients() {
       </section>
 
       <section className="pt-28 md:pt-32 pb-24 md:pb-32 bg-background">
-        <div className="container-luxe bg-border rounded-[2rem] p-1">
-          <div className="grid gap-6 rounded-[2rem] bg-background p-6 grid-cols-1 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-3">
-            {clients.map((client, i) => (
+        <div className="container-luxe">
+          <div className="grid gap-16 md:gap-20 grid-cols-2 md:grid-cols-3 lg:grid-cols-3 items-center justify-center">
+            {clients.map((client, index) => (
               <FadeUp
                 key={client.name}
-                delay={i * 40}
-                className="bg-background rounded-[2rem] p-4 transition hover:bg-muted"
+                delay={index * 40}
+                className="flex items-center justify-center"
               >
-              <button
-                type="button"
-                className="flex h-full w-full flex-col items-center justify-center gap-4 rounded-[1.75rem] border border-border bg-background p-6 text-center transition duration-200 hover:-translate-y-1 hover:border-gold hover:bg-muted focus:outline-none focus:ring-2 focus:ring-gold active:scale-[0.97]"
-                aria-label={`View ${client.name}`}
-              >
-                <div className="flex h-32 w-full items-center justify-center">
-                  <img
-                    src={client.logo}
-                    alt={client.name}
-                    className="max-h-full max-w-full object-contain opacity-90 transition duration-200 hover:opacity-100"
-                  />
-                </div>
-              </button>
-            </FadeUp>
-          ))}
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className="max-h-40 max-w-full object-contain"
+                />
+              </FadeUp>
+            ))}
+          </div>
         </div>
-      </div>
       </section>
 
       <section className="py-20 md:py-28 bg-muted/30">
