@@ -6,7 +6,6 @@ import gulfLogo from "../assets/gulf.png";
 import safeproLogo from "../assets/safepro.jpeg";
 import gscaltexLogo from "../assets/gscaltex.png";
 import projectFloorsLogo from "../assets/projectfloors.jpeg";
-import swarajLogo from "../assets/swaraj.png";
 import alRajeahLogo from "../assets/al-rajeh.png";
 import ensoOilsLogo from "../assets/ensooils.png";
 import gEnergyLogo from "../assets/g-energy.png";
@@ -18,7 +17,6 @@ const clients = [
   { name: "SafePro", logo: safeproLogo },
   { name: "GS Caltex", logo: gscaltexLogo },
   { name: "Project Floors", logo: projectFloorsLogo },
-  { name: "Swaraj", logo: swarajLogo },
   { name: "al-rajeh", logo: alRajeahLogo },
   { name: "enso oils & lubricants", logo: ensoOilsLogo },
   { name: "g-energy", logo: gEnergyLogo },
