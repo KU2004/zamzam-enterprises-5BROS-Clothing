@@ -169,7 +169,6 @@ export default function Home() {
       {/* BRANDS */}
       {/* Mobile: compact single-line logos (visible on mobile only) */}
       <section id="brands-mobile" className="block lg:hidden py-8 bg-background">
-        <div className="container-luxe">
           <div className="mb-6">
             <p className="gold-label">Our Brands</p>
           </div>
@@ -184,7 +183,6 @@ export default function Home() {
               <img src={brand3} alt="Brand 3" className="h-full w-full object-contain" loading="lazy" />
             </div>
           </div>
-        </div>
       </section>
 
       <section id="brands" className="hidden lg:block py-28 md:py-36 bg-background">
