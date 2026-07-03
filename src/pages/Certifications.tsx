@@ -70,7 +70,7 @@ export default function Certifications() {
                 <img
                   src={cert.img}
                   alt={cert.code}
-                  className="max-h-40 max-w-full object-contain"
+                  className="max-h-64 max-w-full object-contain"
                 />
               </FadeUp>
             ))}
@@ -82,7 +82,7 @@ export default function Certifications() {
         <div className="container-luxe grid gap-6 lg:grid-cols-2">
           {showcase.map((item, index) => (
             <FadeUp key={index} delay={index * 80} className="group overflow-hidden rounded-[2rem] bg-background shadow-xl shadow-black/5">
-              <div className="relative h-105 overflow-hidden">
+              <div className="relative h-132 overflow-hidden">
                 <img
                   src={item.img}
                   alt={item.title}
