@@ -138,7 +138,7 @@ export default function Home() {
                 </p>
                 <div className="mt-10 flex flex-wrap gap-4">
                   <Link
-                    to="/contact"
+                    to="/products"
                     className="group inline-flex items-center gap-3 bg-gold px-7 py-4 text-[11px] uppercase tracking-[0.22em] text-charcoal hover:bg-gold-soft transition"
                   >
                     Enquire Now <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -169,10 +169,11 @@ export default function Home() {
       {/* BRANDS */}
       {/* Mobile: compact single-line logos (visible on mobile only) */}
       <section id="brands-mobile" className="block lg:hidden py-8 bg-background">
+        <div className="container-luxe">
           <div className="mb-6">
             <p className="gold-label">Our Brands</p>
           </div>
-          <div className="flex items-center gap-4 overflow-x-auto">
+          <div className="flex items-center gap-4 overflow-x-auto pb-2">
             <div className="flex-shrink-0 h-12 w-28 flex items-center justify-center">
               <img src={brand1} alt="Brand 1" className="h-full w-full object-contain" loading="lazy" />
             </div>
@@ -183,6 +184,7 @@ export default function Home() {
               <img src={brand3} alt="Brand 3" className="h-full w-full object-contain" loading="lazy" />
             </div>
           </div>
+        </div>
       </section>
 
       <section id="brands" className="hidden lg:block py-28 md:py-36 bg-background">
