@@ -43,7 +43,7 @@ function PageHeader({
               Azhar Qureshi
             </p>
             <p className="text-sm text-muted-foreground">
-              Founder & CEO
+              Founder & Managing Director
             </p>
           </div>
         </div>
@@ -83,6 +83,7 @@ const milestones = [
 export default function About() {
   const [showVideo, setShowVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const boxedRef = useRef<HTMLVideoElement | null>(null);
 
   function closeVideo() {
     if (videoRef.current) {
@@ -144,7 +145,7 @@ From our manufacturing unit in Chembur, we supply our products to different citi
               <span>clients</span>
             </div>
             <p className="mt-4 text-muted-foreground leading-relaxed text-justify">
-              Before founding Zam Zam Enterprises, We gained
+              Before founding Zam Zam Enterprises, Azhar Qureshi gained
               valuable experience in the textile and apparel industry,
               developing a deep understanding of garment manufacturing, fabric
               sourcing, product quality, and customer requirements. He
@@ -155,7 +156,7 @@ From our manufacturing unit in Chembur, we supply our products to different citi
               customer relationships.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed text-justify">
-              We recognized the growing demand for high-quality, affordable, and reliable apparel products across India and international markets. He saw an opportunity to create a brand that combines quality, comfort, and value.
+              Azhar recognized the growing demand for high-quality, affordable, and reliable apparel products across India and international markets. He saw an opportunity to create a brand that combines quality, comfort, and value.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed text-justify">
               The inspiration came from a desire to build a trusted apparel company that delivers premium-quality garments while maintaining competitive pricing and strong customer relationships. Azhar envisioned creating a brand that customers could rely on for consistent quality and service.
@@ -227,28 +228,40 @@ From our manufacturing unit in Chembur, we supply our products to different citi
         </div>
       </section>
 
-      <section className="relative h-[60vh] min-h-105 overflow-hidden">
-        <img
-          src={hero4}
-          alt="Factory tour"
-          className="absolute inset-0 h-full w-full object-cover"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-black/55 grid place-items-center">
-          <FadeUp className="text-center">
-            <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold">
-              Factory Tour
+      <section className="py-16 flex items-center justify-center">
+        <div className="w-full max-w-6xl px-4">
+          <div className="mb-8 text-center">
+            <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center justify-center gap-3">
+              <span className="gold-line" /> Factory Tour
             </p>
-              <h2 className="mt-4 font-display text-4xl md:text-6xl text-white max-w-3xl">
+            <h2 className="mt-4 font-display text-4xl md:text-6xl leading-tight max-w-4xl mx-auto text-charcoal">
               Step inside the <span className="whitespace-nowrap">5BROS factory</span>.
             </h2>
-            <button
-              onClick={() => setShowVideo(true)}
-              className="mt-8 inline-flex items-center gap-3 border border-white/60 px-7 py-4 text-[11px] uppercase tracking-[0.22em] text-white hover:bg-white hover:text-charcoal transition"
-            >
-              Watch the walkthrough
-            </button>
-          </FadeUp>
+          </div>
+          <div className="bg-black rounded-md overflow-hidden shadow-2xl">
+            <video
+              ref={boxedRef}
+              src={aboutusv}
+              poster={hero4}
+              className="w-full h-full aspect-video object-cover"
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              onError={(e) => console.error('Video error:', e.currentTarget.error?.message)}
+              onLoadedMetadata={() => {
+                console.log('Video loaded:', aboutusv);
+                try {
+                  if (boxedRef.current) {
+                    /* keep existing behavior in case needed later */
+                  }
+                } catch (e) {}
+              }}
+            />
+            
+          </div>
         </div>
       </section>
       {showVideo && (
@@ -258,6 +271,9 @@ From our manufacturing unit in Chembur, we supply our products to different citi
             onClick={closeVideo}
           />
           <div className="relative w-full max-w-4xl">
+            <h2 className="mb-4 text-center text-2xl md:text-3xl font-display text-white">
+              Step inside the <span className="whitespace-nowrap">5BROS factory</span>
+            </h2>
             <div
               className="relative bg-black rounded-md overflow-hidden shadow-2xl"
               onClick={(e) => e.stopPropagation()}
@@ -275,6 +291,7 @@ From our manufacturing unit in Chembur, we supply our products to different citi
                 controls
                 autoPlay
                 muted
+                loop
                 playsInline
                 preload="metadata"
                 onError={(e) => console.error('Video error:', e.currentTarget.error?.message)}
