@@ -13,7 +13,7 @@ const certs = [
   { code: "MSME", t: "Ministry of Micro, Small & Medium Enterprises", img: msme },
   { code: "GST", t: "Goods & Services Tax Registered", img: gst },
   { code: "DGFT", t: "Directorate General of Foreign Trade", img: dgft },
-  { code: "AEPC", t: "Agricultural & Processed Food Products Export", img: logoAepc },
+  { code: "APEDA", t: "Agricultural & Processed Food Products Export", img: logoAepc },
   { code: "ZED", t: "Zero Defect Zero Effect — Bronze", img: zed },
   { code: "ISO", t: "ISO Certified Manufacturing Practices", img: mumbai },
 ];
@@ -52,35 +52,26 @@ export default function Certifications() {
               Certified. Compliant. Export-ready.
             </h1>
             <p className="mt-6 max-w-xl text-base md:text-lg text-white/80 leading-relaxed">
-              Approved credentials for MSME, GST, DGFT, AEPC, ZED.
+              Approved credentials for MSME, GST, DGFT, APEDA, ZED.
             </p>
           </div>
         </div>
       </section>
 
       <section className="pt-28 md:pt-32 pb-24 md:pb-32 bg-background">
-        <div className="container-luxe bg-border rounded-[2rem] p-1">
-          <div className="grid gap-6 rounded-[2rem] bg-background p-6 grid-cols-1 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-3">
+        <div className="container-luxe">
+          <div className="grid gap-0 grid-cols-2 md:grid-cols-3 lg:grid-cols-3 items-center justify-center">
             {certs.map((cert, index) => (
               <FadeUp
                 key={cert.code}
                 delay={index * 40}
-                className="bg-background rounded-[2rem] p-4 transition hover:bg-muted"
+                className="flex items-center justify-center"
               >
-                <button
-                  type="button"
-                  className="flex h-full w-full flex-col items-center justify-center gap-4 rounded-[1.75rem] border border-border bg-background p-6 text-center transition duration-200 hover:-translate-y-1 hover:border-gold hover:bg-muted focus:outline-none focus:ring-2 focus:ring-gold active:scale-[0.97]"
-                  aria-label={`View ${cert.code}`}
-                >
-                  <div className="flex h-32 w-full items-center justify-center">
-                    <img
-                      src={cert.img}
-                      alt={cert.code}
-                      className="max-h-full max-w-full object-contain opacity-90 transition duration-200 hover:opacity-100"
-                    />
-                  </div>
-                
-                </button>
+                <img
+                  src={cert.img}
+                  alt={cert.code}
+                  className="max-h-40 max-w-full object-contain"
+                />
               </FadeUp>
             ))}
           </div>
