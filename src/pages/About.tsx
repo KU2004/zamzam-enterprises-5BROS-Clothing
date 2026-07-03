@@ -144,7 +144,7 @@ From our manufacturing unit in Chembur, we supply our products to different citi
               <span>clients</span>
             </div>
             <p className="mt-4 text-muted-foreground leading-relaxed text-justify">
-              Before founding Zam Zam Enterprises, Azhar Qureshi gained
+              Before founding Zam Zam Enterprises, We gained
               valuable experience in the textile and apparel industry,
               developing a deep understanding of garment manufacturing, fabric
               sourcing, product quality, and customer requirements. He
@@ -155,7 +155,7 @@ From our manufacturing unit in Chembur, we supply our products to different citi
               customer relationships.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed text-justify">
-              Azhar recognized the growing demand for high-quality, affordable, and reliable apparel products across India and international markets. He saw an opportunity to create a brand that combines quality, comfort, and value.
+              We recognized the growing demand for high-quality, affordable, and reliable apparel products across India and international markets. He saw an opportunity to create a brand that combines quality, comfort, and value.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed text-justify">
               The inspiration came from a desire to build a trusted apparel company that delivers premium-quality garments while maintaining competitive pricing and strong customer relationships. Azhar envisioned creating a brand that customers could rely on for consistent quality and service.
