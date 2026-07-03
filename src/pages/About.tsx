@@ -43,7 +43,7 @@ function PageHeader({
               Azhar Qureshi
             </p>
             <p className="text-sm text-muted-foreground">
-              Founder & Managing Director
+              Founder & CEO
             </p>
           </div>
         </div>
