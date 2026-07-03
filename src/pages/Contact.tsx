@@ -1,7 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
 import { FadeUp } from "../components/FadeUp";
-import ContactBg from "../assets/contactbg.png";
 import FlagIN from "../assets/flags/in.svg";
 import FlagUS from "../assets/flags/us.svg";
 import FlagGB from "../assets/flags/gb.svg";
@@ -217,7 +216,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="py-24 md:py-32 relative overflow-hidden" style={{ backgroundImage: `url(${ContactBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="py-24 md:py-32 relative overflow-hidden" style={{ backgroundColor: '#FFFDD0' }}>
         <div 
           className="absolute inset-0 border-2 border-gold pointer-events-none"
           style={{
@@ -227,7 +226,8 @@ export default function Contact() {
         <div className="relative z-10">
           <div className="container-luxe grid gap-16 lg:grid-cols-[1.4fr_1fr]">
           <FadeUp>
-            <form onSubmit={onSubmit} className="grid gap-5">
+            <div className="border-2 border-gold p-8">
+              <form onSubmit={onSubmit} className="grid gap-5">
               <label className="block">
                 <span className="text-[13px] uppercase tracking-[0.22em] text-gold font-semibold">
                   Name *
@@ -390,6 +390,7 @@ export default function Contact() {
                 )}
               </div>
             </form>
+            </div>
           </FadeUp>
 
           <FadeUp delay={120}>
