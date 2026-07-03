@@ -168,7 +168,7 @@ export default function Home() {
 
       {/* BRANDS */}
       {/* Mobile: compact single-line logos (visible on mobile only) */}
-      <section id="brands-mobile" className="block lg:hidden py-8 bg-background">
+      <section id="brands-mobile" className="block lg:hidden py-8 bg-background border-b border-transparent overflow-hidden">
         <div className="container-luxe">
           <div className="mb-6">
             <p className="gold-label">Our Brands</p>
