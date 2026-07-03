@@ -138,7 +138,7 @@ export default function Home() {
                 </p>
                 <div className="mt-10 flex flex-wrap gap-4">
                   <Link
-                    to="/products"
+                    to="/contact"
                     className="group inline-flex items-center gap-3 bg-gold px-7 py-4 text-[11px] uppercase tracking-[0.22em] text-charcoal hover:bg-gold-soft transition"
                   >
                     Enquire Now <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
