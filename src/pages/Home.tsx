@@ -11,7 +11,6 @@ import {
   Truck,
 } from "lucide-react";
 import { FadeUp } from "../components/FadeUp";
-import { Counter } from "../components/Counter";
 import { SideNav } from "../components/SideNav";
 import { DesktopClientMarquee } from "../components/DesktopClientMarquee";
 import { MobileClientMarquee } from "../components/MobileClientMarquee";
@@ -71,11 +70,11 @@ const products = [
   { cat: "Oversized", name: "Oversized", img: pOver },
   { cat: "Hoodies", name: "Hoodies & Sweatshirts", img: pHood },
   { cat: "Corporate", name: "Corporate", img: pUni },
-  { cat: "Sportswear", name: "Sportswear", img: pSport },
+  { cat: "Sportswear", name: "Activewear", img: pSport },
 ];
 
 const fabrics = [
-  "100% Cotton", "Cotton Rich", "Bio-Washed ", "Poly Cotton",
+  "100% Cotton", "Blend Cotton", "Bio-Washed ", "Poly Cotton",
   "French Terry", "Dry Fit", "Organic Cotton", "Recycled Fabric",
   "Custom GSM", "Custom Dyeing",
 ];
@@ -171,6 +170,9 @@ export default function Home() {
       {/* Mobile: compact single-line logos (visible on mobile only) */}
       <section id="brands-mobile" className="block lg:hidden py-8 bg-background">
         <div className="container-luxe">
+          <div className="mb-6">
+            <p className="gold-label">Our Brands</p>
+          </div>
           <div className="flex items-center gap-4 overflow-x-auto">
             <div className="flex-shrink-0 h-12 w-28 flex items-center justify-center">
               <img src={brand1} alt="Brand 1" className="h-full w-full object-contain" loading="lazy" />
@@ -188,9 +190,7 @@ export default function Home() {
       <section id="brands" className="hidden lg:block py-28 md:py-36 bg-background">
         <div className="container-luxe">
           <div className="max-w-3xl">
-            <p className="gold-label">
-              <span className="gold-line" /> Our Brands
-            </p>
+            <p className="gold-label">Our Brands</p>
           </div>
           <div className="mt-10 grid gap-6 grid-cols-1 sm:grid-cols-3 items-center">
             <div className="h-32 flex items-center justify-end">
@@ -238,35 +238,56 @@ export default function Home() {
         <div className="container-luxe grid gap-16 lg:grid-cols-2 lg:gap-24 items-center">
           <FadeUp>
             <p className="gold-label">
-              <span className="gold-line" /> Who we are
+              <span className="gold-line" /> About Us
             </p>
-            <h2 className="mt-6 font-display text-4xl md:text-5xl leading-[1.1]">
-              <span className="whitespace-nowrap">5BROS Clothing</span> — Crafting apparel for the world's most discerning brands.
-            </h2>
-            <p className="mt-6 text-muted-foreground text-base leading-relaxed">
+            <h1 className="mt-6 font-display text-2xl md:text-3xl leading-[1.05] font-bold text-foreground max-w-sm md:max-w-md">
+              5BROS Clothing — Crafting apparel for discerning brands.
+            </h1>
+            <p className="mt-6 text-foreground text-base leading-relaxed">
               An apparel manufacturer based in India, specialising in custom t-shirts, uniforms
               and private label manufacturing for international businesses. Two decades of textile
               know-how, delivered through one disciplined supply chain.
             </p>
-            <Link to="/about" className="mt-8 inline-flex items-center gap-2 text-sm uppercase tracking-[0.2em] text-foreground border-b border-gold pb-1 hover:gap-3 transition-all">
-              Discover About Us <ArrowRight size={14} />
+            <Link to="/about" className="mt-8 inline-flex items-center gap-2 px-6 py-2 bg-gold text-charcoal text-sm font-semibold rounded-full hover:bg-gold-soft transition-all">
+              Discover About Us <ArrowRight size={16} />
             </Link>
           </FadeUp>
 
-          <div className="grid grid-cols-2 gap-px bg-border">
-            {[
-              { n: 500, suf: "+", l: "Corporate Clients" },
-              { n: 1, suf: "M+", l: "Garments Produced" },
-              { n: 20, suf: "+", l: "Countries Served" },
-              { n: 98, suf: "%", l: "Customer Satisfaction" },
-            ].map((s, i) => (
-              <FadeUp key={i} delay={i * 100} className="bg-background p-10">
-                <div className="font-display text-5xl md:text-6xl text-foreground">
-                  <Counter end={s.n} suffix={s.suf} />
+          <div className="flex justify-center">
+            <div className="w-full max-w-md rounded-2xl bg-white/6 border border-border text-foreground p-8 shadow-lg">
+              <div className="mb-6">
+                <p className="text-xs uppercase text-muted-foreground tracking-widest">Product Spec Sheet</p>
+                <div className="flex items-baseline justify-between mt-4">
+                  <h3 className="text-lg font-semibold">Standard B2B</h3>
+                  <span className="text-sm text-muted-foreground">REF 5B-2025</span>
                 </div>
-                <p className="mt-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">{s.l}</p>
-              </FadeUp>
-            ))}
+              </div>
+
+              <div className="divide-y divide-white/6">
+                {[
+                  { label: "Min. Order Qty", value: "300 pcs" },
+                  { label: "Fabric Weight", value: "180–320 GSM" },
+                  { label: "Lead Time", value: "21–28 days" },
+                  { label: "Garments Produced", value: "1M+" },
+                  { label: "Quality", value: "AQL 2.5" },
+                ].map((r) => (
+                  <div key={r.label} className="py-4 flex justify-between text-sm text-foreground/80">
+                    <span>{r.label}</span>
+                    <span className="font-semibold">{r.value}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 flex gap-2 flex-wrap">
+                {["ICE", "MSME", "ZED"].map((b) => (
+                  <span key={b} className="text-xs px-2 py-1 border border-black rounded bg-transparent">{b}</span>
+                ))}
+              </div>
+
+              <Link to="/contact" className="mt-6 w-full inline-flex items-center justify-center gap-2 bg-gold text-charcoal py-3 rounded-md font-semibold">
+                Enquire Now <ArrowRight size={14} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -278,8 +299,8 @@ export default function Home() {
             <p className="gold-label">
               <span className="gold-line" /> Visual Excellence
             </p>
-            <h2 className="mt-6 font-display text-4xl md:text-5xl">See Our Quality in Motion.</h2>
-            <p className="mt-5 text-muted-foreground">
+            <h2 className="mt-6 font-display text-4xl md:text-5xl font-bold">See Our Quality in Motion.</h2>
+            <p className="mt-5 text-foreground">
               Watch our premium apparel collection come to life with professional model showcases highlighting craftsmanship and design.
             </p>
           </FadeUp>
@@ -319,11 +340,11 @@ export default function Home() {
         <span className="gold-line" /> Collections
       </p>
 
-      <h2 className="mt-6 font-display text-4xl md:text-5xl">
+      <h2 className="mt-6 font-display text-4xl md:text-5xl font-bold">
         Product Categories
       </h2>
 
-      <p className="mt-5 text-muted-foreground">
+      <p className="mt-5 text-foreground">
         A complete catalogue of essentials, athletic and corporate apparel —
         fully customisable.
       </p>
@@ -354,8 +375,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="mt-5 flex items-center justify-between">
-              <h3 className="font-display text-xl">{p.name}</h3>
+            <div className="mt-5 flex items-center justify-center">
+              <h3 className="font-display text-xl font-bold text-center">{p.name}</h3>
             </div>
           </Link>
         </FadeUp>
@@ -386,7 +407,7 @@ export default function Home() {
               <span className="gold-line" /> Fabric Expertise
             </p>
 
-            <h2 className="mt-6 font-display text-4xl md:text-5xl text-black font-semibold">
+            <h2 className="mt-6 font-display text-4xl md:text-5xl text-black font-bold">
               Engineered fabrics for every market.
             </h2>
 
@@ -419,7 +440,7 @@ export default function Home() {
             <p className="gold-label">
               <span className="gold-line" /> Manufacturing Process
             </p>
-            <h2 className="mt-6 font-display font-semibold text-4xl md:text-5xl text-black">A disciplined eight-stage journey.</h2>
+            <h2 className="mt-6 font-display font-bold text-4xl md:text-5xl text-black">A disciplined eight-stage journey.</h2>
           </FadeUp>
 
           <div className="mt-16">
@@ -454,7 +475,7 @@ export default function Home() {
             <p className="gold-label">
               <span className="gold-line" /> Why Choose Us
             </p>
-            <h2 className="mt-6 font-display text-4xl md:text-5xl">Built for brands that don't compromise.</h2>
+            <h2 className="mt-6 font-display text-4xl md:text-5xl font-bold">Built for brands that don't compromise.</h2>
           </FadeUp>
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {why.map((w, i) => {
@@ -466,7 +487,7 @@ export default function Home() {
                       <Icon size={40} />
                     </div>
                     <h3 className="mt-5 font-display text-lg">{w.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{w.desc}</p>
+                    <p className="mt-2 text-sm text-foreground leading-relaxed">{w.desc}</p>
                   </div>
                 </FadeUp>
               );
@@ -500,7 +521,7 @@ export default function Home() {
             <p className="gold-label">
               <span className="gold-line" /> Our Presence
             </p>
-            <h2 className="mt-6 font-display text-4xl md:text-5xl">Regional Presence Across India and Select Markets</h2>
+            <h2 className="mt-6 font-display text-4xl md:text-5xl font-bold">Regional Presence Across India and Select Markets</h2>
             <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="space-y-3">
                 {["Ahmedabad", "Amravati Maharashtra", "Aurangabad", "Bangalore", "Bhopal", "Bilaspur", "Hyderabad", "Hubli", "Indore", "Jabalpur"].map((c) => (
