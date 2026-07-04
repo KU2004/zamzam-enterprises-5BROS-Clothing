@@ -178,16 +178,16 @@ export default function Home() {
           <div className="mb-6">
             <p className="gold-label">Our Brands</p>
           </div>
-          <div className="overflow-x-auto -mx-4 px-4">
-            <div className="flex gap-6 items-center whitespace-nowrap">
-              <div className="flex-shrink-0 h-14 flex items-center">
-                <img src={brand1} alt="Brand 1" className="h-full object-contain" loading="lazy" />
+          <div className="px-0">
+            <div className="flex gap-3 items-center">
+              <div className="w-1/3 flex items-center justify-center">
+                <img src={brand1} alt="Brand 1" className="w-full h-auto object-contain" loading="lazy" />
               </div>
-              <div className="flex-shrink-0 h-14 flex items-center">
-                <img src={brand3} alt="Brand 3" className="h-full object-contain" loading="lazy" />
+              <div className="w-1/3 flex items-center justify-center">
+                <img src={brand3} alt="Brand 3" className="w-full h-auto object-contain" loading="lazy" />
               </div>
-              <div className="flex-shrink-0 h-14 flex items-center">
-                <img src={brand2} alt="Brand 2" className="h-full object-contain" loading="lazy" />
+              <div className="w-1/3 flex items-center justify-center">
+                <img src={brand2} alt="Brand 2" className="w-full h-auto object-contain" loading="lazy" />
               </div>
             </div>
           </div>
@@ -231,7 +231,7 @@ export default function Home() {
               know-how, delivered through one disciplined supply chain.
             </p>
             <Link to="/about" className="mt-8 inline-flex items-center gap-2 px-6 py-2 bg-gold text-charcoal text-sm font-semibold rounded-full hover:bg-gold-soft transition-all">
-              Discover About Us <ArrowRight size={16} />
+              About Us <ArrowRight size={16} />
             </Link>
           </FadeUp>
 
@@ -279,7 +279,7 @@ export default function Home() {
             <p className="gold-label">
               <span className="gold-line" /> Visual Excellence
             </p>
-            <h2 className="mt-6 font-display text-4xl md:text-5xl font-bold">See Our Quality in Motion.</h2>
+            <h2 className="mt-6 font-display text-2xl sm:text-3xl md:text-4xl font-bold whitespace-nowrap md:whitespace-normal leading-tight">See Our Quality in Motion.</h2>
           </FadeUp>
 
           {/* Video Grid */}
@@ -422,8 +422,8 @@ export default function Home() {
               A disciplined eight-stage journey.
             </h2>
 
-            {/* Mobile-only: much smaller so it fits on small viewports */}
-            <h2 className="block lg:hidden mt-6 font-display font-bold text-[1rem] sm:text-[1.2rem] text-black leading-tight tracking-tight max-w-full overflow-hidden whitespace-nowrap">
+            {/* Mobile-only: larger but still responsive */}
+            <h2 className="block lg:hidden mt-6 font-display font-bold text-[1.3rem] sm:text-[1.5rem] text-black leading-tight tracking-tight max-w-full overflow-hidden whitespace-nowrap">
               A disciplined eight-stage journey.
             </h2>
           </FadeUp>
@@ -460,7 +460,7 @@ export default function Home() {
             <p className="gold-label">
               <span className="gold-line" /> Why Choose Us
             </p>
-            <h2 className="mt-6 font-display text-4xl md:text-5xl font-bold">Built for brands that don't compromise.</h2>
+            <h2 className="mt-6 font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight max-w-md md:max-w-none">Built for brands that don't compromise.</h2>
           </FadeUp>
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {why.map((w, i) => {
@@ -506,8 +506,8 @@ export default function Home() {
             <p className="gold-label">
               <span className="gold-line" /> Our Presence
             </p>
-            <h2 className="mt-6 font-display text-4xl md:text-5xl font-bold">Regional Presence Across India and Select Markets</h2>
-            <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <h2 className="mt-6 font-display text-4xl md:text-5xl font-bold">Regional Presence Across India</h2>
+            <div className="mt-8 grid grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="space-y-3">
                 {["Ahmedabad", "Amravati Maharashtra", "Aurangabad", "Bangalore", "Bhopal", "Bilaspur", "Hyderabad", "Hubli", "Indore", "Jabalpur"].map((c) => (
                   <div key={c} className="flex items-center gap-2 text-base font-semibold">
