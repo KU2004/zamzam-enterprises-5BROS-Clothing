@@ -440,9 +440,8 @@ export default function Home() {
             <p className="gold-label">
               <span className="gold-line" /> Manufacturing Process
             </p>
-            <h2 className="mt-6 font-display font-bold text-[4.5rem] md:text-[6.5rem] lg:text-[7.5rem] text-black leading-tight">
-              <span className="block">A disciplined eight-stage</span>
-              <span className="block">journey.</span>
+            <h2 className="mt-6 font-display font-bold text-[3.2rem] md:text-[4rem] lg:text-[4.8rem] text-black leading-tight whitespace-nowrap">
+              A disciplined eight-stage journey.
             </h2>
           </FadeUp>
 
