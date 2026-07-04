@@ -260,7 +260,7 @@ export default function Home() {
               </div>
 
               <div className="mt-6 flex gap-2 flex-wrap">
-                {["ICE", "MSME", "ZED"].map((b) => (
+                {["IEC", "MSME", "ZED"].map((b) => (
                   <span key={b} className="text-xs px-2 py-1 border border-black rounded bg-transparent">{b}</span>
                 ))}
               </div>
