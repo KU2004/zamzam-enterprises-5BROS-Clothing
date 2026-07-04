@@ -41,7 +41,7 @@ const slides = [
   {
     img: hero1,
     eyebrow: "Manufacturing Excellence",
-    title: "Custom Apparel Manufacturing",
+    title: "Custom Apparel\nManufacturing",
     sub: "From Concept to Creation — manufacturing excellence from India for global brands.",
   },
   {
@@ -59,7 +59,7 @@ const slides = [
   {
     img: hero4,
     eyebrow: "Global Supply",
-    title: "Bulk Manufacturing, Globally Delivered",
+    title: "Bulk Manufacturing\nGlobally Delivered",
     sub: "Serving clients across the Middle East, Europe, Africa and Asia.",
   },
 ];
@@ -69,7 +69,7 @@ const products = [
   { cat: "Polo", name: "Polo", img: pPolo },
   { cat: "Oversized", name: "Oversized", img: pOver },
   { cat: "Hoodies", name: "Hoodies & Sweatshirts", img: pHood },
-  { cat: "Corporate", name: "Corporate", img: pUni },
+  { cat: "Corporate", name: "Custom Label", img: pUni },
   { cat: "Sportswear", name: "Activewear", img: pSport },
 ];
 
@@ -87,11 +87,12 @@ const process = [
 const why = [
   { icon: Sparkles, title: "Premium Materials", desc: "Hand-picked yarns and certified fabrics." },
   { icon: Package, title: "Low MOQ", desc: "Flexible order quantities for emerging brands." },
-  { icon: Truck, title: "Global Shipping", desc: "Documentation and logistics handled end-to-end." },
   { icon: Award, title: "Private Label", desc: "Full OEM & ODM with your branding." },
   { icon: Headphones, title: "Dedicated Manager", desc: "One point of contact, always." },
   { icon: CheckCircle2, title: "Fast Turnaround", desc: "Pilot in weeks, scale in months." },
   { icon: Globe2, title: "Export Ready", desc: "MSME, GST, DGFT & AEPC certified." },
+  { icon: Truck, title: "Global Shipping", desc: "Documentation and logistics handled end-to-end." },
+
 ];
 
 
@@ -130,15 +131,19 @@ export default function Home() {
                 <p className="gold-label">
                   <span className="gold-line" /> {s.eyebrow}
                 </p>
-                <h1 className="mt-6 font-display text-5xl md:text-7xl leading-[1.05] font-medium">
-                  {s.title}
+                <h1 className="mt-6 font-display text-4xl sm:text-5xl md:text-7xl leading-[1.05] font-medium md:whitespace-nowrap">
+                  {s.title.split("\n").map((line, index) => (
+                    <span key={`${s.title}-${index}`} className="block">
+                      {line}
+                    </span>
+                  ))}
                 </h1>
                 <p className="mt-6 max-w-xl text-base md:text-lg text-white/80 leading-relaxed">
                   {s.sub}
                 </p>
                 <div className="mt-10 flex flex-wrap gap-4">
                   <Link
-                    to="/products"
+                    to="/contact"
                     className="group inline-flex items-center gap-3 bg-gold px-7 py-4 text-[11px] uppercase tracking-[0.22em] text-charcoal hover:bg-gold-soft transition"
                   >
                     Enquire Now <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -168,26 +173,26 @@ export default function Home() {
 
       {/* BRANDS */}
       {/* Mobile: compact single-line logos (visible on mobile only) */}
-      <section id="brands-mobile" className="block lg:hidden py-8 bg-background border-b border-transparent overflow-hidden">
+      <section id="brands-mobile" className="block lg:hidden pt-8 pb-3 bg-background border-b border-transparent">
         <div className="container-luxe">
           <div className="mb-6">
             <p className="gold-label">Our Brands</p>
           </div>
-          <div className="flex items-center gap-4 overflow-x-auto pb-2">
-            <div className="flex-shrink-0 h-12 w-28 flex items-center justify-center">
+          <div className="flex flex-col gap-6">
+            <div className="h-14 w-full flex items-center justify-center">
               <img src={brand1} alt="Brand 1" className="h-full w-full object-contain" loading="lazy" />
             </div>
-            <div className="flex-shrink-0 h-12 w-28 flex items-center justify-center">
-              <img src={brand2} alt="Brand 2" className="h-full w-full object-contain" loading="lazy" />
-            </div>
-            <div className="flex-shrink-0 h-12 w-28 flex items-center justify-center">
+            <div className="h-14 w-full flex items-center justify-center">
               <img src={brand3} alt="Brand 3" className="h-full w-full object-contain" loading="lazy" />
+            </div>
+            <div className="h-14 w-full flex items-center justify-center">
+              <img src={brand2} alt="Brand 2" className="h-full w-full object-contain" loading="lazy" />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="brands" className="hidden lg:block py-28 md:py-36 bg-background">
+      <section id="brands" className="hidden lg:block pt-16 pb-2 md:pt-24 md:pb-2 bg-background">
         <div className="container-luxe">
           <div className="max-w-3xl">
             <p className="gold-label">Our Brands</p>
@@ -209,8 +214,8 @@ export default function Home() {
               <div className="block h-full overflow-hidden">
                 <div className="relative h-full w-full overflow-hidden">
                   <img
-                    src={brand2}
-                    alt="Brand 2"
+                    src={brand3}
+                    alt="Brand 3"
                     className="h-full w-full object-contain transition-none"
                     loading="lazy"
                   />
@@ -221,8 +226,8 @@ export default function Home() {
               <div className="block h-full overflow-hidden">
                 <div className="relative h-full w-full overflow-hidden">
                   <img
-                    src={brand3}
-                    alt="Brand 3"
+                    src={brand2}
+                    alt="Brand 2"
                     className="h-full w-full object-contain transition-none"
                     loading="lazy"
                   />
@@ -234,13 +239,13 @@ export default function Home() {
       </section>
 
       {/* OVERVIEW */}
-      <section id="about" className="py-28 md:py-36 bg-background">
+      <section id="about" className="pt-2 pb-28 md:pt-2 md:pb-36 bg-background">
         <div className="container-luxe grid gap-16 lg:grid-cols-2 lg:gap-24 items-center">
           <FadeUp>
             <p className="gold-label">
               <span className="gold-line" /> About Us
             </p>
-            <h1 className="mt-6 font-display text-2xl md:text-3xl leading-[1.05] font-bold text-foreground max-w-sm md:max-w-md">
+            <h1 className="mt-4 font-display text-2xl md:text-2xl leading-[1.05] font-bold text-foreground max-w-sm md:max-w-md">
               5BROS Clothing — Crafting apparel for discerning brands.
             </h1>
             <p className="mt-6 text-foreground text-base leading-relaxed">
@@ -259,17 +264,15 @@ export default function Home() {
                 <p className="text-xs uppercase text-muted-foreground tracking-widest">Product Spec Sheet</p>
                 <div className="flex items-baseline justify-between mt-4">
                   <h3 className="text-lg font-semibold">Standard B2B</h3>
-                  <span className="text-sm text-muted-foreground">REF 5B-2025</span>
                 </div>
               </div>
 
               <div className="divide-y divide-white/6">
                 {[
-                  { label: "Min. Order Qty", value: "300 pcs" },
+                  { label: "Min. Order Qty (MOQ)", value: "300 pcs" },
                   { label: "Fabric Weight", value: "180–320 GSM" },
                   { label: "Lead Time", value: "21–28 days" },
                   { label: "Garments Produced", value: "1M+" },
-                  { label: "Quality", value: "AQL 2.5" },
                 ].map((r) => (
                   <div key={r.label} className="py-4 flex justify-between text-sm text-foreground/80">
                     <span>{r.label}</span>
@@ -285,7 +288,7 @@ export default function Home() {
               </div>
 
               <Link to="/contact" className="mt-6 w-full inline-flex items-center justify-center gap-2 bg-gold text-charcoal py-3 rounded-md font-semibold">
-                Enquire Now <ArrowRight size={14} />
+                Contact Us <ArrowRight size={14} />
               </Link>
             </div>
           </div>
@@ -300,9 +303,6 @@ export default function Home() {
               <span className="gold-line" /> Visual Excellence
             </p>
             <h2 className="mt-6 font-display text-4xl md:text-5xl font-bold">See Our Quality in Motion.</h2>
-            <p className="mt-5 text-foreground">
-              Watch our premium apparel collection come to life with professional model showcases highlighting craftsmanship and design.
-            </p>
           </FadeUp>
 
           {/* Video Grid */}
@@ -440,7 +440,10 @@ export default function Home() {
             <p className="gold-label">
               <span className="gold-line" /> Manufacturing Process
             </p>
-            <h2 className="mt-6 font-display font-bold text-4xl md:text-5xl text-black">A disciplined eight-stage journey.</h2>
+            <h2 className="mt-6 font-display font-bold text-[4.5rem] md:text-[6.5rem] lg:text-[7.5rem] text-black leading-tight">
+              <span className="block">A disciplined eight-stage</span>
+              <span className="block">journey.</span>
+            </h2>
           </FadeUp>
 
           <div className="mt-16">
