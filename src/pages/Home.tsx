@@ -440,7 +440,13 @@ export default function Home() {
             <p className="gold-label">
               <span className="gold-line" /> Manufacturing Process
             </p>
-            <h2 className="mt-6 font-display font-bold text-[3.2rem] md:text-[4rem] lg:text-[4.8rem] text-black leading-tight whitespace-nowrap">
+            {/* Desktop-only: reduced size so it fits on large viewports */}
+            <h2 className="hidden lg:block mt-6 font-display font-bold text-[2.4rem] md:text-[3rem] lg:text-[3.6rem] text-black leading-tight whitespace-nowrap">
+              A disciplined eight-stage journey.
+            </h2>
+
+            {/* Mobile-only: much smaller so it fits on small viewports */}
+            <h2 className="block lg:hidden mt-6 font-display font-bold text-[1rem] sm:text-[1.2rem] text-black leading-tight tracking-tight max-w-full overflow-hidden whitespace-nowrap">
               A disciplined eight-stage journey.
             </h2>
           </FadeUp>
