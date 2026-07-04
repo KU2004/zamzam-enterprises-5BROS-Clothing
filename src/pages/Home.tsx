@@ -34,6 +34,7 @@ import video3 from "../videos/video3.mp4";
 import video4 from "../videos/video4.mp4";
 import video5 from "../videos/video5.mp4";
 import video6 from "../videos/video6.mp4";
+import africaMap from "../assets/africamap.png";
 import indiaMap from "../assets/indiamap.png";
 import fabricBg from "../assets/cotton-bg.png";
 
@@ -249,7 +250,7 @@ export default function Home() {
                   { label: "Min. Order Qty (MOQ)", value: "300 pcs" },
                   { label: "Fabric Weight", value: "180–320 GSM" },
                   { label: "Lead Time", value: "21–28 days" },
-                  { label: "Garments Produced", value: "1M+" },
+                  { label: "Garments Produced", value: "1M+ Yearly" },
                 ].map((r) => (
                   <div key={r.label} className="py-4 flex justify-between text-sm text-foreground/80">
                     <span>{r.label}</span>
@@ -524,17 +525,42 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="space-y-3">
-                {["Ethiopia", "Kenya", "Tanzania", "Uganda", "U.A.E."].map((c) => (
-                  <div key={c} className="flex items-center gap-2 text-base font-semibold">
-                    <span className="h-1.5 w-1.5 bg-gold rounded-full" /> {c}
-                  </div>
-                ))}
+              <div className="space-y-4">
+                <p className="text-sm uppercase tracking-[0.2em] font-bold text-black whitespace-nowrap">Global Presence</p>
+                <div className="flex items-center gap-6">
+                  {['Ethiopia', 'Kenya'].map((c) => (
+                    <span key={c} className="inline-flex items-center gap-2 text-base font-semibold text-black">
+                      <span className="h-1.5 w-1.5 bg-gold rounded-full" /> {c}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex items-center gap-6">
+                  {['Tanzania', 'Uganda'].map((c) => (
+                    <span key={c} className="inline-flex items-center gap-2 text-base font-semibold text-black">
+                      <span className="h-1.5 w-1.5 bg-gold rounded-full" /> {c}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex items-center gap-6">
+                  {['U.A.E.', 'Saudi'].map((c) => (
+                    <span key={c} className="inline-flex items-center gap-2 text-base font-semibold text-black">
+                      <span className="h-1.5 w-1.5 bg-gold rounded-full" /> {c}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </FadeUp>
           <FadeUp delay={150}>
             <div className="overflow-hidden rounded-[2rem] border border-border bg-white/60 backdrop-blur">
+              <img
+                src={africaMap}
+                alt="Africa map"
+                className="h-full min-h-100 w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div className="mt-6 overflow-hidden rounded-[2rem] border border-border bg-white/60 backdrop-blur">
               <img
                 src={indiaMap}
                 alt="India map"
