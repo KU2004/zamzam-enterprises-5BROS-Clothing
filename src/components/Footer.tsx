@@ -71,7 +71,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 grid-cols-2">
             <div className="space-y-4 p-5">
               <h4 className="font-display text-lg uppercase tracking-[0.25em] text-gold">
                 Quick Links
@@ -118,7 +118,7 @@ export function Footer() {
               </ul>
             </div>
 
-            <div className="space-y-4 p-5 flex flex-col items-center justify-center text-center md:col-span-2">
+            <div className="space-y-4 p-5 flex flex-col items-center justify-center text-center col-span-2 md:col-span-2">
               <h4 className="font-display text-lg uppercase tracking-[0.25em] text-gold">
                 Follow Us
               </h4>
