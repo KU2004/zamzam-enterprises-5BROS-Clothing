@@ -178,15 +178,17 @@ export default function Home() {
           <div className="mb-6">
             <p className="gold-label">Our Brands</p>
           </div>
-          <div className="flex flex-col gap-6">
-            <div className="h-14 w-full flex items-center justify-center">
-              <img src={brand1} alt="Brand 1" className="h-full w-full object-contain" loading="lazy" />
-            </div>
-            <div className="h-14 w-full flex items-center justify-center">
-              <img src={brand3} alt="Brand 3" className="h-full w-full object-contain" loading="lazy" />
-            </div>
-            <div className="h-14 w-full flex items-center justify-center">
-              <img src={brand2} alt="Brand 2" className="h-full w-full object-contain" loading="lazy" />
+          <div className="overflow-x-auto -mx-4 px-4">
+            <div className="flex gap-6 items-center whitespace-nowrap">
+              <div className="flex-shrink-0 h-14 flex items-center">
+                <img src={brand1} alt="Brand 1" className="h-full object-contain" loading="lazy" />
+              </div>
+              <div className="flex-shrink-0 h-14 flex items-center">
+                <img src={brand3} alt="Brand 3" className="h-full object-contain" loading="lazy" />
+              </div>
+              <div className="flex-shrink-0 h-14 flex items-center">
+                <img src={brand2} alt="Brand 2" className="h-full object-contain" loading="lazy" />
+              </div>
             </div>
           </div>
         </div>
@@ -197,41 +199,16 @@ export default function Home() {
           <div className="max-w-3xl">
             <p className="gold-label">Our Brands</p>
           </div>
-          <div className="mt-10 grid gap-6 grid-cols-1 sm:grid-cols-3 items-center">
-            <div className="h-32 flex items-center justify-end">
-              <div className="block h-full overflow-hidden">
-                <div className="relative h-full w-full overflow-hidden">
-                  <img
-                    src={brand1}
-                    alt="Brand 1"
-                    className="h-full w-full object-contain transition-none"
-                    loading="lazy"
-                  />
-                </div>
+          <div className="mt-10 overflow-x-auto">
+            <div className="flex gap-10 items-center">
+              <div className="flex-shrink-0 h-32 flex items-center">
+                <img src={brand1} alt="Brand 1" className="h-full object-contain" loading="lazy" />
               </div>
-            </div>
-            <div className="h-20 flex items-center justify-center -mx-2">
-              <div className="block h-full overflow-hidden">
-                <div className="relative h-full w-full overflow-hidden">
-                  <img
-                    src={brand3}
-                    alt="Brand 3"
-                    className="h-full w-full object-contain transition-none"
-                    loading="lazy"
-                  />
-                </div>
+              <div className="flex-shrink-0 h-24 flex items-center">
+                <img src={brand3} alt="Brand 3" className="h-full object-contain" loading="lazy" />
               </div>
-            </div>
-            <div className="h-20 flex items-center justify-start -ml-3">
-              <div className="block h-full overflow-hidden">
-                <div className="relative h-full w-full overflow-hidden">
-                  <img
-                    src={brand2}
-                    alt="Brand 2"
-                    className="h-full w-full object-contain transition-none"
-                    loading="lazy"
-                  />
-                </div>
+              <div className="flex-shrink-0 h-24 flex items-center">
+                <img src={brand2} alt="Brand 2" className="h-full object-contain" loading="lazy" />
               </div>
             </div>
           </div>
