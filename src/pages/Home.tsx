@@ -174,14 +174,14 @@ export default function Home() {
 
       {/* BRANDS */}
       {/* Mobile: compact single-line logos (visible on mobile only) */}
-      <section id="brands-mobile" className="block lg:hidden pt-8 pb-3 bg-background border-b border-transparent">
+      <section id="brands-mobile" className="block lg:hidden pt-8 pb-12 bg-background border-b border-transparent">
         <div className="container-luxe">
           <div className="mb-6">
             <p className="gold-label">Our Brands</p>
           </div>
           <div className="px-0">
             <div className="flex gap-3 items-center">
-              <div className="w-1/3 flex items-center justify-center">
+              <div className="w-1/5 flex items-center justify-center">
                 <img src={brand1} alt="Brand 1" className="w-full h-auto object-contain" loading="lazy" />
               </div>
               <div className="w-1/3 flex items-center justify-center">
@@ -195,7 +195,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="brands" className="hidden lg:block pt-16 pb-2 md:pt-24 md:pb-2 bg-background">
+      <section id="brands" className="hidden lg:block pt-16 pb-20 md:pt-24 md:pb-20 bg-background">
         <div className="container-luxe">
           <div className="max-w-3xl">
             <p className="gold-label">Our Brands</p>
@@ -237,35 +237,35 @@ export default function Home() {
           </FadeUp>
 
           <div className="flex justify-center">
-            <div className="w-full max-w-md rounded-2xl bg-white/6 border border-border text-foreground p-8 shadow-lg">
+            <div className="w-full max-w-md rounded-2xl bg-black border border-white/20 text-white p-8 shadow-lg">
               <div className="mb-6">
-                <p className="text-xs uppercase text-muted-foreground tracking-widest">Product Spec Sheet</p>
+                <p className="text-xs uppercase text-white/70 tracking-widest">Product Spec Sheet</p>
                 <div className="flex items-baseline justify-between mt-4">
-                  <h3 className="text-lg font-semibold">Standard B2B</h3>
+                  <h3 className="text-lg font-semibold text-white">Standard B2B</h3>
                 </div>
               </div>
 
-              <div className="divide-y divide-white/6">
+              <div className="divide-y divide-white/20">
                 {[
                   { label: "Min. Order Qty (MOQ)", value: "300 pcs" },
                   { label: "Fabric Weight", value: "180–320 GSM" },
                   { label: "Lead Time", value: "21–28 days" },
                   { label: "Garments Produced", value: "1M+ Yearly" },
                 ].map((r) => (
-                  <div key={r.label} className="py-4 flex justify-between text-sm text-foreground/80">
+                  <div key={r.label} className="py-4 flex justify-between text-sm text-white/80">
                     <span>{r.label}</span>
-                    <span className="font-semibold">{r.value}</span>
+                    <span className="font-semibold text-white">{r.value}</span>
                   </div>
                 ))}
               </div>
 
               <div className="mt-6 flex gap-2 flex-wrap">
-                {["IEC", "MSME", "ZED"].map((b) => (
-                  <span key={b} className="text-xs px-2 py-1 border border-black rounded bg-transparent">{b}</span>
+                {["ICE", "MSME", "ZED"].map((b) => (
+                  <span key={b} className="text-xs px-2 py-1 border border-white/40 rounded bg-transparent text-white">{b}</span>
                 ))}
               </div>
 
-              <Link to="/contact" className="mt-6 w-full inline-flex items-center justify-center gap-2 bg-gold text-charcoal py-3 rounded-md font-semibold">
+              <Link to="/contact" className="mt-6 w-full inline-flex items-center justify-center gap-2 bg-gold text-black py-3 rounded-md font-semibold">
                 Contact Us <ArrowRight size={14} />
               </Link>
             </div>
@@ -284,7 +284,7 @@ export default function Home() {
           </FadeUp>
 
           {/* Video Grid */}
-          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+          <div className="mt-14 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <FadeUp key={i} delay={i * 100}>
                 <div className="group cursor-pointer">
@@ -328,7 +328,7 @@ export default function Home() {
       </p>
     </FadeUp>
 
-    <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div className="mt-16 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
       {products.map((p, i) => (
         <FadeUp key={p.name} delay={i * 80}>
           <Link
