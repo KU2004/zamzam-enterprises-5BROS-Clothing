@@ -36,7 +36,7 @@ const socialLinks = [
   },
 ] as const;
 
-export function FloatingSocialButtons() {
+export function FloatingSocialButtons({ showMenuButton = true }: { showMenuButton?: boolean }) {
   return (
     <>
       <style>{`
@@ -64,24 +64,26 @@ export function FloatingSocialButtons() {
 
       <TooltipProvider delayDuration={180}>
         <div className="fixed right-3 top-1/2 z-120 flex -translate-y-1/2 flex-col gap-2 sm:right-4 sm:gap-2.5">
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button
-                type="button"
-                onClick={() => window.dispatchEvent(new Event("toggle-sidenav"))}
-                aria-label="Toggle navigation"
-                className="group flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 bg-gold text-charcoal shadow-[0_8px_24px_rgba(0,0,0,0.16)] transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:h-11 sm:w-11"
-                style={{
-                  animation: `social-fade-in-right 0.45s cubic-bezier(0.16, 1, 0.3, 1) both, social-float 3.2s ease-in-out 0s infinite`,
-                }}
-              >
-                <Menu className="h-4 w-4 transition-transform duration-300 group-hover:scale-110 sm:h-5 sm:w-5" />
-              </button>
-            </TooltipTrigger>
-            <TooltipContent side="left" className="rounded-full border border-white/10 bg-slate-900/95 px-3 py-1.5 text-xs text-white shadow-lg">
-              Menu
-            </TooltipContent>
-          </Tooltip>
+          {showMenuButton && (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new Event("toggle-sidenav"))}
+                  aria-label="Toggle navigation"
+                  className="group flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 bg-gold text-charcoal shadow-[0_8px_24px_rgba(0,0,0,0.16)] transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:h-11 sm:w-11"
+                  style={{
+                    animation: `social-fade-in-right 0.45s cubic-bezier(0.16, 1, 0.3, 1) both, social-float 3.2s ease-in-out 0s infinite`,
+                  }}
+                >
+                  <Menu className="h-4 w-4 transition-transform duration-300 group-hover:scale-110 sm:h-5 sm:w-5" />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent side="left" className="rounded-full border border-white/10 bg-slate-900/95 px-3 py-1.5 text-xs text-white shadow-lg">
+                Menu
+              </TooltipContent>
+            </Tooltip>
+          )}
 
           {socialLinks.map((link, index) => {
             return (
