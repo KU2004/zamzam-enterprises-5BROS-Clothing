@@ -140,7 +140,7 @@ export default function Contact() {
 
   const selectedFlag = selectedPhoneCountry?.flag ?? null;
   const selectedCountryText = selectedPhoneCountry
-    ? `${selectedPhoneCountry.value} ${selectedPhoneCountry.label}`
+    ? selectedPhoneCountry.value
     : "Select country code";
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -216,7 +216,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="py-24 md:py-32 relative overflow-hidden" style={{ backgroundColor: '#FFFDD0' }}>
+      <section className="py-24 md:py-32 relative overflow-hidden">
         <div 
           className="absolute inset-0 border-2 border-gold pointer-events-none"
           style={{
