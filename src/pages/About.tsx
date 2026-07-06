@@ -1,6 +1,5 @@
 import { FadeUp } from "../components/FadeUp";
-import { Counter } from "../components/Counter";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type ReactNode } from "react";
 import hero1 from "../assets/hero-1.jpg";
 import hero4 from "../assets/hero-4.jpg";
 import founder from "../assets/founder.jpeg";
@@ -12,7 +11,7 @@ function PageHeader({
   sub,
 }: {
   eyebrow: string;
-  title: string;
+  title: ReactNode;
   sub?: string;
 }) {
   return (
@@ -22,11 +21,11 @@ function PageHeader({
           <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
             <span className="gold-line" /> {eyebrow}
           </p>
-          <h1 className="mt-6 font-display text-5xl md:text-7xl leading-[1.05] max-w-4xl">
+          <h1 className="mt-6 font-display font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.05] max-w-4xl">
             {title}
           </h1>
           {sub && (
-            <p className="mt-6 max-w-2xl text-muted-foreground text-lg text-justify" dangerouslySetInnerHTML={{ __html: sub }} />
+            <p className="mt-6 max-w-2xl text-black text-base sm:text-lg text-justify" dangerouslySetInnerHTML={{ __html: sub }} />
           )}
         </div>
         <div>
@@ -136,16 +135,11 @@ From our manufacturing unit in Chembur, we supply our products to different citi
             <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold">
               Our Story
             </p>
-            <h2 className="mt-5 font-display text-4xl md:text-5xl leading-tight">
-              Two decades of textile craftsmanship.
+            <h2 className="mt-5 font-display font-bold text-4xl md:text-5xl leading-tight">
+              Apparel Craftmanship
             </h2>
-            <div className="mt-6 flex items-center gap-3 text-lg text-muted-foreground">
-              <span>Trusted by</span>
-              <Counter end={1200} suffix="+" duration={2200} />
-              <span>clients</span>
-            </div>
             <p className="mt-4 text-muted-foreground leading-relaxed text-justify">
-              Before founding Zam Zam Enterprises, Azhar Qureshi gained
+              Before founding Zam Zam Enterprises, We gained
               valuable experience in the textile and apparel industry,
               developing a deep understanding of garment manufacturing, fabric
               sourcing, product quality, and customer requirements. He
@@ -156,10 +150,10 @@ From our manufacturing unit in Chembur, we supply our products to different citi
               customer relationships.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed text-justify">
-              Azhar recognized the growing demand for high-quality, affordable, and reliable apparel products across India and international markets. He saw an opportunity to create a brand that combines quality, comfort, and value.
+              We recognized the growing demand for high-quality, affordable, and reliable apparel products across India and international markets. We saw an opportunity to create a brand that combines quality, comfort, and value.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed text-justify">
-              The inspiration came from a desire to build a trusted apparel company that delivers premium-quality garments while maintaining competitive pricing and strong customer relationships. Azhar envisioned creating a brand that customers could rely on for consistent quality and service.
+              The inspiration came from a desire to build a trusted apparel company that delivers premium-quality garments while maintaining competitive pricing and strong customer relationships. We envisioned creating a brand that customers could rely on for consistent quality and service.
             </p>
           </FadeUp>
         </div>
