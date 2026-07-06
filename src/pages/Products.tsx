@@ -368,32 +368,27 @@ export default function Products() {
           </aside>
 
           <div className="order-first lg:order-0">
-            <p className="text-sm text-muted-foreground mb-6">
-              {items.length} products
-            </p>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
               {items.map((p, i) => (
                 <FadeUp key={p.cat + i} delay={i * 40}>
-                  <article className="group">
+                  <article className="group block">
                     <div className="relative aspect-[3/4] overflow-hidden bg-muted">
                       <img
                         src={p.img}
-                        alt={p.cat}
+                        alt={p.name}
                         loading="lazy"
                         className="h-full w-full object-cover object-top transition-transform duration-1000 group-hover:scale-110"
                       />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
                     </div>
-                    <div className="mt-4">
-                      <p className="text-xs text-muted-foreground mt-1">
-                      </p>
-                      <div className="mt-4 flex gap-3">
-                        <Link
-                          to="/contact"
-                          className="text-[11px] uppercase tracking-[0.2em] border-b border-gold pb-0.5"
-                        >
-                          Inquiry
-                        </Link>
-                      </div>
+
+                    <div className="mt-4 flex items-center justify-center">
+                      <Link
+                        to="/contact"
+                        className="group inline-flex items-center gap-1 bg-gold px-3 py-1.5 text-[10px] uppercase tracking-[0.2em] text-charcoal hover:bg-gold-soft transition"
+                      >
+                        Inquiry
+                      </Link>
                     </div>
                   </article>
                 </FadeUp>
