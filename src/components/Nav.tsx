@@ -75,7 +75,7 @@ export function Nav() {
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
-          className={`lg:hidden p-2 transition ${isOpaque ? "text-foreground" : "text-white"}`}
+          className={`lg:hidden p-2 transition ${isOpaque || isBlackPath ? "text-foreground" : "text-white"}`}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
