@@ -147,9 +147,9 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10 bg-white/5/5">
-        <div className="container-luxe py-4 flex flex-col gap-1 md:flex-row items-center justify-between text-xs leading-5 uppercase tracking-[0.2em] text-white/70">
-          <span>© 2026 5BROS Clothing. All rights reserved.</span>
-          <span>Crafted in India · Delivered worldwide</span>
+        <div className="container-luxe py-4 flex flex-col gap-1 items-start justify-start text-[0.72rem] leading-5 uppercase tracking-[0.2em] text-white/70 whitespace-normal text-left md:flex-row md:justify-between md:items-center">
+          <span className="w-full md:w-auto whitespace-nowrap">© 2026 5BROS Clothing. All rights reserved.</span>
+          <span className="w-full md:w-auto">Crafted in India · Delivered worldwide</span>
         </div>
       </div>
     </footer>
