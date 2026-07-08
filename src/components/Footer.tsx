@@ -103,8 +103,10 @@ export function Footer() {
                 {[
                   ["Round Neck", "Round Neck"],
                   ["Polo", "Polo"],
-                  ["Uniforms", "Corporate Uniform"],
+                  ["Oversized", "Oversized"],
                   ["Hoodies", "Hoodies"],
+                  ["Custom Label", "Custom Label"],
+                  ["Activewear", "Activewear"],
                 ].map(([label, category]) => (
                   <li key={label}>
                     <Link
