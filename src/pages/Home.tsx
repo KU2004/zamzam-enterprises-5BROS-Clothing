@@ -332,8 +332,10 @@ x
                     }}
                     src={src}
                     controls
+                    autoPlay
+                    muted
                     loop
-                    preload="metadata"
+                    preload="auto"
                     playsInline
                     className="w-full h-full object-cover"
                     poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect fill='%23333' width='640' height='360'/%3E%3C/svg%3E"
