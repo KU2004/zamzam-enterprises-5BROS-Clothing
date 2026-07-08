@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   Award,
@@ -101,6 +101,39 @@ const why = [
 
 export default function Home() {
   const [slide, setSlide] = useState(0);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  const openFullscreen = (element: HTMLVideoElement | null) => {
+    if (!element) return;
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+      return;
+    }
+    if ((element as any).webkitEnterFullscreen) {
+      (element as any).webkitEnterFullscreen();
+      return;
+    }
+    if ((element as any).webkitRequestFullscreen) {
+      (element as any).webkitRequestFullscreen();
+      return;
+    }
+    if ((element as any).msRequestFullscreen) {
+      (element as any).msRequestFullscreen();
+      return;
+    }
+  };
+
+  const handleVideoClick = (index: number) => {
+    const video = videoRefs.current[index];
+    if (!video) return;
+
+    if (video.paused) {
+      video.play().catch(() => {});
+    }
+
+    openFullscreen(video);
+  };
+
   useEffect(() => {
     const id = setInterval(() => setSlide((s) => (s + 1) % slides.length), 6000);
     return () => clearInterval(id);
@@ -201,21 +234,21 @@ export default function Home() {
             <p className="gold-label">Our Brands</p>
           </div>
           <div className="mt-10 overflow-x-auto">
-            <div className="flex gap-10 items-center">
-              <div className="flex-shrink-0 h-32 flex items-center">
-                <img src={brand1} alt="Brand 1" className="h-full object-contain" loading="lazy" />
+            <div className="flex gap-10 items-center justify-center">
+              <div className="flex-shrink-0 h-36 w-72 flex items-center justify-center">
+                <img src={brand1} alt="Brand 1" className="max-h-full max-w-full object-contain" loading="lazy" />
               </div>
-              <div className="flex-shrink-0 h-24 flex items-center">
-                <img src={brand3} alt="Brand 3" className="h-full object-contain" loading="lazy" />
+              <div className="flex-shrink-0 h-36 w-72 flex items-center justify-center">
+                <img src={brand3} alt="Brand 3" className="max-h-full max-w-full object-contain" loading="lazy" />
               </div>
-              <div className="flex-shrink-0 h-24 flex items-center">
-                <img src={brand2} alt="Brand 2" className="h-full object-contain" loading="lazy" />
+              <div className="flex-shrink-0 h-36 w-72 flex items-center justify-center">
+                <img src={brand2} alt="Brand 2" className="max-h-full max-w-full object-contain" loading="lazy" />
               </div>
             </div>
           </div>
         </div>
       </section>
-
+x
       {/* OVERVIEW */}
       <section id="about" className="pt-2 pb-28 md:pt-2 md:pb-36 bg-background">
         <div className="container-luxe grid gap-16 lg:grid-cols-2 lg:gap-24 items-center">
@@ -285,23 +318,26 @@ export default function Home() {
 
           {/* Video Grid */}
           <div className="mt-14 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <FadeUp key={i} delay={i * 100}>
-                <div className="group cursor-pointer">
-                  <div className="relative rounded-xl overflow-hidden bg-muted border border-border" style={{ aspectRatio: '3 / 4' }}>
-                      <video
-                        src={videos[i - 1]}
-                        controls
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-full object-cover"
-                        poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect fill='%23333' width='640' height='360'/%3E%3C/svg%3E"
-                      />
-                  </div>
-                  <div className="mt-4">
-                  </div>
+            {videos.map((src, index) => (
+              <FadeUp key={index} delay={index * 100}>
+                <div
+                  className="group relative rounded-xl overflow-hidden bg-muted border border-border"
+                  style={{ aspectRatio: '3 / 4' }}
+                  onClick={() => handleVideoClick(index)}
+                  onTouchEnd={() => handleVideoClick(index)}
+                >
+                  <video
+                    ref={(el) => {
+                      videoRefs.current[index] = el;
+                    }}
+                    src={src}
+                    controls
+                    loop
+                    preload="metadata"
+                    playsInline
+                    className="w-full h-full object-cover"
+                    poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect fill='%23333' width='640' height='360'/%3E%3C/svg%3E"
+                  />
                 </div>
               </FadeUp>
             ))}
@@ -525,27 +561,13 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="space-y-4">
-                <p className="text-sm uppercase tracking-[0.2em] font-bold text-black whitespace-nowrap">Global Presence</p>
-                <div className="flex items-center gap-6">
-                  {['Ethiopia', 'Kenya'].map((c) => (
-                    <span key={c} className="inline-flex items-center gap-2 text-base font-semibold text-black">
+              <div className="space-y-3">
+                <p className="text-sm uppercase tracking-[0.2em] font-bold text-black">Global Presence</p>
+                <div className="grid grid-cols-2 gap-3">
+                  {['Ethiopia', 'Kenya', 'Tanzania', 'Uganda', 'U.A.E.', 'Saudi Arabia'].map((c) => (
+                    <div key={c} className="flex items-center gap-2 text-base font-semibold text-black">
                       <span className="h-1.5 w-1.5 bg-gold rounded-full" /> {c}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex items-center gap-6">
-                  {['Tanzania', 'Uganda'].map((c) => (
-                    <span key={c} className="inline-flex items-center gap-2 text-base font-semibold text-black">
-                      <span className="h-1.5 w-1.5 bg-gold rounded-full" /> {c}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex items-center gap-6">
-                  {['U.A.E.', 'Saudi'].map((c) => (
-                    <span key={c} className="inline-flex items-center gap-2 text-base font-semibold text-black">
-                      <span className="h-1.5 w-1.5 bg-gold rounded-full" /> {c}
-                    </span>
+                    </div>
                   ))}
                 </div>
               </div>
