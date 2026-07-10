@@ -21,7 +21,7 @@ import hero4 from "../assets/hero-4.jpg";
 import brand1 from "../assets/brand1.png";
 import brand2 from "../assets/brand2.png";
 import brand3 from "../assets/brand3.png";
-import pRound from "../assets/roundneck1.jpeg";
+import pRound from "../assets/product-roundneck.jpg";
 import pRound5 from "../assets/roundneck5.jpeg";
 import processImg from "../assets/Process.png";
 import pPolo from "../assets/product-polo.jpg";
