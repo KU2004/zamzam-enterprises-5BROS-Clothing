@@ -21,7 +21,8 @@ import hero4 from "../assets/hero-4.jpg";
 import brand1 from "../assets/brand1.png";
 import brand2 from "../assets/brand2.png";
 import brand3 from "../assets/brand3.png";
-import pRound from "../assets/product-roundneck.jpg";
+import pRound from "../assets/roundneck1.jpeg";
+import pRound5 from "../assets/roundneck5.jpeg";
 import processImg from "../assets/Process.png";
 import pPolo from "../assets/product-polo.jpg";
 import pOver from "../assets/product-oversized.jpg";
@@ -36,6 +37,8 @@ import video5 from "../videos/video5.mp4";
 import video6 from "../videos/video6.mp4";
 import fabricBg from "../assets/cotton-bg.png";
 
+// T-shirt product image from local assets
+const eyeProduct = pRound5;
 const slides = [
   {
     img: hero1,
@@ -258,31 +261,41 @@ export default function Home() {
 
       {/* OVERVIEW */}
       <section id="about" className="pt-2 pb-28 md:pt-2 md:pb-36 bg-background">
-        <div className="container-luxe grid gap-16 lg:grid-cols-2 lg:gap-24 items-center">
-          <FadeUp>
-            <p className="gold-label">
-              <span className="gold-line" /> About Us
-            </p>
-            <h1 className="mt-4 font-display text-2xl md:text-2xl leading-[1.05] font-bold text-foreground max-w-sm md:max-w-md">
-              5BROS Clothing — Crafting apparel for discerning brands.
-            </h1>
-            <p className="mt-6 text-foreground text-base leading-relaxed">
-              An apparel manufacturer based in India, specialising in custom t-shirts, uniforms
-              and private label manufacturing for international businesses. Two decades of textile
-              know-how, delivered through one disciplined supply chain.
-            </p>
-            <Link to="/about" className="mt-8 inline-flex items-center gap-2 px-6 py-2 bg-gold text-charcoal text-sm font-semibold rounded-full hover:bg-gold-soft transition-all">
-              About Us <ArrowRight size={16} />
-            </Link>
-          </FadeUp>
+        <div className="container-luxe grid gap-12 lg:grid-cols-2 items-center">
+          <div>
+            <FadeUp>
+              <p className="gold-label">
+                <span className="gold-line" /> About Us
+              </p>
+              <h1 className="mt-4 font-display text-2xl md:text-3xl leading-[1.05] font-bold text-foreground">
+                5BROS Clothing — Crafting apparel for discerning brands.
+              </h1>
+              <p className="mt-6 text-foreground text-base leading-relaxed">
+                An apparel manufacturer based in India, specialising in custom t-shirts,
+                uniforms and private label manufacturing for international businesses.
+                Two decades of textile know-how, delivered through one disciplined
+                supply chain.
+              </p>
+              <Link to="/about" className="mt-8 inline-flex items-center gap-2 px-6 py-2 bg-gold text-charcoal text-sm font-semibold rounded-full hover:bg-gold-soft transition-all">
+                About Us <ArrowRight size={16} />
+              </Link>
+            </FadeUp>
+          </div>
 
-          <div className="flex justify-center">
-            <div className="w-full max-w-md rounded-2xl border border-border bg-muted/30 p-8 shadow-sm min-h-[420px]">
-              <div className="h-full flex flex-col items-center justify-center text-center">
-                <div className="h-72 w-full rounded-[2rem] border-2 border-dashed border-border bg-white/10" />
-                <p className="mt-6 text-sm text-foreground/70">
-                  Placeholder for an image or product visual.
-                </p>
+          <div className="flex justify-center w-full">
+            <div className="w-full max-w-xs rounded-xl border-2 border-gold bg-white p-2 md:p-3 shadow-lg">
+              <div className="rounded-lg overflow-hidden bg-gray-200">
+                <img 
+                  src={eyeProduct} 
+                  alt="Premium round neck t-shirt product" 
+                  className="w-full h-auto object-cover block" 
+                  loading="eager"
+                />
+              </div>
+
+              <div className="mt-2 md:mt-3 text-center px-1">
+                <p className="text-xs md:text-sm font-bold text-foreground">T-Shirt Collection</p>
+                <p className="text-xs text-foreground/70 mt-0.5 font-medium">Branded Quality | Indian Manufacturing</p>
               </div>
             </div>
           </div>
