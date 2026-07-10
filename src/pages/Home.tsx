@@ -34,8 +34,6 @@ import video3 from "../videos/video3.mp4";
 import video4 from "../videos/video4.mp4";
 import video5 from "../videos/video5.mp4";
 import video6 from "../videos/video6.mp4";
-import africaMap from "../assets/africamap.png";
-import indiaMap from "../assets/indiamap.png";
 import fabricBg from "../assets/cotton-bg.png";
 
 const slides = [
@@ -65,13 +63,22 @@ const slides = [
   },
 ];
 
+const productRoutes: Record<string, string> = {
+  "Round Neck": "/products/round-neck",
+  Polo: "/products/polo",
+  Oversized: "/products/oversized",
+  Hoodies: "/products/hoodies",
+  Corporate: "/products/custom-label",
+  Sportswear: "/products/activewear",
+};
+
 const products = [
-  { cat: "Round Neck", name: "Round Neck", img: pRound },
-  { cat: "Polo", name: "Polo", img: pPolo },
-  { cat: "Oversized", name: "Oversized", img: pOver },
-  { cat: "Hoodies", name: "Hoodies & Sweatshirts", img: pHood },
-  { cat: "Corporate", name: "Custom Label", img: pUni },
-  { cat: "Sportswear", name: "Activewear", img: pSport },
+  { cat: "Round Neck", name: "Round Neck", img: pRound, href: productRoutes["Round Neck"] },
+  { cat: "Polo", name: "Polo", img: pPolo, href: productRoutes.Polo },
+  { cat: "Oversized", name: "Oversized", img: pOver, href: productRoutes.Oversized },
+  { cat: "Hoodies", name: "Hoodies & Sweatshirts", img: pHood, href: productRoutes.Hoodies },
+  { cat: "Corporate", name: "Custom Label", img: pUni, href: productRoutes.Corporate },
+  { cat: "Sportswear", name: "Activewear", img: pSport, href: productRoutes.Sportswear },
 ];
 
 const fabrics = [
@@ -248,7 +255,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-x
+
       {/* OVERVIEW */}
       <section id="about" className="pt-2 pb-28 md:pt-2 md:pb-36 bg-background">
         <div className="container-luxe grid gap-16 lg:grid-cols-2 lg:gap-24 items-center">
@@ -270,37 +277,13 @@ x
           </FadeUp>
 
           <div className="flex justify-center">
-            <div className="w-full max-w-md rounded-2xl bg-black border border-white/20 text-white p-8 shadow-lg">
-              <div className="mb-6">
-                <p className="text-xs uppercase text-white/70 tracking-widest">Product Spec Sheet</p>
-                <div className="flex items-baseline justify-between mt-4">
-                  <h3 className="text-lg font-semibold text-white">Standard B2B</h3>
-                </div>
+            <div className="w-full max-w-md rounded-2xl border border-border bg-muted/30 p-8 shadow-sm min-h-[420px]">
+              <div className="h-full flex flex-col items-center justify-center text-center">
+                <div className="h-72 w-full rounded-[2rem] border-2 border-dashed border-border bg-white/10" />
+                <p className="mt-6 text-sm text-foreground/70">
+                  Placeholder for an image or product visual.
+                </p>
               </div>
-
-              <div className="divide-y divide-white/20">
-                {[
-                  { label: "Min. Order Qty (MOQ)", value: "300 pcs" },
-                  { label: "Fabric Weight", value: "180–320 GSM" },
-                  { label: "Lead Time", value: "21–28 days" },
-                  { label: "Garments Produced", value: "1M+ Yearly" },
-                ].map((r) => (
-                  <div key={r.label} className="py-4 flex justify-between text-sm text-white/80">
-                    <span>{r.label}</span>
-                    <span className="font-semibold text-white">{r.value}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 flex gap-2 flex-wrap">
-                {["IEC", "MSME", "ZED"].map((b) => (
-                  <span key={b} className="text-xs px-2 py-1 border border-white/40 rounded bg-transparent text-white">{b}</span>
-                ))}
-              </div>
-
-              <Link to="/contact" className="mt-6 w-full inline-flex items-center justify-center gap-2 bg-gold text-black py-3 rounded-md font-semibold">
-                Contact Us <ArrowRight size={14} />
-              </Link>
             </div>
           </div>
         </div>
@@ -370,7 +353,7 @@ x
       {products.map((p, i) => (
         <FadeUp key={p.name} delay={i * 80}>
           <Link
-            to={`/products?cat=${encodeURIComponent(p.cat)}`}
+            to={p.href}
             className="group block"
           >
             <div className="relative aspect-4/5 overflow-hidden bg-muted">
@@ -526,7 +509,12 @@ x
           <p className="gold-label">
             <span className="gold-line" /> Featured Clients
           </p>
-          <Link to="/clients" className="hidden md:inline text-[11px] uppercase tracking-[0.22em] text-muted-foreground hover:text-foreground">View all</Link>
+          <Link
+            to={{ pathname: "/infrastructure", hash: "#clients" }}
+            className="hidden md:inline text-[11px] uppercase tracking-[0.22em] text-muted-foreground hover:text-foreground"
+          >
+            View all
+          </Link>
         </div>
         <div className="relative">
           <div className="hidden lg:block">
@@ -538,63 +526,7 @@ x
         </div>
       </section>
 
-      {/* GLOBAL PRESENCE */}
-      <section id="global" className="py-28 md:py-36 bg-muted/40">
-        <div className="container-luxe grid gap-16 lg:grid-cols-2 items-center">
-          <FadeUp>
-            <p className="gold-label">
-              <span className="gold-line" /> Our Presence
-            </p>
-            <h2 className="mt-6 font-display text-4xl md:text-5xl font-bold">Regional Presence Across India</h2>
-            <div className="mt-8 grid grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="space-y-3">
-                {["Ahmedabad", "Amravati Maharashtra", "Aurangabad", "Bangalore", "Bhopal", "Bilaspur", "Hyderabad", "Hubli", "Indore", "Jabalpur"].map((c) => (
-                  <div key={c} className="flex items-center gap-2 text-base font-semibold">
-                    <span className="h-1.5 w-1.5 bg-gold rounded-full" /> {c}
-                  </div>
-                ))}
-              </div>
-
-              <div className="space-y-3">
-                {["Jalgaon", "Jalna", "Kolhapur", "Malegaon", "Nagpur", "Pune", "Raipur", "Solapur", "Surat"].map((c) => (
-                  <div key={c} className="flex items-center gap-2 text-base font-semibold">
-                    <span className="h-1.5 w-1.5 bg-gold rounded-full" /> {c}
-                  </div>
-                ))}
-              </div>
-
-              <div className="space-y-3">
-                <p className="text-sm uppercase tracking-[0.2em] font-bold text-black">Global Presence</p>
-                <div className="grid grid-cols-2 gap-3">
-                  {['Ethiopia', 'Kenya', 'Tanzania', 'Uganda', 'U.A.E.', 'Saudi Arabia'].map((c) => (
-                    <div key={c} className="flex items-center gap-2 text-base font-semibold text-black">
-                      <span className="h-1.5 w-1.5 bg-gold rounded-full" /> {c}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </FadeUp>
-          <FadeUp delay={150}>
-            <div className="overflow-hidden rounded-[2rem] border border-border bg-white/60 backdrop-blur">
-              <img
-                src={africaMap}
-                alt="Africa map"
-                className="h-full min-h-100 w-full object-cover"
-                loading="lazy"
-              />
-            </div>
-            <div className="mt-6 overflow-hidden rounded-[2rem] border border-border bg-white/60 backdrop-blur">
-              <img
-                src={indiaMap}
-                alt="India map"
-                className="h-full min-h-100 w-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </FadeUp>
-        </div>
-      </section>
+      {/* Global presence section removed per request */}
 
       {/* CTA */}
       <section id="cta" className="relative py-28 md:py-36 bg-charcoal text-charcoal-foreground overflow-hidden">
