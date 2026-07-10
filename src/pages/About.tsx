@@ -1,5 +1,5 @@
 import { FadeUp } from "../components/FadeUp";
-import { useState, useRef, useEffect, type ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
 import hero1 from "../assets/hero-1.jpg";
 import hero4 from "../assets/hero-4.jpg";
 import founder from "../assets/founder.jpeg";
@@ -80,35 +80,8 @@ const milestones = [
 ];
 
 export default function About() {
-  const [showVideo, setShowVideo] = useState(false);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
   const boxedRef = useRef<HTMLVideoElement | null>(null);
 
-  function closeVideo() {
-    if (videoRef.current) {
-      try {
-        videoRef.current.pause();
-        videoRef.current.currentTime = 0;
-      } catch (e) {}
-    }
-    setShowVideo(false);
-  }
-
-  useEffect(() => {
-    function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") closeVideo();
-    }
-    if (showVideo) {
-      document.addEventListener("keydown", onKey);
-      const prev = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
-      return () => {
-        document.removeEventListener("keydown", onKey);
-        document.body.style.overflow = prev;
-      };
-    }
-    return;
-  }, [showVideo]);
   return (
     <>
       <PageHeader
@@ -120,6 +93,42 @@ At Zam Zam Enterprises, we believe clothing is more than just fashion — it is 
 
 From our manufacturing unit in Chembur, we supply our products to different cities across India, building strong relationships with <strong>distributors</strong>, <strong>wholesalers</strong> and <strong>corporate sectors</strong> who trust our quality and service."
       />
+
+      <section className="py-16 flex items-center justify-center">
+        <div className="w-full max-w-6xl px-4">
+          <div className="mb-8 text-center">
+            <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center justify-center gap-3">
+              <span className="gold-line" /> Factory Tour
+            </p>
+            <h2 className="mt-4 font-display text-4xl md:text-6xl leading-tight max-w-4xl mx-auto text-charcoal">
+              Step inside the <span className="whitespace-nowrap">5BROS factory</span>.
+            </h2>
+          </div>
+          <div className="bg-black rounded-md overflow-hidden shadow-2xl">
+            <video
+              ref={boxedRef}
+              src={aboutusv}
+              poster={hero4}
+              className="w-full h-full aspect-video object-cover"
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              onError={(e) => console.error('Video error:', e.currentTarget.error?.message)}
+              onLoadedMetadata={() => {
+                console.log('Video loaded:', aboutusv);
+                try {
+                  if (boxedRef.current) {
+                    /* keep existing behavior in case needed later */
+                  }
+                } catch (e) {}
+              }}
+            />
+          </div>
+        </div>
+      </section>
 
       <section className="py-24 md:py-32 bg-background">
         <div className="container-luxe grid gap-16 lg:grid-cols-2 items-center">
@@ -222,80 +231,6 @@ From our manufacturing unit in Chembur, we supply our products to different citi
         </div>
       </section>
 
-      <section className="py-16 flex items-center justify-center">
-        <div className="w-full max-w-6xl px-4">
-          <div className="mb-8 text-center">
-            <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center justify-center gap-3">
-              <span className="gold-line" /> Factory Tour
-            </p>
-            <h2 className="mt-4 font-display text-4xl md:text-6xl leading-tight max-w-4xl mx-auto text-charcoal">
-              Step inside the <span className="whitespace-nowrap">5BROS factory</span>.
-            </h2>
-          </div>
-          <div className="bg-black rounded-md overflow-hidden shadow-2xl">
-            <video
-              ref={boxedRef}
-              src={aboutusv}
-              poster={hero4}
-              className="w-full h-full aspect-video object-cover"
-              controls
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              onError={(e) => console.error('Video error:', e.currentTarget.error?.message)}
-              onLoadedMetadata={() => {
-                console.log('Video loaded:', aboutusv);
-                try {
-                  if (boxedRef.current) {
-                    /* keep existing behavior in case needed later */
-                  }
-                } catch (e) {}
-              }}
-            />
-            
-          </div>
-        </div>
-      </section>
-      {showVideo && (
-        <div className="fixed inset-0 z-50 grid place-items-center px-4">
-          <div
-            className="absolute inset-0 bg-black/60"
-            onClick={closeVideo}
-          />
-          <div className="relative w-full max-w-4xl">
-            <h2 className="mb-4 text-center text-2xl md:text-3xl font-display text-white">
-              Step inside the <span className="whitespace-nowrap">5BROS factory</span>
-            </h2>
-            <div
-              className="relative bg-black rounded-md overflow-hidden shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                aria-label="Close video"
-                onClick={closeVideo}
-                className="absolute right-3 top-3 z-10 rounded-full bg-white/10 px-3 py-2 text-white"
-              >
-                ✕
-              </button>
-              <video
-                ref={videoRef}
-                src={aboutusv}
-                controls
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                onError={(e) => console.error('Video error:', e.currentTarget.error?.message)}
-                onLoadedMetadata={() => console.log('Video loaded:', aboutusv)}
-                className="w-full max-h-[80vh] aspect-video object-contain bg-black"
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 }
