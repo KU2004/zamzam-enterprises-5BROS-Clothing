@@ -14,7 +14,6 @@ const navItems: NavItem[] = [
   { label: "Process", id: "process" },
   { label: "Why Us", id: "whyus" },
   { label: "Clients", id: "clients" },
-  { label: "Global", id: "global" },
   { label: "Contact", id: "cta" },
 ];
 
