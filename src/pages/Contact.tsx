@@ -45,7 +45,7 @@ import FlagLS from "../assets/flags/ls.svg";
 import FlagSZ from "../assets/flags/sz.svg";
 import FlagSC from "../assets/flags/sc.svg";
 import FlagCV from "../assets/flags/cv.svg";
-import { Clock, Mail, MapPin, Phone, ChevronDown } from "lucide-react";
+import { Mail, MapPin, Phone, ChevronDown } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "../components/ui/popover";
 import CONTACT from "../lib/contactInfo";
 
@@ -132,6 +132,8 @@ export default function Contact() {
     useState<(typeof phoneCountries)[number] | null>(null);
   const [countrySearch, setCountrySearch] = useState("");
   const [countryPopoverOpen, setCountryPopoverOpen] = useState(false);
+  const [messageText, setMessageText] = useState("");
+  const [consent, setConsent] = useState(false);
 
   const filteredPhoneCountries = phoneCountries.filter((country) =>
     country.label.toLowerCase().includes(countrySearch.toLowerCase()) ||
@@ -145,6 +147,12 @@ export default function Contact() {
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    if (!consent) {
+      setErr("Please check the consent box to submit the inquiry.");
+      return;
+    }
+    
     const fd = new FormData(e.currentTarget);
     const data = Object.fromEntries(fd.entries());
     const r = schema.safeParse(data);
@@ -224,37 +232,41 @@ export default function Contact() {
           }}
         />
         <div className="relative z-10">
-          <div className="container-luxe grid gap-16 lg:grid-cols-[1.4fr_1fr]">
+          <div className="container-luxe grid gap-16 grid-cols-1">
           <FadeUp>
             <div className="border-2 border-gold p-8">
-              <form onSubmit={onSubmit} className="grid gap-5">
-              <label className="block">
+              <form onSubmit={onSubmit} className="flex flex-col gap-5">
+                <label className="block w-full">
+                  <span className="text-[13px] uppercase tracking-[0.22em] text-gold font-semibold">
+                    Full Name *
+                  </span>
+                  <input
+                    name="name"
+                    type="text"
+                    placeholder="Full name"
+                    required
+                    className="mt-2 w-full border-b-2 border-gold/70 bg-transparent py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none focus:ring-0 transition-colors"
+                  />
+                </label>
+
+                <label className="block w-full">
+                  <span className="text-[13px] uppercase tracking-[0.22em] text-gold font-semibold">
+                    Email Address *
+                  </span>
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="you@company.com"
+                    required
+                    className="mt-2 w-full border-b-2 border-gold/70 bg-transparent py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none focus:ring-0 transition-colors"
+                  />
+                </label>
+
+              <label className="block w-full">
                 <span className="text-[13px] uppercase tracking-[0.22em] text-gold font-semibold">
-                  Name *
+                  Phone Number *
                 </span>
-                <input
-                  name="name"
-                  type="text"
-                  required
-                  className="mt-2 w-full border-b-2 border-gold/70 bg-transparent py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none focus:ring-0 transition-colors"
-                />
-              </label>
-              <label className="block">
-                <span className="text-[13px] uppercase tracking-[0.22em] text-gold font-semibold">
-                  Email *
-                </span>
-                <input
-                  name="email"
-                  type="email"
-                  required
-                  className="mt-2 w-full border-b-2 border-gold/70 bg-transparent py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none focus:ring-0 transition-colors"
-                />
-              </label>
-              <label className="block sm:col-span-2">
-                <span className="text-[13px] uppercase tracking-[0.22em] text-gold font-semibold">
-                  Phone *
-                </span>
-                <div className="mt-2 grid gap-4 sm:grid-cols-[1fr_2fr]">
+                <div className="mt-2 grid gap-4 grid-cols-[1fr_2fr]">
                   <div className="flex items-center gap-3">
                     <Popover open={countryPopoverOpen} onOpenChange={setCountryPopoverOpen}>
                       <PopoverTrigger asChild>
@@ -330,27 +342,48 @@ export default function Contact() {
                   <input
                     name="phone"
                     type="tel"
+                    placeholder="81234 56789"
                     required
                     className="w-full border-b-2 border-gold/70 bg-transparent py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none focus:ring-0 transition-colors"
                   />
                 </div>
               </label>
-              <label className="block">
+              <label className="block w-full">
                 <span className="text-[13px] uppercase tracking-[0.22em] text-gold font-semibold">
                   Message *
                 </span>
-                <textarea
-                  name="message"
-                  required
-                  rows={5}
-                  className="mt-2 w-full border-b-2 border-gold/70 bg-transparent py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none focus:ring-0 transition-colors resize-none"
-                />
+                <div className="mt-2">
+                  <div className="flex items-start">
+                    <textarea
+                      name="message"
+                      value={messageText}
+                      onChange={(e) => setMessageText(e.currentTarget.value.slice(0, 180))}
+                      required
+                      rows={8}
+                      maxLength={180}
+                      className="w-full border-b-2 border-gold/70 bg-transparent py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none focus:ring-0 transition-colors resize-none"
+                    />
+                  </div>
+                  <div className="mt-2 flex justify-end text-xs text-muted-foreground">
+                    {messageText.length} / 180
+                  </div>
+                </div>
               </label>
 
-              <div className="mt-4 space-y-4">
+              <div className="mt-4 flex flex-col gap-4 items-start">
+                <label className="flex items-center gap-3 w-full">
+                  <input
+                    type="checkbox"
+                    name="consent"
+                    checked={consent}
+                    onChange={(e) => setConsent(e.currentTarget.checked)}
+                    className="w-4 h-4 rounded bg-background border border-input"
+                  />
+                  <span className="text-sm text-muted-foreground">I am okay with 5BROS Clothing contacting me regarding my inquiry.</span>
+                </label>
                 <button
                   type="submit"
-                  className="bg-charcoal text-charcoal-foreground px-8 py-4 text-[11px] uppercase tracking-[0.22em] transition hover:bg-gold hover:text-charcoal"
+                  className="bg-charcoal text-charcoal-foreground px-6 py-3 text-[11px] uppercase tracking-[0.22em] transition hover:bg-gold hover:text-charcoal"
                 >
                   <span className="font-semibold">
                     {sent ? "Inquiry Submitted" : "Send Inquiry"}
@@ -436,13 +469,7 @@ export default function Contact() {
                 </p>
               </div>
               <div>
-                <p className="text-[11px] uppercase tracking-[0.22em] text-gold">
-                  Business Hours
-                </p>
-                <p className="mt-2 flex items-start gap-3 text-sm">
-                  <Clock size={16} className="mt-0.5 text-gold" /> Mon — Sat ·
-                  10:00 — 19:00 IST
-                </p>
+                
               </div>
             </div>
             <div className="mt-8 border-2 border-gold overflow-hidden">
