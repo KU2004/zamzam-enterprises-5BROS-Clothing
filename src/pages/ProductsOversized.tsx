@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
+import { Seo } from "../components/Seo";
 
 import oversized1 from "../assets/oversized1.jpeg";
 import oversized2 from "../assets/oversized2.jpeg";
@@ -13,6 +14,7 @@ export default function ProductsOversized() {
   const navigate = useNavigate();
   return (
     <>
+      <Seo title="Oversized Clothing Manufacturer India | Streetwear Apparel" description="Order oversized apparel with premium fabrics, custom labels, and low MOQ manufacturing for modern streetwear and retail collections." canonicalPath="/products/oversized" keywords="oversized clothing manufacturer, oversized t shirt manufacturer, streetwear manufacturer india" />
       <section className="pt-40 pb-16 bg-muted/30 border-b border-border">
         <div className="container-luxe">
           <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
