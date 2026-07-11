@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
+import { Seo } from "../components/Seo";
 
 import polo1 from "../assets/polo1.jpeg";
 import polo2 from "../assets/polo2.jpeg";
@@ -16,6 +17,7 @@ export default function ProductsPolo() {
   const navigate = useNavigate();
   return (
     <>
+      <Seo title="Polo T-Shirt Manufacturer India | Custom Polo Shirts" description="Source premium polo shirts from an India-based manufacturer with tailored fits, branding options, and flexible production runs for bulk orders." canonicalPath="/products/polo" keywords="polo t-shirt manufacturer, custom polo manufacturer, corporate polo supplier, bulk polo shirts" />
       <section className="pt-40 pb-16 bg-muted/30 border-b border-border">
         <div className="container-luxe">
           <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
