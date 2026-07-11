@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
+import { Seo } from "../components/Seo";
 
 import hoodies1 from "../assets/hoodies1.jpeg";
 import hoodies2 from "../assets/hoodies2.jpeg";
@@ -12,6 +13,7 @@ export default function ProductsHoodies() {
   const navigate = useNavigate();
   return (
     <>
+      <Seo title="Hoodie Manufacturer India | Sweatshirt & Fleece Apparel" description="Manufacture premium hoodies and sweatshirts in India with custom GSM, fleece options, embroidery, and private label packaging." canonicalPath="/products/hoodies" keywords="hoodie manufacturer india, sweatshirt manufacturer india, fleece clothing manufacturer, custom hoodie supplier" />
       <section className="pt-40 pb-16 bg-muted/30 border-b border-border">
         <div className="container-luxe">
           <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
