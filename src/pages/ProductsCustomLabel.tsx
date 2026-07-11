@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
+import { Seo } from "../components/Seo";
 
 import custom1 from "../assets/custom1.jpeg";
 import custom2 from "../assets/custom2.jpeg";
@@ -17,6 +18,7 @@ export default function ProductsCustomLabel() {
   const navigate = useNavigate();
   return (
     <>
+      <Seo title="Private Label Clothing Manufacturer India | OEM & ODM" description="Build your apparel brand with our OEM, ODM, and private label manufacturing services for uniforms, workwear, and fashion basics." canonicalPath="/products/custom-label" keywords="private label clothing manufacturer, oem clothing manufacturer, odm clothing manufacturer, custom label apparel manufacturer" />
       <section className="pt-40 pb-16 bg-muted/30 border-b border-border">
         <div className="container-luxe">
           <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
