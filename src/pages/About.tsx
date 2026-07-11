@@ -1,4 +1,5 @@
 import { FadeUp } from "../components/FadeUp";
+import { Seo } from "../components/Seo";
 import { useRef, type ReactNode } from "react";
 import hero1 from "../assets/hero-1.jpg";
 import hero4 from "../assets/hero-4.jpg";
@@ -42,7 +43,7 @@ function PageHeader({
               Azhar Qureshi
             </p>
             <p className="text-sm text-muted-foreground">
-              Founder
+              Founder & CEO
             </p>
           </div>
         </div>
@@ -84,6 +85,7 @@ export default function About() {
 
   return (
     <>
+      <Seo title="About 5BROS Clothing | Certified Apparel Manufacturer" description="Learn about 5BROS Clothing’s manufacturing capability, export experience, quality control, and OEM/ODM services for global buyers." canonicalPath="/about" keywords="manufacturing capability, apparel manufacturer india, garment manufacturer india, certified clothing manufacturer" />
       <PageHeader
         eyebrow="About Us"
         title="An apparel, engineered for global brands."
