@@ -1,6 +1,9 @@
+import { Seo } from "../components/Seo";
+
 export default function Privacy() {
   return (
     <>
+      <Seo title="Privacy Policy | 5BROS Clothing" description="Read 5BROS Clothing’s privacy notice for website visitors, inquiries, and data handling practices." canonicalPath="/privacy" keywords="privacy policy clothing manufacturer, data privacy apparel website" />
       <section className="pt-40 pb-20 bg-muted/30 border-b border-border">
         <div className="container-luxe">
           <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
