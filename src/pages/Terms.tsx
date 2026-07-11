@@ -1,6 +1,9 @@
+import { Seo } from "../components/Seo";
+
 export default function Terms() {
   return (
     <>
+      <Seo title="Terms & Conditions | 5BROS Clothing" description="Review the terms of service for inquiries, manufacturing projects, and apparel procurement with 5BROS Clothing." canonicalPath="/terms" keywords="terms and conditions clothing manufacturer, apparel manufacturing terms" />
       <section className="pt-40 pb-20 bg-muted/30 border-b border-border">
         <div className="container-luxe">
           <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
