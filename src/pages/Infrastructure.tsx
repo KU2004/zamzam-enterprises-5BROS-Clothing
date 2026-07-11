@@ -150,7 +150,7 @@ export default function Infrastructure() {
               Certified. Compliant. Export-ready.
             </h1>
             <p className="mt-6 max-w-xl text-base md:text-lg text-white/80 leading-relaxed">
-              Approved credentials for MSME, GST, DGFT, APEDA, ZED.
+              Approved credentials for MSME, GST, DGFT, AEPC, ZED.
             </p>
           </div>
         </div>
