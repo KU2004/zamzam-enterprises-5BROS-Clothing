@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
+import { Seo } from "../components/Seo";
 
 import roundneck1 from "../assets/roundneck4.jpeg";
 import polo1 from "../assets/polo7.jpeg";
@@ -50,6 +51,7 @@ const sections = [
 export default function Products() {
   return (
     <>
+      <Seo title="Custom Apparel Products | T-Shirts, Hoodies, Activewear" description="Browse 5BROS Clothing’s catalog of round necks, polos, oversized apparel, hoodies, activewear, and private label garments." canonicalPath="/products" keywords="custom apparel products, t shirt manufacturer india, hoodie manufacturer india, activewear manufacturer" />
       <section className="pt-40 pb-16 bg-muted/30 border-b border-border">
         <div className="container-luxe">
           <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
