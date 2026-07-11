@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { BadgeCheck, Factory, MessageCircleMore, ShieldCheck, Sparkles, Truck } from "lucide-react";
 import { FadeUp } from "../components/FadeUp";
+import { Seo } from "../components/Seo";
 import hero2 from "../assets/hero-2.jpg";
 
 const reasons = [
@@ -45,6 +46,7 @@ const reasons = [
 export default function WhyChooseUs() {
   return (
     <>
+      <Seo title="Why Choose 5BROS Clothing | Certified Manufacturing Partner" description="Discover why international brands choose 5BROS Clothing for quality control, export readiness, and scalable apparel manufacturing from India." canonicalPath="/why-choose-us" keywords="garment manufacturer india, apparel supplier, quality control manufacturing, reliable clothing manufacturer" />
       <section className="relative h-[32rem] overflow-hidden bg-black">
         <img
           src={hero2}
