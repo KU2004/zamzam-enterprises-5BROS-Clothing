@@ -28,6 +28,12 @@ import processImg from "../assets/Process.png";
 import pPolo from "../assets/product-polo.jpg";
 import pOver from "../assets/product-oversized.jpg";
 import pHood from "../assets/product-hoodie.jpg";
+import roundneck6 from "../assets/roundneck6.jpeg";
+import roundneck7 from "../assets/roundneck7.jpeg";
+import polo5 from "../assets/polo5.jpeg";
+import polo4 from "../assets/polo4.jpeg";
+import hoodies2 from "../assets/hoodies2.jpeg";
+import oversized3 from "../assets/oversized3.jpeg";
 import pUni from "../assets/product-uniform.jpg";
 import pSport from "../assets/product-sports.jpg";
 import video1 from "../videos/video1.mp4";
@@ -113,42 +119,109 @@ const why = [
 export default function Home() {
   const [slide, setSlide] = useState(0);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  // Thumbnails chosen from assets (distinct from product grid images)
+  const thumbnails = [roundneck6, polo5, hoodies2, oversized3, roundneck7, polo4];
+  const [isPlaying, setIsPlaying] = useState<boolean[]>(() => Array(videos.length).fill(false));
+  const currentFsIndex = useRef<number | null>(null);
+  const [overlayIndex, setOverlayIndex] = useState<number | null>(null);
+  const overlayVideoRef = useRef<HTMLVideoElement | null>(null);
+  const [overlaySrc, setOverlaySrc] = useState<string | null>(null);
+  const [overlayMenuOpen, setOverlayMenuOpen] = useState(false);
+  const [overlayQualityLabel, setOverlayQualityLabel] = useState<string | null>(null);
+  const [qualityMenuIndex, setQualityMenuIndex] = useState<number | null>(null);
+  const [qualityLabelMap, setQualityLabelMap] = useState<Record<number, string>>({});
 
-  const openFullscreen = (element: HTMLVideoElement | null) => {
-    if (!element) return;
-    if (element.requestFullscreen) {
-      element.requestFullscreen();
-      return;
-    }
-    if ((element as any).webkitEnterFullscreen) {
-      (element as any).webkitEnterFullscreen();
-      return;
-    }
-    if ((element as any).webkitRequestFullscreen) {
-      (element as any).webkitRequestFullscreen();
-      return;
-    }
-    if ((element as any).msRequestFullscreen) {
-      (element as any).msRequestFullscreen();
-      return;
-    }
-  };
+  // quality variants per video index. Replace src values with real files if available.
+  const qualityVariants: Record<number, { label: string; src: string }[]> = videos.reduce((acc, src, i) => {
+    acc[i] = [
+      { label: '720p', src },
+      { label: '1080p', src },
+    ];
+    return acc;
+  }, {} as Record<number, { label: string; src: string }[]>);
 
-  const handleVideoClick = (index: number) => {
-    const video = videoRefs.current[index];
-    if (!video) return;
+  
 
-    if (video.paused) {
-      video.play().catch(() => {});
-    }
+  
 
-    openFullscreen(video);
-  };
+  
 
   useEffect(() => {
     const id = setInterval(() => setSlide((s) => (s + 1) % slides.length), 6000);
     return () => clearInterval(id);
   }, []);
+
+  // Listen for fullscreen change to pause video when exiting fullscreen
+  useEffect(() => {
+    const onFsChange = () => {
+      const fsElement = document.fullscreenElement || (document as any).webkitFullscreenElement || (document as any).msFullscreenElement;
+      if (!fsElement) {
+        // Exited fullscreen — if we were tracking a video index, pause it and clear playing state
+        const idx = currentFsIndex.current;
+        if (idx !== null) {
+          const v = videoRefs.current[idx];
+          if (v && !v.paused) {
+            v.pause();
+          }
+          setIsPlaying((s) => {
+            const a = [...s];
+            a[idx] = false;
+            return a;
+          });
+        }
+        currentFsIndex.current = null;
+        // try unlocking orientation if supported
+        if ((screen as any)?.orientation?.unlock) {
+          try { (screen as any).orientation.unlock(); } catch (e) { /* ignore */ }
+        }
+      }
+    };
+
+    document.addEventListener("fullscreenchange", onFsChange);
+    document.addEventListener("webkitfullscreenchange", onFsChange as any);
+    document.addEventListener("msfullscreenchange", onFsChange as any);
+
+    return () => {
+      document.removeEventListener("fullscreenchange", onFsChange);
+      document.removeEventListener("webkitfullscreenchange", onFsChange as any);
+      document.removeEventListener("msfullscreenchange", onFsChange as any);
+    };
+  }, []);
+
+  // Close overlay with Escape and ensure cleanup
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && overlayIndex !== null) {
+        // stop overlay video
+        const ov = overlayVideoRef.current;
+        if (ov && !ov.paused) ov.pause();
+        setOverlayIndex(null);
+        setIsPlaying((s) => {
+          const a = [...s];
+          if (overlayIndex !== null) a[overlayIndex] = false;
+          return a;
+        });
+        try { (screen as any)?.orientation?.unlock?.(); } catch (e) { /* ignore */ }
+      }
+    };
+
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [overlayIndex]);
+
+  // when overlay opens, set default quality/source
+  useEffect(() => {
+    if (overlayIndex !== null) {
+      const variants = qualityVariants[overlayIndex] || [{ label: 'Auto', src: videos[overlayIndex] }];
+      setOverlaySrc(variants[0].src);
+      setOverlayQualityLabel(variants[0].label);
+      setOverlayMenuOpen(false);
+    } else {
+      setOverlaySrc(null);
+      setOverlayQualityLabel(null);
+      setOverlayMenuOpen(false);
+    }
+  }, [overlayIndex]);
 
   return (
     <div>
@@ -216,6 +289,99 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Portrait video overlay (covers viewport, blurs background) */}
+      {overlayIndex !== null && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md">
+          <div
+            className="relative rounded-2xl overflow-hidden bg-transparent"
+            style={{ width: 'min(420px, 92vw)', height: 'min(800px, 96vh)', aspectRatio: '9 / 16' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <video
+              ref={(el) => {
+                overlayVideoRef.current = el;
+                if (el) { el.muted = true; }
+              }}
+              src={overlaySrc ?? (overlayIndex !== null ? videos[overlayIndex] : undefined)}
+              controls
+              autoPlay
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+              onEnded={() => {
+                setOverlayIndex(null);
+                setIsPlaying((s) => {
+                  const a = [...s]; if (overlayIndex !== null) a[overlayIndex] = false; return a;
+                });
+                try { (screen as any)?.orientation?.unlock?.(); } catch (e) { }
+              }}
+            />
+
+            {/* Quality menu button */}
+            <div className="absolute top-3 right-12 z-40">
+              <button
+                aria-label="Quality"
+                onClick={() => setOverlayMenuOpen((v) => !v)}
+                className="rounded-full bg-black/30 text-white p-2"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="5" r="1.5" fill="white" />
+                  <circle cx="12" cy="12" r="1.5" fill="white" />
+                  <circle cx="12" cy="19" r="1.5" fill="white" />
+                </svg>
+              </button>
+              {overlayMenuOpen && overlayIndex !== null && (
+                <div className="absolute right-0 mt-2 w-28 rounded-md bg-white text-black shadow-lg overflow-hidden">
+                  { (qualityVariants[overlayIndex] || []).map((q) => (
+                    <button
+                      key={q.label}
+                      onClick={() => {
+                        setOverlaySrc(q.src);
+                        setOverlayQualityLabel(q.label);
+                        setOverlayMenuOpen(false);
+                        // apply immediately
+                        const ov = overlayVideoRef.current;
+                        if (ov) {
+                          const currentTime = ov.currentTime || 0;
+                          ov.src = q.src;
+                          ov.currentTime = currentTime;
+                          ov.play().catch(() => {});
+                        }
+                      }}
+                      className="w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
+                    >
+                      {q.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {overlayQualityLabel && (
+              <div className="absolute top-3 right-36 z-40">
+                <span className="inline-block bg-black/40 text-white text-xs px-2 py-1 rounded">{overlayQualityLabel}</span>
+              </div>
+            )}
+
+            <button
+              aria-label="Close"
+              onClick={() => {
+                const ov = overlayVideoRef.current;
+                if (ov && !ov.paused) ov.pause();
+                setOverlayIndex(null);
+                setIsPlaying((s) => {
+                  const a = [...s]; if (overlayIndex !== null) a[overlayIndex] = false; return a;
+                });
+                try { (screen as any)?.orientation?.unlock?.(); } catch (e) { }
+              }}
+              className="absolute top-3 right-3 z-40 rounded-full bg-black/40 text-white p-2"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* BRANDS */}
       {/* Mobile: compact single-line logos (visible on mobile only) */}
@@ -321,23 +487,122 @@ export default function Home() {
                 <div
                   className="group relative rounded-xl overflow-hidden bg-muted border border-border"
                   style={{ aspectRatio: '3 / 4' }}
-                  onClick={() => handleVideoClick(index)}
-                  onTouchEnd={() => handleVideoClick(index)}
                 >
+                  {/* Thumbnail overlay button (shown when not playing) */}
+                  {!isPlaying[index] && (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                          e.stopPropagation();
+                          const v = videoRefs.current[index];
+                          if (!v) return;
+                          // open portrait overlay instead of native fullscreen
+                          currentFsIndex.current = null;
+                          setOverlayIndex(index);
+                          // pause any underlying video instances
+                          const underlying = videoRefs.current[index];
+                          if (underlying && !underlying.paused) {
+                            try { underlying.pause(); } catch (e) { }
+                          }
+                          setIsPlaying((s) => {
+                            const a = [...s];
+                            a[index] = true;
+                            return a;
+                          });
+                          // attempt to lock orientation to portrait for devices that support it
+                          if ((screen as any)?.orientation?.lock) {
+                            try { (screen as any).orientation.lock('portrait'); } catch (e) { /* ignore */ }
+                          }
+                        }}
+                      className="absolute inset-0 z-20 flex items-center justify-center p-0"
+                    >
+                      <img
+                        src={thumbnails[index] || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect fill='%23333' width='640' height='360'/%3E%3C/svg%3E"}
+                        alt={`Video ${index + 1} thumbnail`}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white/90">
+                          <circle cx="12" cy="12" r="11" fill="rgba(0,0,0,0.45)" />
+                          <path d="M10 8L16 12L10 16V8Z" fill="white" />
+                        </svg>
+                      </div>
+                      <span className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gold text-charcoal px-4 py-1.5 rounded-full text-[12px] font-semibold shadow-md z-30 whitespace-nowrap inline-flex items-center justify-center">
+                        Watch this reel
+                      </span>
+                    </button>
+                  )}
+
                   <video
                     ref={(el) => {
                       videoRefs.current[index] = el;
+                      if (el) {
+                        el.muted = true;
+                      }
                     }}
                     src={src}
                     controls
-                    autoPlay
                     muted
-                    loop
-                    preload="auto"
+                    preload="metadata"
                     playsInline
                     className="w-full h-full object-cover"
-                    poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect fill='%23333' width='640' height='360'/%3E%3C/svg%3E"
+                    poster={thumbnails[index] || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'%3E%3Crect fill='%23333' width='640' height='360'/%3E%3C/svg%3E"}
+                    onPlay={() => setIsPlaying((s) => {
+                      const a = [...s]; a[index] = true; return a;
+                    })}
+                    onPause={() => setIsPlaying((s) => {
+                      const a = [...s]; a[index] = false; return a;
+                    })}
                   />
+
+                  {/* Per-tile quality button (outside native controls) */}
+                  <div className="absolute bottom-3 right-3 z-30">
+                    <button
+                      aria-label={`Quality ${index + 1}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setQualityMenuIndex((q) => (q === index ? null : index));
+                      }}
+                      className="rounded-full bg-black/30 text-white p-1"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="5" r="1.2" fill="white" />
+                        <circle cx="12" cy="12" r="1.2" fill="white" />
+                        <circle cx="12" cy="19" r="1.2" fill="white" />
+                      </svg>
+                    </button>
+
+                    {qualityMenuIndex === index && (
+                      <div className="absolute right-0 bottom-full mb-2 w-28 rounded-md bg-white text-black shadow-lg overflow-hidden">
+                        {(qualityVariants[index] || []).map((q) => (
+                          <button
+                            key={q.label}
+                            onClick={(ev) => {
+                              ev.stopPropagation();
+                              setQualityLabelMap((m) => ({ ...m, [index]: q.label }));
+                              setQualityMenuIndex(null);
+                              const v = videoRefs.current[index];
+                              if (v) {
+                                const currentTime = v.currentTime || 0;
+                                v.src = q.src;
+                                v.currentTime = currentTime;
+                                v.play().catch(() => {});
+                              }
+                            }}
+                            className="w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
+                          >
+                            {q.label}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+
+                    {qualityLabelMap[index] && (
+                      <div className="absolute -right-1 -bottom-6">
+                        <span className="inline-block bg-black/50 text-white text-xs px-2 py-0.5 rounded">{qualityLabelMap[index]}</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </FadeUp>
             ))}
