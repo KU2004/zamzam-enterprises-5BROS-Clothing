@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { getCanonicalUrl, getSchemaMarkup, getSeoConfigForPath, SITE_NAME } from "../lib/seo";
+import { getCanonicalUrl, getSchemaMarkup, getSeoConfigForPath, SITE_NAME, SITE_URL } from "../lib/seo";
 
 export function Seo({
   title,
@@ -125,6 +125,17 @@ export function Seo({
       document.head.appendChild(tag);
     }
 
+    const ogImage = document.querySelector('meta[property="og:image"]');
+    const ogImageUrl = `${SITE_URL}/logo.png`;
+    if (ogImage) {
+      ogImage.setAttribute("content", ogImageUrl);
+    } else {
+      const tag = document.createElement("meta");
+      tag.setAttribute("property", "og:image");
+      tag.setAttribute("content", ogImageUrl);
+      document.head.appendChild(tag);
+    }
+
     const twitterCard = document.querySelector('meta[name="twitter:card"]');
     if (twitterCard) {
       twitterCard.setAttribute("content", "summary_large_image");
@@ -162,6 +173,16 @@ export function Seo({
       const tag = document.createElement("meta");
       tag.setAttribute("name", "twitter:site");
       tag.setAttribute("content", "@5brosclothing");
+      document.head.appendChild(tag);
+    }
+
+    const twitterImage = document.querySelector('meta[name="twitter:image"]');
+    if (twitterImage) {
+      twitterImage.setAttribute("content", ogImageUrl);
+    } else {
+      const tag = document.createElement("meta");
+      tag.setAttribute("name", "twitter:image");
+      tag.setAttribute("content", ogImageUrl);
       document.head.appendChild(tag);
     }
 
