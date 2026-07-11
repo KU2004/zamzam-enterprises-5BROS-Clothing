@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { FadeUp } from "../components/FadeUp";
 import { SideNav } from "../components/SideNav";
+import { Seo } from "../components/Seo";
 import { DesktopClientMarquee } from "../components/DesktopClientMarquee";
 import { MobileClientMarquee } from "../components/MobileClientMarquee";
 import hero1 from "../assets/hero-1.jpg";
@@ -151,6 +152,7 @@ export default function Home() {
 
   return (
     <div>
+      <Seo />
       <SideNav />
       {/* HERO SLIDER */}
       <section id="hero" className="relative h-screen min-h-160 w-full overflow-hidden bg-black">
