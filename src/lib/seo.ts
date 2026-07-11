@@ -1,7 +1,7 @@
 export const SITE_URL = "https://www.5brosclothing.com";
 export const SITE_NAME = "5BROS Clothing";
 export const BUSINESS_NAME = "5BROS Clothing";
-export const DEFAULT_IMAGE = "/og-image.jpg";
+export const DEFAULT_IMAGE = "/logo.png";
 
 export interface SeoConfig {
   title: string;
@@ -341,6 +341,7 @@ export function getSchemaMarkup(pathname: string) {
       name: BUSINESS_NAME,
       url: SITE_URL,
       logo: `${SITE_URL}/logo.png`,
+      image: `${SITE_URL}/logo.png`,
       sameAs: [
         "https://www.facebook.com/share/164PnQtF1D5/",
         "https://www.instagram.com/5bros_clothing",
@@ -375,6 +376,7 @@ export function getSchemaMarkup(pathname: string) {
       inLanguage: "en",
       isPartOf: { "@id": `${SITE_URL}/#website` },
       primaryImageOfPage: `${SITE_URL}${DEFAULT_IMAGE}`,
+      image: `${SITE_URL}${DEFAULT_IMAGE}`,
     } as Record<string, unknown>,
     {
       "@context": "https://schema.org",
