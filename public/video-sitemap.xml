@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://www.5brosclothing.com/</loc>
+    <video:video>
+      <video:thumbnail_loc>https://www.5brosclothing.com/video1.mp4</video:thumbnail_loc>
+      <video:title>5BROS Clothing Manufacturing Facility</video:title>
+      <video:description>Factory overview and garment manufacturing capabilities.</video:description>
+      <video:content_loc>https://www.5brosclothing.com/video1.mp4</video:content_loc>
+      <video:player_loc>https://www.5brosclothing.com/</video:player_loc>
+      <video:duration>60</video:duration>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:publication_date>2026-07-11</video:publication_date>
+    </video:video>
+  </url>
+</urlset>
