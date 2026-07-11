@@ -1,6 +1,9 @@
+import { Seo } from "../components/Seo";
+
 export default function Shipping() {
   return (
     <>
+      <Seo title="Shipping Policy | International Apparel Delivery" description="Learn about 5BROS Clothing’s international shipping process, packaging standards, and order dispatch support." canonicalPath="/shipping" keywords="international shipping apparel, clothing export shipping, garment shipping policy" />
       <section className="pt-40 pb-20 bg-muted/30 border-b border-border">
         <div className="container-luxe">
           <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
