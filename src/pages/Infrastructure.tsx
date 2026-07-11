@@ -1,4 +1,5 @@
 import { FadeUp } from "../components/FadeUp";
+import { Seo } from "../components/Seo";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import cutting from "../assets/infra-cutting.jpg";
@@ -85,6 +86,7 @@ export default function Infrastructure() {
 
   return (
     <>
+      <Seo title="Manufacturing Infrastructure | Factory Capabilities & Production" description="See 5BROS Clothing’s manufacturing infrastructure, quality control systems, production capacity, and export-ready packaging capabilities." canonicalPath="/infrastructure" keywords="garment factory india, apparel manufacturing facility, production capacity, clothing factory infrastructure" />
       <section className="pt-40 pb-20 bg-muted/30 border-b border-border">
         <div className="container-luxe">
           <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
@@ -148,7 +150,7 @@ export default function Infrastructure() {
               Certified. Compliant. Export-ready.
             </h1>
             <p className="mt-6 max-w-xl text-base md:text-lg text-white/80 leading-relaxed">
-              Approved credentials for MSME, GST, DGFT, AEPC, ZED.
+              Approved credentials for MSME, GST, DGFT, APEDA, ZED.
             </p>
           </div>
         </div>
