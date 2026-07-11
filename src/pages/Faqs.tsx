@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Seo } from "../components/Seo";
 
 const faqs = [
   {
@@ -26,6 +27,7 @@ const faqs = [
 export default function Faqs() {
   return (
     <>
+      <Seo title="Apparel Manufacturing FAQs | MOQ, Lead Time, Fabrics" description="Explore common questions about apparel manufacturing, MOQs, lead times, fabrics, printing, packaging, and international shipping." canonicalPath="/faqs" keywords="clothing manufacturer faq, apparel manufacturing faq, moq clothing manufacturer, lead time clothing manufacturer" />
       <section className="pt-40 pb-20 bg-muted/30 border-b border-border">
         <div className="container-luxe">
           <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
