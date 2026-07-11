@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
+import { Seo } from "../components/Seo";
 
 import roundneck1 from "../assets/roundneck1.jpeg";
 import roundneck2 from "../assets/roundneck2.jpeg";
@@ -25,6 +26,7 @@ export default function ProductsRoundNeck() {
   const navigate = useNavigate();
   return (
     <>
+      <Seo title="Round Neck T-Shirt Manufacturer India | Custom Cotton Tees" description="Discover premium round neck T-shirt manufacturing with custom GSM, fabric options, print, embroidery, and private label support from 5BROS Clothing." canonicalPath="/products/round-neck" keywords="round neck manufacturer, custom t shirt manufacturer, bulk t shirt supplier, cotton t shirt manufacturer" />
       <section className="pt-40 pb-16 bg-muted/30 border-b border-border">
         <div className="container-luxe">
           <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
