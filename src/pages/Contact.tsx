@@ -48,6 +48,7 @@ import FlagCV from "../assets/flags/cv.svg";
 import { Mail, MapPin, Phone, ChevronDown } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "../components/ui/popover";
 import CONTACT from "../lib/contactInfo";
+import { Seo } from "../components/Seo";
 
 
 const schema = z.object({
@@ -206,6 +207,7 @@ export default function Contact() {
 
   return (
     <>
+      <Seo title="Contact 5BROS Clothing | Request a Quote" description="Request a quote for custom clothing manufacturing, private label apparel, uniforms, and bulk production from 5BROS Clothing." canonicalPath="/contact" keywords="contact clothing manufacturer india, request quote apparel manufacturer, manufacturing enquiry" />
       <section className="pt-40 pb-20 bg-muted/30 border-b border-border">
         <div className="container-luxe">
           <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
