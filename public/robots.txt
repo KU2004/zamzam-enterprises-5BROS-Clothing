@@ -1,2 +1,10 @@
 User-agent: *
+Allow: /favicon.ico
+Allow: /icon.png
+Allow: /logo.png
+Allow: /manifest.webmanifest
 Allow: /
+
+Sitemap: https://www.5brosclothing.com/sitemap.xml
+Sitemap: https://www.5brosclothing.com/image-sitemap.xml
+Sitemap: https://www.5brosclothing.com/video-sitemap.xml
