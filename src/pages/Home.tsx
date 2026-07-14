@@ -441,7 +441,7 @@ export default function Home() {
               <p className="mt-6 text-foreground text-base leading-relaxed">
                 An apparel manufacturer based in India, specialising in custom t-shirts,
                 uniforms and private label manufacturing for international businesses.
-                Two decades of textile know-how, delivered through one disciplined
+                Experience of textile know-how, delivered through one disciplined
                 supply chain.
               </p>
               <Link to="/about" className="mt-8 inline-flex items-center gap-2 px-6 py-2 bg-gold text-charcoal text-sm font-semibold rounded-full hover:bg-gold-soft transition-all">
