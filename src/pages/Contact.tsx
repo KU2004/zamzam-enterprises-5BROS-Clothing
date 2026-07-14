@@ -210,7 +210,7 @@ export default function Contact() {
       <Seo title="Contact 5BROS Clothing | Request a Quote" description="Request a quote for custom clothing manufacturing, private label apparel, uniforms, and bulk production from 5BROS Clothing." canonicalPath="/contact" keywords="contact clothing manufacturer india, request quote apparel manufacturer, manufacturing enquiry" />
       <section className="py-24 md:py-32 relative overflow-hidden">
         <div 
-          className="absolute inset-0 border-2 border-gold pointer-events-none"
+          className="absolute inset-0 border-2 border-border pointer-events-none"
           style={{
             zIndex: 1,
           }}
@@ -292,7 +292,7 @@ export default function Contact() {
                               value={countrySearch}
                               onChange={(e) => setCountrySearch(e.currentTarget.value)}
                               placeholder="Search country or code..."
-                              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none transition focus:border-gold focus:ring-1 focus:ring-gold/20"
+                              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none transition focus:border-slate-400 focus:ring-1 focus:ring-slate-200"
                             />
                           </div>
                           <div className="max-h-72 overflow-y-auto border-t border-muted">
@@ -422,42 +422,42 @@ export default function Contact() {
           </FadeUp>
 
           <FadeUp delay={120}>
-            <div className="border-2 border-gold p-8 space-y-6">
+            <div className="border-2 border-border p-8 space-y-6">
               <div>
-                <p className="text-[11px] uppercase tracking-[0.22em] text-gold">
+                <p className="text-[11px] uppercase tracking-[0.22em] text-gray-600 font-semibold">
                   Visit
                 </p>
                 <a 
                   href="https://maps.app.goo.gl/psi9P8NZEVyrTFio9"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 flex items-start gap-3 text-sm hover:text-gold/80 transition wrap-break-word"
+                  className="mt-2 flex items-start gap-3 text-base text-gray-700 font-semibold hover:text-[#173d4b]/80 transition wrap-break-word"
                 >
-                  <MapPin size={16} className="mt-0.5 text-gold shrink-0" /> 
+                  <MapPin size={16} className="mt-0.5 text-[#1d2b4f] shrink-0" /> 
                     <span>{CONTACT.addressFull}</span>
                 </a>
               </div>
               <div>
-                <p className="text-[11px] uppercase tracking-[0.22em] text-gold">
+                <p className="text-[11px] uppercase tracking-[0.22em] text-gray-600 font-semibold">
                   Email
                 </p>
-                <p className="mt-2 flex items-start gap-3 text-sm">
-                  <Mail size={16} className="mt-0.5 text-gold" />{" "}
+                <p className="mt-2 flex items-start gap-3 text-base text-gray-700 font-semibold">
+                  <Mail size={16} className="mt-0.5 text-[#1d2b4f]" />{" "}
                     {CONTACT.email}
                 </p>
               </div>
               <div>
-                <p className="text-[11px] uppercase tracking-[0.22em] text-gold">
+                <p className="text-[11px] uppercase tracking-[0.22em] text-gray-600 font-semibold">
                   Phone
                 </p>
-                <p className="mt-2 flex flex-col gap-2 text-sm">
+                <p className="mt-2 flex flex-col gap-2 text-base text-gray-700 font-semibold">
                   <span className="flex items-center gap-3">
-                    <Phone size={16} className="mt-0.5 text-gold" />
+                    <Phone size={16} className="mt-0.5 text-[#1d2b4f]" />
                     <img src={FlagIN} alt="India flag" className="w-5 h-3 object-cover" />
                     <span>{CONTACT.phones[0]}</span>
                   </span>
                   <span className="flex items-center gap-3">
-                    <Phone size={16} className="mt-0.5 text-gold" />
+                    <Phone size={16} className="mt-0.5 text-[#1d2b4f]" />
                     <img src={FlagIN} alt="India flag" className="w-5 h-3 object-cover" />
                     <span>{CONTACT.phones[1]}</span>
                   </span>
@@ -467,7 +467,7 @@ export default function Contact() {
                 
               </div>
             </div>
-            <div className="mt-8 border-2 border-gold overflow-hidden">
+            <div className="mt-8 border-2 border-border overflow-hidden">
               <iframe
                 title="Simnani Enterprises Mumbai location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.534!2d72.9074656!3d19.0629591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c733d20733c5%3A0xf89e08d06a5ae96a!2sSIMNANI%20ENTERPRISES%20(5%20BROS)%20ZAM%20ZAM%20ENTERPRISES!5e0!3m2!1sen!2sin!4v1719231600000"
@@ -482,7 +482,7 @@ export default function Contact() {
                 href="https://maps.app.goo.gl/psi9P8NZEVyrTFio9"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-charcoal text-charcoal-foreground px-8 py-4 text-[11px] uppercase tracking-[0.22em] hover:bg-gold hover:text-charcoal transition"
+                className="inline-block bg-[#0F2B5B] text-white px-10 py-4 rounded font-semibold hover:bg-[#173d78] transition"
               >
                 View on Google Maps
               </a>
