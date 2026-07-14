@@ -261,8 +261,8 @@ export default function Contact() {
                 <span className="block mb-2 text-sm font-semibold text-gray-800">
                   Phone Number *
                 </span>
-                <div className="mt-2 flex">
-                  <div className="flex items-center gap-3">
+                <div className="mt-2 flex min-w-0">
+                  <div className="flex items-center gap-3 min-w-0">
                     <Popover open={countryPopoverOpen} onOpenChange={setCountryPopoverOpen}>
                       <PopoverTrigger asChild>
                         <button
@@ -339,7 +339,7 @@ export default function Contact() {
                     type="tel"
                     placeholder="81234 56789"
                     required
-                    className="flex-1 border border-l-0 border-gray-300 rounded-r-md h-12 px-4 text-gray-700 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
+                    className="flex-1 min-w-0 border border-l-0 border-gray-300 rounded-r-md h-12 px-4 text-gray-700 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
                   />
                 </div>
               </label>
