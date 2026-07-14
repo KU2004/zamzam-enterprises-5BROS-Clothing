@@ -481,12 +481,11 @@ export default function Home() {
           </FadeUp>
 
           {/* Video Grid */}
-          <div className="mt-14 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+          <div className="mt-14 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
             {videos.map((src, index) => (
               <FadeUp key={index} delay={index * 100}>
                 <div
-                  className="group relative rounded-xl overflow-hidden bg-muted border border-border"
-                  style={{ aspectRatio: '3 / 4' }}
+                  className="group relative aspect-[4/5] rounded-xl overflow-hidden bg-muted border border-border"
                 >
                   {/* Thumbnail overlay button (shown when not playing) */}
                   {!isPlaying[index] && (
@@ -527,7 +526,7 @@ export default function Home() {
                           <path d="M10 8L16 12L10 16V8Z" fill="white" />
                         </svg>
                       </div>
-                      <span className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gold text-charcoal px-4 py-1.5 rounded-full text-[12px] font-semibold shadow-md z-30 whitespace-nowrap inline-flex items-center justify-center">
+                      <span className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gold text-charcoal px-5 py-2 rounded-full text-sm md:text-base font-semibold shadow-md z-30 whitespace-nowrap inline-flex items-center justify-center">
                         Watch this reel
                       </span>
                     </button>
