@@ -208,24 +208,6 @@ export default function Contact() {
   return (
     <>
       <Seo title="Contact 5BROS Clothing | Request a Quote" description="Request a quote for custom clothing manufacturing, private label apparel, uniforms, and bulk production from 5BROS Clothing." canonicalPath="/contact" keywords="contact clothing manufacturer india, request quote apparel manufacturer, manufacturing enquiry" />
-      <section className="pt-40 pb-20 bg-muted/30 border-b border-border">
-        <div className="container-luxe">
-          <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
-            <span className="gold-line" /> Contact
-          </p>
-          <h1 className="mt-6 font-display text-5xl md:text-7xl max-w-3xl">
-            Let's craft your collection.
-          </h1>
-          <p className="mt-5 flex items-center gap-3 text-muted-foreground">
-            Manufacture & dispatch from India.
-          </p>
-          <p className="mt-5 max-w-xl text-muted-foreground">
-            Tell us about your project — we typically respond within one
-            business day.
-          </p>
-        </div>
-      </section>
-
       <section className="py-24 md:py-32 relative overflow-hidden">
         <div 
           className="absolute inset-0 border-2 border-gold pointer-events-none"
@@ -234,12 +216,23 @@ export default function Contact() {
           }}
         />
         <div className="relative z-10">
-          <div className="container-luxe grid gap-16 grid-cols-1">
+          <div className="max-w-6xl mx-auto px-6 grid gap-16 grid-cols-1">
           <FadeUp>
-            <div className="border-2 border-gold p-8">
-              <form onSubmit={onSubmit} className="flex flex-col gap-5">
+            <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-sm p-10 border border-gray-200">
+              <div className="text-center mb-12">
+                <h2 className="text-5xl font-bold text-[#1d2b4f]">
+                  Contact Us
+                </h2>
+
+                <p className="mt-4 text-gray-600 text-lg">
+                  Have questions about products, bulk orders, or partnerships?
+                  Our team is happy to assist you.
+                </p>
+              </div>
+
+              <form onSubmit={onSubmit} className="space-y-6">
                 <label className="block w-full">
-                  <span className="text-[13px] uppercase tracking-[0.22em] text-gold font-semibold">
+                  <span className="block mb-2 text-sm font-semibold text-gray-800">
                     Full Name *
                   </span>
                   <input
@@ -247,12 +240,12 @@ export default function Contact() {
                     type="text"
                     placeholder="Full name"
                     required
-                    className="mt-2 w-full border-b-2 border-gold/70 bg-transparent py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none focus:ring-0 transition-colors"
+                    className="w-full h-12 rounded border border-gray-300 px-4 text-gray-700 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
                   />
                 </label>
 
                 <label className="block w-full">
-                  <span className="text-[13px] uppercase tracking-[0.22em] text-gold font-semibold">
+                  <span className="block mb-2 text-sm font-semibold text-gray-800">
                     Email Address *
                   </span>
                   <input
@@ -260,21 +253,21 @@ export default function Contact() {
                     type="email"
                     placeholder="you@company.com"
                     required
-                    className="mt-2 w-full border-b-2 border-gold/70 bg-transparent py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none focus:ring-0 transition-colors"
+                    className="w-full h-12 rounded border border-gray-300 px-4 text-gray-700 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
                   />
                 </label>
 
               <label className="block w-full">
-                <span className="text-[13px] uppercase tracking-[0.22em] text-gold font-semibold">
+                <span className="block mb-2 text-sm font-semibold text-gray-800">
                   Phone Number *
                 </span>
-                <div className="mt-2 grid gap-4 grid-cols-[1fr_2fr]">
+                <div className="mt-2 flex">
                   <div className="flex items-center gap-3">
                     <Popover open={countryPopoverOpen} onOpenChange={setCountryPopoverOpen}>
                       <PopoverTrigger asChild>
                         <button
                           type="button"
-                          className="flex w-full items-center gap-3 rounded-none border-b-2 border-gold/70 bg-transparent py-3 px-3 text-left text-sm focus:border-gold focus:outline-none transition"
+                          className="flex items-center gap-2 border border-gray-300 rounded-l-md px-3 h-12 bg-white min-w-[120px] text-left text-sm text-gray-700"
                         >
                           {selectedFlag ? (
                             <img
@@ -285,7 +278,7 @@ export default function Contact() {
                           ) : (
                             <div className="w-5 h-3" />
                           )}
-                          <span className={selectedPhoneCountry ? "truncate" : "truncate text-muted-foreground"}>
+                          <span className={selectedPhoneCountry ? "truncate" : "truncate text-gray-400"}>
                             {selectedCountryText}
                           </span>
                           <ChevronDown className="ml-auto h-4 w-4 opacity-50" />
@@ -346,12 +339,12 @@ export default function Contact() {
                     type="tel"
                     placeholder="81234 56789"
                     required
-                    className="w-full border-b-2 border-gold/70 bg-transparent py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none focus:ring-0 transition-colors"
+                    className="flex-1 border border-l-0 border-gray-300 rounded-r-md h-12 px-4 text-gray-700 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
                   />
                 </div>
               </label>
               <label className="block w-full">
-                <span className="text-[13px] uppercase tracking-[0.22em] text-gold font-semibold">
+                <span className="block mb-2 text-sm font-semibold text-gray-800">
                   Message *
                 </span>
                 <div className="mt-2">
@@ -361,12 +354,12 @@ export default function Contact() {
                       value={messageText}
                       onChange={(e) => setMessageText(e.currentTarget.value.slice(0, 180))}
                       required
-                      rows={8}
+                      rows={6}
                       maxLength={180}
-                      className="w-full border-b-2 border-gold/70 bg-transparent py-3 text-sm text-foreground placeholder:text-muted-foreground/70 focus:border-gold focus:outline-none focus:ring-0 transition-colors resize-none"
+                      className="w-full border border-gray-300 rounded p-4 resize-none text-gray-700 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
                     />
                   </div>
-                  <div className="mt-2 flex justify-end text-xs text-muted-foreground">
+                  <div className="text-right text-xs text-gray-500 mt-2">
                     {messageText.length} / 180
                   </div>
                 </div>
@@ -385,7 +378,7 @@ export default function Contact() {
                 </label>
                 <button
                   type="submit"
-                  className="bg-charcoal text-charcoal-foreground px-6 py-3 text-[11px] uppercase tracking-[0.22em] transition hover:bg-gold hover:text-charcoal"
+                  className="bg-[#0F2B5B] text-white px-10 py-4 rounded font-semibold hover:bg-[#173d78] transition"
                 >
                   <span className="font-semibold">
                     {sent ? "Inquiry Submitted" : "Send Inquiry"}
