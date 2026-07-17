@@ -66,29 +66,57 @@ export default function Products() {
 
       <section className="py-16 md:py-24 bg-background">
         <div className="container-luxe">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {sections.map((section, index) => (
-              <FadeUp key={section.label} delay={index * 40}>
-                <Link
-                  to={section.href}
-                  className="group block overflow-hidden rounded-[2rem] border border-border bg-card shadow-sm"
-                >
+          <div className="hidden md:block">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {sections.map((section, index) => (
+                <FadeUp key={section.label} delay={index * 40}>
+                  <Link
+                    to={section.href}
+                    className="group block overflow-hidden rounded-[2rem] border border-border bg-card shadow-sm"
+                  >
+                    <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+                      <img
+                        src={section.img}
+                        alt={section.label}
+                        loading="lazy"
+                        className="h-full w-full object-cover object-center transition-transform duration-1000 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                    </div>
+
+                    <div className="space-y-4 p-6 text-center">
+                      <h2 className="text-xl font-semibold text-foreground">{section.label}</h2>
+                      <p className="text-sm leading-6 text-muted-foreground">{section.description}</p>
+                    </div>
+                  </Link>
+                </FadeUp>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 md:hidden">
+            {sections.map((section) => (
+              <Link
+                key={section.label}
+                to={section.href}
+                className="group block"
+              >
+                <div className="overflow-hidden rounded-[1rem] border border-border bg-background">
                   <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                     <img
                       src={section.img}
                       alt={section.label}
                       loading="lazy"
-                      className="h-full w-full object-cover object-center transition-transform duration-1000 group-hover:scale-110"
+                      className="h-full w-full object-cover object-center"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
                   </div>
+                </div>
 
-                  <div className="space-y-4 p-6 text-center">
-                    <h2 className="text-xl font-semibold text-foreground">{section.label}</h2>
-                    <p className="text-sm leading-6 text-muted-foreground">{section.description}</p>
-                  </div>
-                </Link>
-              </FadeUp>
+                <div className="space-y-2 p-3 text-center">
+                  <h2 className="text-sm font-semibold text-foreground">{section.label}</h2>
+                  <p className="text-xs leading-5 text-muted-foreground">{section.description}</p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
