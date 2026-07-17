@@ -126,7 +126,7 @@ export default function ProductsPolo() {
                 onClick={(event) => handleMobileTapToggle(index, event)}
               >
                 <div className="overflow-hidden rounded-[1rem] border border-border bg-card">
-                  <div className="relative w-full overflow-hidden bg-[#A9A9A9] min-h-[220px] sm:min-h-[260px]">
+                  <div className="relative w-full overflow-hidden bg-[#A9A9A9] aspect-[2/3]">
                     <motion.img
                       src={src.frontImage}
                       alt={`Polo ${index + 1}`}
