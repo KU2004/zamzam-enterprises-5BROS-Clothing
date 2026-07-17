@@ -1,4 +1,4 @@
-import { useEffect, useState, type MouseEvent } from "react";
+import { useState, type MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
@@ -43,28 +43,17 @@ const photos = [
 
 export default function ProductsPolo() {
   const [hovered, setHovered] = useState<number | null>(null);
-  const [tapped, setTapped] = useState<number | null>(null);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [mobileTapped, setMobileTapped] = useState<number | null>(null);
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(hover: none) and (pointer: coarse)");
-    const updateTouchDevice = () => setIsTouchDevice(mediaQuery.matches);
-
-    updateTouchDevice();
-    mediaQuery.addEventListener("change", updateTouchDevice);
-
-    return () => mediaQuery.removeEventListener("change", updateTouchDevice);
-  }, []);
-
-  const handleTouchToggle = (index: number, event: MouseEvent<HTMLAnchorElement>) => {
+  const handleMobileTapToggle = (index: number, event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
 
-    if (tapped === index) {
+    if (mobileTapped === index) {
       window.location.assign(`/products/polo/details/${index + 1}`);
       return;
     }
 
-    setTapped(index);
+    setMobileTapped(index);
   };
 
   return (
@@ -99,11 +88,6 @@ export default function ProductsPolo() {
                       className="block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm transition-all duration-500"
                       onMouseEnter={() => setHovered(index)}
                       onMouseLeave={() => setHovered(null)}
-                      onClick={(event) => {
-                        if (isTouchDevice) {
-                          handleTouchToggle(index, event);
-                        }
-                      }}
                     >
                       <div className="relative w-full overflow-hidden bg-[#A9A9A9] h-80 sm:h-96">
                         <motion.img
@@ -111,15 +95,7 @@ export default function ProductsPolo() {
                           alt={`Polo ${index + 1}`}
                           loading="lazy"
                           initial={{ opacity: 1, scale: 1 }}
-                          animate={
-                            isTouchDevice
-                              ? tapped === index
-                                ? { opacity: 0, scale: 1.03 }
-                                : { opacity: 1, scale: 1 }
-                              : hovered === index
-                                ? { opacity: 0, scale: 1.03 }
-                                : { opacity: 1, scale: 1 }
-                          }
+                          animate={hovered === index ? { opacity: 0, scale: 1.03 } : { opacity: 1, scale: 1 }}
                           transition={{ duration: 0.45, ease: "easeInOut" }}
                           className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
                         />
@@ -128,15 +104,7 @@ export default function ProductsPolo() {
                           alt={`Polo ${index + 1} hover`}
                           loading="lazy"
                           initial={{ opacity: 0, scale: 1 }}
-                          animate={
-                            isTouchDevice
-                              ? tapped === index
-                                ? { opacity: 1, scale: 1.03 }
-                                : { opacity: 0, scale: 1 }
-                              : hovered === index
-                                ? { opacity: 1, scale: 1.03 }
-                                : { opacity: 0, scale: 1 }
-                          }
+                          animate={hovered === index ? { opacity: 1, scale: 1.03 } : { opacity: 0, scale: 1 }}
                           transition={{ duration: 0.45, ease: "easeInOut" }}
                           className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
                         />
@@ -155,14 +123,27 @@ export default function ProductsPolo() {
                 to={`/products/polo/details/${index + 1}`}
                 aria-label={`View details for Polo photo ${index + 1}`}
                 className="block"
+                onClick={(event) => handleMobileTapToggle(index, event)}
               >
                 <div className="overflow-hidden rounded-[1rem] border border-border bg-card">
                   <div className="relative w-full overflow-hidden bg-[#A9A9A9] min-h-[220px] sm:min-h-[260px]">
-                    <img
+                    <motion.img
                       src={src.frontImage}
                       alt={`Polo ${index + 1}`}
                       loading="lazy"
-                      className={`w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
+                      initial={{ opacity: 1, scale: 1 }}
+                      animate={mobileTapped === index ? { opacity: 0, scale: 1.03 } : { opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.45, ease: "easeInOut" }}
+                      className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
+                    />
+                    <motion.img
+                      src={src.hoverImage}
+                      alt={`Polo ${index + 1} hover`}
+                      loading="lazy"
+                      initial={{ opacity: 0, scale: 1 }}
+                      animate={mobileTapped === index ? { opacity: 1, scale: 1.03 } : { opacity: 0, scale: 1 }}
+                      transition={{ duration: 0.45, ease: "easeInOut" }}
+                      className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
                     />
                   </div>
                 </div>
