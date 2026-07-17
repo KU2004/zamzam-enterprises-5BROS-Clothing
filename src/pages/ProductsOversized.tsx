@@ -1,17 +1,31 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
 import { Seo } from "../components/Seo";
 
-import oversized1 from "../assets/oversized1.jpeg";
-import oversized2 from "../assets/oversized2.jpeg";
-import oversized3 from "../assets/oversized3.jpeg";
-import oversized4 from "../assets/oversized4.jpeg";
-import oversized5 from "../assets/oversized5.jpeg";
+import oversized1Bg from "../assets/oversized1-bg.png";
+import oversized1p2 from "../assets/oversized1p2.png";
+import oversized2Bg from "../assets/oversized2-bg.png";
+import oversized2p2 from "../assets/oversized2p2.png";
+import oversized3Bg from "../assets/oversized3-bg.png";
+import oversized3p2 from "../assets/oversized3p2.png";
+import oversized4Bg from "../assets/oversized4-bg.png";
+import oversized4p2 from "../assets/oversized4p2.png";
+import oversized5Bg from "../assets/oversized5-bg.png";
+import oversized5p2 from "../assets/oversized5p2.png";
 
-const photos = [oversized1, oversized2, oversized3, oversized4, oversized5];
+const photos = [
+  { frontImage: oversized1Bg, hoverImage: oversized1p2 },
+  { frontImage: oversized2Bg, hoverImage: oversized2p2 },
+  { frontImage: oversized3Bg, hoverImage: oversized3p2 },
+  { frontImage: oversized4Bg, hoverImage: oversized4p2 },
+  { frontImage: oversized5Bg, hoverImage: oversized5p2 },
+];
 
 export default function ProductsOversized() {
-  const navigate = useNavigate();
+  const [hovered, setHovered] = useState<number | null>(null);
+
   return (
     <>
       <Seo title="Oversized Clothing Manufacturer India | Streetwear Apparel" description="Order oversized apparel with premium fabrics, custom labels, and low MOQ manufacturing for modern streetwear and retail collections." canonicalPath="/products/oversized" keywords="oversized clothing manufacturer, oversized t shirt manufacturer, streetwear manufacturer india" />
@@ -21,10 +35,8 @@ export default function ProductsOversized() {
             <span className="gold-line" /> Oversized
           </p>
           <div className="mt-6 block overflow-hidden rounded-[2rem] border border-border bg-card p-8 shadow-sm">
-            <Link to="/contact" onClick={() => { try { navigate("/contact"); } catch (e) {} }} aria-label="Contact us about Oversized collection">
-              <h1 className="font-display text-5xl md:text-7xl">Oversized Collection</h1>
-            </Link>
-            <p className="sr-only">This section is not clickable; click any photo to contact us.</p>
+            <h1 className="font-display text-5xl md:text-7xl">Oversized Collection</h1>
+            <p className="sr-only">Browse the oversized styles and request a quote from the dedicated page.</p>
           </div>
           <p className="mt-5 max-w-2xl text-muted-foreground">
             Explore our oversized styles made for relaxed streetwear looks and modern comfort.
@@ -36,29 +48,37 @@ export default function ProductsOversized() {
         <div className="container-luxe">
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {photos.map((src, index) => (
-              <FadeUp key={index} delay={index * 30}>
-                <Link
-                  to="/contact"
-                  aria-label={`Contact us about Oversized photo ${index + 1}`}
-                  className="group block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm"
-                  onClick={() => {
-                    try {
-                      navigate("/contact");
-                    } catch (e) {
-                      /* noop */
-                    }
-                  }}
-                >
-                  <div className="relative w-full overflow-hidden bg-muted h-80 sm:h-96">
-                    <img
-                      src={src}
-                      alt={`Oversized ${index + 1}`}
-                      loading="lazy"
-                      className="w-full h-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100 pointer-events-none" />
-                  </div>
-                </Link>
+              <FadeUp key={index} delay={index * 120}>
+                <div>
+                  <Link
+                    to={`/products/oversized/details/${index + 1}`}
+                    aria-label={`View details for Oversized photo ${index + 1}`}
+                    className="block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm transition-all duration-500"
+                    onMouseEnter={() => setHovered(index)}
+                    onMouseLeave={() => setHovered(null)}
+                  >
+                    <div className="relative w-full overflow-hidden bg-[#A9A9A9] h-80 sm:h-96">
+                      <motion.img
+                        src={src.frontImage}
+                        alt={`Oversized ${index + 1}`}
+                        loading="lazy"
+                        initial={{ opacity: 1, scale: 1 }}
+                        animate={hovered === index ? { opacity: 0, scale: 1.03 } : { opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.45, ease: "easeInOut" }}
+                        className="absolute inset-0 w-full h-full object-contain object-center"
+                      />
+                      <motion.img
+                        src={src.hoverImage}
+                        alt={`Oversized ${index + 1} hover`}
+                        loading="lazy"
+                        initial={{ opacity: 0, scale: 1 }}
+                        animate={hovered === index ? { opacity: 1, scale: 1.03 } : { opacity: 0, scale: 1 }}
+                        transition={{ duration: 0.45, ease: "easeInOut" }}
+                        className="absolute inset-0 w-full h-full object-contain object-center"
+                      />
+                    </div>
+                  </Link>
+                </div>
               </FadeUp>
             ))}
           </div>
