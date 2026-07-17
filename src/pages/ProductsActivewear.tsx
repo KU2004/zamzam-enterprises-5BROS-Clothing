@@ -1,19 +1,37 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
 import { Seo } from "../components/Seo";
 
-import sports1 from "../assets/sports1.jpeg";
-import sports2 from "../assets/sports2.jpeg";
-import sports3 from "../assets/sports3.jpeg";
-import sports4 from "../assets/sports4.jpeg";
-import sports5 from "../assets/sports5.jpeg";
-import sports6 from "../assets/sports6.jpeg";
-import sports7 from "../assets/sports7.jpeg";
+import sports1Bg from "../assets/sports1-bg.png";
+import sports1p2 from "../assets/sports1p2.png";
+import sports2Bg from "../assets/sports2-bg.png";
+import sports2p2 from "../assets/sports2p2.png";
+import sports3Bg from "../assets/sports3-bg.png";
+import sports3p2 from "../assets/sports3p2.png";
+import sports4Bg from "../assets/sports4-bg.png";
+import sports4p2 from "../assets/sports4p2.png";
+import sports5Bg from "../assets/sports5-bg.png";
+import sports5p2 from "../assets/sports5p2.png";
+import sports6Bg from "../assets/sports6-bg.png";
+import sports6p2 from "../assets/sports6p2.png";
+import sports7Bg from "../assets/sports7-bg.png";
+import sports7p2 from "../assets/sports7p2.png";
 
-const photos = [sports1, sports2, sports3, sports4, sports5, sports6, sports7];
+const photos = [
+  { frontImage: sports1Bg, hoverImage: sports1p2, imageClassName: "object-cover object-center scale-[1.0]" },
+  { frontImage: sports2Bg, hoverImage: sports2p2, imageClassName: "object-cover object-center scale-[1.01]" },
+  { frontImage: sports3Bg, hoverImage: sports3p2, imageClassName: "object-cover object-center scale-[1.0]" },
+  { frontImage: sports4Bg, hoverImage: sports4p2, imageClassName: "object-cover object-center scale-[1.0]" },
+  { frontImage: sports5Bg, hoverImage: sports5p2, imageClassName: "object-cover object-center scale-[1.0]" },
+  { frontImage: sports6Bg, hoverImage: sports6p2, imageClassName: "object-cover object-center scale-[1.0]" },
+  { frontImage: sports7Bg, hoverImage: sports7p2, imageClassName: "object-cover object-center scale-[1.0]" },
+];
 
 export default function ProductsActivewear() {
-  const navigate = useNavigate();
+  const [hovered, setHovered] = useState<number | null>(null);
+
   return (
     <>
       <Seo title="Sportswear Manufacturer India | Performance Activewear" description="Custom performance activewear manufacturing for teams, gyms, wellness brands, and retail distribution with flexible production runs." canonicalPath="/products/activewear" keywords="sportswear manufacturer india, activewear manufacturer, gym wear manufacturer, performance clothing supplier" />
@@ -23,7 +41,7 @@ export default function ProductsActivewear() {
             <span className="gold-line" /> Activewear
           </p>
           <div className="mt-6 block overflow-hidden rounded-[2rem] border border-border bg-card p-8 shadow-sm">
-            <Link to="/contact" onClick={() => { try { navigate("/contact"); } catch (e) {} }} aria-label="Contact us about Activewear collection">
+            <Link to="/contact" aria-label="Contact us about Activewear collection">
               <h1 className="font-display text-5xl md:text-7xl">Activewear Collection</h1>
             </Link>
             <p className="sr-only">This section is not clickable; click any photo to contact us.</p>
@@ -40,25 +58,39 @@ export default function ProductsActivewear() {
             {photos.map((src, index) => (
               <FadeUp key={index} delay={index * 30}>
                 <Link
-                  to="/contact"
-                  aria-label={`Contact us about Activewear photo ${index + 1}`}
-                  className="group block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm"
-                  onClick={() => {
-                    try {
-                      navigate("/contact");
-                    } catch (e) {
-                      /* noop */
-                    }
-                  }}
+                  to={`/products/activewear/details/${index + 1}`}
+                  aria-label={`View details for Activewear photo ${index + 1}`}
+                  className="group block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm transition-all duration-500"
+                  onMouseEnter={() => setHovered(index)}
+                  onMouseLeave={() => setHovered(null)}
                 >
-                  <div className="relative w-full overflow-hidden bg-muted h-80 sm:h-96">
-                    <img
-                      src={src}
+                  <div className="relative w-full overflow-hidden bg-[#A9A9A9] h-80 sm:h-96">
+                    <motion.img
+                      src={src.frontImage}
                       alt={`Activewear ${index + 1}`}
                       loading="lazy"
-                      className="w-full h-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
+                      initial={{ opacity: 1, scale: 1 }}
+                      animate={
+                        hovered === index
+                          ? { opacity: 0, scale: 1.12 }
+                          : { opacity: 1, scale: 1 }
+                      }
+                      transition={{ duration: 0.45, ease: "easeInOut" }}
+                      className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100 pointer-events-none" />
+                    <motion.img
+                      src={src.hoverImage}
+                      alt={`Activewear ${index + 1} hover`}
+                      loading="lazy"
+                      initial={{ opacity: 0, scale: 1 }}
+                      animate={
+                        hovered === index
+                          ? { opacity: 1, scale: 1.12 }
+                          : { opacity: 0, scale: 1 }
+                      }
+                      transition={{ duration: 0.45, ease: "easeInOut" }}
+                      className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
+                    />
                   </div>
                 </Link>
               </FadeUp>
