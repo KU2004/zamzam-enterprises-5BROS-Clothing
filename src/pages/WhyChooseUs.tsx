@@ -76,7 +76,9 @@ export default function WhyChooseUs() {
               <span className="gold-line" /> What sets us apart
             </p>
             <h2 className="mt-6 font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-              A manufacturing partner focused on your brand’s success.
+              A manufacturing partner
+              <br />
+              <span className="block sm:whitespace-nowrap">focused on your brand’s success.</span>
             </h2>
             <p className="mt-5 text-base leading-relaxed text-foreground/80">
               We bring together strong production discipline, attentive support, and a deep understanding of apparel brands that want consistency without compromise.
@@ -101,7 +103,50 @@ export default function WhyChooseUs() {
           </div>
         </div>
       </section>
+      <section className="bg-background -mt-8 mb-12">
+        <div className="container-luxe">
+          <FadeUp className="mb-12">
+            <p className="gold-label">
+              <span className="gold-line" /> Our expertise
+            </p>
+            <h2 className="mt-6 font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+              Customization that brings your vision to life.
+            </h2>
+          </FadeUp>
 
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <FadeUp className="rounded-[1.75rem] border border-border bg-gradient-to-br from-gold/10 to-gold/5 p-8 shadow-md">
+              <div className="inline-flex rounded-full border border-gold/30 bg-gold/20 px-4 py-2">
+                <span className="text-sm font-semibold text-gold uppercase tracking-widest">Custom Material Engineering</span>
+              </div>
+              <h3 className="mt-6 font-display text-2xl">Premium fabric, GSM and garment fit</h3>
+              <p className="mt-4 text-sm leading-relaxed text-foreground/80">
+                We source premium materials, specify exact GSM, and engineer the fit, cut, and surface details so every piece feels luxurious and performs to your brand standard.
+              </p>
+            </FadeUp>
+
+            <FadeUp delay={60} className="rounded-[1.75rem] border border-border bg-gradient-to-br from-gold/10 to-gold/5 p-8 shadow-md">
+              <div className="inline-flex rounded-full border border-gold/30 bg-gold/20 px-4 py-2">
+                <span className="text-sm font-semibold text-gold uppercase tracking-widest">Custom Branding & Finish</span>
+              </div>
+              <h3 className="mt-6 font-display text-2xl">Embroidery, labels, and luxe embellishments</h3>
+              <p className="mt-4 text-sm leading-relaxed text-foreground/80">
+                From embroidery and screen print to woven labels, care tags, custom hangtags, and premium packaging, we refine every branded touchpoint for a polished apparel launch.
+              </p>
+            </FadeUp>
+
+            <FadeUp delay={120} className="rounded-[1.75rem] border border-border bg-gradient-to-br from-gold/10 to-gold/5 p-8 shadow-md">
+              <div className="inline-flex rounded-full border border-gold/30 bg-gold/20 px-4 py-2">
+                <span className="text-sm font-semibold text-gold uppercase tracking-widest">Custom Quality & Compliance</span>
+              </div>
+              <h3 className="mt-6 font-display text-2xl">Precision inspection and export readiness</h3>
+              <p className="mt-4 text-sm leading-relaxed text-foreground/80">
+                Every garment is audited for fabric consistency, stitch integrity, color accuracy, label placement, and packaging standards so your collection ships flawless and market-ready.
+              </p>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
       <section className="bg-charcoal py-20 text-charcoal-foreground">
         <div className="container-luxe flex flex-col gap-8 rounded-[2rem] border border-white/10 bg-white/5 p-8 md:flex-row md:items-center md:justify-between md:p-10">
           <div className="max-w-2xl">
