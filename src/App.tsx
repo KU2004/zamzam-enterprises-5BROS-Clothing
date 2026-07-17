@@ -11,6 +11,12 @@ import ProductsOversized from "./pages/ProductsOversized";
 import ProductsHoodies from "./pages/ProductsHoodies";
 import ProductsActivewear from "./pages/ProductsActivewear";
 import ProductsCustomLabel from "./pages/ProductsCustomLabel";
+import ProductPoloDetail from "./pages/ProductPoloDetail";
+import ProductActivewearDetail from "./pages/ProductActivewearDetail";
+import ProductHoodiesDetail from "./pages/ProductHoodiesDetail";
+import ProductOversizedDetail from "./pages/ProductOversizedDetail";
+import ProductCustomLabelDetail from "./pages/ProductCustomLabelDetail";
+import ProductRoundNeckDetail from "./pages/ProductRoundNeckDetail";
 import Infrastructure from "./pages/Infrastructure";
 import Contact from "./pages/Contact";
 import Faqs from "./pages/Faqs";
@@ -43,10 +49,17 @@ function AppContent() {
           <Route path="/products" element={<Products />} />
           <Route path="/products/round-neck" element={<ProductsRoundNeck />} />
           <Route path="/products/polo" element={<ProductsPolo />} />
-          <Route path="/products/oversized" element={<ProductsOversized />} />
-          <Route path="/products/hoodies" element={<ProductsHoodies />} />
+          <Route path="/products/polo/details/:photoId" element={<ProductPoloDetail />} />
           <Route path="/products/activewear" element={<ProductsActivewear />} />
+          <Route path="/products/activewear/details/:photoId" element={<ProductActivewearDetail />} />
+          <Route path="/products/oversized" element={<ProductsOversized />} />
+          <Route path="/products/oversized/details/:photoId" element={<ProductOversizedDetail />} />
+          <Route path="/products/hoodies" element={<ProductsHoodies />} />
+          <Route path="/products/hoodies/details/:photoId" element={<ProductHoodiesDetail />} />
+          <Route path="/products/round-neck" element={<ProductsRoundNeck />} />
+          <Route path="/products/round-neck/details/:photoId" element={<ProductRoundNeckDetail />} />
           <Route path="/products/custom-label" element={<ProductsCustomLabel />} />
+          <Route path="/products/custom-label/details/:photoId" element={<ProductCustomLabelDetail />} />
           <Route path="/infrastructure" element={<Infrastructure />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/faqs" element={<Faqs />} />
