@@ -1,16 +1,27 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
 import { Seo } from "../components/Seo";
 
-import hoodies1 from "../assets/hoodies1.jpeg";
-import hoodies2 from "../assets/hoodies2.jpeg";
-import hoodies3 from "../assets/hoodies3.jpeg";
-import hoodies4 from "../assets/hoodies4.jpeg";
+import hoodies1Bg from "../assets/hoodies1-bg.png";
+import hoodies1p2 from "../assets/hoodies1p2.png";
+import hoodies2Bg from "../assets/hoodies2-bg.png";
+import hoodies2p2 from "../assets/hoodies2p2.png";
+import hoodies3Bg from "../assets/hoodies3-bg.png";
+import hoodies3p2 from "../assets/hoodies3p2.png";
+import hoodies4Bg from "../assets/hoodies4-bg.png";
+import hoodies4p2 from "../assets/hoodies4p2.png";
 
-const photos = [hoodies1, hoodies2, hoodies3, hoodies4];
+const photos = [
+  { frontImage: hoodies1Bg, hoverImage: hoodies1p2 },
+  { frontImage: hoodies2Bg, hoverImage: hoodies2p2 },
+  { frontImage: hoodies3Bg, hoverImage: hoodies3p2 },
+  { frontImage: hoodies4Bg, hoverImage: hoodies4p2 },
+];
 
 export default function ProductsHoodies() {
-  const navigate = useNavigate();
+  const [hovered, setHovered] = useState<number | null>(null);
   return (
     <>
       <Seo title="Hoodie Manufacturer India | Sweatshirt & Fleece Apparel" description="Manufacture premium hoodies and sweatshirts in India with custom GSM, fleece options, embroidery, and private label packaging." canonicalPath="/products/hoodies" keywords="hoodie manufacturer india, sweatshirt manufacturer india, fleece clothing manufacturer, custom hoodie supplier" />
@@ -20,9 +31,7 @@ export default function ProductsHoodies() {
             <span className="gold-line" /> Hoodies
           </p>
           <div className="mt-6 block overflow-hidden rounded-[2rem] border border-border bg-card p-8 shadow-sm">
-            <Link to="/contact" onClick={() => { try { navigate("/contact"); } catch (e) {} }} aria-label="Contact us about Hoodies collection">
-              <h1 className="font-display text-5xl md:text-7xl">Hoodies Collection</h1>
-            </Link>
+            <h1 className="font-display text-5xl md:text-7xl">Hoodies Collection</h1>
             <p className="sr-only">This section is not clickable; click any photo to contact us.</p>
           </div>
           <p className="mt-5 max-w-2xl text-muted-foreground">
@@ -35,29 +44,45 @@ export default function ProductsHoodies() {
         <div className="container-luxe">
           <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {photos.map((src, index) => (
-              <FadeUp key={index} delay={index * 30}>
-                <Link
-                  to="/contact"
-                  aria-label={`Contact us about Hoodies photo ${index + 1}`}
-                  className="group block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm"
-                  onClick={() => {
-                    try {
-                      navigate("/contact");
-                    } catch (e) {
-                      /* noop */
-                    }
-                  }}
-                >
-                  <div className="relative w-full overflow-hidden bg-muted h-80 sm:h-96">
-                    <img
-                      src={src}
-                      alt={`Hoodies ${index + 1}`}
-                      loading="lazy"
-                      className="w-full h-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100 pointer-events-none" />
-                  </div>
-                </Link>
+              <FadeUp key={index} delay={index * 120}>
+                <div>
+                  <Link
+                    to={`/products/hoodies/details/${index + 1}`}
+                    aria-label={`View details for Hoodies photo ${index + 1}`}
+                    className="block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm transition-all duration-500"
+                    onMouseEnter={() => setHovered(index)}
+                    onMouseLeave={() => setHovered(null)}
+                  >
+                    <div className="relative w-full overflow-hidden bg-[#A9A9A9] h-80 sm:h-96">
+                      <motion.img
+                        src={src.frontImage}
+                        alt={`Hoodies ${index + 1}`}
+                        loading="lazy"
+                        initial={{ opacity: 1, scale: 1 }}
+                        animate={
+                          hovered === index
+                            ? { opacity: 0, scale: 1.03 }
+                            : { opacity: 1, scale: 1 }
+                        }
+                        transition={{ duration: 0.45, ease: "easeInOut" }}
+                        className={`absolute inset-0 w-full h-full object-contain object-center`}
+                      />
+                      <motion.img
+                        src={src.hoverImage}
+                        alt={`Hoodies ${index + 1} hover`}
+                        loading="lazy"
+                        initial={{ opacity: 0, scale: 1 }}
+                        animate={
+                          hovered === index
+                            ? { opacity: 1, scale: 1.03 }
+                            : { opacity: 0, scale: 1 }
+                        }
+                        transition={{ duration: 0.45, ease: "easeInOut" }}
+                        className={`absolute inset-0 w-full h-full object-contain object-center`}
+                      />
+                    </div>
+                  </Link>
+                </div>
               </FadeUp>
             ))}
           </div>
