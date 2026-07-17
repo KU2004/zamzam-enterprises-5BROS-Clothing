@@ -37,6 +37,7 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [mobileProductsTapped, setMobileProductsTapped] = useState(false);
   const location = useLocation();
   const path = location.pathname;
   const isWhyChoosePath = path === "/why-choose-us";
@@ -144,7 +145,17 @@ export function Nav() {
                 return (
                   <div key={l.to}>
                     <button
-                      onClick={() => setMobileProductsOpen((v) => !v)}
+                      onClick={() => {
+                        // First tap: open submenu. Second tap within timeout: navigate to /products
+                        if (mobileProductsTapped) {
+                          window.location.assign('/products');
+                          return;
+                        }
+
+                        setMobileProductsOpen((v) => !v);
+                        setMobileProductsTapped(true);
+                        window.setTimeout(() => setMobileProductsTapped(false), 800);
+                      }}
                       className="w-full flex items-center justify-between text-base tracking-[0.12em] text-foreground font-normal"
                     >
                       <span>{l.label}</span>
