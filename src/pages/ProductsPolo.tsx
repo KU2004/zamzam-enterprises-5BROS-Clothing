@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
@@ -43,6 +43,30 @@ const photos = [
 
 export default function ProductsPolo() {
   const [hovered, setHovered] = useState<number | null>(null);
+  const [tapped, setTapped] = useState<number | null>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(hover: none) and (pointer: coarse)");
+    const updateTouchDevice = () => setIsTouchDevice(mediaQuery.matches);
+
+    updateTouchDevice();
+    mediaQuery.addEventListener("change", updateTouchDevice);
+
+    return () => mediaQuery.removeEventListener("change", updateTouchDevice);
+  }, []);
+
+  const handleTouchToggle = (index: number, event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+
+    if (tapped === index) {
+      window.location.assign(`/products/polo/details/${index + 1}`);
+      return;
+    }
+
+    setTapped(index);
+  };
+
   return (
     <>
       <Seo title="Polo T-Shirt Manufacturer India | Custom Polo Shirts" description="Source premium polo shirts from an India-based manufacturer with tailored fits, branding options, and flexible production runs for bulk orders." canonicalPath="/products/polo" keywords="polo t-shirt manufacturer, custom polo manufacturer, corporate polo supplier, bulk polo shirts" />
@@ -74,6 +98,11 @@ export default function ProductsPolo() {
                     className="block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm transition-all duration-500"
                     onMouseEnter={() => setHovered(index)}
                     onMouseLeave={() => setHovered(null)}
+                    onClick={(event) => {
+                      if (isTouchDevice) {
+                        handleTouchToggle(index, event);
+                      }
+                    }}
                   >
                     <div className="relative w-full overflow-hidden bg-[#A9A9A9] h-80 sm:h-96">
                       <motion.img
@@ -82,9 +111,13 @@ export default function ProductsPolo() {
                         loading="lazy"
                         initial={{ opacity: 1, scale: 1 }}
                         animate={
-                          hovered === index
-                            ? { opacity: 0, scale: 1.03 }
-                            : { opacity: 1, scale: 1 }
+                          isTouchDevice
+                            ? tapped === index
+                              ? { opacity: 0, scale: 1.03 }
+                              : { opacity: 1, scale: 1 }
+                            : hovered === index
+                              ? { opacity: 0, scale: 1.03 }
+                              : { opacity: 1, scale: 1 }
                         }
                         transition={{ duration: 0.45, ease: "easeInOut" }}
                         className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
@@ -95,9 +128,13 @@ export default function ProductsPolo() {
                         loading="lazy"
                         initial={{ opacity: 0, scale: 1 }}
                         animate={
-                          hovered === index
-                            ? { opacity: 1, scale: 1.03 }
-                            : { opacity: 0, scale: 1 }
+                          isTouchDevice
+                            ? tapped === index
+                              ? { opacity: 1, scale: 1.03 }
+                              : { opacity: 0, scale: 1 }
+                            : hovered === index
+                              ? { opacity: 1, scale: 1.03 }
+                              : { opacity: 0, scale: 1 }
                         }
                         transition={{ duration: 0.45, ease: "easeInOut" }}
                         className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
