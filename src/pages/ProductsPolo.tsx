@@ -28,17 +28,17 @@ import polo11p2 from "../assets/polo11p2.png";
 import polo11bg from "../assets/polo11-bg.png";
 
 const photos = [
-  { frontImage: polo1, hoverImage: polo1p2 },
-  { frontImage: polo2Bg, hoverImage: polo2p2 },
-  { frontImage: polo3Bg, hoverImage: polo3p2 },
-  { frontImage: polo4Bg, hoverImage: polo4p2 },
-  { frontImage: polo5Bg, hoverImage: polo5p2 },
-  { frontImage: polo6Bg, hoverImage: polo6p2 },
-  { frontImage: polo7Bg, hoverImage: polo7p2 },
-  { frontImage: polo8p2, hoverImage: polo8bg },
-  { frontImage: polo9p2, hoverImage: polo9bg, imageClassName: "object-cover object-center scale-[1.12]" },
-  { frontImage: polo10p2, hoverImage: polo10, imageClassName: "object-cover object-center scale-[1.12]" },
-  { frontImage: polo11p2, hoverImage: polo11bg, imageClassName: "object-cover object-center scale-[1.12]" },
+  { frontImage: polo1, hoverImage: polo1p2, name: "Classic Piqué Polo" },
+  { frontImage: polo2Bg, hoverImage: polo2p2, name: "Modern Slim Polo" },
+  { frontImage: polo3Bg, hoverImage: polo3p2, name: "Performance Polo" },
+  { frontImage: polo4Bg, hoverImage: polo4p2, name: "Premium Dress Polo" },
+  { frontImage: polo5Bg, hoverImage: polo5p2, name: "Street-Style Polo" },
+  { frontImage: polo6Bg, hoverImage: polo6p2, name: "Classic Work Polo" },
+  { frontImage: polo7Bg, hoverImage: polo7p2, name: "Retail Signature Polo" },
+  { frontImage: polo8p2, hoverImage: polo8bg, name: "Custom Event Polo" },
+  { frontImage: polo9p2, hoverImage: polo9bg, imageClassName: "object-cover object-center scale-[1.12]", name: "Signature Premium Polo" },
+  { frontImage: polo10p2, hoverImage: polo10, imageClassName: "object-cover object-center scale-[1.12]", name: "Contemporary Polo" },
+  { frontImage: polo11p2, hoverImage: polo11bg, imageClassName: "object-cover object-center scale-[1.12]", name: "Statement Polo" },
 ];
 
 export default function ProductsPolo() {
@@ -88,61 +88,85 @@ export default function ProductsPolo() {
 
       <section className="py-16 md:py-24 bg-background">
         <div className="container-luxe">
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="hidden md:block">
+            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {photos.map((src, index) => (
+                <FadeUp key={index} delay={index * 120}>
+                  <div>
+                    <Link
+                      to={`/products/polo/details/${index + 1}`}
+                      aria-label={`View details for Polo photo ${index + 1}`}
+                      className="block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm transition-all duration-500"
+                      onMouseEnter={() => setHovered(index)}
+                      onMouseLeave={() => setHovered(null)}
+                      onClick={(event) => {
+                        if (isTouchDevice) {
+                          handleTouchToggle(index, event);
+                        }
+                      }}
+                    >
+                      <div className="relative w-full overflow-hidden bg-[#A9A9A9] h-80 sm:h-96">
+                        <motion.img
+                          src={src.frontImage}
+                          alt={`Polo ${index + 1}`}
+                          loading="lazy"
+                          initial={{ opacity: 1, scale: 1 }}
+                          animate={
+                            isTouchDevice
+                              ? tapped === index
+                                ? { opacity: 0, scale: 1.03 }
+                                : { opacity: 1, scale: 1 }
+                              : hovered === index
+                                ? { opacity: 0, scale: 1.03 }
+                                : { opacity: 1, scale: 1 }
+                          }
+                          transition={{ duration: 0.45, ease: "easeInOut" }}
+                          className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
+                        />
+                        <motion.img
+                          src={src.hoverImage}
+                          alt={`Polo ${index + 1} hover`}
+                          loading="lazy"
+                          initial={{ opacity: 0, scale: 1 }}
+                          animate={
+                            isTouchDevice
+                              ? tapped === index
+                                ? { opacity: 1, scale: 1.03 }
+                                : { opacity: 0, scale: 1 }
+                              : hovered === index
+                                ? { opacity: 1, scale: 1.03 }
+                                : { opacity: 0, scale: 1 }
+                          }
+                          transition={{ duration: 0.45, ease: "easeInOut" }}
+                          className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
+                        />
+                      </div>
+                    </Link>
+                  </div>
+                </FadeUp>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 md:hidden">
             {photos.map((src, index) => (
-              <FadeUp key={index} delay={index * 120}>
-                <div>
-                  <Link
-                    to={`/products/polo/details/${index + 1}`}
-                    aria-label={`View details for Polo photo ${index + 1}`}
-                    className="block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm transition-all duration-500"
-                    onMouseEnter={() => setHovered(index)}
-                    onMouseLeave={() => setHovered(null)}
-                    onClick={(event) => {
-                      if (isTouchDevice) {
-                        handleTouchToggle(index, event);
-                      }
-                    }}
-                  >
-                    <div className="relative w-full overflow-hidden bg-[#A9A9A9] h-80 sm:h-96">
-                      <motion.img
-                        src={src.frontImage}
-                        alt={`Polo ${index + 1}`}
-                        loading="lazy"
-                        initial={{ opacity: 1, scale: 1 }}
-                        animate={
-                          isTouchDevice
-                            ? tapped === index
-                              ? { opacity: 0, scale: 1.03 }
-                              : { opacity: 1, scale: 1 }
-                            : hovered === index
-                              ? { opacity: 0, scale: 1.03 }
-                              : { opacity: 1, scale: 1 }
-                        }
-                        transition={{ duration: 0.45, ease: "easeInOut" }}
-                        className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
-                      />
-                      <motion.img
-                        src={src.hoverImage}
-                        alt={`Polo ${index + 1} hover`}
-                        loading="lazy"
-                        initial={{ opacity: 0, scale: 1 }}
-                        animate={
-                          isTouchDevice
-                            ? tapped === index
-                              ? { opacity: 1, scale: 1.03 }
-                              : { opacity: 0, scale: 1 }
-                            : hovered === index
-                              ? { opacity: 1, scale: 1.03 }
-                              : { opacity: 0, scale: 1 }
-                        }
-                        transition={{ duration: 0.45, ease: "easeInOut" }}
-                        className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
-                      />
-                    </div>
-                  </Link>
+              <Link
+                key={index}
+                to={`/products/polo/details/${index + 1}`}
+                aria-label={`View details for Polo photo ${index + 1}`}
+                className="block"
+              >
+                <div className="overflow-hidden rounded-[1rem] border border-border bg-card">
+                  <div className="relative w-full overflow-hidden bg-[#A9A9A9] min-h-[220px] sm:min-h-[260px]">
+                    <img
+                      src={src.frontImage}
+                      alt={`Polo ${index + 1}`}
+                      loading="lazy"
+                      className={`w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
+                    />
+                  </div>
                 </div>
-              </FadeUp>
+              </Link>
             ))}
           </div>
         </div>
