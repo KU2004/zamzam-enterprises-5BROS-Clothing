@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
@@ -25,6 +25,18 @@ const photos = [
 
 export default function ProductsOversized() {
   const [hovered, setHovered] = useState<number | null>(null);
+  const [mobileTapped, setMobileTapped] = useState<number | null>(null);
+
+  const handleMobileTapToggle = (index: number, event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+
+    if (mobileTapped === index) {
+      window.location.assign(`/products/oversized/details/${index + 1}`);
+      return;
+    }
+
+    setMobileTapped(index);
+  };
 
   return (
     <>
@@ -36,7 +48,7 @@ export default function ProductsOversized() {
           </p>
           <div className="mt-6 block overflow-hidden rounded-[2rem] border border-border bg-card p-8 shadow-sm">
             <h1 className="font-display text-5xl md:text-7xl">Oversized Collection</h1>
-            <p className="sr-only">Browse the oversized styles and request a quote from the dedicated page.</p>
+            <p className="sr-only">Browse the product details and request a quote from the dedicated page.</p>
           </div>
           <p className="mt-5 max-w-2xl text-muted-foreground">
             Explore our oversized styles made for relaxed streetwear looks and modern comfort.
@@ -46,40 +58,77 @@ export default function ProductsOversized() {
 
       <section className="py-16 md:py-24 bg-background">
         <div className="container-luxe">
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="hidden md:block">
+            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {photos.map((src, index) => (
+                <FadeUp key={index} delay={index * 120}>
+                  <div>
+                    <Link
+                      to={`/products/oversized/details/${index + 1}`}
+                      aria-label={`View details for Oversized photo ${index + 1}`}
+                      className="block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm transition-all duration-500"
+                      onMouseEnter={() => setHovered(index)}
+                      onMouseLeave={() => setHovered(null)}
+                    >
+                      <div className="relative w-full overflow-hidden bg-[#A9A9A9] h-80 sm:h-96">
+                        <motion.img
+                          src={src.frontImage}
+                          alt={`Oversized ${index + 1}`}
+                          loading="lazy"
+                          initial={{ opacity: 1, scale: 1 }}
+                          animate={hovered === index ? { opacity: 0, scale: 1.03 } : { opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.45, ease: "easeInOut" }}
+                          className="absolute inset-0 w-full h-full object-contain object-center"
+                        />
+                        <motion.img
+                          src={src.hoverImage}
+                          alt={`Oversized ${index + 1} hover`}
+                          loading="lazy"
+                          initial={{ opacity: 0, scale: 1 }}
+                          animate={hovered === index ? { opacity: 1, scale: 1.03 } : { opacity: 0, scale: 1 }}
+                          transition={{ duration: 0.45, ease: "easeInOut" }}
+                          className="absolute inset-0 w-full h-full object-contain object-center"
+                        />
+                      </div>
+                    </Link>
+                  </div>
+                </FadeUp>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 md:hidden">
             {photos.map((src, index) => (
-              <FadeUp key={index} delay={index * 120}>
-                <div>
-                  <Link
-                    to={`/products/oversized/details/${index + 1}`}
-                    aria-label={`View details for Oversized photo ${index + 1}`}
-                    className="block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm transition-all duration-500"
-                    onMouseEnter={() => setHovered(index)}
-                    onMouseLeave={() => setHovered(null)}
-                  >
-                    <div className="relative w-full overflow-hidden bg-[#A9A9A9] h-80 sm:h-96">
-                      <motion.img
-                        src={src.frontImage}
-                        alt={`Oversized ${index + 1}`}
-                        loading="lazy"
-                        initial={{ opacity: 1, scale: 1 }}
-                        animate={hovered === index ? { opacity: 0, scale: 1.03 } : { opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.45, ease: "easeInOut" }}
-                        className="absolute inset-0 w-full h-full object-contain object-center"
-                      />
-                      <motion.img
-                        src={src.hoverImage}
-                        alt={`Oversized ${index + 1} hover`}
-                        loading="lazy"
-                        initial={{ opacity: 0, scale: 1 }}
-                        animate={hovered === index ? { opacity: 1, scale: 1.03 } : { opacity: 0, scale: 1 }}
-                        transition={{ duration: 0.45, ease: "easeInOut" }}
-                        className="absolute inset-0 w-full h-full object-contain object-center"
-                      />
-                    </div>
-                  </Link>
+              <Link
+                key={index}
+                to={`/products/oversized/details/${index + 1}`}
+                aria-label={`View details for Oversized photo ${index + 1}`}
+                className="block"
+                onClick={(event) => handleMobileTapToggle(index, event)}
+              >
+                <div className="overflow-hidden rounded-[1rem] border border-border bg-card">
+                  <div className="relative w-full overflow-hidden bg-[#A9A9A9] aspect-[2/3]">
+                    <motion.img
+                      src={src.frontImage}
+                      alt={`Oversized ${index + 1}`}
+                      loading="lazy"
+                      initial={{ opacity: 1, scale: 1 }}
+                      animate={mobileTapped === index ? { opacity: 0, scale: 1.03 } : { opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.45, ease: "easeInOut" }}
+                      className="absolute inset-0 w-full h-full object-contain object-center"
+                    />
+                    <motion.img
+                      src={src.hoverImage}
+                      alt={`Oversized ${index + 1} hover`}
+                      loading="lazy"
+                      initial={{ opacity: 0, scale: 1 }}
+                      animate={mobileTapped === index ? { opacity: 1, scale: 1.03 } : { opacity: 0, scale: 1 }}
+                      transition={{ duration: 0.45, ease: "easeInOut" }}
+                      className="absolute inset-0 w-full h-full object-contain object-center"
+                    />
+                  </div>
                 </div>
-              </FadeUp>
+              </Link>
             ))}
           </div>
         </div>
