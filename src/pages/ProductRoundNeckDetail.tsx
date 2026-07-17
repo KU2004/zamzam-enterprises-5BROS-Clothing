@@ -701,14 +701,6 @@ export default function ProductRoundNeckDetail() {
           </div>
         </div>
       </section>
-
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/95 px-4 py-3 shadow-[0_-8px_30px_rgba(0,0,0,0.08)] backdrop-blur lg:hidden">
-        <div className="mx-auto flex max-w-xl items-center gap-3">
-          <Link to="/contact" className="flex-1 rounded-full bg-charcoal px-4 py-3 text-center text-sm font-semibold text-white">
-            Get Quote
-          </Link>
-        </div>
-      </div>
     </>
   );
 }
