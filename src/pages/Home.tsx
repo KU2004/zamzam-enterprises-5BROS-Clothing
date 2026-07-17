@@ -6,6 +6,7 @@ import {
   CheckCircle2,
   Globe2,
   Headphones,
+  Layers,
   Package,
   Sparkles,
   Truck,
@@ -106,6 +107,7 @@ const why = [
   { icon: Sparkles, title: "Premium Materials", desc: "Hand-picked yarns and certified fabrics." },
   { icon: Package, title: "Low MOQ", desc: "Flexible order quantities for emerging brands." },
   { icon: Award, title: "Private Label", desc: "Full OEM & ODM with your branding." },
+  { icon: Layers, title: "Apparel Customization", desc: "Tailored fabrics, trims, labels, and finishes for your unique collection." },
   { icon: Headphones, title: "Dedicated Manager", desc: "One point of contact, always." },
   { icon: CheckCircle2, title: "Fast Turnaround", desc: "Pilot in weeks, scale in months." },
   { icon: Globe2, title: "Export Ready", desc: "MSME, GST, DGFT & AEPC certified." },
@@ -441,7 +443,7 @@ export default function Home() {
               <p className="mt-6 text-foreground text-base leading-relaxed">
                 An apparel manufacturer based in India, specialising in custom t-shirts,
                 uniforms and private label manufacturing for international businesses.
-                Experience of textile know-how, delivered through one disciplined
+                Two decades of textile know-how, delivered through one disciplined
                 supply chain.
               </p>
               <Link to="/about" className="mt-8 inline-flex items-center gap-2 px-6 py-2 bg-gold text-charcoal text-sm font-semibold rounded-full hover:bg-gold-soft transition-all">
