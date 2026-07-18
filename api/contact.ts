@@ -40,7 +40,7 @@ export default async function handler(req: any, res: any) {
 
     await transporter.sendMail({
       from: `"5BROS Website" <${process.env.SMTP_USER}>`,
-      to: process.env.EMAIL_TO,
+      to: process.env.EMAIL_TO?.split(",").map(email => email.trim()),
       subject: "🚀 New Inquiry - 5BROS Clothing",
       html: `
         <h2>New Inquiry</h2>
