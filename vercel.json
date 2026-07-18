@@ -19,8 +19,7 @@
       "source": "/contact.html",
       "destination": "/contact",
       "permanent": true
-    }
-    ,
+    },
     {
       "source": "/about.php",
       "destination": "/about",
@@ -39,6 +38,51 @@
     {
       "source": "/about.html",
       "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/products.php",
+      "destination": "/products",
+      "permanent": true
+    },
+    {
+      "source": "/products.html",
+      "destination": "/products",
+      "permanent": true
+    },
+    {
+      "source": "/product/:path*",
+      "destination": "/products/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/products-activewear",
+      "destination": "/products-activewear",
+      "permanent": true
+    },
+    {
+      "source": "/products-custom-label",
+      "destination": "/products-custom-label",
+      "permanent": true
+    },
+    {
+      "source": "/products-hoodies",
+      "destination": "/products-hoodies",
+      "permanent": true
+    },
+    {
+      "source": "/products-oversized",
+      "destination": "/products-oversized",
+      "permanent": true
+    },
+    {
+      "source": "/products-polo",
+      "destination": "/products-polo",
+      "permanent": true
+    },
+    {
+      "source": "/products-round-neck",
+      "destination": "/products-round-neck",
       "permanent": true
     }
   ],
