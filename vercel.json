@@ -46,6 +46,11 @@
       "permanent": true
     },
     {
+      "source": "/product-details.php",
+      "destination": "/products",
+      "permanent": true
+    },
+    {
       "source": "/products.html",
       "destination": "/products",
       "permanent": true
