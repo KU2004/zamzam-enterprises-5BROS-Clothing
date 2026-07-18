@@ -48,6 +48,42 @@
       "destination": "/api/$1"
     },
     {
+      "source": "/assets/(.*)",
+      "destination": "/assets/$1"
+    },
+    {
+      "source": "/favicon.ico",
+      "destination": "/favicon.ico"
+    },
+    {
+      "source": "/logo.png",
+      "destination": "/logo.png"
+    },
+    {
+      "source": "/apple-touch-icon.png",
+      "destination": "/apple-touch-icon.png"
+    },
+    {
+      "source": "/manifest.webmanifest",
+      "destination": "/manifest.webmanifest"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/image-sitemap.xml",
+      "destination": "/image-sitemap.xml"
+    },
+    {
+      "source": "/video-sitemap.xml",
+      "destination": "/video-sitemap.xml"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
