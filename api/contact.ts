@@ -66,16 +66,14 @@ export default async function handler(req: any, res: any) {
     });
 
     return res.status(200).json({ success: true });
-  } catch (err) {
-    console.error(err);
-catch (err: any) {
-  console.error("API ERROR:", err);
 
-  return res.status(500).json({
-    success: false,
-    message: err.message,
-    stack: err.stack,
-  });
-}  
+  } catch (err: any) {
+    console.error("API ERROR:", err);
+
+    return res.status(500).json({
+      success: false,
+      error: err?.message || "Server Error",
+      stack: process.env.NODE_ENV === "development" ? err?.stack : undefined,
+    });
+  }
 }
-
