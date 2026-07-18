@@ -34,4 +34,60 @@
   <url><loc>https://www.5brosclothing.com/blog/private-label-clothing-guide</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://www.5brosclothing.com/blog/oem-vs-odm-manufacturing</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://www.5brosclothing.com/blog/best-clothing-manufacturer-in-india</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <!-- Product detail pages -->
+  <!-- Round Neck (8 items) -->
+  <url><loc>https://www.5brosclothing.com/products/round-neck/details/1</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/round-neck/details/2</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/round-neck/details/3</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/round-neck/details/4</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/round-neck/details/5</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/round-neck/details/6</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/round-neck/details/7</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/round-neck/details/8</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Polo (11 items) -->
+  <url><loc>https://www.5brosclothing.com/products/polo/details/1</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/polo/details/2</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/polo/details/3</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/polo/details/4</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/polo/details/5</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/polo/details/6</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/polo/details/7</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/polo/details/8</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/polo/details/9</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/polo/details/10</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/polo/details/11</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Oversized (5 items) -->
+  <url><loc>https://www.5brosclothing.com/products/oversized/details/1</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/oversized/details/2</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/oversized/details/3</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/oversized/details/4</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/oversized/details/5</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Hoodies (4 items) -->
+  <url><loc>https://www.5brosclothing.com/products/hoodies/details/1</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/hoodies/details/2</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/hoodies/details/3</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/hoodies/details/4</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Activewear (7 items) -->
+  <url><loc>https://www.5brosclothing.com/products/activewear/details/1</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/activewear/details/2</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/activewear/details/3</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/activewear/details/4</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/activewear/details/5</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/activewear/details/6</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/activewear/details/7</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Custom Label (9 items) -->
+  <url><loc>https://www.5brosclothing.com/products/custom-label/details/1</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/custom-label/details/2</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/custom-label/details/3</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/custom-label/details/4</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/custom-label/details/5</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/custom-label/details/6</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/custom-label/details/7</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/custom-label/details/8</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.5brosclothing.com/products/custom-label/details/9</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
