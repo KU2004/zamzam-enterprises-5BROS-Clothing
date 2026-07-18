@@ -1,4 +1,26 @@
 {
+  "redirects": [
+    {
+      "source": "/contact.php",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/contactus",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",
