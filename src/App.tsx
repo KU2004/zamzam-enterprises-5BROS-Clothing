@@ -28,6 +28,7 @@ import { FloatingSocialButtons } from "./components/FloatingSocialButtons";
 import { BackToTopButton } from "./components/BackToTopButton";
 import CountryLandingPage from "./pages/CountryLandingPage";
 import BlogPage from "./pages/BlogPage";
+import ExportLandingPagePremium from "./pages/ExportLandingPage";
 import NotFound from "./pages/NotFound";
 
 function AppContent() {
@@ -44,6 +45,7 @@ function AppContent() {
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/exportlandingpage" element={<ExportLandingPagePremium />} />
           <Route path="/about" element={<About />} />
           <Route path="/why-choose-us" element={<WhyChooseUs />} />
           <Route path="/products" element={<Products />} />
