@@ -126,7 +126,17 @@ const phoneCountries = [
   { value: "+239", label: "São Tomé and Príncipe", flag: null },
 ];
 
-export default function Contact() {
+type ContactProps = {
+  title?: string;
+  description?: string;
+  submitLabel?: string;
+};
+
+export default function Contact({
+  title = "Contact Us",
+  description = "Have questions about products, bulk orders, or partnerships? Our team is happy to assist you.",
+  submitLabel = "Send Inquiry",
+}: ContactProps) {
   const [sent, setSent] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [selectedPhoneCountry, setSelectedPhoneCountry] =
@@ -221,12 +231,11 @@ export default function Contact() {
             <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-sm p-10 border border-gray-200">
               <div className="text-center mb-12">
                 <h2 className="text-5xl font-bold text-[#1d2b4f]">
-                  Contact Us
+                  {title}
                 </h2>
 
                 <p className="mt-4 text-gray-600 text-lg">
-                  Have questions about products, bulk orders, or partnerships?
-                  Our team is happy to assist you.
+                  {description}
                 </p>
               </div>
 
@@ -381,7 +390,7 @@ export default function Contact() {
                   className="bg-[#0F2B5B] text-white px-10 py-4 rounded font-semibold hover:bg-[#173d78] transition"
                 >
                   <span className="font-semibold">
-                    {sent ? "Inquiry Submitted" : "Send Inquiry"}
+                    {sent ? "Inquiry Submitted" : submitLabel}
                   </span>
                 </button>
 
