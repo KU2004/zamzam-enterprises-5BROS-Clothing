@@ -78,7 +78,7 @@ export default function ExportLandingPage() {
       <Seo
         title="Export Landing Page | 5BROS Clothing"
         description="Manufacturing premium private label, OEM, ODM and export-ready apparel for global brands from India."
-        canonicalPath="/exportlandingpage"
+        canonicalPath="/export"
         keywords="custom clothing manufacturer india, private label clothing manufacturer, export clothing manufacturer"
         locale="en_IN"
         section="Export"
@@ -261,6 +261,7 @@ export default function ExportLandingPage() {
       <section className="py-24 md:py-32 bg-background">
         <div className="container-luxe">
           <Contact
+            showSeo={false}
             title="Get Your Export Quote"
             description="Share your brief, target market and product requirements so our export team can prepare the right quotation and next steps."
             submitLabel="Request Export Quote"
