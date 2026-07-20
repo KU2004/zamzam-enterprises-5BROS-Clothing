@@ -78,7 +78,7 @@ export default function ExportLandingPage() {
       <Seo
         title="Export Landing Page | 5BROS Clothing"
         description="Manufacturing premium private label, OEM, ODM and export-ready apparel for global brands from India."
-        canonicalPath="/export"
+        canonicalPath="/exportlandingpage"
         keywords="custom clothing manufacturer india, private label clothing manufacturer, export clothing manufacturer"
         locale="en_IN"
         section="Export"
