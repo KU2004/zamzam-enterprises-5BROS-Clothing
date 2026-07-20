@@ -127,12 +127,14 @@ const phoneCountries = [
 ];
 
 type ContactProps = {
+  showSeo?: boolean;
   title?: string;
   description?: string;
   submitLabel?: string;
 };
 
 export default function Contact({
+  showSeo = true,
   title = "Contact Us",
   description = "Have questions about products, bulk orders, or partnerships? Our team is happy to assist you.",
   submitLabel = "Send Inquiry",
@@ -217,7 +219,14 @@ export default function Contact({
 
   return (
     <>
-      <Seo title="Contact 5BROS Clothing | Request a Quote" description="Request a quote for custom clothing manufacturing, private label apparel, uniforms, and bulk production from 5BROS Clothing." canonicalPath="/contact" keywords="contact clothing manufacturer india, request quote apparel manufacturer, manufacturing enquiry" />
+      {showSeo && (
+        <Seo
+          title="Contact 5BROS Clothing | Request a Quote"
+          description="Request a quote for custom clothing manufacturing, private label apparel, uniforms, and bulk production from 5BROS Clothing."
+          canonicalPath="/contact"
+          keywords="contact clothing manufacturer india, request quote apparel manufacturer, manufacturing enquiry"
+        />
+      )}
       <section className="py-24 md:py-32 relative overflow-hidden">
         <div 
           className="absolute inset-0 border-2 border-border pointer-events-none"
