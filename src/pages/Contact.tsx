@@ -285,7 +285,7 @@ export default function Contact({
                       <PopoverTrigger asChild>
                         <button
                           type="button"
-                          className="flex items-center gap-2 border border-gray-300 rounded-l-md px-3 h-12 bg-white min-w-[120px] text-left text-sm text-gray-700"
+                          className="flex items-center gap-0 border border-gray-300 rounded-l-md px-3 h-12 bg-white min-w-[120px] text-left text-sm text-gray-700"
                         >
                           {selectedFlag ? (
                             <img
