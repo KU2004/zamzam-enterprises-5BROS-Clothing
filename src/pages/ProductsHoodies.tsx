@@ -40,15 +40,8 @@ export default function ProductsHoodies() {
       <Seo title="Hoodie Manufacturer India | Sweatshirt & Fleece Apparel" description="Manufacture premium hoodies and sweatshirts in India with custom GSM, fleece options, embroidery, and private label packaging." canonicalPath="/products/hoodies" keywords="hoodie manufacturer india, sweatshirt manufacturer india, fleece clothing manufacturer, custom hoodie supplier" />
       <section className="pt-40 pb-16 bg-muted/30 border-b border-border">
         <div className="container-luxe">
-          <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
+          <p className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.32em] text-gold flex items-center gap-3">
             <span className="gold-line" /> Hoodies
-          </p>
-          <div className="mt-6 block overflow-hidden rounded-[2rem] border border-border bg-card p-8 shadow-sm">
-            <h1 className="font-display text-5xl md:text-7xl">Hoodies Collection</h1>
-            <p className="sr-only">Browse the product details and request a quote from the dedicated page.</p>
-          </div>
-          <p className="mt-5 max-w-2xl text-muted-foreground">
-            Discover premium hoodies built for warmth, comfort, and standout branding.
           </p>
         </div>
       </section>
