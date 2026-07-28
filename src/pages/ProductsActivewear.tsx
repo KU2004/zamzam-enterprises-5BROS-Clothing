@@ -49,15 +49,8 @@ export default function ProductsActivewear() {
       <Seo title="Sportswear Manufacturer India | Performance Activewear" description="Custom performance activewear manufacturing for teams, gyms, wellness brands, and retail distribution with flexible production runs." canonicalPath="/products/activewear" keywords="sportswear manufacturer india, activewear manufacturer, gym wear manufacturer, performance clothing supplier" />
       <section className="pt-40 pb-16 bg-muted/30 border-b border-border">
         <div className="container-luxe">
-          <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
+          <p className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.32em] text-gold flex items-center gap-3">
             <span className="gold-line" /> Activewear
-          </p>
-          <div className="mt-6 block overflow-hidden rounded-[2rem] border border-border bg-card p-8 shadow-sm">
-            <h1 className="font-display text-5xl md:text-7xl">Activewear Collection</h1>
-            <p className="sr-only">Browse the product details and request a quote from the dedicated page.</p>
-          </div>
-          <p className="mt-5 max-w-2xl text-muted-foreground">
-            Browse our performance apparel developed for sports teams, training programs and active lifestyle brands.
           </p>
         </div>
       </section>
