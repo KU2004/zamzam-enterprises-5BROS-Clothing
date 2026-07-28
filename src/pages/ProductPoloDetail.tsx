@@ -27,7 +27,7 @@ import polo11p2 from "../assets/polo11p2.png";
 
 const productVariants = [
   {
-    id: 1,
+    id: 6,
     title: "Classic Piqué Polo",
     subtitle: "Structured collar and premium finish for smart-casual and corporate wear.",
     image: polo1,
@@ -51,7 +51,7 @@ const productVariants = [
     ],
   },
   {
-    id: 2,
+    id: 7,
     title: "Modern Slim Polo",
     subtitle: "A tailored silhouette suited for fashion retail and premium branding programs.",
     image: polo2bg,
@@ -76,7 +76,7 @@ const productVariants = [
     ],
   },
   {
-    id: 3,
+    id: 8,
     title: "Performance Polo",
     subtitle: "A breathable, dependable option for activewear-inspired corporate and event apparel.",
     image: polo3bg,
@@ -101,7 +101,7 @@ const productVariants = [
     ],
   },
   {
-    id: 4,
+    id: 9,
     title: "Premium Dress Polo",
     subtitle: "A sharper option for executive wear, hospitality, and formal branding.",
     image: polo4bg,
@@ -126,7 +126,7 @@ const productVariants = [
     ],
   },
   {
-    id: 5,
+    id: 10,
     title: "Street-Style Polo",
     subtitle: "Casual yet polished for lifestyle collections and brand campaigns.",
     image: polo5bg,
@@ -151,7 +151,7 @@ const productVariants = [
     ],
   },
   {
-    id: 6,
+    id: 11,
     title: "Classic Work Polo",
     subtitle: "Durable and professional for uniforms, training, and field teams.",
     image: polo6bg,
@@ -176,7 +176,7 @@ const productVariants = [
     ],
   },
   {
-    id: 7,
+    id: 1,
     title: "Retail Signature Polo",
     subtitle: "A polished everyday polo for retail stores and merchandising programs.",
     image: polo7bg,
@@ -201,7 +201,7 @@ const productVariants = [
     ],
   },
   {
-    id: 8,
+    id: 3,
     title: "Custom Event Polo",
     subtitle: "A versatile option for events, giveaways, and brand activations.",
     image: polo8p2,
@@ -226,7 +226,7 @@ const productVariants = [
     ],
   },
   {
-    id: 9,
+    id: 2,
     title: "Signature Premium Polo",
     subtitle: "A refined option for premium retail and elevated lifestyle apparel programs.",
     image: polo9p2,
@@ -251,7 +251,7 @@ const productVariants = [
     ],
   },
   {
-    id: 10,
+    id: 4,
     title: "Contemporary Polo",
     subtitle: "Modern styling with clean lines for fashion-led and promotional programs.",
     image: polo10p2,
@@ -276,7 +276,7 @@ const productVariants = [
     ],
   },
   {
-    id: 11,
+    id: 5,
     title: "Statement Polo",
     subtitle: "A bold option for branded apparel, team uniforms, and fashion-forward campaigns.",
     image: polo11p2,
