@@ -29,12 +29,12 @@ import processImg from "../assets/Process.png";
 import pPolo from "../assets/product-polo.jpg";
 import pOver from "../assets/product-oversized.jpg";
 import pHood from "../assets/product-hoodie.jpg";
-import roundneck6 from "../assets/roundneck6.jpeg";
+import thumbnail1 from "../assets/thumbnail1.jpeg";
 import roundneck7 from "../assets/roundneck7.jpeg";
-import polo5 from "../assets/polo5.jpeg";
-import polo4 from "../assets/polo4.jpeg";
-import hoodies2 from "../assets/hoodies2.jpeg";
-import oversized3 from "../assets/oversized3.jpeg";
+import thumbnail6 from "../assets/thumbnail6.jpeg";
+import thumbnail4 from "../assets/thumbnail4.jpeg";
+import thumbnail3 from "../assets/thumbnail3.jpeg";
+import thumbnail5 from "../assets/thumbnail5.jpeg";
 import pUni from "../assets/product-uniform.jpg";
 import pSport from "../assets/product-sports.jpg";
 import video1 from "../videos/video1.mp4";
@@ -122,7 +122,7 @@ export default function Home() {
   const [slide, setSlide] = useState(0);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   // Thumbnails chosen from assets (distinct from product grid images)
-  const thumbnails = [roundneck6, polo5, hoodies2, oversized3, roundneck7, polo4];
+  const thumbnails = [thumbnail1, roundneck7, thumbnail3, thumbnail4, thumbnail5, thumbnail6];
   const [isPlaying, setIsPlaying] = useState<boolean[]>(() => Array(videos.length).fill(false));
   const currentFsIndex = useRef<number | null>(null);
   const [overlayIndex, setOverlayIndex] = useState<number | null>(null);
@@ -131,8 +131,7 @@ export default function Home() {
   const [overlayMenuOpen, setOverlayMenuOpen] = useState(false);
   const [overlayQualityLabel, setOverlayQualityLabel] = useState<string | null>(null);
   const [qualityMenuIndex, setQualityMenuIndex] = useState<number | null>(null);
-  const [qualityLabelMap, setQualityLabelMap] = useState<Record<number, string>>({});
-
+  const [qualityLabelMap, setQualityLabelMap] = useState<Record<number, string>>({});  const [globalMuted, setGlobalMuted] = useState(true);
   // quality variants per video index. Replace src values with real files if available.
   const qualityVariants: Record<number, { label: string; src: string }[]> = videos.reduce((acc, src, i) => {
     acc[i] = [
@@ -141,12 +140,6 @@ export default function Home() {
     ];
     return acc;
   }, {} as Record<number, { label: string; src: string }[]>);
-
-  
-
-  
-
-  
 
   useEffect(() => {
     const id = setInterval(() => setSlide((s) => (s + 1) % slides.length), 6000);
@@ -303,12 +296,17 @@ export default function Home() {
             <video
               ref={(el) => {
                 overlayVideoRef.current = el;
-                if (el) { el.muted = true; }
+                if (el) {
+                  el.muted = globalMuted;
+                  if (!globalMuted) {
+                    el.volume = 1;
+                  }
+                }
               }}
               src={overlaySrc ?? (overlayIndex !== null ? videos[overlayIndex] : undefined)}
               controls
               autoPlay
-              muted
+              muted={globalMuted}
               playsInline
               className="w-full h-full object-cover"
               onEnded={() => {
@@ -321,7 +319,29 @@ export default function Home() {
             />
 
             {/* Quality menu button */}
-            <div className="absolute top-3 right-12 z-40">
+            <div className="absolute top-3 right-12 z-40 flex items-center gap-2">
+              <button
+                aria-label={globalMuted ? "Enable sound" : "Mute video"}
+                onClick={() => {
+                  setGlobalMuted((muted) => {
+                    const next = !muted;
+                    const ov = overlayVideoRef.current;
+                    if (ov) {
+                      ov.muted = next;
+                      if (!next) {
+                        ov.volume = 1;
+                      }
+                    }
+                    return next;
+                  });
+                }}
+                className="rounded-full bg-black/30 text-white p-2 min-h-[40px] min-w-[40px] flex items-center justify-center"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 9h4l5-5v16l-5-5H5V9Z" fill="white" />
+                  {globalMuted ? null : <path d="M17 7l4 5-4 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />}
+                </svg>
+              </button>
               <button
                 aria-label="Quality"
                 onClick={() => setOverlayMenuOpen((v) => !v)}
@@ -385,52 +405,8 @@ export default function Home() {
         </div>
       )}
 
-      {/* BRANDS */}
-      {/* Mobile: compact single-line logos (visible on mobile only) */}
-      <section id="brands-mobile" className="block lg:hidden pt-8 pb-12 bg-background border-b border-transparent">
-        <div className="container-luxe">
-          <div className="mb-6">
-            <p className="gold-label">Our Brands</p>
-          </div>
-          <div className="px-0">
-            <div className="flex gap-3 items-center">
-              <div className="w-1/5 flex items-center justify-center">
-                <img src={brand1} alt="Brand 1" className="w-full h-auto object-contain" loading="lazy" />
-              </div>
-              <div className="w-1/3 flex items-center justify-center">
-                <img src={brand3} alt="Brand 3" className="w-full h-auto object-contain" loading="lazy" />
-              </div>
-              <div className="w-1/3 flex items-center justify-center">
-                <img src={brand2} alt="Brand 2" className="w-full h-auto object-contain" loading="lazy" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="brands" className="hidden lg:block pt-16 pb-20 md:pt-24 md:pb-20 bg-background">
-        <div className="container-luxe">
-          <div className="max-w-3xl">
-            <p className="gold-label">Our Brands</p>
-          </div>
-          <div className="mt-10 overflow-x-auto">
-            <div className="flex gap-10 items-center justify-center">
-              <div className="flex-shrink-0 h-36 w-72 flex items-center justify-center">
-                <img src={brand1} alt="Brand 1" className="max-h-full max-w-full object-contain" loading="lazy" />
-              </div>
-              <div className="flex-shrink-0 h-36 w-72 flex items-center justify-center">
-                <img src={brand3} alt="Brand 3" className="max-h-full max-w-full object-contain" loading="lazy" />
-              </div>
-              <div className="flex-shrink-0 h-36 w-72 flex items-center justify-center">
-                <img src={brand2} alt="Brand 2" className="max-h-full max-w-full object-contain" loading="lazy" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* OVERVIEW */}
-      <section id="about" className="pt-2 pb-28 md:pt-2 md:pb-36 bg-background">
+      <section id="about" className="pt-24 pb-28 md:pt-28 md:pb-36 bg-background">
         <div className="container-luxe grid gap-12 lg:grid-cols-2 items-center">
           <div>
             <FadeUp>
@@ -472,8 +448,181 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PRODUCT CATEGORIES */}
+      <section id="products" className="py-28 md:py-36 bg-muted/40">
+        <div className="container-luxe">
+          <FadeUp className="max-w-2xl">
+            <p className="gold-label">
+              <span className="gold-line" /> Collections
+            </p>
+
+            <h2 className="mt-6 font-display text-4xl md:text-5xl font-bold">
+              Product Categories
+            </h2>
+
+            <p className="mt-5 text-foreground">
+              A complete catalogue of essentials, athletic and corporate apparel —
+              fully customisable.
+            </p>
+          </FadeUp>
+
+          <div className="mt-16 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+            {products.map((p, i) => (
+              <FadeUp key={p.name} delay={i * 80}>
+                <Link
+                  to={p.href}
+                  className="group block"
+                >
+                  <div className="relative aspect-4/5 overflow-hidden bg-muted">
+                    <img
+                      src={p.img}
+                      alt={p.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                    />
+
+                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+
+                    <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                      <span className="inline-flex items-center gap-2 bg-gold px-4 py-2 text-[10px] uppercase tracking-[0.2em] text-charcoal">
+                        Quick View
+                        <ArrowRight size={12} />
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 flex items-center justify-center">
+                    <h3 className="font-display text-xl font-bold text-center">{p.name}</h3>
+                  </div>
+                </Link>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FABRICS */}
+      <section
+        id="fabrics"
+        className="relative py-28 md:py-36 overflow-hidden"
+      >
+        {/* Background Image */}
+        <img
+          src={fabricBg}
+          alt="Fabric Background"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ filter: 'brightness(1.15)' }}
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-white/20" />
+
+        {/* Content */}
+        <div className="container-luxe relative z-10">
+          <FadeUp className="max-w-2xl">
+            <p className="gold-label">
+              <span className="gold-line" /> Fabric Expertise
+            </p>
+
+            <h2 className="mt-6 font-display text-4xl md:text-5xl text-black font-bold">
+              Engineered fabrics for every market.
+            </h2>
+
+            <p className="mt-5 text-black/80 font-semibold">
+              Premium knitted and woven fabrics developed for global brands.
+            </p>
+          </FadeUp>
+
+          <div className="mt-14 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            {fabrics.map((f, i) => (
+              <FadeUp key={f} delay={i * 50}>
+                <div className="relative group">
+                  <div className="block rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-8 transition-all duration-300 hover:bg-white/20 hover:shadow-xl hover:shadow-black/10 cursor-pointer">
+                    <p className="font-display text-lg text-black font-semibold">
+                      {f}
+                    </p>
+                  </div>
+
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section id="process" className="relative py-16 md:py-20 bg-white text-black">
+        <div className="relative z-10 container-luxe">
+          <FadeUp className="max-w-2xl">
+            <p className="gold-label">
+              <span className="gold-line" /> Manufacturing Process
+            </p>
+            {/* Desktop-only: reduced size so it fits on large viewports */}
+            <h2 className="hidden lg:block mt-6 font-display font-bold text-[2.4rem] md:text-[3rem] lg:text-[3.6rem] text-black leading-tight whitespace-nowrap">
+              A disciplined eight-stage journey.
+            </h2>
+
+            {/* Mobile-only: larger but still responsive */}
+            <h2 className="block lg:hidden mt-6 font-display font-bold text-[1.3rem] sm:text-[1.5rem] text-black leading-tight tracking-tight max-w-full overflow-hidden whitespace-nowrap">
+              A disciplined eight-stage journey.
+            </h2>
+          </FadeUp>
+
+          <div className="mt-16">
+            <div className="lg:hidden rounded-[2rem] bg-amber-50 p-6">
+              <div className="grid gap-4">
+                {process.map((p) => (
+                  <div key={p} className="rounded-[1.75rem] border border-black/10 bg-white p-5 shadow-sm">
+                    <p className="font-display font-semibold text-base text-black">{p}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="hidden lg:block">
+              <div className="relative aspect-[16/9] max-h-[80vh] lg:max-h-[90vh] overflow-hidden rounded-[2rem] border border-border bg-white/60">
+                <img
+                  src={processImg}
+                  alt="Manufacturing process"
+                  className="h-full w-full object-cover object-center"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHY US */}
+      <section id="whyus" className="py-28 md:py-36 bg-background">
+        <div className="container-luxe">
+          <FadeUp className="max-w-2xl">
+            <p className="gold-label">
+              <span className="gold-line" /> Why Choose Us
+            </p>
+            <h2 className="mt-6 font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight max-w-md md:max-w-none">Built for brands that don't compromise.</h2>
+          </FadeUp>
+          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {why.map((w, i) => {
+              const Icon = w.icon;
+              return (
+                <FadeUp key={w.title} delay={i * 60}>
+                  <div className="group h-full border border-border bg-white/60 backdrop-blur p-7 transition-all hover:border-gold hover:shadow-[0_20px_50px_-20px_rgba(212,175,55,0.4)]">
+                    <div className="text-gold transition-colors group-hover:text-charcoal">
+                      <Icon size={40} />
+                    </div>
+                    <h3 className="mt-5 font-display text-lg">{w.title}</h3>
+                    <p className="mt-2 text-sm text-foreground leading-relaxed">{w.desc}</p>
+                  </div>
+                </FadeUp>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* MODELS SHOWCASE */}
-      <section id="products" className="relative py-28 md:py-36 bg-amber-50 overflow-hidden">
+      <section id="visual-excellence" className="relative py-28 md:py-36 bg-amber-50 overflow-hidden">
         <div className="container-luxe relative z-10">
           <FadeUp className="max-w-2xl">
             <p className="gold-label">
@@ -528,9 +677,6 @@ export default function Home() {
                           <path d="M10 8L16 12L10 16V8Z" fill="white" />
                         </svg>
                       </div>
-                      <span className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gold text-charcoal px-5 py-2 rounded-full text-sm md:text-base font-semibold shadow-md z-30 whitespace-nowrap inline-flex items-center justify-center">
-                        Watch this reel
-                      </span>
                     </button>
                   )}
 
@@ -610,181 +756,54 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* PRODUCT CATEGORIES */}
-{/* PRODUCT CATEGORIES */}
-<section id="products" className="py-28 md:py-36 bg-muted/40">
-  <div className="container-luxe">
-    <FadeUp className="max-w-2xl">
-      <p className="gold-label">
-        <span className="gold-line" /> Collections
-      </p>
-
-      <h2 className="mt-6 font-display text-4xl md:text-5xl font-bold">
-        Product Categories
-      </h2>
-
-      <p className="mt-5 text-foreground">
-        A complete catalogue of essentials, athletic and corporate apparel —
-        fully customisable.
-      </p>
-    </FadeUp>
-
-    <div className="mt-16 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-      {products.map((p, i) => (
-        <FadeUp key={p.name} delay={i * 80}>
-          <Link
-            to={p.href}
-            className="group block"
-          >
-            <div className="relative aspect-4/5 overflow-hidden bg-muted">
-              <img
-                src={p.img}
-                alt={p.name}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
-              />
-
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-
-              <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                <span className="inline-flex items-center gap-2 bg-gold px-4 py-2 text-[10px] uppercase tracking-[0.2em] text-charcoal">
-                  Quick View
-                  <ArrowRight size={12} />
-                </span>
-              </div>
-            </div>
-
-            <div className="mt-5 flex items-center justify-center">
-              <h3 className="font-display text-xl font-bold text-center">{p.name}</h3>
-            </div>
-          </Link>
-        </FadeUp>
-      ))}
-    </div>
-  </div>
-</section>
-      {/* FABRICS */}
-      <section
-        id="fabrics"
-        className="relative py-28 md:py-36 overflow-hidden"
-      >
-        {/* Background Image */}
-        <img
-          src={fabricBg}
-          alt="Fabric Background"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: 'brightness(1.15)' }}
-        />
-
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-white/20" />
-
-        {/* Content */}
-        <div className="container-luxe relative z-10">
-          <FadeUp className="max-w-2xl">
-            <p className="gold-label">
-              <span className="gold-line" /> Fabric Expertise
-            </p>
-
-            <h2 className="mt-6 font-display text-4xl md:text-5xl text-black font-bold">
-              Engineered fabrics for every market.
-            </h2>
-
-            <p className="mt-5 text-black/80 font-semibold">
-              Premium knitted and woven fabrics developed for global brands.
-            </p>
-          </FadeUp>
-
-          <div className="mt-14 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-            {fabrics.map((f, i) => (
-              <FadeUp key={f} delay={i * 50}>
-                <div className="relative group">
-                  <div className="block rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-8 transition-all duration-300 hover:bg-white/20 hover:shadow-xl hover:shadow-black/10 cursor-pointer">
-                    <p className="font-display text-lg text-black font-semibold">
-                      {f}
-                    </p>
-                  </div>
-
-                </div>
-              </FadeUp>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROCESS */}
-      <section id="process" className="relative py-28 md:py-36 bg-white text-black">
-        <div className="relative z-10 container-luxe">
-          <FadeUp className="max-w-2xl">
-            <p className="gold-label">
-              <span className="gold-line" /> Manufacturing Process
-            </p>
-            {/* Desktop-only: reduced size so it fits on large viewports */}
-            <h2 className="hidden lg:block mt-6 font-display font-bold text-[2.4rem] md:text-[3rem] lg:text-[3.6rem] text-black leading-tight whitespace-nowrap">
-              A disciplined eight-stage journey.
-            </h2>
-
-            {/* Mobile-only: larger but still responsive */}
-            <h2 className="block lg:hidden mt-6 font-display font-bold text-[1.3rem] sm:text-[1.5rem] text-black leading-tight tracking-tight max-w-full overflow-hidden whitespace-nowrap">
-              A disciplined eight-stage journey.
-            </h2>
-          </FadeUp>
-
-          <div className="mt-16">
-            <div className="lg:hidden rounded-[2rem] bg-amber-50 p-6">
-              <div className="grid gap-4">
-                {process.map((p) => (
-                  <div key={p} className="rounded-[1.75rem] border border-black/10 bg-white p-5 shadow-sm">
-                    <p className="font-display font-semibold text-base text-black">{p}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="hidden lg:block">
-              <div className="relative h-screen overflow-hidden rounded-[2rem] border border-border bg-white/60">
-                <img
-                  src={processImg}
-                  alt="Manufacturing process"
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHY US */}
-      <section id="whyus" className="py-28 md:py-36 bg-background">
+      
+      {/* BRANDS */}
+      {/* Mobile: compact single-line logos (visible on mobile only) */}
+      <section id="brands-mobile" className="block lg:hidden pt-8 pb-12 bg-background border-b border-transparent">
         <div className="container-luxe">
-          <FadeUp className="max-w-2xl">
+          <div className="mb-6">
             <p className="gold-label">
-              <span className="gold-line" /> Why Choose Us
+              <span className="gold-line" /> Our Brands
             </p>
-            <h2 className="mt-6 font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight max-w-md md:max-w-none">Built for brands that don't compromise.</h2>
-          </FadeUp>
-          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {why.map((w, i) => {
-              const Icon = w.icon;
-              return (
-                <FadeUp key={w.title} delay={i * 60}>
-                  <div className="group h-full border border-border bg-white/60 backdrop-blur p-7 transition-all hover:border-gold hover:shadow-[0_20px_50px_-20px_rgba(212,175,55,0.4)]">
-                    <div className="text-gold transition-colors group-hover:text-charcoal">
-                      <Icon size={40} />
-                    </div>
-                    <h3 className="mt-5 font-display text-lg">{w.title}</h3>
-                    <p className="mt-2 text-sm text-foreground leading-relaxed">{w.desc}</p>
-                  </div>
-                </FadeUp>
-              );
-            })}
+          </div>
+          <div className="px-0">
+            <div className="flex gap-3 items-center">
+              <div className="w-1/5 flex items-center justify-center">
+                <img src={brand1} alt="Brand 1" className="w-full h-auto object-contain" loading="lazy" />
+              </div>
+              <div className="w-1/3 flex items-center justify-center">
+                <img src={brand3} alt="Brand 3" className="w-full h-auto object-contain" loading="lazy" />
+              </div>
+              <div className="w-1/3 flex items-center justify-center">
+                <img src={brand2} alt="Brand 2" className="w-full h-auto object-contain" loading="lazy" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CLIENTS MARQUEE */}
+      <section id="brands" className="hidden lg:block pt-16 pb-20 md:pt-24 md:pb-20 bg-background">
+        <div className="container-luxe">
+          <div className="max-w-3xl">
+            <p className="gold-label">
+              <span className="gold-line" /> Our Brands
+            </p>
+          </div>
+          <div className="mt-10 overflow-x-auto">
+            <div className="flex gap-10 items-center justify-center">
+              <div className="flex-shrink-0 h-36 w-72 flex items-center justify-center">
+                <img src={brand1} alt="Brand 1" className="max-h-full max-w-full object-contain" loading="lazy" />
+              </div>
+              <div className="flex-shrink-0 h-36 w-72 flex items-center justify-center">
+                <img src={brand3} alt="Brand 3" className="max-h-full max-w-full object-contain" loading="lazy" />
+              </div>
+              <div className="flex-shrink-0 h-36 w-72 flex items-center justify-center">
+                <img src={brand2} alt="Brand 2" className="max-h-full max-w-full object-contain" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section id="clients" className="overflow-hidden border-y border-border bg-muted/30 py-20">
         <div className="container-luxe mb-10 flex items-center justify-between">
           <p className="gold-label">
