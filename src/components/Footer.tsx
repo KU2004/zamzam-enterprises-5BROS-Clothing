@@ -34,7 +34,7 @@ export function Footer() {
       style={{ fontFamily: '"Poppins", system-ui, sans-serif' }}
     >
       <div className="container-luxe py-12 md:py-16">
-        <div className="grid gap-8 md:gap-12 sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-5">
+        <div className="grid gap-8 md:gap-12 grid-cols-2 md:grid-cols-5 lg:grid-cols-5">
           {/* Logo */}
           <div className="col-span-full sm:col-span-2 md:col-span-1 flex items-start justify-center md:justify-start">
             <div className="flex flex-col items-center md:items-start">
@@ -147,7 +147,7 @@ export function Footer() {
           </div>
 
           {/* Get in Touch */}
-          <div className="space-y-4 sm:col-span-2 md:col-span-1">
+          <div className="space-y-4">
             <h4 className="font-display text-xs md:text-base uppercase tracking-[0.25em] text-gold">
               Get in Touch
             </h4>
