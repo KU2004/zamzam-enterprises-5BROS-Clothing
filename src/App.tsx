@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 import Home from "./pages/Home";
@@ -24,7 +24,6 @@ import Terms from "./pages/Terms";
 import Shipping from "./pages/Shipping";
 import Privacy from "./pages/Privacy";
 import ScrollToTop from "./components/ScrollToTop";
-import { FloatingSocialButtons } from "./components/FloatingSocialButtons";
 import { BackToTopButton } from "./components/BackToTopButton";
 import CountryLandingPage from "./pages/CountryLandingPage";
 import BlogPage from "./pages/BlogPage";
@@ -32,14 +31,10 @@ import ExportLandingPagePremium from "./pages/ExportLandingPage";
 import NotFound from "./pages/NotFound";
 
 function AppContent() {
-  const location = useLocation();
-  const showSideNavControls = location.pathname === "/";
-
   return (
     <div className="flex flex-col min-h-screen">
       <ScrollToTop />
       <Nav />
-      <FloatingSocialButtons showMenuButton={showSideNavControls} />
       <BackToTopButton />
 
       <main className="flex-1">
