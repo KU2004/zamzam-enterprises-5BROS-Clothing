@@ -146,6 +146,39 @@ html, body {
     font-family: "Poppins", system-ui, sans-serif;
   }
 
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+  }
+
+  video,
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+  }
+
+  button {
+    line-height: 1.2;
+  }
+
   body,
   button,
   input,
