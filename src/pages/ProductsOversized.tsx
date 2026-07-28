@@ -43,15 +43,8 @@ export default function ProductsOversized() {
       <Seo title="Oversized Clothing Manufacturer India | Streetwear Apparel" description="Order oversized apparel with premium fabrics, custom labels, and low MOQ manufacturing for modern streetwear and retail collections." canonicalPath="/products/oversized" keywords="oversized clothing manufacturer, oversized t shirt manufacturer, streetwear manufacturer india" />
       <section className="pt-40 pb-16 bg-muted/30 border-b border-border">
         <div className="container-luxe">
-          <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
+          <p className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.32em] text-gold flex items-center gap-3">
             <span className="gold-line" /> Oversized
-          </p>
-          <div className="mt-6 block overflow-hidden rounded-[2rem] border border-border bg-card p-8 shadow-sm">
-            <h1 className="font-display text-5xl md:text-7xl">Oversized Collection</h1>
-            <p className="sr-only">Browse the product details and request a quote from the dedicated page.</p>
-          </div>
-          <p className="mt-5 max-w-2xl text-muted-foreground">
-            Explore our oversized styles made for relaxed streetwear looks and modern comfort.
           </p>
         </div>
       </section>
