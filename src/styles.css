@@ -175,6 +175,13 @@ html, body {
     border-radius: 0;
   }
 
+  input[type="checkbox"],
+  input[type="radio"] {
+    -webkit-appearance: auto;
+    appearance: auto;
+    accent-color: #0F2B5B;
+  }
+
   button {
     line-height: 1.2;
   }
