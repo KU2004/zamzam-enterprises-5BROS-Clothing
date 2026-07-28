@@ -11,15 +11,9 @@ import custom2p2 from "../assets/custom2p2.png";
 import custom3Bg from "../assets/custom3-bg.png";
 import custom3p2 from "../assets/custom3p2.png";
 import custom4Bg from "../assets/custom4-bg.png";
-import custom4p2 from "../assets/custom4p2.png";
 import custom5Bg from "../assets/custom5-bg.png";
-import custom5p2 from "../assets/custom5p2.png";
-import custom6Bg from "../assets/custom6-bg.png";
-import custom6p2 from "../assets/custom6p2.png";
 import custom7Bg from "../assets/custom7-bg.png";
 import custom7p2 from "../assets/custom7p2.png";
-import custom8p2 from "../assets/custom8p2.png";
-import custom8Bg from "../assets/custom8-bg.png";
 import custom9p2 from "../assets/custom9p2.png";
 import custom9Bg from "../assets/custom9-bg.png";
 
@@ -27,11 +21,8 @@ const photos = [
   { frontImage: custom1p2, hoverImage: custom1, imageClassName: "object-cover object-center scale-[1.12]" },
   { frontImage: custom2p2, hoverImage: custom2Bg, imageClassName: "object-cover object-center scale-[1.12]" },
   { frontImage: custom3p2, hoverImage: custom3Bg, imageClassName: "object-cover object-center scale-[1.12]" },
-  { frontImage: custom4p2, hoverImage: custom4Bg, imageClassName: "object-cover object-center scale-[1.12]" },
-  { frontImage: custom5p2, hoverImage: custom5Bg, imageClassName: "object-cover object-center scale-[1.12]" },
-  { frontImage: custom6p2, hoverImage: custom6Bg, imageClassName: "object-cover object-center scale-[1.12]" },
+  { frontImage: custom4Bg, hoverImage: custom5Bg, imageClassName: "object-cover object-center scale-[1.12]" },
   { frontImage: custom7p2, hoverImage: custom7Bg, imageClassName: "object-cover object-center scale-[1.12]" },
-  { frontImage: custom8p2, hoverImage: custom8Bg, imageClassName: "object-cover object-center scale-[1.12]" },
   { frontImage: custom9p2, hoverImage: custom9Bg, imageClassName: "object-cover object-center scale-[1.22]" },
 ];
 
@@ -55,15 +46,8 @@ export default function ProductsCustomLabel() {
       <Seo title="Private Label Clothing Manufacturer India | OEM & ODM" description="Build your apparel brand with our OEM, ODM, and private label manufacturing services for uniforms, workwear, and fashion basics." canonicalPath="/products/custom-label" keywords="private label clothing manufacturer, oem clothing manufacturer, odm clothing manufacturer, custom label apparel manufacturer" />
       <section className="pt-40 pb-16 bg-muted/30 border-b border-border">
         <div className="container-luxe">
-          <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
+          <p className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.32em] text-gold flex items-center gap-3">
             <span className="gold-line" /> Custom Label
-          </p>
-          <div className="mt-6 block overflow-hidden rounded-[2rem] border border-border bg-card p-8 shadow-sm">
-            <h1 className="font-display text-5xl md:text-7xl">Custom Label Collection</h1>
-            <p className="sr-only">Browse the product details and request a quote from the dedicated page.</p>
-          </div>
-          <p className="mt-5 max-w-2xl text-muted-foreground">
-            See our tailored corporate, uniform and branding solutions for businesses and promotional teams.
           </p>
         </div>
       </section>
