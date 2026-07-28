@@ -4,6 +4,8 @@ import { useRef, type ReactNode } from "react";
 import hero1 from "../assets/hero-1.jpg";
 import hero4 from "../assets/hero-4.jpg";
 import founder from "../assets/founder.jpeg";
+import milestonelaptop from "../assets/Milestonelaptop.png";
+import milestonemoblie from "../assets/Milestonemoblie.png";
 import aboutusv from "../videos/aboutusv-h264.mp4";
 
 function PageHeader({
@@ -52,34 +54,6 @@ function PageHeader({
   );
 }
 
-const milestones = [
-  {
-    year: "2021",
-    t: "Founded",
-    d: "5BROS established in Mumbai.",
-  },
-  {
-    year: "2021",
-    t: "First Order",
-    d: "Shipped our first private label order.",
-  },
-  {
-    year: "2023",
-    t: "Scaling Up ",
-    d: "3 states 7 cities",
-  },
-  {
-    year: "2024",
-    t: "Scaling Up",
-    d: "9 states 16 cities.",
-  },
-  {
-    year: "2025",
-    t: "ZED Certification ",
-    d: "Recognised by MSME for quality and operational excellence.",
-  },
-];
-
 export default function About() {
   const boxedRef = useRef<HTMLVideoElement | null>(null);
 
@@ -89,7 +63,7 @@ export default function About() {
       <PageHeader
         eyebrow="About Us"
         title="An apparel, engineered for global brands."
-        sub="Welcome to Zam Zam Enterprises, the proud manufacturer behind our own clothing brands <strong>5BROS</strong>, <strong>BE BASIC</strong> and <strong>HTH</strong>. Based in Mumbai, we specialize in premium-quality T-shirt manufacturing designed for comfort, style, and everyday fashion.
+        sub="Welcome to Zam Zam Enterprises, the proud manufacturer behind our own clothing brands <strong>5BROS</strong>, <strong>BE BASIC</strong> and <strong>HTH</strong>. Based in Mumbai, INDIA, we specialize in premium-quality T-shirt manufacturing designed for comfort, style, and everyday fashion.
 
 At Zam Zam Enterprises, we believe clothing is more than just fashion — it is a reflection of personality, confidence, and lifestyle. Through our brand <strong>5BROS</strong>, <strong>BE BASIC</strong> and <strong>HTH</strong> we are committed to creating trendy, durable, and affordable apparel for today's youth.
 
@@ -143,8 +117,8 @@ From our manufacturing unit in Chembur, we supply our products to different citi
             />
           </FadeUp>
           <FadeUp delay={120}>
-            <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold">
-              Our Story
+            <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
+              <span className="gold-line" /> Our Story
             </p>
             <h2 className="mt-5 font-display font-bold text-4xl md:text-5xl leading-tight">
               Apparel Craftmanship
@@ -171,33 +145,38 @@ From our manufacturing unit in Chembur, we supply our products to different citi
       </section>
 
       <section className="py-24 bg-muted/40">
-        <div className="container-luxe grid gap-10 md:grid-cols-3">
-          {[
-            {
-              t: "Mission",
-              d: "Empower global brands with consistent, ethical and premium apparel manufacturing — order after order.",
-            },
-            {
-              t: "Vision",
-              d: "Be the most trusted private label apparel partner from India for the next generation of global brands.",
-            },
-            {
-              t: "Values",
-              d: "Craft, transparency, accountability and partnership. We build long-term relationships, not transactions.",
-            },
-          ].map((c, i) => (
-            <FadeUp key={c.t} delay={i * 100}>
-              <div className="h-full border border-border bg-white p-10">
-                <span className="font-display text-5xl text-gold">
-                  0{i + 1}
-                </span>
-                <h3 className="mt-5 font-display text-2xl">{c.t}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                  {c.d}
-                </p>
-              </div>
-            </FadeUp>
-          ))}
+        <div className="container-luxe">
+          <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3 mb-10">
+            <span className="gold-line" /> Our Mission & Values
+          </p>
+          <div className="grid gap-10 md:grid-cols-3">
+            {[
+              {
+                t: "Mission",
+                d: "Empower global brands with consistent, ethical and premium apparel manufacturing — order after order.",
+              },
+              {
+                t: "Vision",
+                d: "Be the most trusted private label apparel partner from India for the next generation of global brands.",
+              },
+              {
+                t: "Values",
+                d: "Craft, transparency, accountability and partnership. We build long-term relationships, not transactions.",
+              },
+            ].map((c, i) => (
+              <FadeUp key={c.t} delay={i * 100}>
+                <div className="h-full border border-border bg-white p-10">
+                  <span className="font-display text-5xl text-gold">
+                    0{i + 1}
+                  </span>
+                  <h3 className="mt-5 font-display text-2xl">{c.t}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                    {c.d}
+                  </p>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -205,30 +184,23 @@ From our manufacturing unit in Chembur, we supply our products to different citi
       <section className="py-24 md:py-32 bg-background">
         <div className="container-luxe">
           <FadeUp className="max-w-2xl">
-            <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold">
-              Milestones
+            <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
+              <span className="gold-line" /> Milestones
             </p>
             <h2 className="mt-5 font-display text-4xl md:text-5xl">
               A timeline of growth.
             </h2>
           </FadeUp>
-          <div className="mt-16 relative border-l border-border ml-2">
-            {milestones.map((m, i) => (
-              <FadeUp
-                key={m.year}
-                delay={i * 80}
-                className="relative pl-10 pb-12 last:pb-0"
-              >
-                <span className="absolute -left-1.75 top-1.5 h-3 w-3 rounded-full bg-gold ring-4 ring-background" />
-                <span className="font-display text-3xl text-gold">
-                  {m.year}
-                </span>
-                <h3 className="mt-2 font-display text-xl">{m.t}</h3>
-                <p className="mt-1 text-muted-foreground text-sm max-w-xl">
-                  {m.d}
-                </p>
-              </FadeUp>
-            ))}
+          <div className="mt-16 mx-auto w-full max-w-[1600px] rounded-[2rem] overflow-hidden shadow-2xl bg-white">
+            <picture>
+              <source media="(min-width: 1024px)" srcSet={milestonelaptop} />
+              <img
+                src={milestonemoblie}
+                alt="Milestone timeline"
+                className="w-full h-auto object-contain"
+                loading="lazy"
+              />
+            </picture>
           </div>
         </div>
       </section>
