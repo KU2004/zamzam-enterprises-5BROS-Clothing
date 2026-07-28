@@ -1,1 +1,9 @@
-
+{
+  "css.lint.unknownAtRules": "ignore",
+  "css.lint.unknownProperties": "ignore",
+  "tailwindCSS.includeLanguages": {
+    "css": "tailwindcss",
+    "postcss": "tailwindcss"
+  },
+  "tailwindCSS.emmetCompletions": true
+}
