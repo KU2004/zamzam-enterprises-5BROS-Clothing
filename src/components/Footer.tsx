@@ -34,7 +34,7 @@ export function Footer() {
       style={{ fontFamily: '"Poppins", system-ui, sans-serif' }}
     >
       <div className="container-luxe py-12 md:py-16">
-        <div className="grid gap-8 md:gap-12 grid-cols-2 md:grid-cols-5 lg:grid-cols-5">
+        <div className="grid gap-1 md:gap-4 grid-cols-2 md:grid-cols-5 lg:grid-cols-5">
           {/* Logo */}
           <div className="col-span-full sm:col-span-2 md:col-span-1 flex items-start justify-center md:justify-start">
             <div className="flex flex-col items-center md:items-start">
@@ -49,7 +49,7 @@ export function Footer() {
                   Quality apparel manufacturing and wholesale. Trendy designs and reliable supply for retailers globally.
                 </p>
               </div>
-              <div className="mt-4 flex items-center justify-center md:justify-start gap-2 md:gap-3">
+              <div className="mt-4 mb-4 md:mb-6 flex items-center justify-center md:justify-start gap-2 md:gap-3">
                 {socialLinks.map((social) => (
                   <a
                     key={social.label}
@@ -154,10 +154,14 @@ export function Footer() {
             <address className="not-italic space-y-3 md:space-y-4 text-xs md:text-sm leading-6 md:leading-7 text-white/85">
               <div className="flex items-start gap-2 md:gap-3">
                 <MapPin size={16} className="md:size-4.5 mt-1 text-gold shrink-0" />
-                <span className="text-white/85 flex-1">{CONTACT.addressFull}</span>
+                <span className="text-white/85 flex-1 space-y-1">
+                  <span className="block">P.L. LOKHANDE MARG, CHHEDA NAGAR CROSS ROAD, CHEMBUR, MUMBAI, </span>
+                  <span className="block">INDIA - 400089</span>
+                  <span className="block"></span>
+                </span>
               </div>
               <div className="flex items-start gap-2 md:gap-3">
-                <Mail size={16} className="md:size-4.5 mt-1 text-gold shrink-0" />
+                <Mail size={16} className="md:size-2.5 mt-1 text-gold shrink-0" />
                 <span className="text-white/85 flex-1 wrap-break-word whitespace-normal">{CONTACT.email}</span>
               </div>
               {CONTACT.phones.map((phone) => (
