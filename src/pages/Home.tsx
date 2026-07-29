@@ -7,6 +7,7 @@ import {
   Globe2,
   Headphones,
   Layers,
+  Menu,
   Package,
   Sparkles,
   Truck,
@@ -120,6 +121,7 @@ const why = [
 
 export default function Home() {
   const [slide, setSlide] = useState(0);
+  const [isSidenavOpen, setIsSidenavOpen] = useState(false);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   // Thumbnails chosen from assets (distinct from product grid images)
   const thumbnails = [thumbnail1, roundneck7, thumbnail3, thumbnail4, thumbnail5, thumbnail6];
@@ -144,6 +146,16 @@ export default function Home() {
   useEffect(() => {
     const id = setInterval(() => setSlide((s) => (s + 1) % slides.length), 6000);
     return () => clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    const handleSidenavState = (event: Event) => {
+      const customEvent = event as CustomEvent<{ isOpen: boolean }>;
+      setIsSidenavOpen(Boolean(customEvent.detail?.isOpen));
+    };
+
+    window.addEventListener("sidenav-state-changed", handleSidenavState as EventListener);
+    return () => window.removeEventListener("sidenav-state-changed", handleSidenavState as EventListener);
   }, []);
 
   // Listen for fullscreen change to pause video when exiting fullscreen
@@ -222,6 +234,15 @@ export default function Home() {
     <div>
       <Seo />
       <SideNav />
+      <button
+        type="button"
+        onClick={() => window.dispatchEvent(new Event("toggle-sidenav"))}
+        aria-label="Open navigation"
+        disabled={isSidenavOpen}
+        className={`fixed right-4 top-1/2 z-50 -translate-y-1/2 rounded-full border border-gold bg-gold p-3 text-charcoal shadow-lg transition ${isSidenavOpen ? "hidden" : "hover:bg-gold-soft"}`}
+      >
+        <Menu size={20} />
+      </button>
       {/* HERO SLIDER */}
       <section id="hero" className="relative h-screen min-h-160 w-full overflow-hidden bg-black">
         {slides.map((s, i) => (
@@ -335,7 +356,7 @@ export default function Home() {
                     return next;
                   });
                 }}
-                className="rounded-full bg-black/30 text-white p-2 min-h-[40px] min-w-[40px] flex items-center justify-center"
+                className="rounded-full bg-black/30 text-white p-2 min-h-10 min-w-10 flex items-center justify-center"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 9h4l5-5v16l-5-5H5V9Z" fill="white" />
@@ -580,7 +601,7 @@ export default function Home() {
             </div>
 
             <div className="hidden lg:block">
-              <div className="relative aspect-[16/9] max-h-[80vh] lg:max-h-[90vh] overflow-hidden rounded-[2rem] border border-border bg-white/60">
+              <div className="relative aspect-video max-h-[80vh] lg:max-h-[90vh] overflow-hidden rounded-[2rem] border border-border bg-white/60">
                 <img
                   src={processImg}
                   alt="Manufacturing process"
@@ -636,7 +657,7 @@ export default function Home() {
             {videos.map((src, index) => (
               <FadeUp key={index} delay={index * 100}>
                 <div
-                  className="group relative aspect-[4/5] rounded-xl overflow-hidden bg-muted border border-border"
+                  className="group relative aspect-4/5 rounded-xl overflow-hidden bg-muted border border-border"
                 >
                   {/* Thumbnail overlay button (shown when not playing) */}
                   {!isPlaying[index] && (
@@ -791,13 +812,13 @@ export default function Home() {
           </div>
           <div className="mt-10 overflow-x-auto">
             <div className="flex gap-10 items-center justify-center">
-              <div className="flex-shrink-0 h-36 w-72 flex items-center justify-center">
+              <div className="shrink-0 h-36 w-72 flex items-center justify-center">
                 <img src={brand1} alt="Brand 1" className="max-h-full max-w-full object-contain" loading="lazy" />
               </div>
-              <div className="flex-shrink-0 h-36 w-72 flex items-center justify-center">
+              <div className="shrink-0 h-36 w-72 flex items-center justify-center">
                 <img src={brand3} alt="Brand 3" className="max-h-full max-w-full object-contain" loading="lazy" />
               </div>
-              <div className="flex-shrink-0 h-36 w-72 flex items-center justify-center">
+              <div className="shrink-0 h-36 w-72 flex items-center justify-center">
                 <img src={brand2} alt="Brand 2" className="max-h-full max-w-full object-contain" loading="lazy" />
               </div>
             </div>
