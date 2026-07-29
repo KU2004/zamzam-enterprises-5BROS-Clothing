@@ -153,16 +153,16 @@ export function Footer() {
             </h4>
             <address className="not-italic space-y-3 md:space-y-4 text-xs md:text-sm leading-6 md:leading-7 text-white/85">
               <div className="flex items-start gap-2 md:gap-3">
-                <MapPin size={16} className="md:size-[18px] mt-1 text-gold shrink-0 flex-shrink-0" />
+                <MapPin size={16} className="md:size-4.5 mt-1 text-gold shrink-0" />
                 <span className="text-white/85 flex-1">{CONTACT.addressFull}</span>
               </div>
               <div className="flex items-start gap-2 md:gap-3">
-                <Mail size={16} className="md:size-[18px] mt-1 text-gold shrink-0 flex-shrink-0" />
-                <span className="text-white/85 flex-1">{CONTACT.email}</span>
+                <Mail size={16} className="md:size-4.5 mt-1 text-gold shrink-0" />
+                <span className="text-white/85 flex-1 wrap-break-word whitespace-normal">{CONTACT.email}</span>
               </div>
               {CONTACT.phones.map((phone) => (
                 <div key={phone} className="flex items-center gap-2 md:gap-3">
-                  <Phone size={16} className="md:size-[18px] text-gold shrink-0 flex-shrink-0" />
+                  <Phone size={16} className="md:size-4.5 text-gold shrink-0" />
                   <span className="text-white/85 flex items-center gap-1.5">
                     <img
                       src={IndiaFlag}
