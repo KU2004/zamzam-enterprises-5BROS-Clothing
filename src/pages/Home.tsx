@@ -11,7 +11,6 @@ import hero2 from "../assets/hero-2.jpg";
 import hero3 from "../assets/hero-3.jpg";
 import hero4 from "../assets/hero-4.jpg";
 import brand1 from "../assets/brand1.png";
-import brand2 from "../assets/brand2.png";
 import brand3 from "../assets/brand3.png";
 import pRound from "../assets/product-roundneck.jpg";
 import pRound5 from "../assets/roundneck5.jpeg";
@@ -414,7 +413,7 @@ export default function Home() {
                 <span className="gold-line" /> About Us
               </p>
               <h1 className="mt-4 font-display text-2xl md:text-3xl leading-[1.05] font-bold text-foreground">
-                5BROS Clothing — Crafting apparel for discerning brands.
+                5BROS Clothing — Crafting apparel for keen brands.
               </h1>
               <p className="mt-6 text-foreground text-base leading-relaxed">
                 An apparel manufacturer based in India, specialising in custom t-shirts,
@@ -461,8 +460,7 @@ export default function Home() {
             </h2>
 
             <p className="mt-5 text-foreground">
-              A complete catalogue of essentials, athletic and corporate apparel —
-              fully customisable.
+              Essentials, athletic and corporate apparel, fully customisable.
             </p>
           </FadeUp>
 
@@ -524,8 +522,9 @@ export default function Home() {
               <span className="gold-line" /> Fabric Expertise
             </p>
 
-            <h2 className="mt-6 font-display text-4xl md:text-5xl text-black font-bold">
-              Engineered fabrics for every market.
+            <h2 className="mt-6 font-display text-2xl md:text-5xl text-black font-bold">
+              Engineered fabrics
+              <span className="block">for every market.</span>
             </h2>
 
             <p className="mt-5 text-black/80 font-semibold">
@@ -599,7 +598,7 @@ export default function Home() {
             <p className="gold-label">
               <span className="gold-line" /> Why Choose Us
             </p>
-            <h2 className="mt-6 font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight max-w-md md:max-w-none">Built for brands that don't compromise.</h2>
+            <h2 className="mt-6 font-display text-1xl sm:text-4xl md:text-5xl font-bold leading-tight max-w-md md:max-w-none">Built for brands that don't compromise.</h2>
           </FadeUp>
 
           <div className="mt-8 lg:mt-10">
@@ -768,15 +767,12 @@ export default function Home() {
             </p>
           </div>
           <div className="px-0">
-            <div className="flex gap-3 items-center">
+            <div className="flex justify-center gap-3 items-center">
               <div className="w-1/5 flex items-center justify-center">
                 <img src={brand1} alt="Brand 1" className="w-full h-auto object-contain" loading="lazy" />
               </div>
               <div className="w-1/3 flex items-center justify-center">
                 <img src={brand3} alt="Brand 3" className="w-full h-auto object-contain" loading="lazy" />
-              </div>
-              <div className="w-1/3 flex items-center justify-center">
-                <img src={brand2} alt="Brand 2" className="w-full h-auto object-contain" loading="lazy" />
               </div>
             </div>
           </div>
@@ -791,15 +787,12 @@ export default function Home() {
             </p>
           </div>
           <div className="mt-10 overflow-x-auto">
-            <div className="flex gap-10 items-center justify-center">
+            <div className="flex justify-center gap-10 items-center">
               <div className="shrink-0 h-36 w-72 flex items-center justify-center">
                 <img src={brand1} alt="Brand 1" className="max-h-full max-w-full object-contain" loading="lazy" />
               </div>
               <div className="shrink-0 h-36 w-72 flex items-center justify-center">
                 <img src={brand3} alt="Brand 3" className="max-h-full max-w-full object-contain" loading="lazy" />
-              </div>
-              <div className="shrink-0 h-36 w-72 flex items-center justify-center">
-                <img src={brand2} alt="Brand 2" className="max-h-full max-w-full object-contain" loading="lazy" />
               </div>
             </div>
           </div>
