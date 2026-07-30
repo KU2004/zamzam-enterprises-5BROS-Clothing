@@ -1,12 +1,10 @@
 import { FadeUp } from "../components/FadeUp";
 import { Seo } from "../components/Seo";
-import { useRef, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import hero1 from "../assets/hero-1.jpg";
-import hero4 from "../assets/hero-4.jpg";
 import founder from "../assets/founder.jpeg";
 import milestonelaptop from "../assets/Milestonelaptop.png";
 import milestonemoblie from "../assets/Milestonemoblie.png";
-import aboutusv from "../videos/aboutusv-h264.mp4";
 
 function PageHeader({
   eyebrow,
@@ -55,8 +53,6 @@ function PageHeader({
 }
 
 export default function About() {
-  const boxedRef = useRef<HTMLVideoElement | null>(null);
-
   return (
     <>
       <Seo title="About 5BROS Clothing | Certified Apparel Manufacturer" description="Learn about 5BROS Clothing’s manufacturing capability, export experience, quality control, and OEM/ODM services for global buyers." canonicalPath="/about" keywords="manufacturing capability, apparel manufacturer india, garment manufacturer india, certified clothing manufacturer" />
@@ -80,29 +76,19 @@ From our manufacturing unit in Chembur, we supply our products to different citi
               Step inside the <span className="whitespace-nowrap">5BROS factory</span>.
             </h2>
           </div>
-          <div className="bg-black rounded-md overflow-hidden shadow-2xl">
-            <video
-              ref={boxedRef}
-              src={aboutusv}
-              poster={hero4}
-              className="w-full h-full aspect-video object-cover"
-              controls
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              onError={(e) => console.error('Video error:', e.currentTarget.error?.message)}
-              onLoadedMetadata={() => {
-                console.log('Video loaded:', aboutusv);
-                try {
-                  if (boxedRef.current) {
-                    /* keep existing behavior in case needed later */
-                  }
-                } catch (e) {}
-              }}
-            />
+
+          <div className="mt-6 flex justify-center">
+            <div className="w-full max-w-4xl aspect-video rounded-[2rem] overflow-hidden shadow-2xl">
+              <iframe
+                src="https://www.youtube.com/embed/pvTQcPhj3VI"
+                title="Factory Tour Short"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
           </div>
+
         </div>
       </section>
 
