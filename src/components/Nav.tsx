@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/logo.png";
@@ -39,6 +39,7 @@ export function Nav() {
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const [mobileProductsTapped, setMobileProductsTapped] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const path = location.pathname;
   const isWhyChoosePath = path === "/why-choose-us";
   const isBlackPath =
@@ -148,7 +149,7 @@ export function Nav() {
                       onClick={() => {
                         // First tap: open submenu. Second tap within timeout: navigate to /products
                         if (mobileProductsTapped) {
-                          window.location.assign('/products');
+                          navigate("/products");
                           return;
                         }
 
@@ -156,6 +157,8 @@ export function Nav() {
                         setMobileProductsTapped(true);
                         window.setTimeout(() => setMobileProductsTapped(false), 800);
                       }}
+                      aria-expanded={mobileProductsOpen}
+                      aria-controls="mobile-products-menu"
                       className="w-full flex items-center justify-between text-base tracking-[0.12em] text-foreground font-normal"
                     >
                       <span>{l.label}</span>
