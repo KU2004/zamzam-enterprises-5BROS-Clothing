@@ -46,7 +46,7 @@ export function Footer() {
                   <strong>5BROS</strong> - Youth Culture
                 </p>
                 <p className="text-xs md:text-xs leading-5 text-white/75">
-                  Quality apparel manufacturing and wholesale. Trendy designs and reliable supply for retailers globally.
+                  Quality apparel manufacturing and wholesale. Trendy designs and reliable supply globally.
                 </p>
               </div>
               <div className="mt-4 mb-4 md:mb-6 flex items-center justify-center md:justify-start gap-2 md:gap-3">
