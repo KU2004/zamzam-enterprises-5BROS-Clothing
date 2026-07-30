@@ -1,17 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import {
-  ArrowRight,
-  Award,
-  CheckCircle2,
-  Globe2,
-  Headphones,
-  Layers,
-  Menu,
-  Package,
-  Sparkles,
-  Truck,
-} from "lucide-react";
+import { ArrowRight, Menu } from "lucide-react";
 import { FadeUp } from "../components/FadeUp";
 import { SideNav } from "../components/SideNav";
 import { Seo } from "../components/Seo";
@@ -46,6 +35,8 @@ import video4 from "../videos/video4.mp4";
 import video5 from "../videos/video5.mp4";
 import video6 from "../videos/video6.mp4";
 import fabricBg from "../assets/cotton-bg.png";
+import whyChooseUsLaptop from "../assets/whychooseuslaptop.png";
+import whyChooseUsMobile from "../assets/whychooseusmoblie.png";
 
 // T-shirt product image from local assets
 const eyeProduct = pRound5;
@@ -100,20 +91,7 @@ const fabrics = [
   "Custom GSM", "Custom Dyeing",
 ];
 
-const why = [
-  { icon: Sparkles, title: "Premium Materials", desc: "Hand-picked yarns and certified fabrics." },
-  { icon: Package, title: "Low MOQ", desc: "Flexible order quantities for emerging brands." },
-  { icon: Award, title: "Private Label", desc: "Full OEM & ODM with your branding." },
-  { icon: Layers, title: "Apparel Customization", desc: "Tailored fabrics, trims, labels, and finishes for your unique collection." },
-  { icon: Headphones, title: "Dedicated Manager", desc: "One point of contact, always." },
-  { icon: CheckCircle2, title: "Fast Turnaround", desc: "Pilot in weeks, scale in months." },
-  { icon: Globe2, title: "Export Ready", desc: "MSME, GST, DGFT & AEPC certified." },
-  { icon: Truck, title: "Global Shipping", desc: "Documentation and logistics handled end-to-end." },
-
-];
-
-
-  const videos = [video1, video2, video3, video4, video5, video6];
+const videos = [video1, video2, video3, video4, video5, video6];
 
 export default function Home() {
   const [slide, setSlide] = useState(0);
@@ -618,22 +596,24 @@ export default function Home() {
             </p>
             <h2 className="mt-6 font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight max-w-md md:max-w-none">Built for brands that don't compromise.</h2>
           </FadeUp>
-          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {why.map((w, i) => {
-              const Icon = w.icon;
-              return (
-                <FadeUp key={w.title} delay={i * 60}>
-                  <div className="group h-full border border-border bg-white/60 backdrop-blur p-7 transition-all hover:border-gold hover:shadow-[0_20px_50px_-20px_rgba(212,175,55,0.4)]">
-                    <div className="text-gold transition-colors group-hover:text-charcoal">
-                      <Icon size={40} />
-                    </div>
-                    <h3 className="mt-5 font-display text-lg">{w.title}</h3>
-                    <p className="mt-2 text-sm text-foreground leading-relaxed">{w.desc}</p>
-                  </div>
-                </FadeUp>
-              );
-            })}
+
+          <div className="mt-8 lg:mt-10">
+            <div className="hidden lg:block">
+              <img
+                src={whyChooseUsLaptop}
+                alt="Why Choose Us desktop overview"
+                className="w-full rounded-[1.5rem] border border-border object-cover shadow-sm"
+              />
+            </div>
+            <div className="block lg:hidden">
+              <img
+                src={whyChooseUsMobile}
+                alt="Why Choose Us mobile overview"
+                className="w-full rounded-[1.5rem] border border-border object-cover shadow-sm"
+              />
+            </div>
           </div>
+
         </div>
       </section>
 
