@@ -6,6 +6,9 @@ import founder from "../assets/founder.jpeg";
 import milestonelaptop from "../assets/Milestonelaptop.png";
 import milestonemoblie from "../assets/Milestonemoblie.png";
 
+  const youtubeSrc = "https://www.youtube.com/embed/pvTQcPhj3VI?autoplay=1&mute=1&playsinline=1&vq=hd1080&rel=0&modestbranding=1&showinfo=0";
+
+
 function PageHeader({
   eyebrow,
   title,
@@ -66,29 +69,27 @@ At Zam Zam Enterprises, we believe clothing is more than just fashion — it is 
 From our manufacturing unit in Chembur, we supply our products to different cities across India, building strong relationships with <strong>distributors</strong>, <strong>wholesalers</strong> and <strong>corporate sectors</strong> who trust our quality and service."
       />
 
-      <section className="py-16 flex items-center justify-center">
-        <div className="w-full max-w-6xl px-4">
+      <section className="py-16 bg-background">
+        <div className="w-full max-w-6xl px-4 mx-auto">
           <div className="mb-8 text-center">
             <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center justify-center gap-3">
               <span className="gold-line" /> Factory Tour
             </p>
-            <h2 className="mt-4 font-display text-4xl md:text-6xl leading-tight max-w-4xl mx-auto text-charcoal">
+            <h2 className="mt-10 font-display text-4xl md:text-6xl leading-tight max-w-4xl mx-auto text-charcoal">
               Step inside the <span className="whitespace-nowrap">5BROS factory</span>.
             </h2>
           </div>
-
-          <div className="mt-6 flex justify-center">
-            <div className="w-full max-w-4xl aspect-video rounded-[2rem] overflow-hidden shadow-2xl">
+          <div className="mt-10 flex justify-center px-4 sm:px-0">
+            <div className="w-full max-w-4xl aspect-4/5 sm:aspect-video rounded-[2rem] overflow-hidden shadow-2xl relative">
               <iframe
-                src="https://www.youtube.com/embed/pvTQcPhj3VI"
-                title="Factory Tour Short"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                src={youtubeSrc}
+                title="Factory Tour"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                 allowFullScreen
-                className="w-full h-full"
+                className="absolute inset-0 min-w-full min-h-full w-full h-full"
               />
             </div>
           </div>
-
         </div>
       </section>
 
