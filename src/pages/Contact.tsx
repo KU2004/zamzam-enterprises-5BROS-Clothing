@@ -585,12 +585,12 @@ export default function Contact({
                   Phone Number *
                 </span>
                 <div className="mt-2 flex gap-0 min-w-0">
-                  <div className="flex items-center gap-3 min-w-0">
+                  <div className="flex items-center gap-6 min-w-0">
                     <Popover open={countryPopoverOpen} onOpenChange={setCountryPopoverOpen}>
                       <PopoverTrigger asChild>
                         <button
                           type="button"
-                          className="flex items-center gap-0 border border-gray-300 rounded-l-md px-2 h-12 bg-white min-w-[85px] text-left text-xs text-gray-700"
+                          className="flex items-center gap-0 border border-gray-300 rounded-l-md px-1 md:px-1 lg:px-3 h-12 bg-white w-36 md:w-28 lg:w-auto lg:min-w-0 lg:max-w-none text-left text-xs lg:text-base text-gray-700"
                         >
                           {selectedFlag ? (
                             <img
@@ -601,7 +601,7 @@ export default function Contact({
                           ) : (
                             <div className="w-5 h-3" />
                           )}
-                          <span className={selectedPhoneCountry ? "truncate" : "truncate text-gray-400"}>
+                          <span className={selectedPhoneCountry ? "truncate mx-1 lg:mx-2 lg:whitespace-normal lg:overflow-visible lg:max-w-none" : "truncate mx-1 lg:mx-2 lg:whitespace-normal lg:overflow-visible lg:max-w-none text-gray-400"}>
                             {selectedCountryText}
                           </span>
                           <ChevronDown className="ml-auto h-4 w-4 opacity-50" />
@@ -662,7 +662,7 @@ export default function Contact({
                     type="tel"
                     placeholder="81234 56789"
                     required
-                    className="flex-1 min-w-0 border border-l-0 border-gray-300 rounded-r-md h-12 px-3 text-gray-700 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
+                    className="flex-1 min-w-0 border border-l-0 border-gray-300 rounded-r-md h-12 px-2 lg:px-4 text-base lg:text-lg text-gray-700 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
                   />
                 </div>
               </label>
