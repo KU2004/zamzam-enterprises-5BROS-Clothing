@@ -21,7 +21,7 @@ const socialLinks = [
     iconSrc: "https://cdn.simpleicons.org/youtube/ffffff",
   },
   {
-    href: "https://linkedin.com/company/5bros-clothing",
+    href: "https://www.linkedin.com/company/zam-zam-enterprises/",
     label: "LinkedIn",
     iconSrc: "https://cdn.jsdelivr.net/npm/simple-icons@11/icons/linkedin.svg",
   },
@@ -161,7 +161,7 @@ export function Footer() {
                 </span>
               </div>
               <div className="flex items-start gap-2 md:gap-3">
-                <Mail size={16} className="md:size-2.5 mt-1 text-gold shrink-0" />
+                  <Mail size={16} className="md:size-4.5 mt-1 text-gold shrink-0" />
                 <span className="text-white/85 flex-1 wrap-break-word whitespace-normal">{CONTACT.email}</span>
               </div>
               {CONTACT.phones.map((phone) => (
