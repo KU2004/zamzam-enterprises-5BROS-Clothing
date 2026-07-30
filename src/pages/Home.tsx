@@ -825,22 +825,26 @@ export default function Home() {
       {/* Global presence section removed per request */}
 
       {/* CTA */}
-      <section id="cta" className="relative py-28 md:py-36 bg-charcoal text-charcoal-foreground overflow-hidden">
-        <img src={hero1} alt="" className="absolute inset-0 h-full w-full object-cover opacity-15" />
-        <div className="container-luxe relative z-10 text-center">
-          <FadeUp>
-            <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold">Let's build together</p>
-            <h2 className="mt-6 font-display text-4xl md:text-6xl text-white max-w-3xl mx-auto leading-tight">
-              Ready to launch your apparel brand?
-            </h2>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link to="/contact" className="border border-white/40 px-7 py-4 text-[11px] uppercase tracking-[0.22em] text-white hover:bg-white hover:text-charcoal transition">
-                Schedule Meeting
-              </Link>
+      <section className="py-28 bg-background">
+        <div className="container-luxe text-center">
+          <h2 className="font-display text-4xl md:text-6xl leading-tight max-w-4xl mx-auto text-charcoal">
+            Step inside the <span className="whitespace-nowrap">5BROS factory</span>.
+          </h2>
+          <div className="mt-10 flex justify-center">
+            <div className="w-full max-w-4xl aspect-video rounded-[2rem] overflow-hidden shadow-2xl">
+              <iframe
+                src="https://www.youtube.com/embed/pvTQcPhj3VI"
+                title="Factory Tour Short"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
             </div>
-          </FadeUp>
+          </div>
         </div>
       </section>
+
+      <div className="pb-24" />
     </div>
   );
 }
