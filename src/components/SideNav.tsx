@@ -29,10 +29,33 @@ export function SideNav() {
     return () => window.removeEventListener("toggle-sidenav", handleToggle);
   }, []);
 
+  useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent("sidenav-state-changed", { detail: { isOpen } })
+    );
+  }, [isOpen]);
+
+  const isElementHidden = (element: HTMLElement | null) => {
+    return !element || element.offsetParent === null;
+  };
+
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
+    let element = document.getElementById(id);
+
+    if (id === "brands" && isElementHidden(element)) {
+      element = document.getElementById(`${id}-mobile`);
+    }
+
+    if (!element) {
+      element = document.getElementById(`${id}-mobile`);
+    }
+
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const header = document.querySelector("header");
+      const headerHeight = header?.getBoundingClientRect().height ?? 96;
+      const targetY = window.scrollY + element.getBoundingClientRect().top - headerHeight - 12;
+
+      window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
       setIsOpen(false);
     }
   };
