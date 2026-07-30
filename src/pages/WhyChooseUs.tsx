@@ -47,7 +47,7 @@ export default function WhyChooseUs() {
   return (
     <>
       <Seo title="Why Choose 5BROS Clothing | Certified Manufacturing Partner" description="Discover why international brands choose 5BROS Clothing for quality control, export readiness, and scalable apparel manufacturing from India." canonicalPath="/why-choose-us" keywords="garment manufacturer india, apparel supplier, quality control manufacturing, reliable clothing manufacturer" />
-      <section className="relative h-[32rem] overflow-hidden bg-black">
+      <section className="relative h-128 overflow-hidden bg-black">
         <img
           src={hero2}
           alt="Why choose 5BROS Clothing"
@@ -60,11 +60,10 @@ export default function WhyChooseUs() {
               <span className="gold-line" /> Why Choose Us
             </p>
             <h1 className="mt-6 font-display text-4xl md:text-6xl leading-[1.05]">
-              Built for brands that value quality, speed, and trust.
+              Built for brands
+              <br />
+              <span className="block sm:whitespace-nowrap">quality, speed, trust.</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-base md:text-lg text-white/80 leading-relaxed">
-              From concept to delivery, 5BROS Clothing combines skilled craftsmanship, modern manufacturing, and dependable service to support your next collection.
-            </p>
           </FadeUp>
         </div>
       </section>
@@ -76,9 +75,8 @@ export default function WhyChooseUs() {
               <span className="gold-line" /> What sets us apart
             </p>
             <h2 className="mt-6 font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-              A manufacturing partner
-              <br />
-              <span className="block sm:whitespace-nowrap">focused on your brand’s success.</span>
+              <span className="block md:inline">Manufacturing that</span>{' '}
+              <span className="block md:inline">powers your brand.</span>
             </h2>
             <p className="mt-5 text-base leading-relaxed text-foreground/80">
               We bring together strong production discipline, attentive support, and a deep understanding of apparel brands that want consistency without compromise.
@@ -110,12 +108,13 @@ export default function WhyChooseUs() {
               <span className="gold-line" /> Our expertise
             </p>
             <h2 className="mt-6 font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-              Customization that brings your vision to life.
+              <span className="block md:inline">Customization that</span>{' '}
+              <span className="block md:inline">realizes your vision.</span>
             </h2>
           </FadeUp>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <FadeUp className="rounded-[1.75rem] border border-border bg-gradient-to-br from-gold/10 to-gold/5 p-8 shadow-md">
+            <FadeUp className="rounded-[1.75rem] border border-border bg-linear-to-br from-gold/10 to-gold/5 p-8 shadow-md">
               <div className="inline-flex rounded-full border border-gold/30 bg-gold/20 px-4 py-2">
                 <span className="text-sm font-semibold text-gold uppercase tracking-widest">Custom Material Engineering</span>
               </div>
@@ -125,7 +124,7 @@ export default function WhyChooseUs() {
               </p>
             </FadeUp>
 
-            <FadeUp delay={60} className="rounded-[1.75rem] border border-border bg-gradient-to-br from-gold/10 to-gold/5 p-8 shadow-md">
+            <FadeUp delay={60} className="rounded-[1.75rem] border border-border bg-linear-to-br from-gold/10 to-gold/5 p-8 shadow-md">
               <div className="inline-flex rounded-full border border-gold/30 bg-gold/20 px-4 py-2">
                 <span className="text-sm font-semibold text-gold uppercase tracking-widest">Custom Branding & Finish</span>
               </div>
@@ -135,7 +134,7 @@ export default function WhyChooseUs() {
               </p>
             </FadeUp>
 
-            <FadeUp delay={120} className="rounded-[1.75rem] border border-border bg-gradient-to-br from-gold/10 to-gold/5 p-8 shadow-md">
+            <FadeUp delay={120} className="rounded-[1.75rem] border border-border bg-linear-to-br from-gold/10 to-gold/5 p-8 shadow-md">
               <div className="inline-flex rounded-full border border-gold/30 bg-gold/20 px-4 py-2">
                 <span className="text-sm font-semibold text-gold uppercase tracking-widest">Custom Quality & Compliance</span>
               </div>
