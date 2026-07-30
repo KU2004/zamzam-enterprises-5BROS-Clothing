@@ -213,7 +213,7 @@ export default function Home() {
         onClick={() => window.dispatchEvent(new Event("toggle-sidenav"))}
         aria-label="Open navigation"
         disabled={isSidenavOpen}
-        className={`fixed right-4 top-1/2 z-50 -translate-y-1/2 rounded-full border border-gold bg-gold p-3 text-charcoal shadow-lg transition ${isSidenavOpen ? "hidden" : "hover:bg-gold-soft"}`}
+        className={`fixed left-4 top-32 z-50 rounded-full border border-gold bg-gold p-3 text-charcoal shadow-lg transition ${isSidenavOpen ? "hidden" : "hover:bg-gold-soft"}`}
       >
         <Menu size={20} />
       </button>
