@@ -3,13 +3,10 @@ import { FadeUp } from "../components/FadeUp";
 import { Seo } from "../components/Seo";
 
 import roundneck5 from "../assets/roundneck5.jpeg";
-import roundneck6 from "../assets/roundneck6.jpeg";
 import roundneck7 from "../assets/roundneck7.jpeg";
-import roundneck8 from "../assets/roundneck8.jpeg";
-import roundneck2bg from "../assets/roundneck2-bg.png";
-import roundneck3bg from "../assets/roundneck3-bg.png";
-import roundneck4bg from "../assets/roundneck4-bg.png";
-import roundneck1p2 from "../assets/roundneck1p2.png";
+import roundneck2 from "../assets/roundneck2.jpeg";
+import roundneck3 from "../assets/roundneck3.jpeg";
+import roundneck4 from "../assets/roundneck4.jpeg";
 
 type PhotoItem = {
   frontImage: string;
@@ -17,14 +14,11 @@ type PhotoItem = {
 };
 
 const photos: PhotoItem[] = [
-  { frontImage: roundneck4bg, imageClassName: "object-cover object-center scale-[1.12]" },
+  { frontImage: roundneck4},
   { frontImage: roundneck5 },
-  { frontImage: roundneck8 },
-  { frontImage: roundneck2bg, imageClassName: "object-cover object-center scale-[1.12]" },
-  { frontImage: roundneck3bg },
-  { frontImage: roundneck6 },
+  { frontImage: roundneck2},
+  { frontImage: roundneck3 },
   { frontImage: roundneck7 },
-  { frontImage: roundneck1p2, imageClassName: "object-cover object-center scale-[1.15]" },
 ];
 
 export default function ProductsRoundNeck() {
@@ -41,23 +35,23 @@ export default function ProductsRoundNeck() {
       </section>
 
       <section className="py-16 md:py-24 bg-background">
-        <div className="container-luxe">
+        <div className="container-luxe px-4 md:px-6 lg:px-8">
           <div className="hidden md:block">
-            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
               {photos.map((src, index) => (
                 <FadeUp key={index} delay={index * 120}>
                   <div>
                     <Link
                       to={`/products/round-neck/details/${index + 1}`}
                       aria-label={`View details for Round Neck photo ${index + 1}`}
-                      className="block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm transition-all duration-500"
+                      className="block overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-500"
                     >
-                      <div className="relative w-full overflow-hidden bg-[#A9A9A9] h-80 sm:h-96">
+                      <div className="relative w-full overflow-hidden h-96 sm:h-112">
                         <img
                           src={src.frontImage}
                           alt={`Round Neck ${index + 1}`}
                           loading="lazy"
-                          className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
+                          className={`absolute inset-0 w-full h-full object-cover object-top ${src.imageClassName ?? ""}`}
                         />
                       </div>
                     </Link>
@@ -75,13 +69,13 @@ export default function ProductsRoundNeck() {
                 aria-label={`View details for Round Neck photo ${index + 1}`}
                 className="block"
               >
-                <div className="overflow-hidden rounded-[1rem] border border-border bg-card">
-                  <div className="relative w-full overflow-hidden bg-[#A9A9A9] aspect-[2/3]">
+                <div className="overflow-hidden rounded-3xl border border-border bg-card">
+                  <div className="relative w-full overflow-hidden aspect-3/4">
                     <img
                       src={src.frontImage}
                       alt={`Round Neck ${index + 1}`}
                       loading="lazy"
-                      className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
+                      className={`absolute inset-0 w-full h-full object-cover object-top ${src.imageClassName ?? ""}`}
                     />
                   </div>
                 </div>
