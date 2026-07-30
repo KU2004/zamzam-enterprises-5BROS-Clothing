@@ -144,6 +144,8 @@ html, body {
   body,
   #root {
     font-family: "Poppins", system-ui, sans-serif;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
   }
 
   html {
