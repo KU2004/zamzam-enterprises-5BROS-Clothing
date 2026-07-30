@@ -74,14 +74,14 @@ export default function Products() {
                     to={section.href}
                     className="group block overflow-hidden rounded-[2rem] border border-border bg-card shadow-sm"
                   >
-                    <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+                    <div className="relative aspect-4/5 overflow-hidden bg-muted">
                       <img
                         src={section.img}
                         alt={section.label}
                         loading="lazy"
                         className="h-full w-full object-cover object-center transition-transform duration-1000 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
                     </div>
 
                     <div className="space-y-4 p-6 text-center">
@@ -101,8 +101,8 @@ export default function Products() {
                 to={section.href}
                 className="group block"
               >
-                <div className="overflow-hidden rounded-[1rem] border border-border bg-background">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+                <div className="overflow-hidden rounded-3xl border border-border bg-background">
+                  <div className="relative aspect-4/5 overflow-hidden bg-muted">
                     <img
                       src={section.img}
                       alt={section.label}
