@@ -107,7 +107,9 @@ export default function Home() {
   const [overlayMenuOpen, setOverlayMenuOpen] = useState(false);
   const [overlayQualityLabel, setOverlayQualityLabel] = useState<string | null>(null);
   const [qualityMenuIndex, setQualityMenuIndex] = useState<number | null>(null);
-  const [qualityLabelMap, setQualityLabelMap] = useState<Record<number, string>>({});  const [globalMuted, setGlobalMuted] = useState(true);
+  const [qualityLabelMap, setQualityLabelMap] = useState<Record<number, string>>({});
+  const [globalMuted, setGlobalMuted] = useState(true);
+  const youtubeSrc = "https://www.youtube.com/embed/pvTQcPhj3VI?autoplay=1&mute=1&playsinline=1&vq=hd1080&rel=0&modestbranding=1&showinfo=0";
   // quality variants per video index. Replace src values with real files if available.
   const qualityVariants: Record<number, { label: string; src: string }[]> = videos.reduce((acc, src, i) => {
     acc[i] = [
@@ -129,7 +131,10 @@ export default function Home() {
     };
 
     window.addEventListener("sidenav-state-changed", handleSidenavState as EventListener);
-    return () => window.removeEventListener("sidenav-state-changed", handleSidenavState as EventListener);
+
+    return () => {
+      window.removeEventListener("sidenav-state-changed", handleSidenavState as EventListener);
+    };
   }, []);
 
   // Listen for fullscreen change to pause video when exiting fullscreen
@@ -830,14 +835,14 @@ export default function Home() {
           <h2 className="font-display text-4xl md:text-6xl leading-tight max-w-4xl mx-auto text-charcoal">
             Step inside the <span className="whitespace-nowrap">5BROS factory</span>.
           </h2>
-          <div className="mt-10 flex justify-center">
-            <div className="w-full max-w-4xl aspect-video rounded-[2rem] overflow-hidden shadow-2xl">
+          <div className="mt-10 flex justify-center px-4 sm:px-0">
+            <div className="w-full max-w-4xl aspect-4/5 sm:aspect-video rounded-[2rem] overflow-hidden shadow-2xl relative">
               <iframe
-                src="https://www.youtube.com/embed/pvTQcPhj3VI"
-                title="Factory Tour Short"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                src={youtubeSrc}
+                title="Factory Tour"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                 allowFullScreen
-                className="w-full h-full"
+                className="absolute inset-0 min-w-full min-h-full w-full h-full"
               />
             </div>
           </div>
