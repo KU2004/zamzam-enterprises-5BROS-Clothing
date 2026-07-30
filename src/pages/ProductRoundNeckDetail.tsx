@@ -2,36 +2,24 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { Seo } from "../components/Seo";
 
-import roundneck1bg from "../assets/roundneck1-bg.png";
-import roundneck1p2 from "../assets/roundneck1p2.png";
-import roundneck2bg from "../assets/roundneck2-bg.png";
-import roundneck2p2 from "../assets/roundneck2p2.png";
-import roundneck3bg from "../assets/roundneck3-bg.png";
-import roundneck3p2 from "../assets/roundneck3p2.png";
-import roundneck4bg from "../assets/roundneck4-bg.png";
-import roundneck4p2 from "../assets/roundneck4p2.png";
+import roundneck2 from "../assets/roundneck2.jpeg";
+import roundneck3 from "../assets/roundneck3.jpeg";
+import roundneck4 from "../assets/roundneck4.jpeg";
 import roundneck5 from "../assets/roundneck5.jpeg";
-import roundneck5p2 from "../assets/roundneck5p2.png";
-import roundneck6 from "../assets/roundneck6.jpeg";
-import roundneck6p2 from "../assets/roundneck6p2.png";
 import roundneck7 from "../assets/roundneck7.jpeg";
-import roundneck7p2 from "../assets/roundneck7p2.png";
-import roundneck8 from "../assets/roundneck8.jpeg";
-import roundneck8p2 from "../assets/roundneck8p2.png";
 
 const productVariants = [
   {
     id: 1,
-    title: "Premium Luxury Tee",
-    subtitle: "Ultra-premium round neck for luxury and high-end fashion collections.",
-    image: roundneck4bg,
-    imageP2: roundneck4p2,
-    bgImage: roundneck4bg,
+    title: "Luxe Core Round Neck",
+    subtitle: "Luxury-quality round neck designed for premium branded collections and refined silhouettes.",
+    image: roundneck4,
     technicalHighlights: [
-      { title: "Fabric options", value: "Premium cotton and luxury fiber blends" },
-      { title: "Fit range", value: "Refined and tailored luxury profiles" },
-      { title: "Customization", value: "Embroidery, jacquard details, and luxury labels" },
-      { title: "MOQ", value: "Flexible production for luxury programs" },
+      { title: "Fabric", value: "100% Cotton" },
+      { title: "GSM", value: "170-180" },
+      { title: "Colour", value: "As per Request" },
+      { title: "Sizes", value: "As per Request" },
+      { title: "MOQ", value: "1000 pieces each colour" },
     ],
     benefits: [
       "Premium positioning for luxury brands",
@@ -47,16 +35,15 @@ const productVariants = [
   },
   {
     id: 2,
-    title: "Everyday Comfort Tee",
-    subtitle: "Versatile casual round neck perfect for everyday wear and mass-market retail.",
+    title: "Everyday Essential Round Neck",
+    subtitle: "Soft, easy-wear round neck built for daily comfort and broad appeal across retail lines.",
     image: roundneck5,
-    imageP2: roundneck5p2,
-    bgImage: roundneck5,
     technicalHighlights: [
-      { title: "Fabric options", value: "Soft cotton and comfortable blends" },
-      { title: "Fit range", value: "Classic and relaxed everyday profiles" },
-      { title: "Customization", value: "Screen print, embroidery, and label options" },
-      { title: "MOQ", value: "Ideal for volume retail orders" },
+      { title: "Fabric", value: "100% Cotton" },
+      { title: "GSM", value: "170-180" },
+      { title: "Colour", value: "As per Request" },
+      { title: "Sizes", value: "As per Request" },
+      { title: "MOQ", value: "1000 pieces each colour" },
     ],
     benefits: [
       "Perfect for casual retail and distribution",
@@ -72,16 +59,15 @@ const productVariants = [
   },
   {
     id: 3,
-    title: "Vintage Inspired Tee",
-    subtitle: "Retro-styled round neck with quality construction for vintage and heritage collections.",
-    image: roundneck8,
-    imageP2: roundneck8p2,
-    bgImage: roundneck8,
+    title: "Heritage Textured Round Neck",
+    subtitle: "Vintage-inspired round neck with rich texture and premium details for lifestyle collections.",
+    image: roundneck2,
     technicalHighlights: [
-      { title: "Fabric options", value: "Quality cotton with vintage-inspired finishes" },
-      { title: "Fit range", value: "Relaxed and vintage-correct profiles" },
-      { title: "Customization", value: "Distressing, vintage prints, and heritage labeling" },
-      { title: "MOQ", value: "Flexible for heritage and vintage brand programs" },
+      { title: "Fabric", value: "Polyester Lycra" },
+      { title: "GSM", value: "200-220" },
+      { title: "Colour", value: "As per Request" },
+      { title: "Sizes", value: "As per Request" },
+      { title: "MOQ", value: "200 pieces each colour" },
     ],
     benefits: [
       "Perfect for vintage and heritage brands",
@@ -97,16 +83,15 @@ const productVariants = [
   },
   {
     id: 4,
-    title: "Modern Slim Fit Tee",
-    subtitle: "Contemporary slim silhouette suited for fashion-forward collections and retail brands.",
-    image: roundneck2bg,
-    imageP2: roundneck2p2,
-    bgImage: roundneck2bg,
+    title: "Sculpted Slim Round Neck",
+    subtitle: "Contemporary slim-fit round neck crafted for sleek silhouettes and modern fashion brands.",
+    image: roundneck3,
     technicalHighlights: [
-      { title: "Fabric options", value: "Premium cotton and high-quality blends" },
-      { title: "Fit range", value: "Slim and tailored profiles" },
-      { title: "Customization", value: "Monogram detailing, graphic print, and custom tags" },
-      { title: "MOQ", value: "Flexible sampling and scalable production" },
+      { title: "Fabric", value: "Imported Scuba Sued" },
+      { title: "GSM", value: "250" },
+      { title: "Colour", value: "As per Request" },
+      { title: "Sizes", value: "As per Request" },
+      { title: "MOQ", value: "200 pieces each colour" },
     ],
     benefits: [
       "Perfect for contemporary fashion collections",
@@ -123,15 +108,14 @@ const productVariants = [
   {
     id: 5,
     title: "Performance Round Neck",
-    subtitle: "Technical round neck with breathability for activewear and lifestyle collections.",
-    image: roundneck3bg,
-    imageP2: roundneck3p2,
-    bgImage: roundneck3bg,
+    subtitle: "Premium polyester jacquard round neck engineered for active lifestyle and fashion collections.",
+    image: roundneck7,
     technicalHighlights: [
-      { title: "Fabric options", value: "Performance blends with moisture-wicking properties" },
-      { title: "Fit range", value: "Comfort-focused athletic and casual profiles" },
-      { title: "Customization", value: "Heat transfer, screen print, and woven labels" },
-      { title: "MOQ", value: "Flexible runs for lifestyle and promotional collections" },
+      { title: "Fabric", value: "Polyester Jacq." },
+      { title: "GSM", value: "220-230" },
+      { title: "Colour", value: "As per Request" },
+      { title: "Sizes", value: "As per Request" },
+      { title: "MOQ", value: "200 pieces each colour" },
     ],
     benefits: [
       "Comfortable for active lifestyle wear",
@@ -143,80 +127,6 @@ const productVariants = [
       { title: "Technical performance", body: "Performance fabrics designed for comfort and breathability with classic round neck styling." },
       { title: "Lifestyle appeal", body: "Available in trending colors for lifestyle and wellness brand collections." },
       { title: "Scalable production", body: "Suitable for both pilot programs and larger seasonal collection orders." },
-    ],
-  },
-  {
-    id: 6,
-    title: "Sustainable Cotton Tee",
-    subtitle: "Eco-conscious round neck for brands focused on sustainable fashion and organic materials.",
-    image: roundneck6,
-    imageP2: roundneck6p2,
-    bgImage: roundneck6,
-    technicalHighlights: [
-      { title: "Fabric options", value: "Organic and sustainable cotton blends" },
-      { title: "Fit range", value: "Classic and contemporary profiles" },
-      { title: "Customization", value: "Eco-friendly labels and sustainable packaging" },
-      { title: "MOQ", value: "Flexible for sustainable brand launches" },
-    ],
-    benefits: [
-      "Perfect for eco-conscious brands",
-      "Supports sustainability messaging",
-      "Appeals to environmentally aware consumers",
-      "Aligns with modern brand values",
-    ],
-    detailCards: [
-      { title: "Sustainable materials", body: "Organic and sustainable cotton options that support your brand's environmental commitments." },
-      { title: "Eco-branding", body: "Support for sustainable labeling and eco-friendly packaging aligned with brand values." },
-      { title: "Certified production", body: "Coordination with certification bodies for organic and sustainable labeling." },
-    ],
-  },
-  {
-    id: 7,
-    title: "Bold Statement Tee",
-    subtitle: "Fashion-forward round neck designed for graphic-heavy collections and creative campaigns.",
-    image: roundneck7,
-    imageP2: roundneck7p2,
-    bgImage: roundneck7,
-    technicalHighlights: [
-      { title: "Fabric options", value: "Premium cotton optimized for bold graphics" },
-      { title: "Fit range", value: "Contemporary and relaxed profiles" },
-      { title: "Customization", value: "Large-scale graphics, sublimation, and bold prints" },
-      { title: "MOQ", value: "Flexible for campaign and limited edition launches" },
-    ],
-    benefits: [
-      "Ideal for graphic-driven fashion brands",
-      "Premium base for bold visual impact",
-      "Perfect for limited edition collections",
-      "Fast turnaround for creative campaigns",
-    ],
-    detailCards: [
-      { title: "Graphic optimized", body: "Premium fabric and construction designed to showcase bold graphics and creative designs." },
-      { title: "Visual impact", body: "High-quality blank that allows your graphics and messaging to stand out." },
-      { title: "Campaign ready", body: "Fast production and flexible runs for limited edition and campaign releases." },
-    ],
-  },
-  {
-    id: 8,
-    title: "Classic Round Neck Tee",
-    subtitle: "Premium round neck essentials perfect for retail and casual wear collections.",
-    image: roundneck1bg,
-    imageP2: roundneck1p2,
-    technicalHighlights: [
-      { title: "Fabric options", value: "100% cotton and cotton-poly blends" },
-      { title: "Fit range", value: "Classic, slim, and relaxed profiles" },
-      { title: "Customization", value: "Screen print, embroidery, custom labels, and patches" },
-      { title: "MOQ", value: "Flexible production runs for retail collections" },
-    ],
-    benefits: [
-      "Ideal for retail stores and fashion brands",
-      "Premium quality construction and comfort",
-      "Brand-ready finishing for merchandise programs",
-      "Fast sampling and flexible production support",
-    ],
-    detailCards: [
-      { title: "Premium construction", body: "Quality round neck construction with reinforced stitching designed for professional retail presentation." },
-      { title: "Color and branding", body: "Choose from extensive color palette and add your logo with screen print, embroidery, or custom finishing." },
-      { title: "Production flexibility", body: "We support low-volume testing as well as larger retail orders without compromising quality." },
     ],
   },
 ];
@@ -238,7 +148,7 @@ function Gallery({ product }: { product: any }) {
   const loadingTimerRef = useRef<number | null>(null);
   const galleryStageRef = useRef<HTMLDivElement | null>(null);
   const touchStateRef = useRef<{ mode: "pan" | "pinch" | null; startDistance?: number; startZoom?: number; startPanX?: number; startPanY?: number; startX?: number; startY?: number }>({ mode: null });
-  const images = useMemo(() => [product.image, product.imageP2].filter(Boolean) as string[], [product.image, product.imageP2]);
+  const images = useMemo(() => [product.image].filter(Boolean) as string[], [product.image]);
 
   useEffect(() => {
     const preloadImages = [...images, ...(images.length > 1 ? [images[(selectedImage + 1) % images.length]] : [])];
@@ -459,16 +369,16 @@ function Gallery({ product }: { product: any }) {
   return (
     <div className="w-full">
       <div
-        className={`group relative mx-auto w-full max-w-[400px] self-start overflow-hidden rounded-[30px] border border-black/10 bg-[linear-gradient(180deg,#FFFFFF,#FCFBF8)] shadow-[0_24px_60px_-34px_rgba(15,23,42,0.22)] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${isPageReady ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"}`}
+        className={`group relative mx-auto w-full max-w-full min-w-0 self-start overflow-hidden rounded-[30px] ${isPageReady ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"}`}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
         <div
           ref={galleryStageRef}
-          className="relative mx-auto flex min-h-[400px] items-center justify-center overflow-hidden rounded-[28px] bg-[#A9A9A9] px-[20px] py-[24px] sm:min-h-[400px] sm:px-[20px] sm:py-[24px] lg:min-h-[460px] lg:px-[20px] lg:py-[24px]"
+          className="relative mx-auto flex min-h-100 items-center justify-center overflow-hidden rounded-[28px] bg-transparent px-5 py-6 sm:min-h-100 sm:px-5 sm:py-6 lg:min-h-115 lg:px-5 lg:py-6"
         >
           {isImageLoading && (
-            <div className="absolute inset-0 z-10 rounded-[28px] bg-black/[0.03]" />
+            <div className="absolute inset-0 z-10 rounded-[28px] bg-black/3" />
           )}
 
           <div
@@ -492,7 +402,7 @@ function Gallery({ product }: { product: any }) {
             />
           </div>
 
-          <div className="pointer-events-none absolute inset-0 rounded-[28px] bg-gradient-to-t from-black/[0.02] via-transparent to-transparent" />
+          <div className="pointer-events-none absolute inset-0 rounded-[28px] bg-linear-to-t from-black/2 via-transparent to-transparent" />
 
           <div className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-charcoal shadow-[0_8px_24px_rgba(0,0,0,0.10)] backdrop-blur">
             {selectedImage + 1} / {images.length}
@@ -540,27 +450,8 @@ function Gallery({ product }: { product: any }) {
         </div>
       </div>
 
-      <div className="mt-4 flex gap-2 overflow-x-auto pb-2">
-        {images.map((img: string, index: number) => (
-          <button
-            key={`${img}-${index}`}
-            onClick={() => changeImage(index)}
-            className={`group shrink-0 rounded-[0.95rem] border p-1 shadow-sm transition-all duration-200 ${selectedImage === index ? "border-gold/90 shadow-[0_12px_28px_-16px_rgba(255,215,0,0.28)]" : "border-border/60 hover:-translate-y-0.5 hover:border-gold/40 hover:shadow-md"}`}
-            style={{ minWidth: 84, width: 84, height: 84 }}
-            aria-label={`View image ${index + 1}`}
-          >
-            <img
-              src={img}
-              alt={`thumb-${index}`}
-              className="h-full w-full rounded-[0.75rem] bg-background object-contain transition-transform duration-200"
-              loading="lazy"
-            />
-          </button>
-        ))}
-      </div>
-
       {isLightboxOpen && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 px-4 py-6 backdrop-blur-xl" onClick={closeLightbox}>
+        <div className="fixed inset-0 z-60 flex items-center justify-center bg-black/80 px-4 py-6 backdrop-blur-xl" onClick={closeLightbox}>
           <div className="relative w-full max-w-6xl" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={closeLightbox}
@@ -591,7 +482,7 @@ function Gallery({ product }: { product: any }) {
             </button>
 
             <div
-              className="relative flex h-[82vh] items-center justify-center overflow-hidden rounded-[1.5rem] bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.95),_rgba(244,239,228,0.95))]"
+              className="relative flex h-[82vh] items-center justify-center overflow-hidden rounded-[1.5rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.95),rgba(244,239,228,0.95))]"
               onDoubleClick={handleLightboxDoubleClick}
               onWheel={handleLightboxWheel}
               onMouseDown={handleLightboxMouseDown}
@@ -643,19 +534,39 @@ export default function ProductRoundNeckDetail() {
         keywords={`${product.title.toLowerCase()}, round neck t-shirt manufacturing, custom tee manufacturing, request quote round neck`}
       />
 
-      <section className="mt-10 pt-20 pb-20 px-4 sm:px-6 lg:px-8 bg-[radial-gradient(circle_at_top,_rgba(255,215,0,0.08),_rgba(255,255,255,0)_42%),#fcfaf6]">
+      <section className="pt-40 pb-16 bg-muted/30 border-b border-border">
         <div className="container-luxe">
-          <div className="grid gap-6 xl:grid-cols-[minmax(0,auto)_minmax(0,420px)] xl:items-center xl:gap-x-14 xl:justify-center">
-            <div className="mx-auto w-full max-w-[560px] self-start lg:mx-0 lg:justify-self-start xl:justify-self-center">
+          <p className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.32em] text-gold flex items-center gap-3">
+            <span className="gold-line" /> Round Neck
+          </p>
+        </div>
+      </section>
+
+      <section className="mt-10 pt-20 pb-20 px-4 sm:px-6 lg:px-8 bg-[radial-gradient(circle_at_top,rgba(255,215,0,0.08),rgba(255,255,255,0)_42%),#fcfaf6]">
+        <div className="container-luxe">
+          <div className="grid gap-6 xl:grid-cols-[minmax(0,auto)_minmax(0,640px)] xl:items-center xl:gap-x-14 xl:justify-center">
+            <div className="mx-auto w-full max-w-full self-start lg:mx-0 lg:justify-self-start xl:justify-self-center">
               <Gallery product={product} />
             </div>
 
             <div className="self-start xl:-ml-2">
-              <div className="sticky top-20 self-start">
-                <div className="h-fit self-start rounded-[1.7rem] border border-border/60 bg-card p-4 shadow-[0_12px_30px_-18px_rgba(15,23,42,0.16)] sm:p-5">
-                  <p className="mb-4 text-sm text-gold">Round neck manufacturing</p>
+              <div className="xl:sticky xl:top-20 self-start min-w-0">
+                <div className="h-fit w-full self-start rounded-[1.7rem] border border-border/60 bg-card p-4 shadow-[0_12px_30px_-18px_rgba(15,23,42,0.16)] sm:p-5 min-w-0 overflow-hidden">
+                  
                   <h1 className="mt-0 font-display text-3xl leading-[1.05] sm:text-4xl lg:text-5xl">{product.title}</h1>
-                  <p className="mt-7 max-w-[520px] text-lg leading-[1.7] text-gray-600">{product.subtitle}</p>
+                  
+
+                  <div className="mt-8 rounded-[1.75rem] border border-border/60 bg-muted/30 p-6 shadow-[0_12px_30px_-18px_rgba(15,23,42,0.12)] min-w-0 overflow-hidden">
+                    <p className="mb-4 text-base font-semibold uppercase tracking-[0.18em] text-gold">Product details</p>
+                    <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 min-w-0">
+                      {product.technicalHighlights.map((highlight: any) => (
+                        <div key={highlight.title} className="w-full rounded-2xl bg-white/90 px-5 py-5 shadow-sm min-w-0 h-full">
+                          <p className="text-base font-semibold text-foreground">{highlight.title}</p>
+                          <p className="mt-2 text-sm leading-6 text-gray-600 whitespace-normal wrap-break-word">{highlight.value}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
                   <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/30 px-2.5 py-2 text-sm text-gray-700 shadow-[0_6px_18px_-12px_rgba(15,23,42,0.12)]">
                     <span className="inline-flex h-2.5 w-2.5 rounded-full bg-gold" />
@@ -663,7 +574,7 @@ export default function ProductRoundNeckDetail() {
                   </div>
 
                   <div className="mt-7 flex flex-wrap gap-2 sm:gap-3">
-                    <Link to="/contact" className="inline-flex h-[52px] min-w-[220px] items-center justify-center rounded-[0.95rem] bg-charcoal px-6 py-3 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-charcoal/90 hover:shadow-[0_10px_24px_-12px_rgba(15,23,42,0.35)]">
+                    <Link to="/contact" className="inline-flex h-13 min-w-55 items-center justify-center rounded-[0.95rem] bg-charcoal px-6 py-3 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-charcoal/90 hover:shadow-[0_10px_24px_-12px_rgba(15,23,42,0.35)]">
                       Enquire Now
                     </Link>
                   </div>
@@ -689,7 +600,7 @@ export default function ProductRoundNeckDetail() {
 
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {relatedProducts.map((item) => (
-                <Link key={item.id} to={`/products/round-neck/details/${item.id}`} className="group overflow-hidden rounded-[1.25rem] border border-border bg-background transition hover:-translate-y-1 hover:shadow-lg">
+                <Link key={item.id} to={`/products/round-neck/details/${item.id}`} className="group overflow-hidden rounded-4xl border border-border bg-background transition hover:-translate-y-1 hover:shadow-lg">
                   <img src={item.image} alt={item.title} className="h-64 w-full object-contain object-center p-4 transition duration-300" loading="lazy" />
                   <div className="border-t border-border p-4">
                     <h3 className="font-semibold text-foreground">{item.title}</h3>
