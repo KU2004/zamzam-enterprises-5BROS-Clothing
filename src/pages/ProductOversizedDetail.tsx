@@ -2,16 +2,24 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { Seo } from "../components/Seo";
 
-import oversized1Bg from "../assets/oversized1-bg.png";
+import oversized1Bg from "../assets/oversized1.jpeg";
 import oversized1p2 from "../assets/oversized1p2.png";
-import oversized2Bg from "../assets/oversized2-bg.png";
+import oversized2Bg from "../assets/oversized2.jpeg";
 import oversized2p2 from "../assets/oversized2p2.png";
-import oversized3Bg from "../assets/oversized3-bg.png";
+import oversized3Bg from "../assets/oversized3.jpeg";
 import oversized3p2 from "../assets/oversized3p2.png";
-import oversized4Bg from "../assets/oversized4-bg.png";
+import oversized4Bg from "../assets/oversized4.jpeg";
 import oversized4p2 from "../assets/oversized4p2.png";
-import oversized5Bg from "../assets/oversized5-bg.png";
+import oversized5Bg from "../assets/oversized5.jpeg";
 import oversized5p2 from "../assets/oversized5p2.png";
+
+const sharedTechnicalHighlights = [
+  { title: "Fabric", value: "100% Cotton" },
+  { title: "GSM", value: "170-180" },
+  { title: "Colour", value: "As per Request" },
+  { title: "Sizes", value: "As per Request" },
+  { title: "MOQ", value: "1000 pieces each colour" },
+];
 
 const productVariants = [
   {
@@ -378,16 +386,15 @@ function Gallery({ product }: { product: any }) {
   return (
     <div className="w-full">
       <div
-        className={`group relative mx-auto w-full max-w-[400px] self-start overflow-hidden rounded-[30px] border border-black/10 bg-[linear-gradient(180deg,#FFFFFF,#FCFBF8)] shadow-[0_24px_60px_-34px_rgba(15,23,42,0.22)] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${isPageReady ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"}`}
+        className={`group relative mx-auto w-full max-w-full min-w-0 self-start overflow-hidden rounded-[30px] border border-black/10 bg-[linear-gradient(180deg,#FFFFFF,#FCFBF8)] shadow-[0_24px_60px_-34px_rgba(15,23,42,0.22)] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${isPageReady ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"}`}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
         <div
           ref={galleryStageRef}
-          className="relative mx-auto flex min-h-[400px] items-center justify-center overflow-hidden rounded-[28px] bg-[#A9A9A9] px-[20px] py-[24px] sm:min-h-[400px] sm:px-[20px] sm:py-[24px] lg:min-h-[460px] lg:px-[20px] lg:py-[24px]"
         >
           {isImageLoading && (
-            <div className="absolute inset-0 z-10 rounded-[28px] bg-black/[0.03]" />
+            <div className="absolute inset-0 z-10 rounded-[28px] bg-black/3" />
           )}
 
           <div
@@ -471,7 +478,7 @@ function Gallery({ product }: { product: any }) {
             <img
               src={img}
               alt={`thumb-${index}`}
-              className="h-full w-full rounded-[0.75rem] object-contain transition-transform duration-200"
+              className="h-full w-full rounded-2xl object-contain transition-transform duration-200"
               loading="lazy"
             />
           </button>
@@ -479,7 +486,7 @@ function Gallery({ product }: { product: any }) {
       </div>
 
       {isLightboxOpen && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 px-4 py-6 backdrop-blur-xl" onClick={closeLightbox}>
+        <div className="fixed inset-0 z-60 flex items-center justify-center bg-black/80 px-4 py-6 backdrop-blur-xl" onClick={closeLightbox}>
           <div className="relative w-full max-w-6xl" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={closeLightbox}
@@ -510,7 +517,7 @@ function Gallery({ product }: { product: any }) {
             </button>
 
             <div
-              className="relative flex h-[82vh] items-center justify-center overflow-hidden rounded-[1.5rem] bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.95),_rgba(244,239,228,0.95))]"
+              className="relative flex h-[82vh] items-center justify-center overflow-hidden rounded-[1.5rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.95),rgba(244,239,228,0.95))]"
               onDoubleClick={handleLightboxDoubleClick}
               onWheel={handleLightboxWheel}
               onMouseDown={handleLightboxMouseDown}
@@ -562,19 +569,29 @@ export default function ProductOversizedDetail() {
         keywords={`${product.title.toLowerCase()}, oversized clothing manufacturing, streetwear apparel, request quote oversized`}
       />
 
-      <section className="mt-10 pt-20 pb-20 px-4 sm:px-6 lg:px-8 bg-[radial-gradient(circle_at_top,_rgba(255,215,0,0.08),_rgba(255,255,255,0)_42%),#fcfaf6]">
+      <section className="mt-10 pt-20 pb-20 px-4 sm:px-6 lg:px-8 bg-[radial-gradient(circle_at_top,rgba(255,215,0,0.08),rgba(255,255,255,0)_42%),#fcfaf6]">
         <div className="container-luxe">
           <div className="grid gap-6 xl:grid-cols-[minmax(0,auto)_minmax(0,420px)] xl:items-center xl:gap-x-14 xl:justify-center">
-            <div className="mx-auto w-full max-w-[560px] self-start lg:mx-0 lg:justify-self-start xl:justify-self-center">
+            <div className="mx-auto w-full max-w-140 self-start lg:mx-0 lg:justify-self-start xl:justify-self-center">
               <Gallery product={product} />
             </div>
 
             <div className="self-start xl:-ml-2">
               <div className="sticky top-20 self-start">
                 <div className="h-fit self-start rounded-[1.7rem] border border-border/60 bg-card p-4 shadow-[0_12px_30px_-18px_rgba(15,23,42,0.16)] sm:p-5">
-                  <p className="mb-4 text-sm text-gold">Oversized manufacturing</p>
                   <h1 className="mt-0 font-display text-3xl leading-[1.05] sm:text-4xl lg:text-5xl">{product.title}</h1>
-                  <p className="mt-7 max-w-[520px] text-lg leading-[1.7] text-gray-600">{product.subtitle}</p>
+
+                  <div className="mt-8 rounded-[1.75rem] border border-border/60 bg-muted/30 p-6 shadow-[0_12px_30px_-18px_rgba(15,23,42,0.12)] min-w-0 overflow-hidden">
+                    <p className="mb-4 text-base font-semibold uppercase tracking-[0.18em] text-gold">Product details</p>
+                    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 min-w-0">
+                      {sharedTechnicalHighlights.map((highlight: any, index: number) => (
+                        <div key={highlight.title} className={`w-full rounded-2xl bg-white/90 px-5 py-5 shadow-sm min-w-0 wrap-break-word ${index === sharedTechnicalHighlights.length - 1 ? "col-span-2 md:col-span-1" : ""}`}>
+                          <p className="text-base font-semibold text-foreground">{highlight.title}</p>
+                          <p className="mt-2 text-base text-gray-600">{highlight.value}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
                   <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/30 px-2.5 py-2 text-sm text-gray-700 shadow-[0_6px_18px_-12px_rgba(15,23,42,0.12)]">
                     <span className="inline-flex h-2.5 w-2.5 rounded-full bg-gold" />
@@ -582,7 +599,7 @@ export default function ProductOversizedDetail() {
                   </div>
 
                   <div className="mt-7 flex flex-wrap gap-2 sm:gap-3">
-                    <Link to="/contact" className="inline-flex h-[52px] min-w-[220px] items-center justify-center rounded-[0.95rem] bg-charcoal px-6 py-3 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-charcoal/90 hover:shadow-[0_10px_24px_-12px_rgba(15,23,42,0.35)]">
+                    <Link to="/contact" className="inline-flex h-13 min-w-55 items-center justify-center rounded-[0.95rem] bg-charcoal px-6 py-3 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-charcoal/90 hover:shadow-[0_10px_24px_-12px_rgba(15,23,42,0.35)]">
                       Enquire Now
                     </Link>
                   </div>
@@ -608,7 +625,7 @@ export default function ProductOversizedDetail() {
 
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {relatedProducts.map((item) => (
-                <Link key={item.id} to={`/products/oversized/details/${item.id}`} className="group overflow-hidden rounded-[1.25rem] border border-border bg-background transition hover:-translate-y-1 hover:shadow-lg">
+                <Link key={item.id} to={`/products/oversized/details/${item.id}`} className="group overflow-hidden rounded-4xl border border-border bg-background transition hover:-translate-y-1 hover:shadow-lg">
                   <img src={item.image} alt={item.title} className="h-64 w-full object-contain object-center p-4 transition duration-300" loading="lazy" />
                   <div className="border-t border-border p-4">
                     <h3 className="font-semibold text-foreground">{item.title}</h3>
