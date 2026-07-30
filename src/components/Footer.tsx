@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import CONTACT from "../lib/contactInfo";
 import IndiaFlag from "../assets/flags/in.svg";
 import logo from "../assets/logo.png";
