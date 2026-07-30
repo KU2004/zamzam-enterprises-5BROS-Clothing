@@ -122,7 +122,7 @@ export function Footer() {
           </div>
 
           {/* Company */}
-          <div className="space-y-4 sm:col-span-1">
+          <div className="space-y-4 mt-6 md:mt-0">
             <h4 className="font-display text-xs md:text-base uppercase tracking-[0.25em] text-gold">
               Company
             </h4>
@@ -147,16 +147,15 @@ export function Footer() {
           </div>
 
           {/* Get in Touch */}
-          <div className="space-y-4">
+          <div className="space-y-4 mt-6 md:mt-0">
             <h4 className="font-display text-xs md:text-base uppercase tracking-[0.25em] text-gold">
               Get in Touch
             </h4>
             <address className="not-italic space-y-3 md:space-y-4 text-xs md:text-sm leading-6 md:leading-7 text-white/85">
               <div className="flex items-start gap-2 md:gap-3">
-                <MapPin size={16} className="md:size-4.5 mt-1 text-gold shrink-0" />
                 <span className="text-white/85 flex-1 space-y-1">
-                  <span className="block">P.L. LOKHANDE MARG, QADRIYA NAGAR, CHEMBUR, MUMBAI, </span>
-                  <span className="block">INDIA - 400089</span>
+                  <span className="block">P.L. LOKHANDE MARG, QADRIYA NAGAR, CHEMBUR, MUMBAI-400089 (INDIA) </span>
+                  <span className="block"></span>
                   <span className="block"></span>
                 </span>
               </div>
