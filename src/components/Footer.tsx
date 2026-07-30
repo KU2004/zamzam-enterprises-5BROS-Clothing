@@ -160,10 +160,6 @@ export function Footer() {
                   <span className="block"></span>
                 </span>
               </div>
-              <div className="flex items-start gap-2 md:gap-3">
-                  <Mail size={16} className="md:size-4.5 mt-1 text-gold shrink-0" />
-                <span className="text-white/85 flex-1 wrap-break-word whitespace-normal">{CONTACT.email}</span>
-              </div>
               {CONTACT.phones.map((phone) => (
                 <div key={phone} className="flex items-center gap-2 md:gap-3">
                   <Phone size={16} className="md:size-4.5 text-gold shrink-0" />
@@ -177,6 +173,10 @@ export function Footer() {
                   </span>
                 </div>
               ))}
+               <div className="flex items-start gap-2 md:gap-3">
+                  <Mail size={16} className="md:size-4.5 mt-1 text-gold shrink-0" />
+                <span className="text-white/85 flex-1 wrap-break-word whitespace-normal">{CONTACT.email}</span>
+              </div>
             </address>
           </div>
 
