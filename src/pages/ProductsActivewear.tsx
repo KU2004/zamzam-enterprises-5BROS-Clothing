@@ -4,19 +4,19 @@ import { Link } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
 import { Seo } from "../components/Seo";
 
-import sports1Bg from "../assets/sports1-bg.png";
+import sports1Bg from "../assets/sports1.jpeg";
 import sports1p2 from "../assets/sports1p2.png";
-import sports2Bg from "../assets/sports2-bg.png";
+import sports2Bg from "../assets/sports2.jpeg";
 import sports2p2 from "../assets/sports2p2.png";
-import sports3Bg from "../assets/sports3-bg.png";
+import sports3Bg from "../assets/sports3.jpeg";
 import sports3p2 from "../assets/sports3p2.png";
-import sports4Bg from "../assets/sports4-bg.png";
+import sports4Bg from "../assets/sports4.jpeg";
 import sports4p2 from "../assets/sports4p2.png";
-import sports5Bg from "../assets/sports5-bg.png";
+import sports5Bg from "../assets/sports5.jpeg";
 import sports5p2 from "../assets/sports5p2.png";
-import sports6Bg from "../assets/sports6-bg.png";
+import sports6Bg from "../assets/sports6.jpeg";
 import sports6p2 from "../assets/sports6p2.png";
-import sports7Bg from "../assets/sports7-bg.png";
+import sports7Bg from "../assets/sports7.jpeg";
 import sports7p2 from "../assets/sports7p2.png";
 
 const photos = [
@@ -65,7 +65,7 @@ export default function ProductsActivewear() {
                     <Link
                       to={`/products/activewear/details/${index + 1}`}
                       aria-label={`View details for Activewear photo ${index + 1}`}
-                      className="block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm transition-all duration-500"
+                      className="block overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-500"
                       onMouseEnter={() => setHovered(index)}
                       onMouseLeave={() => setHovered(null)}
                     >
@@ -105,8 +105,8 @@ export default function ProductsActivewear() {
                 className="block"
                 onClick={(event) => handleMobileTapToggle(index, event)}
               >
-                <div className="overflow-hidden rounded-[1rem] border border-border bg-card">
-                  <div className="relative w-full overflow-hidden bg-[#A9A9A9] aspect-[2/3]">
+                <div className="overflow-hidden rounded-3xl border border-border bg-card">
+                  <div className="relative w-full overflow-hidden bg-[#A9A9A9] aspect-2/3">
                     <motion.img
                       src={src.frontImage}
                       alt={`Activewear ${index + 1}`}
