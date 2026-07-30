@@ -173,11 +173,12 @@ export function Footer() {
                   </span>
                 </div>
               ))}
-               <div className="flex items-start gap-2 md:gap-3">
-                  <Mail size={16} className="md:size-4.5 mt-1 text-gold shrink-0" />
-                <span className="text-white/85 flex-1 wrap-break-word whitespace-normal">{CONTACT.email}</span>
-              </div>
+
             </address>
+            <div className="mx-auto flex max-w-[20rem] items-center justify-center gap-1 md:gap-3 text-center">
+              <Mail size={16} className="text-gold shrink-0" />
+              <span className="text-white/85 text-[0.78rem] leading-5 wrap-break-word whitespace-normal">{CONTACT.email}</span>
+            </div>
           </div>
 
 
