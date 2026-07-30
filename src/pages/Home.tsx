@@ -27,6 +27,7 @@ import brand3 from "../assets/brand3.png";
 import pRound from "../assets/product-roundneck.jpg";
 import pRound5 from "../assets/roundneck5.jpeg";
 import processImg from "../assets/Process.png";
+import processMobileImg from "../assets/Processmoblie.png";
 import pPolo from "../assets/product-polo.jpg";
 import pOver from "../assets/product-oversized.jpg";
 import pHood from "../assets/product-hoodie.jpg";
@@ -97,11 +98,6 @@ const fabrics = [
   "100% Cotton", "Blend Cotton", "Bio-Washed ", "Poly Cotton",
   "French Terry", "Dry Fit", "Organic Cotton", "Recycled Fabric",
   "Custom GSM", "Custom Dyeing",
-];
-
-const process = [
-  "Fabric Selection", "Pattern Development", "Cutting", "Printing",
-  "Embroidery", "Quality Inspection", "Packing", "Global Shipping",
 ];
 
 const why = [
@@ -590,14 +586,13 @@ export default function Home() {
           </FadeUp>
 
           <div className="mt-16">
-            <div className="lg:hidden rounded-[2rem] bg-amber-50 p-6">
-              <div className="grid gap-4">
-                {process.map((p) => (
-                  <div key={p} className="rounded-[1.75rem] border border-black/10 bg-white p-5 shadow-sm">
-                    <p className="font-display font-semibold text-base text-black">{p}</p>
-                  </div>
-                ))}
-              </div>
+            <div className="lg:hidden rounded-[2rem] bg-amber-50 p-3 sm:p-4">
+              <img
+                src={processMobileImg}
+                alt="Manufacturing process mobile view"
+                className="h-auto w-full rounded-[1.5rem] object-contain"
+                loading="lazy"
+              />
             </div>
 
             <div className="hidden lg:block">
