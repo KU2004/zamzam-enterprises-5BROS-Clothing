@@ -155,7 +155,7 @@ export function Footer() {
               <div className="flex items-start gap-2 md:gap-3">
                 <MapPin size={16} className="md:size-4.5 mt-1 text-gold shrink-0" />
                 <span className="text-white/85 flex-1 space-y-1">
-                  <span className="block">P.L. LOKHANDE MARG, CHHEDA NAGAR CROSS ROAD, CHEMBUR, MUMBAI, </span>
+                  <span className="block">P.L. LOKHANDE MARG, QADRIYA NAGAR, CHEMBUR, MUMBAI, </span>
                   <span className="block">INDIA - 400089</span>
                   <span className="block"></span>
                 </span>
