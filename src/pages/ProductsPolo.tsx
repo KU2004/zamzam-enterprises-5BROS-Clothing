@@ -2,30 +2,26 @@ import { Link } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
 import { Seo } from "../components/Seo";
 
-import polo1 from "../assets/polo1.png";
-import polo2Bg from "../assets/polo2-bg.png";
-import polo3Bg from "../assets/polo3-bg.png";
-import polo4Bg from "../assets/polo4-bg.png";
-import polo5Bg from "../assets/polo5-bg.png";
-import polo6Bg from "../assets/polo6-bg.png";
-import polo7p2 from "../assets/polo7p2.png";
-import polo8Bg from "../assets/polo8-bg.png";
-import polo9Bg from "../assets/polo9-bg.png";
+import polo1 from "../assets/polo1.jpeg";
+import polo2 from "../assets/polo2.jpeg";
+import polo3 from "../assets/polo3.jpeg";
+import polo4 from "../assets/polo4.jpeg";
+import polo5 from "../assets/polo5.jpeg";
+import polo6 from "../assets/polo6.jpeg";
+import polo7 from "../assets/polo7.jpeg";
 import polo10 from "../assets/polo10.jpeg";
-import polo11Bg from "../assets/polo11-bg.png";
+import polo11 from "../assets/polo11.jpeg";
 
 const photos = [
-  { frontImage: polo7p2, name: "Classic Piqué Polo" },
-  { frontImage: polo9Bg, name: "Modern Slim Polo" },
-  { frontImage: polo8Bg, name: "Performance Polo" },
+  { frontImage: polo7, name: "Classic Piqué Polo" },
   { frontImage: polo10, name: "Premium Dress Polo" },
-  { frontImage: polo11Bg, name: "Street-Style Polo" },
-  { frontImage: polo1,imageClassName: "object-cover object-center scale-[1.12]", name: "Classic Work Polo" },
-  { frontImage: polo2Bg,imageClassName: "object-cover object-center scale-[1.12]", name: "Retail Signature Polo" },
-  { frontImage: polo3Bg,imageClassName: "object-cover object-center scale-[1.12]", name: "Custom Event Polo" },
-  { frontImage: polo4Bg, imageClassName: "object-cover object-center scale-[1.12]", name: "Signature Premium Polo" },
-  { frontImage: polo5Bg, name: "Contemporary Polo" },
-  { frontImage: polo6Bg, name: "Statement Polo" },
+  { frontImage: polo11, imageClassName: "object-cover object-top", name: "Street-Style Polo" },
+                          { frontImage: polo1,imageClassName: "object-cover object-top scale-[1.12]", name: "Classic Work Polo" },
+  { frontImage: polo2,imageClassName: "object-cover object-top scale-[1.12]", name: "Retail Signature Polo" },
+  { frontImage: polo3,imageClassName: "object-cover object-top scale-[1.12]", name: "Custom Event Polo" },
+  { frontImage: polo4, imageClassName: "object-cover object-top scale-[1.12]", name: "Signature Premium Polo" },
+  { frontImage: polo5, name: "Contemporary Polo" },
+  { frontImage: polo6, name: "Statement Polo" },
 ];
 
 export default function ProductsPolo() {
@@ -43,21 +39,21 @@ export default function ProductsPolo() {
       <section className="py-16 md:py-24 bg-background">
         <div className="container-luxe">
           <div className="hidden md:block">
-            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
               {photos.map((src, index) => (
                 <FadeUp key={index} delay={index * 120}>
                   <div>
                     <Link
                       to={`/products/polo/details/${index + 1}`}
                       aria-label={`View details for Polo photo ${index + 1}`}
-                      className="block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm transition-all duration-500"
+                      className="block overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-500"
                     >
-                      <div className="relative w-full overflow-hidden bg-[#A9A9A9] h-80 sm:h-96">
+                      <div className="relative w-full overflow-hidden bg-[#A9A9A9] h-96 sm:h-112">
                         <img
                           src={src.frontImage}
                           alt={`Polo ${index + 1}`}
                           loading="lazy"
-                          className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
+                          className={`absolute inset-0 w-full h-full object-cover object-top ${src.imageClassName ?? ""}`}
                         />
                       </div>
                     </Link>
@@ -75,13 +71,13 @@ export default function ProductsPolo() {
                 aria-label={`View details for Polo photo ${index + 1}`}
                 className="block"
               >
-                <div className="overflow-hidden rounded-[1rem] border border-border bg-card">
-                  <div className="relative w-full overflow-hidden bg-[#A9A9A9] aspect-[2/3]">
+                <div className="overflow-hidden rounded-3xl border border-border bg-card">
+                  <div className="relative w-full overflow-hidden bg-[#A9A9A9] aspect-3/4">
                     <img
                       src={src.frontImage}
                       alt={`Polo ${index + 1}`}
                       loading="lazy"
-                      className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
+                      className={`absolute inset-0 w-full h-full object-cover object-top ${src.imageClassName ?? ""}`}
                     />
                   </div>
                 </div>
