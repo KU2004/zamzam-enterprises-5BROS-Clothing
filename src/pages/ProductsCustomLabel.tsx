@@ -62,7 +62,7 @@ export default function ProductsCustomLabel() {
                     <Link
                       to={`/products/custom-label/details/${index + 1}`}
                       aria-label={`View details for Custom Label photo ${index + 1}`}
-                      className="block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm transition-all duration-500"
+                      className="block overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-500"
                       onMouseEnter={() => setHovered(index)}
                       onMouseLeave={() => setHovered(null)}
                     >
@@ -102,8 +102,8 @@ export default function ProductsCustomLabel() {
                 className="block"
                 onClick={(event) => handleMobileTapToggle(index, event)}
               >
-                <div className="overflow-hidden rounded-[1rem] border border-border bg-card">
-                  <div className="relative w-full overflow-hidden bg-[#A9A9A9] aspect-[2/3]">
+                <div className="overflow-hidden rounded-3xl border border-border bg-card">
+                  <div className="relative w-full overflow-hidden bg-[#A9A9A9] aspect-2/3">
                     <motion.img
                       src={src.frontImage}
                       alt={`Custom Label ${index + 1}`}
