@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
 import { Seo } from "../components/Seo";
 
-import hoodies1Bg from "../assets/hoodies1-bg.png";
+import hoodies1Bg from "../assets/hoodies1.jpeg";
 import hoodies1p2 from "../assets/hoodies1p2.png";
-import hoodies2Bg from "../assets/hoodies2-bg.png";
+import hoodies2Bg from "../assets/hoodies2.jpeg";
 import hoodies2p2 from "../assets/hoodies2p2.png";
-import hoodies3Bg from "../assets/hoodies3-bg.png";
+import hoodies3Bg from "../assets/hoodies3.jpeg";
 import hoodies3p2 from "../assets/hoodies3p2.png";
-import hoodies4Bg from "../assets/hoodies4-bg.png";
+import hoodies4Bg from "../assets/hoodies4.jpeg";
 import hoodies4p2 from "../assets/hoodies4p2.png";
 
 const photos = [
@@ -49,14 +49,14 @@ export default function ProductsHoodies() {
       <section className="py-16 md:py-24 bg-background">
         <div className="container-luxe">
           <div className="hidden md:block">
-            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {photos.map((src, index) => (
                 <FadeUp key={index} delay={index * 120}>
                   <div>
                     <Link
                       to={`/products/hoodies/details/${index + 1}`}
                       aria-label={`View details for Hoodies photo ${index + 1}`}
-                      className="block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm transition-all duration-500"
+                      className="block overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-500"
                       onMouseEnter={() => setHovered(index)}
                       onMouseLeave={() => setHovered(null)}
                     >
@@ -68,7 +68,7 @@ export default function ProductsHoodies() {
                           initial={{ opacity: 1, scale: 1 }}
                           animate={hovered === index ? { opacity: 0, scale: 1.03 } : { opacity: 1, scale: 1 }}
                           transition={{ duration: 0.45, ease: "easeInOut" }}
-                          className="absolute inset-0 w-full h-full object-contain object-center"
+                          className="absolute inset-0 w-full h-full object-cover object-center"
                         />
                         <motion.img
                           src={src.hoverImage}
@@ -77,7 +77,7 @@ export default function ProductsHoodies() {
                           initial={{ opacity: 0, scale: 1 }}
                           animate={hovered === index ? { opacity: 1, scale: 1.03 } : { opacity: 0, scale: 1 }}
                           transition={{ duration: 0.45, ease: "easeInOut" }}
-                          className="absolute inset-0 w-full h-full object-contain object-center"
+                          className="absolute inset-0 w-full h-full object-cover object-center"
                         />
                       </div>
                     </Link>
@@ -96,8 +96,8 @@ export default function ProductsHoodies() {
                 className="block"
                 onClick={(event) => handleMobileTapToggle(index, event)}
               >
-                <div className="overflow-hidden rounded-[1rem] border border-border bg-card">
-                  <div className="relative w-full overflow-hidden bg-[#A9A9A9] aspect-[2/3]">
+                <div className="overflow-hidden rounded-3xl border border-border bg-card">
+                  <div className="relative w-full overflow-hidden bg-[#A9A9A9] aspect-2/3">
                     <motion.img
                       src={src.frontImage}
                       alt={`Hoodies ${index + 1}`}
@@ -105,7 +105,7 @@ export default function ProductsHoodies() {
                       initial={{ opacity: 1, scale: 1 }}
                       animate={mobileTapped === index ? { opacity: 0, scale: 1.03 } : { opacity: 1, scale: 1 }}
                       transition={{ duration: 0.45, ease: "easeInOut" }}
-                      className="absolute inset-0 w-full h-full object-contain object-center"
+                      className="absolute inset-0 w-full h-full object-cover object-center"
                     />
                     <motion.img
                       src={src.hoverImage}
@@ -114,7 +114,7 @@ export default function ProductsHoodies() {
                       initial={{ opacity: 0, scale: 1 }}
                       animate={mobileTapped === index ? { opacity: 1, scale: 1.03 } : { opacity: 0, scale: 1 }}
                       transition={{ duration: 0.45, ease: "easeInOut" }}
-                      className="absolute inset-0 w-full h-full object-contain object-center"
+                      className="absolute inset-0 w-full h-full object-cover object-center"
                     />
                   </div>
                 </div>
