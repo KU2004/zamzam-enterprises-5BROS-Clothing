@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
 import { Seo } from "../components/Seo";
 
-import oversized1Bg from "../assets/oversized1-bg.png";
+import oversized1Bg from "../assets/oversized1.jpeg";
 import oversized1p2 from "../assets/oversized1p2.png";
-import oversized2Bg from "../assets/oversized2-bg.png";
+import oversized2Bg from "../assets/oversized2.jpeg";
 import oversized2p2 from "../assets/oversized2p2.png";
-import oversized3Bg from "../assets/oversized3-bg.png";
+import oversized3Bg from "../assets/oversized3.jpeg";
 import oversized3p2 from "../assets/oversized3p2.png";
-import oversized4Bg from "../assets/oversized4-bg.png";
+import oversized4Bg from "../assets/oversized4.jpeg";
 import oversized4p2 from "../assets/oversized4p2.png";
-import oversized5Bg from "../assets/oversized5-bg.png";
+import oversized5Bg from "../assets/oversized5.jpeg";
 import oversized5p2 from "../assets/oversized5p2.png";
 
 const photos = [
@@ -59,11 +59,11 @@ export default function ProductsOversized() {
                     <Link
                       to={`/products/oversized/details/${index + 1}`}
                       aria-label={`View details for Oversized photo ${index + 1}`}
-                      className="block overflow-hidden rounded-[1rem] border border-border bg-card shadow-sm transition-all duration-500"
+                      className="block overflow-hidden rounded-3xl transition-all duration-500"
                       onMouseEnter={() => setHovered(index)}
                       onMouseLeave={() => setHovered(null)}
                     >
-                      <div className="relative w-full overflow-hidden bg-[#A9A9A9] h-80 sm:h-96">
+                      <div className="relative w-full overflow-hidden h-80 sm:h-96 bg-transparent">
                         <motion.img
                           src={src.frontImage}
                           alt={`Oversized ${index + 1}`}
@@ -71,7 +71,7 @@ export default function ProductsOversized() {
                           initial={{ opacity: 1, scale: 1 }}
                           animate={hovered === index ? { opacity: 0, scale: 1.03 } : { opacity: 1, scale: 1 }}
                           transition={{ duration: 0.45, ease: "easeInOut" }}
-                          className="absolute inset-0 w-full h-full object-contain object-center"
+                          className={`absolute inset-0 w-full h-full object-contain object-center ${index === 0 || index === 4 ? "scale-[1.12]" : ""}`}
                         />
                         <motion.img
                           src={src.hoverImage}
@@ -80,7 +80,7 @@ export default function ProductsOversized() {
                           initial={{ opacity: 0, scale: 1 }}
                           animate={hovered === index ? { opacity: 1, scale: 1.03 } : { opacity: 0, scale: 1 }}
                           transition={{ duration: 0.45, ease: "easeInOut" }}
-                          className="absolute inset-0 w-full h-full object-contain object-center"
+                          className={`absolute inset-0 w-full h-full object-contain object-center ${index === 0 || index === 4 ? "scale-[1.12]" : ""}`}
                         />
                       </div>
                     </Link>
@@ -99,8 +99,8 @@ export default function ProductsOversized() {
                 className="block"
                 onClick={(event) => handleMobileTapToggle(index, event)}
               >
-                <div className="overflow-hidden rounded-[1rem] border border-border bg-card">
-                  <div className="relative w-full overflow-hidden bg-[#A9A9A9] aspect-[2/3]">
+                <div className="overflow-hidden rounded-3xl">
+                  <div className="relative w-full overflow-hidden aspect-2/3 bg-transparent">
                     <motion.img
                       src={src.frontImage}
                       alt={`Oversized ${index + 1}`}
@@ -108,7 +108,7 @@ export default function ProductsOversized() {
                       initial={{ opacity: 1, scale: 1 }}
                       animate={mobileTapped === index ? { opacity: 0, scale: 1.03 } : { opacity: 1, scale: 1 }}
                       transition={{ duration: 0.45, ease: "easeInOut" }}
-                      className="absolute inset-0 w-full h-full object-contain object-center"
+                      className={`absolute inset-0 w-full h-full object-contain object-center ${index === 0 || index === 4 ? "scale-[1.12]" : ""}`}
                     />
                     <motion.img
                       src={src.hoverImage}
@@ -117,7 +117,7 @@ export default function ProductsOversized() {
                       initial={{ opacity: 0, scale: 1 }}
                       animate={mobileTapped === index ? { opacity: 1, scale: 1.03 } : { opacity: 0, scale: 1 }}
                       transition={{ duration: 0.45, ease: "easeInOut" }}
-                      className="absolute inset-0 w-full h-full object-contain object-center"
+                      className={`absolute inset-0 w-full h-full object-contain object-center ${index === 0 || index === 4 ? "scale-[1.12]" : ""}`}
                     />
                   </div>
                 </div>
