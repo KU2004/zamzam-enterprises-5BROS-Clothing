@@ -154,8 +154,8 @@ export function Footer() {
             <address className="not-italic space-y-3 md:space-y-4 text-xs md:text-sm leading-6 md:leading-7 text-white/85">
               <div className="flex items-start gap-2 md:gap-3">
                 <span className="text-white/85 flex-1 space-y-1">
-                  <span className="block">P.L. LOKHANDE MARG, QADRIYA NAGAR, CHEMBUR, MUMBAI-400089 (INDIA) </span>
-                  <span className="block"></span>
+                  <span className="block">P.L. LOKHANDE MARG, QADRIYA NAGAR, CHEMBUR,</span>
+                  <span className="block"> MUMBAI-400089 (INDIA) </span>
                   <span className="block"></span>
                 </span>
               </div>
@@ -194,4 +194,4 @@ export function Footer() {
       </div>
     </footer>
   );
-}
+}S
