@@ -1,7 +1,6 @@
 import { FadeUp } from "../components/FadeUp";
 import { Seo } from "../components/Seo";
 import { type ReactNode } from "react";
-import hero1 from "../assets/hero-1.jpg";
 import founder from "../assets/founder.jpeg";
 import milestonelaptop from "../assets/Milestonelaptop.png";
 import milestonemoblie from "../assets/Milestonemoblie.png";
@@ -69,65 +68,57 @@ At Zam Zam Enterprises, we believe clothing is more than just fashion — it is 
 From our manufacturing unit in Chembur, we supply our products to different cities across India, building strong relationships with <strong>distributors</strong>, <strong>wholesalers</strong> and <strong>corporate sectors</strong> who trust our quality and service."
       />
 
-      <section className="py-16 bg-background">
-        <div className="w-full max-w-6xl px-4 mx-auto">
-          <div className="mb-8 text-center">
-            <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center justify-center gap-3">
-              <span className="gold-line" /> Factory Tour
-            </p>
-            <h2 className="mt-10 font-display text-4xl md:text-6xl leading-tight max-w-4xl mx-auto text-charcoal">
-              Step inside the <span className="whitespace-nowrap">5BROS factory</span>.
-            </h2>
-          </div>
-          <div className="mt-10 flex justify-center px-4 sm:px-0">
-            <div className="w-full max-w-4xl aspect-4/5 sm:aspect-video rounded-[2rem] overflow-hidden shadow-2xl relative">
-              <iframe
-                src={youtubeSrc}
-                title="Factory Tour"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                allowFullScreen
-                className="absolute inset-0 min-w-full min-h-full w-full h-full"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="py-24 md:py-32 bg-background">
-        <div className="container-luxe grid gap-16 lg:grid-cols-2 items-center">
-          <FadeUp>
-            <img
-              src={hero1}
-              alt="Factory"
-              className="aspect-4/5 w-full object-cover"
-              loading="lazy"
-            />
-          </FadeUp>
-          <FadeUp delay={120}>
-            <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
-              <span className="gold-line" /> Our Story
-            </p>
-            <h2 className="mt-5 font-display font-bold text-4xl md:text-5xl leading-tight">
-              Apparel Craftmanship
-            </h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed text-justify">
-              Before founding Zam Zam Enterprises, We gained
-              valuable experience in the textile and apparel industry,
-              developing a deep understanding of garment manufacturing, fabric
-              sourcing, product quality, and customer requirements. He
-              recognised the growing demand for high-quality, affordable, and
-              reliable apparel across India and international markets, and
-              founded Simnani Enterprise to create a brand that combines
-              quality, comfort, and value while building strong, trust-based
-              customer relationships.
-            </p>
-            <p className="mt-4 text-muted-foreground leading-relaxed text-justify">
-              We recognized the growing demand for high-quality, affordable, and reliable apparel products across India and international markets. We saw an opportunity to create a brand that combines quality, comfort, and value.
-            </p>
-            <p className="mt-4 text-muted-foreground leading-relaxed text-justify">
-              The inspiration came from a desire to build a trusted apparel company that delivers premium-quality garments while maintaining competitive pricing and strong customer relationships. We envisioned creating a brand that customers could rely on for consistent quality and service.
-            </p>
-          </FadeUp>
+        <div className="container-luxe">
+          <div className="grid gap-16 lg:grid-cols-[1.25fr_0.85fr] items-start">
+            <FadeUp>
+              <div className="w-full mx-auto">
+                <div className="mb-8 text-center lg:text-left">
+                  <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center justify-center lg:justify-start gap-3">
+                    <span className="gold-line" /> Factory Tour
+                  </p>
+                </div>
+                <div className="h-[52vh] md:h-[62vh] lg:h-[72vh] rounded-[2rem] overflow-hidden shadow-2xl bg-black relative">
+                  <iframe
+                    src={youtubeSrc}
+                    title="Factory Tour"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                    allowFullScreen
+                    className="absolute inset-0 min-w-full min-h-full w-full h-full"
+                  />
+                </div>
+              </div>
+            </FadeUp>
+
+            <FadeUp delay={120}>
+              <div>
+                <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
+                  <span className="gold-line" /> Our Story
+                </p>
+                <h2 className="mt-5 font-display font-bold text-4xl md:text-5xl leading-tight">
+                  Apparel Craftmanship
+                </h2>
+                <p className="mt-4 text-muted-foreground leading-relaxed text-justify">
+                  Before founding Zam Zam Enterprises, We gained
+                  valuable experience in the textile and apparel industry,
+                  developing a deep understanding of garment manufacturing, fabric
+                  sourcing, product quality, and customer requirements. He
+                  recognised the growing demand for high-quality, affordable, and
+                  reliable apparel across India and international markets, and
+                  founded Simnani Enterprise to create a brand that combines
+                  quality, comfort, and value while building strong, trust-based
+                  customer relationships.
+                </p>
+                <p className="mt-4 text-muted-foreground leading-relaxed text-justify">
+                  We recognized the growing demand for high-quality, affordable, and reliable apparel products across India and international markets. We saw an opportunity to create a brand that combines quality, comfort, and value.
+                </p>
+                <p className="mt-4 text-muted-foreground leading-relaxed text-justify">
+                  The inspiration came from a desire to build a trusted apparel company that delivers premium-quality garments while maintaining competitive pricing and strong customer relationships. We envisioned creating a brand that customers could rely on for consistent quality and service.
+                </p>
+              </div>
+            </FadeUp>
+          </div>
         </div>
       </section>
 
