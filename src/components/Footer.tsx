@@ -30,6 +30,7 @@ const socialLinks = [
 export function Footer() {
   return (
     <footer
+      id="footer"
       className="bg-charcoal text-charcoal-foreground"
       style={{ fontFamily: '"Poppins", system-ui, sans-serif' }}
     >
