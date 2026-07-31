@@ -27,7 +27,8 @@ import thumbnail3 from "../assets/sports5.jpeg";
 import thumbnail5 from "../assets/oversized1.jpeg";
 import pUni from "../assets/product-uniform.jpg";
 import pSport from "../assets/product-sports.jpg";
-import fabricBg from "../assets/cotton-bg.png";
+import fabricLaptop from "../assets/fabric.png"
+import fabricMobile from "../assets/fabric1.png"
 import whyChooseUsLaptop from "../assets/whychooseuslaptop.png";
 import whyChooseUsMobile from "../assets/whychooseusmoblie.png";
 
@@ -77,11 +78,6 @@ const products = [
   { cat: "Sportswear", name: "Activewear", img: pSport, href: productRoutes.Sportswear },
 ];
 
-const fabrics = [
-  "100% Cotton", "Blend Cotton", "Bio-Washed ", "Poly Cotton",
-  "French Terry", "Dry Fit", "Organic Cotton", "Recycled Fabric",
-  "Custom GSM", "Custom Dyeing",
-];
 
 const videos = ["", "", "", "", "", ""];
 const youtubeShortEmbedUrls: Record<number, string> = {
@@ -525,16 +521,9 @@ export default function Home() {
         id="fabrics"
         className="relative py-28 md:py-36 overflow-hidden"
       >
-        {/* Background Image */}
-        <img
-          src={fabricBg}
-          alt="Fabric Background"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: 'brightness(1.15)' }}
-        />
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-white/20" />
+
+
 
         {/* Content */}
         <div className="container-luxe relative z-10">
@@ -552,21 +541,27 @@ export default function Home() {
               Premium knitted and woven fabrics developed for global brands.
             </p>
           </FadeUp>
+           <div className="mt-16">
+  {/* Desktop */}
+  <div className="hidden lg:block">
+    <img
+      src={fabricLaptop}
+      alt="Fabric Collection"
+      className="w-full rounded-[1.5rem] object-cover"
+      loading="lazy"
+    />
+  </div>
+   {/* Mobile */}
+  <div className="block lg:hidden">
+    <img
+      src={fabricMobile}
+      alt="Fabric Collection"
+      className="w-full rounded-[1.5rem] object-cover"
+      loading="lazy"
+    />
+  </div>
+  </div>
 
-          <div className="mt-14 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-            {fabrics.map((f, i) => (
-              <FadeUp key={f} delay={i * 50}>
-                <div className="relative group">
-                  <div className="block rounded-xl border border-[#e5c96f]/70 bg-[linear-gradient(135deg,#fff7d9_0%,#f4e2b0_50%,#e9cc73_100%)] backdrop-blur-md p-8 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-900/20 cursor-pointer">
-                    <p className="font-display text-lg text-[#000000] font-semibold">
-                      {f}
-                    </p>
-                  </div>
-
-                </div>
-              </FadeUp>
-            ))}
-          </div>
         </div>
       </section>
 
