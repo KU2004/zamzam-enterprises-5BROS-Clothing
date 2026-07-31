@@ -20,24 +20,17 @@ import pPolo from "../assets/product-polo.jpg";
 import pOver from "../assets/product-oversized.jpg";
 import pHood from "../assets/product-hoodie.jpg";
 import thumbnail1 from "../assets/thumbnail1.jpeg";
-import roundneck7 from "../assets/roundneck7.jpeg";
-import thumbnail6 from "../assets/thumbnail6.jpeg";
+import roundneck7 from "../assets/hoodies1.jpeg";
+import thumbnail6 from "../assets/thumbnail5.jpeg";
 import thumbnail4 from "../assets/thumbnail4.jpeg";
-import thumbnail3 from "../assets/thumbnail3.jpeg";
-import thumbnail5 from "../assets/thumbnail5.jpeg";
+import thumbnail3 from "../assets/sports5.jpeg";
+import thumbnail5 from "../assets/oversized1.jpeg";
 import pUni from "../assets/product-uniform.jpg";
 import pSport from "../assets/product-sports.jpg";
-import video1 from "../videos/video1.mp4";
-import video2 from "../videos/video2.mp4";
-import video3 from "../videos/video3.mp4";
-import video4 from "../videos/video4.mp4";
-import video5 from "../videos/video5.mp4";
-import video6 from "../videos/video6.mp4";
 import fabricBg from "../assets/cotton-bg.png";
 import whyChooseUsLaptop from "../assets/whychooseuslaptop.png";
 import whyChooseUsMobile from "../assets/whychooseusmoblie.png";
 
-// T-shirt product image from local assets
 const eyeProduct = pRound5;
 const slides = [
   {
@@ -90,7 +83,15 @@ const fabrics = [
   "Custom GSM", "Custom Dyeing",
 ];
 
-const videos = [video1, video2, video3, video4, video5, video6];
+const videos = ["", "", "", "", "", ""];
+const youtubeShortEmbedUrls: Record<number, string> = {
+  0: "https://www.youtube.com/embed/aKxwGCqYrwA?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&showinfo=0",
+  5: "https://www.youtube.com/embed/1xww1TQEcfg?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&showinfo=0",
+  2: "https://www.youtube.com/embed/U6nPxI6J1bA?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&showinfo=0",
+  3: "https://www.youtube.com/embed/C7rR-ysKixw?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&showinfo=0",
+  4: "https://www.youtube.com/embed/McAmhxGzEmM?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&showinfo=0",
+  1: "https://www.youtube.com/embed/IyoUMHEU0CQ?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&showinfo=0",
+};
 
 export default function Home() {
   const [slide, setSlide] = useState(0);
@@ -105,10 +106,16 @@ export default function Home() {
   const [overlaySrc, setOverlaySrc] = useState<string | null>(null);
   const [overlayMenuOpen, setOverlayMenuOpen] = useState(false);
   const [overlayQualityLabel, setOverlayQualityLabel] = useState<string | null>(null);
-  const [qualityMenuIndex, setQualityMenuIndex] = useState<number | null>(null);
-  const [qualityLabelMap, setQualityLabelMap] = useState<Record<number, string>>({});
   const [globalMuted, setGlobalMuted] = useState(true);
-  const youtubeSrc = "https://www.youtube.com/embed/pvTQcPhj3VI?autoplay=1&mute=1&playsinline=1&vq=hd1080&rel=0&modestbranding=1&showinfo=0";
+  const factoryTourYoutubeMutedSrc = "https://www.youtube.com/embed/pvTQcPhj3VI?autoplay=1&mute=1&playsinline=1&loop=1&playlist=pvTQcPhj3VI&vq=hd1080&rel=0&modestbranding=1&showinfo=0";
+  const factoryTourYoutubeUnmutedSrc = "https://www.youtube.com/embed/pvTQcPhj3VI?autoplay=1&mute=0&playsinline=1&loop=1&playlist=pvTQcPhj3VI&vq=hd1080&rel=0&modestbranding=1&showinfo=0";
+  const [factoryTourAudioEnabled, setFactoryTourAudioEnabled] = useState(false);
+  const factoryTourSrc = factoryTourAudioEnabled ? factoryTourYoutubeUnmutedSrc : factoryTourYoutubeMutedSrc;
+  const enableFactoryTourAudio = () => {
+    if (!factoryTourAudioEnabled) {
+      setFactoryTourAudioEnabled(true);
+    }
+  };
   // quality variants per video index. Replace src values with real files if available.
   const qualityVariants: Record<number, { label: string; src: string }[]> = videos.reduce((acc, src, i) => {
     acc[i] = [
@@ -214,7 +221,7 @@ export default function Home() {
       <SideNav />
       <button
         type="button"
-        onClick={() => window.dispatchEvent(new Event("toggle-sidenav"))}
+        onClick={() => window.dispatchEvent(new CustomEvent("toggle-sidenav"))}
         aria-label="Open navigation"
         disabled={isSidenavOpen}
         className={`fixed left-4 top-32 z-50 rounded-full border border-gold bg-gold p-3 text-charcoal shadow-lg transition ${isSidenavOpen ? "hidden" : "hover:bg-gold-soft"}`}
@@ -292,97 +299,111 @@ export default function Home() {
             style={{ width: 'min(420px, 92vw)', height: 'min(800px, 96vh)', aspectRatio: '9 / 16' }}
             onClick={(e) => e.stopPropagation()}
           >
-            <video
-              ref={(el) => {
-                overlayVideoRef.current = el;
-                if (el) {
-                  el.muted = globalMuted;
-                  if (!globalMuted) {
-                    el.volume = 1;
-                  }
-                }
-              }}
-              src={overlaySrc ?? (overlayIndex !== null ? videos[overlayIndex] : undefined)}
-              controls
-              autoPlay
-              muted={globalMuted}
-              playsInline
-              className="w-full h-full object-cover"
-              onEnded={() => {
-                setOverlayIndex(null);
-                setIsPlaying((s) => {
-                  const a = [...s]; if (overlayIndex !== null) a[overlayIndex] = false; return a;
-                });
-                try { (screen as any)?.orientation?.unlock?.(); } catch (e) { }
-              }}
-            />
-
-            {/* Quality menu button */}
-            <div className="absolute top-3 right-12 z-40 flex items-center gap-2">
-              <button
-                aria-label={globalMuted ? "Enable sound" : "Mute video"}
-                onClick={() => {
-                  setGlobalMuted((muted) => {
-                    const next = !muted;
-                    const ov = overlayVideoRef.current;
-                    if (ov) {
-                      ov.muted = next;
-                      if (!next) {
-                        ov.volume = 1;
-                      }
+            {overlayIndex === 0 || overlayIndex === 1 || overlayIndex === 2 || overlayIndex === 3 || overlayIndex === 4 || overlayIndex === 5 ? (
+              <iframe
+                src={overlayIndex !== null ? youtubeShortEmbedUrls[overlayIndex] : undefined}
+                title="Featured YouTube short"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowFullScreen
+                className="h-full w-full"
+              />
+            ) : (
+              <video
+                ref={(el) => {
+                  overlayVideoRef.current = el;
+                  if (el) {
+                    el.muted = globalMuted;
+                    if (!globalMuted) {
+                      el.volume = 1;
                     }
-                    return next;
-                  });
+                  }
                 }}
-                className="rounded-full bg-black/30 text-white p-2 min-h-10 min-w-10 flex items-center justify-center"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 9h4l5-5v16l-5-5H5V9Z" fill="white" />
-                  {globalMuted ? null : <path d="M17 7l4 5-4 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />}
-                </svg>
-              </button>
-              <button
-                aria-label="Quality"
-                onClick={() => setOverlayMenuOpen((v) => !v)}
-                className="rounded-full bg-black/30 text-white p-2"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="5" r="1.5" fill="white" />
-                  <circle cx="12" cy="12" r="1.5" fill="white" />
-                  <circle cx="12" cy="19" r="1.5" fill="white" />
-                </svg>
-              </button>
-              {overlayMenuOpen && overlayIndex !== null && (
-                <div className="absolute right-0 mt-2 w-28 rounded-md bg-white text-black shadow-lg overflow-hidden">
-                  { (qualityVariants[overlayIndex] || []).map((q) => (
-                    <button
-                      key={q.label}
-                      onClick={() => {
-                        setOverlaySrc(q.src);
-                        setOverlayQualityLabel(q.label);
-                        setOverlayMenuOpen(false);
-                        // apply immediately
+                src={overlaySrc ?? (overlayIndex !== null ? videos[overlayIndex] : undefined)}
+                controls
+                autoPlay
+                muted={globalMuted}
+                playsInline
+                className="w-full h-full object-cover"
+                onEnded={() => {
+                  setOverlayIndex(null);
+                  setIsPlaying((s) => {
+                    const a = [...s]; if (overlayIndex !== null) a[overlayIndex] = false; return a;
+                  });
+                  try { (screen as any)?.orientation?.unlock?.(); } catch (e) { }
+                }}
+              />
+            )}
+
+            {overlayIndex !== 0 && overlayIndex !== 1 && overlayIndex !== 2 && overlayIndex !== 3 && overlayIndex !== 4 && overlayIndex !== 5 && (
+              <>
+                {/* Quality menu button */}
+                <div className="absolute top-3 right-12 z-40 flex items-center gap-2">
+                  <button
+                    aria-label={globalMuted ? "Enable sound" : "Mute video"}
+                    onClick={() => {
+                      setGlobalMuted((muted) => {
+                        const next = !muted;
                         const ov = overlayVideoRef.current;
                         if (ov) {
-                          const currentTime = ov.currentTime || 0;
-                          ov.src = q.src;
-                          ov.currentTime = currentTime;
-                          ov.play().catch(() => {});
+                          ov.muted = next;
+                          if (!next) {
+                            ov.volume = 1;
+                          }
                         }
-                      }}
-                      className="w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
-                    >
-                      {q.label}
-                    </button>
-                  ))}
+                        return next;
+                      });
+                    }}
+                    className="rounded-full bg-black/30 text-white p-2 min-h-10 min-w-10 flex items-center justify-center"
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 9h4l5-5v16l-5-5H5V9Z" fill="white" />
+                      {globalMuted ? null : <path d="M17 7l4 5-4 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />}
+                    </svg>
+                  </button>
+                  <button
+                    aria-label="Quality"
+                    onClick={() => setOverlayMenuOpen((v) => !v)}
+                    className="rounded-full bg-black/30 text-white p-2"
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="5" r="1.5" fill="white" />
+                      <circle cx="12" cy="12" r="1.5" fill="white" />
+                      <circle cx="12" cy="19" r="1.5" fill="white" />
+                    </svg>
+                  </button>
+                  {overlayMenuOpen && overlayIndex !== null && (
+                    <div className="absolute right-0 mt-2 w-28 rounded-md bg-white text-black shadow-lg overflow-hidden">
+                      { (qualityVariants[overlayIndex] || []).map((q) => (
+                        <button
+                          key={q.label}
+                          onClick={() => {
+                            setOverlaySrc(q.src);
+                            setOverlayQualityLabel(q.label);
+                            setOverlayMenuOpen(false);
+                            // apply immediately
+                            const ov = overlayVideoRef.current;
+                            if (ov) {
+                              const currentTime = ov.currentTime || 0;
+                              ov.src = q.src;
+                              ov.currentTime = currentTime;
+                              ov.play().catch(() => {});
+                            }
+                          }}
+                          className="w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
+                        >
+                          {q.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
 
-            {overlayQualityLabel && (
-              <div className="absolute top-3 right-36 z-40">
-                <span className="inline-block bg-black/40 text-white text-xs px-2 py-1 rounded">{overlayQualityLabel}</span>
-              </div>
+                {overlayQualityLabel && (
+                  <div className="absolute top-3 right-36 z-40">
+                    <span className="inline-block bg-black/40 text-white text-xs px-2 py-1 rounded">{overlayQualityLabel}</span>
+                  </div>
+                )}
+              </>
             )}
 
             <button
@@ -522,9 +543,9 @@ export default function Home() {
               <span className="gold-line" /> Fabric Expertise
             </p>
 
-            <h2 className="mt-6 font-display text-2xl md:text-5xl text-black font-bold">
-              Engineered fabrics
-              <span className="block">for every market.</span>
+            <h2 className="mt-6 font-display text-4xl md:text-5xl text-black font-bold whitespace-normal md:whitespace-nowrap">
+              Engineered fabrics 
+              for every market.
             </h2>
 
             <p className="mt-5 text-black/80 font-semibold">
@@ -536,8 +557,8 @@ export default function Home() {
             {fabrics.map((f, i) => (
               <FadeUp key={f} delay={i * 50}>
                 <div className="relative group">
-                  <div className="block rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-8 transition-all duration-300 hover:bg-white/20 hover:shadow-xl hover:shadow-black/10 cursor-pointer">
-                    <p className="font-display text-lg text-black font-semibold">
+                  <div className="block rounded-xl border border-[#e5c96f]/70 bg-[linear-gradient(135deg,#fff7d9_0%,#f4e2b0_50%,#e9cc73_100%)] backdrop-blur-md p-8 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-900/20 cursor-pointer">
+                    <p className="font-display text-lg text-[#000000] font-semibold">
                       {f}
                     </p>
                   </div>
@@ -598,7 +619,9 @@ export default function Home() {
             <p className="gold-label">
               <span className="gold-line" /> Why Choose Us
             </p>
-            <h2 className="mt-6 font-display text-1xl sm:text-4xl md:text-5xl font-bold leading-tight max-w-md md:max-w-none">Built for brands that don't compromise.</h2>
+            <h2 className="mt-6 font-display text-1xl sm:text-4xl md:text-5xl font-bold leading-tight max-w-md md:max-w-none whitespace-normal md:whitespace-nowrap">
+              Built for brands that don't compromise.
+            </h2>
           </FadeUp>
 
           <div className="mt-8 lg:mt-10">
@@ -636,7 +659,7 @@ export default function Home() {
             {videos.map((src, index) => (
               <FadeUp key={index} delay={index * 100}>
                 <div
-                  className="group relative aspect-4/5 rounded-xl overflow-hidden bg-muted border border-border"
+                  className="group relative rounded-xl overflow-hidden bg-muted border border-border aspect-[4/6.2]"
                 >
                   {/* Thumbnail overlay button (shown when not playing) */}
                   {!isPlaying[index] && (
@@ -702,54 +725,6 @@ export default function Home() {
                     })}
                   />
 
-                  {/* Per-tile quality button (outside native controls) */}
-                  <div className="absolute bottom-3 right-3 z-30">
-                    <button
-                      aria-label={`Quality ${index + 1}`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setQualityMenuIndex((q) => (q === index ? null : index));
-                      }}
-                      className="rounded-full bg-black/30 text-white p-1"
-                    >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="5" r="1.2" fill="white" />
-                        <circle cx="12" cy="12" r="1.2" fill="white" />
-                        <circle cx="12" cy="19" r="1.2" fill="white" />
-                      </svg>
-                    </button>
-
-                    {qualityMenuIndex === index && (
-                      <div className="absolute right-0 bottom-full mb-2 w-28 rounded-md bg-white text-black shadow-lg overflow-hidden">
-                        {(qualityVariants[index] || []).map((q) => (
-                          <button
-                            key={q.label}
-                            onClick={(ev) => {
-                              ev.stopPropagation();
-                              setQualityLabelMap((m) => ({ ...m, [index]: q.label }));
-                              setQualityMenuIndex(null);
-                              const v = videoRefs.current[index];
-                              if (v) {
-                                const currentTime = v.currentTime || 0;
-                                v.src = q.src;
-                                v.currentTime = currentTime;
-                                v.play().catch(() => {});
-                              }
-                            }}
-                            className="w-full text-left px-3 py-2 text-sm hover:bg-gray-100"
-                          >
-                            {q.label}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-
-                    {qualityLabelMap[index] && (
-                      <div className="absolute -right-1 -bottom-6">
-                        <span className="inline-block bg-black/50 text-white text-xs px-2 py-0.5 rounded">{qualityLabelMap[index]}</span>
-                      </div>
-                    )}
-                  </div>
                 </div>
               </FadeUp>
             ))}
@@ -767,7 +742,7 @@ export default function Home() {
             </p>
           </div>
           <div className="px-0">
-            <div className="flex justify-center gap-3 items-center">
+            <div className="flex justify-center gap-10 sm:gap-10 items-center">
               <div className="w-1/5 flex items-center justify-center">
                 <img src={brand1} alt="Brand 1" className="w-full h-auto object-contain" loading="lazy" />
               </div>
@@ -823,15 +798,26 @@ export default function Home() {
       {/* Global presence section removed per request */}
 
       {/* CTA */}
-      <section className="py-28 bg-background">
+      <section id="factory-tour" className="py-28 bg-background">
         <div className="container-luxe text-center">
-          <h2 className="font-display text-4xl md:text-6xl leading-tight max-w-4xl mx-auto text-charcoal">
-            Step inside the <span className="whitespace-nowrap">5BROS factory</span>.
-          </h2>
+          <FadeUp>
+            <p className="gold-label">
+              <span className="gold-line" /> Factory Tour
+            </p>
+            <h2 className="mt-6 font-display text-2xl sm:text-3xl md:text-4xl font-bold leading-tight max-w-4xl mx-auto text-charcoal">
+              Step inside the <span className="whitespace-nowrap">5BROS factory</span>.
+            </h2>
+          </FadeUp>
           <div className="mt-10 flex justify-center px-4 sm:px-0">
-            <div className="w-full max-w-4xl aspect-4/5 sm:aspect-video rounded-[2rem] overflow-hidden shadow-2xl relative">
+            <div
+              className="w-full max-w-4xl aspect-4/5 sm:aspect-video rounded-[2rem] overflow-hidden shadow-2xl relative"
+              onMouseDown={enableFactoryTourAudio}
+              onTouchStart={enableFactoryTourAudio}
+              onClick={enableFactoryTourAudio}
+            >
               <iframe
-                src={youtubeSrc}
+                key={factoryTourAudioEnabled ? "factory-tour-unmuted" : "factory-tour-muted"}
+                src={factoryTourSrc}
                 title="Factory Tour"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                 allowFullScreen
