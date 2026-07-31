@@ -12,9 +12,11 @@ const navItems: NavItem[] = [
   { label: "Fabrics", id: "fabrics" },
   { label: "Process", id: "process" },
   { label: "Why Us", id: "whyus" },
+  { label: "Visual Excellence", id: "visual-excellence" },
   { label: "Brands", id: "brands" },
   { label: "Clients", id: "clients" },
-  { label: "Contact", id: "cta" },
+  { label: "Factory Tour", id: "factory-tour" },
+  { label: "Contact", id: "footer" },
 ];
 
 export function SideNav() {
@@ -25,14 +27,33 @@ export function SideNav() {
       setIsOpen((prev) => !prev);
     };
 
-    window.addEventListener("toggle-sidenav", handleToggle);
-    return () => window.removeEventListener("toggle-sidenav", handleToggle);
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("toggle-sidenav", handleToggle as EventListener);
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("toggle-sidenav", handleToggle as EventListener);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
 
   useEffect(() => {
     window.dispatchEvent(
       new CustomEvent("sidenav-state-changed", { detail: { isOpen } })
     );
+
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    document.body.style.touchAction = isOpen ? "none" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
   }, [isOpen]);
 
   const isElementHidden = (element: HTMLElement | null) => {
@@ -64,9 +85,10 @@ export function SideNav() {
     <>
       {/* Side Navigation Panel */}
       <div
-        className={`fixed right-0 top-0 h-screen w-64 bg-charcoal/95 backdrop-blur-sm text-charcoal-foreground z-50 transition-transform duration-500 ease-out overflow-y-auto ${
-          isOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed left-0 top-0 h-dvh w-[85vw] max-w-[18rem] bg-charcoal/95 backdrop-blur-sm text-charcoal-foreground z-50 transition-transform duration-500 ease-out overflow-y-auto ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
+        onClick={(event) => event.stopPropagation()}
       >
         <div className="pt-24 px-6 pb-6">
           <div className="space-y-2">
@@ -101,7 +123,7 @@ export function SideNav() {
         @keyframes slideIn {
           from {
             opacity: 0;
-            transform: translateX(20px);
+            transform: translateX(-20px);
           }
           to {
             opacity: 1;
