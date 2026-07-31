@@ -8,9 +8,13 @@ import polo3 from "../assets/polo3.jpeg";
 import polo4 from "../assets/polo4.jpeg";
 import polo5 from "../assets/polo5.jpeg";
 import polo6 from "../assets/polo6.jpeg";
-import polo7 from "../assets/polo7.jpeg";
-import polo10 from "../assets/polo10.jpeg";
 import polo11 from "../assets/polo11.jpeg";
+import polo7p3 from "../assets/polo7p3.jpeg";
+import polo7p4 from "../assets/polo7p4.jpeg";
+import polo11p4 from "../assets/polo11p4.jpeg";
+import polo11p5 from "../assets/polo11p5.jpeg";
+import polo12p2 from "../assets/polo12p2.jpeg";
+import polo12p3 from "../assets/polo12p3.jpeg";
 
 const sharedTechnicalHighlights = [
   { title: "Fabric", value: "Cotton Piqué (96% Cotton, 4% Spandex)" },
@@ -20,12 +24,14 @@ const sharedTechnicalHighlights = [
   { title: "MOQ", value: "1000 pieces each colour" },
 ];
 
+
+
 const productVariants = [
   {
     id: 1,
     title: "Classic Piqué Polo",
     subtitle: "Structured collar and premium finish for smart-casual and corporate wear.",
-    image: polo7,
+    image: polo7p3,
     technicalHighlights: [
       { title: "Fabric options", value: "ITS Fabric Cotton Piqué (96% Cotton, 4% Spandex), cotton-poly blends, and performance mixes" },
       { title: "Fit range", value: "Classic, slim, and relaxed silhouettes" },
@@ -48,7 +54,7 @@ const productVariants = [
     id: 2,
     title: "Premium Dress Polo",
     subtitle: "A sharper option for executive wear, hospitality, and formal branding.",
-    image: polo10,
+    image: polo12p2,
     technicalHighlights: [
       { title: "Fabric options", value: "High-count cotton and polished blends" },
       { title: "Fit range", value: "Tailored and refined profiles" },
@@ -71,7 +77,7 @@ const productVariants = [
     id: 3,
     title: "Street-Style Polo",
     subtitle: "Casual yet polished for lifestyle collections and brand campaigns.",
-    image: polo11,
+    image: polo11p5,
     technicalHighlights: [
       { title: "Fabric options", value: "Soft cotton and easy-care blends" },
       { title: "Fit range", value: "Relaxed and casual silhouettes" },
@@ -247,8 +253,21 @@ function Gallery({ product }: { product: any }) {
   const loadingTimerRef = useRef<number | null>(null);
   const galleryStageRef = useRef<HTMLDivElement | null>(null);
   const touchStateRef = useRef<{ mode: "pan" | "pinch" | null; startDistance?: number; startZoom?: number; startPanX?: number; startPanY?: number; startX?: number; startY?: number }>({ mode: null });
-  const images = useMemo(() => [product.image].filter(Boolean) as string[], [product.image]);
+const images = useMemo(() => {
+  switch (product.id) {
+    case 1:
+      return [polo7p3, polo7p4];
 
+    case 2:
+      return [polo12p2, polo12p3];
+
+    case 3:
+      return [polo11p5, polo11p4, polo11];
+
+    default:
+      return [product.image];
+  }
+}, [product.id, product.image]);
   useEffect(() => {
     const preloadImages = [...images, ...(images.length > 1 ? [images[(selectedImage + 1) % images.length]] : [])];
     preloadImages.forEach((src: string) => {
@@ -468,8 +487,11 @@ function Gallery({ product }: { product: any }) {
 
   return (
     <div className="w-full">
-      <div
-        className={`group relative mx-auto w-full max-w-full min-w-0 self-start overflow-hidden rounded-[30px] border border-black/10 shadow-[0_24px_60px_-34px_rgba(15,23,42,0.22)] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${isPageReady ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"}`}
+     <div
+  className={`group relative mx-auto w-full max-w-full min-w-0 self-start transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+    isPageReady ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
+  }`}
+
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
@@ -501,7 +523,32 @@ function Gallery({ product }: { product: any }) {
             />
           </div>
 
-          <div className="pointer-events-none absolute inset-0 rounded-[28px] bg-linear-to-t from-black/2 via-transparent to-transparent" />
+          {images.length > 1 && (
+<div className="mt-4 flex gap-2 overflow-x-auto pb-2">
+  {images.map((img: string, index: number) => (
+    <button
+      key={`${img}-${index}`}
+      onClick={() => changeImage(index)}
+      className={`group shrink-0 rounded-[0.95rem] border p-1 shadow-sm transition-all duration-200 ${
+        selectedImage === index
+          ? "border-gold/90 shadow-[0_12px_28px_-16px_rgba(255,215,0,0.28)]"
+          : "border-border/60 hover:-translate-y-0.5 hover:border-gold/40 hover:shadow-md"
+      }`}
+      style={{ minWidth: 84, width: 84, height: 84 }}
+      aria-label={`View image ${index + 1}`}
+    >
+      <img
+        src={img}
+        alt={`thumb-${index}`}
+        className="h-full w-full rounded-2xl object-contain transition-transform duration-200"
+        loading="lazy"
+      />
+    </button>
+  ))}
+</div>
+          )}
+
+          <div className="pointer-events-none absolute inset-0 bg-transparent" />
 
           <div className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-charcoal shadow-[0_8px_24px_rgba(0,0,0,0.10)] backdrop-blur">
             {selectedImage + 1} / {images.length}
@@ -513,7 +560,7 @@ function Gallery({ product }: { product: any }) {
                 prev();
               }}
               aria-label="Previous image"
-              className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-black/5 bg-white/90 p-3 text-charcoal shadow-[0_10px_28px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-all duration-200 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 sm:opacity-0 sm:group-hover:opacity-100"
+              className="hidden md:flex absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-black/5 bg-white/90 p-3 text-charcoal shadow-[0_10px_28px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-all duration-200 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 md:opacity-0 md:group-hover:opacity-100"
             >
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
@@ -526,7 +573,7 @@ function Gallery({ product }: { product: any }) {
                 next();
               }}
               aria-label="Next image"
-              className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-black/5 bg-white/90 p-3 text-charcoal shadow-[0_10px_28px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-all duration-200 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 sm:opacity-0 sm:group-hover:opacity-100"
+              className="hidden md:flex absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-black/5 bg-white/90 p-3 text-charcoal shadow-[0_10px_28px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-all duration-200 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 md:opacity-0 md:group-hover:opacity-100"
             >
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
@@ -645,7 +692,7 @@ export default function ProductPoloDetail() {
         </div>
       </section>
 
-      <section className="mt-10 pt-20 pb-20 px-4 sm:px-6 lg:px-8 bg-[radial-gradient(circle_at_top,rgba(255,215,0,0.08),rgba(255,255,255,0)_42%),#fcfaf6]">
+      <section className="pt-10 pb-20 px-4 sm:px-6 lg:px-8 bg-[radial-gradient(circle_at_top,rgba(255,215,0,0.08),rgba(255,255,255,0)_42%),#fcfaf6]">
         <div className="container-luxe">
           <div className="grid gap-6 xl:grid-cols-[minmax(0,auto)_minmax(0,640px)] xl:items-center xl:gap-x-14 xl:justify-center">
             <div className="mx-auto w-full max-w-full self-start lg:mx-0 lg:justify-self-start xl:justify-self-center">
@@ -656,17 +703,17 @@ export default function ProductPoloDetail() {
               <div className="xl:sticky xl:top-20 self-start min-w-0">
                 <div className="h-fit w-full self-start rounded-[1.7rem] border border-border/60 bg-card p-4 shadow-[0_12px_30px_-18px_rgba(15,23,42,0.16)] sm:p-5 min-w-0 overflow-hidden">
                   
-                  <h1 className="mt-0 font-display text-3xl leading-[1.05] sm:text-4xl lg:text-5xl">{product.title}</h1>
+
                   
 
                   <div className="mt-8 rounded-[1.75rem] border border-border/60 bg-muted/30 p-6 shadow-[0_12px_30px_-18px_rgba(15,23,42,0.12)] min-w-0 overflow-hidden">
                     <p className="mb-4 text-base font-semibold uppercase tracking-[0.18em] text-gold">Product details</p>
-                    <div className={`grid gap-4 min-w-0 ${product.id === 1 ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-2" : "grid-cols-2 lg:grid-cols-3"}`}>
-                      {sharedTechnicalHighlights.map((highlight: any, index: number) => (
-                        <div key={highlight.title} className={`w-full rounded-2xl bg-white/90 px-5 py-5 shadow-sm min-w-0 h-full ${product.id === 1 && index === 0 ? "lg:col-span-2" : ""}`}>
-                          <p className="text-base font-semibold text-foreground">{highlight.title}</p>
-                          <p className="mt-2 text-sm leading-6 text-gray-600 whitespace-normal wrap-break-word">{highlight.value}</p>
-                        </div>
+                    <div className="space-y-4 min-w-0">
+                      {sharedTechnicalHighlights.map((highlight: any) => (
+                        <p key={highlight.title} className="m-0 text-left">
+                          <span className="block text-[1.05rem] font-semibold text-foreground">{highlight.title}</span>
+                          <span className="mt-1 block text-sm leading-6 text-gray-600 whitespace-normal wrap-break-word">{highlight.value}</span>
+                        </p>
                       ))}
                     </div>
                   </div>
@@ -705,10 +752,7 @@ export default function ProductPoloDetail() {
               {relatedProducts.map((item) => (
                 <Link key={item.id} to={`/products/polo/details/${item.id}`} className="group overflow-hidden rounded-4xl border border-border bg-background transition hover:-translate-y-1 hover:shadow-lg">
                   <img src={item.image} alt={item.title} className="h-64 w-full object-contain object-center p-4 transition duration-300" loading="lazy" />
-                  <div className="border-t border-border p-4">
-                    <h3 className="font-semibold text-foreground">{item.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{item.subtitle}</p>
-                  </div>
+
                 </Link>
               ))}
             </div>
