@@ -9,8 +9,8 @@ import polo4 from "../assets/polo4.jpeg";
 import polo5 from "../assets/polo5.jpeg";
 import polo6 from "../assets/polo6.jpeg";
 import polo7 from "../assets/polo7.jpeg";
-import polo10 from "../assets/polo10.jpeg";
-import polo11 from "../assets/polo11.jpeg";
+import polo10 from "../assets/polo12.jpeg";
+import polo11 from "../assets/polo11p3.jpeg";
 
 const photos = [
   { frontImage: polo7, name: "Classic Piqué Polo" },
