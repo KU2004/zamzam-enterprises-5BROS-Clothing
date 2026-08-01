@@ -70,15 +70,15 @@ export default function WhyChooseUs() {
 
       <section className="bg-background py-24 md:py-32">
         <div className="container-luxe">
-          <FadeUp className="max-w-2xl">
+          <FadeUp className="max-w-2xl md:max-w-3xl">
             <p className="gold-label">
               <span className="gold-line" /> What sets us apart
             </p>
-            <h2 className="mt-6 font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+            <h2 className="mt-6 font-display text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold leading-tight md:whitespace-nowrap">
               <span className="block md:inline">Manufacturing that</span>{' '}
               <span className="block md:inline">powers your brand.</span>
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-foreground/80">
+           <p className="mt-5 max-w-2xl text-base leading-relaxed text-foreground/80">
               We bring together strong production discipline, attentive support, and a deep understanding of apparel brands that want consistency without compromise.
             </p>
           </FadeUp>
