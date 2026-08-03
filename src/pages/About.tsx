@@ -18,17 +18,17 @@ function PageHeader({
   sub?: string;
 }) {
   return (
-    <section className="relative pt-40 pb-20 bg-muted/30 border-b border-border">
-      <div className="container-luxe grid gap-14 lg:grid-cols-[minmax(0,1fr)_360px] items-center">
+    <section className="relative pt-26 pb-10 bg-muted/30 border-b border-border">
+      <div className="container-luxe grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px] items-center">
         <div>
           <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
             <span className="gold-line" /> {eyebrow}
           </p>
-          <h1 className="mt-6 font-display font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.05] max-w-4xl">
+          <h1 className="mt-3 font-display font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.05] max-w-4xl">
             {title}
           </h1>
           {sub && (
-            <p className="mt-6 max-w-2xl text-black text-base sm:text-lg text-justify" dangerouslySetInnerHTML={{ __html: sub }} />
+            <p className="mt-3 max-w-2xl text-black text-base sm:text-lg text-justify" dangerouslySetInnerHTML={{ __html: sub }} />
           )}
         </div>
         <div>
@@ -69,12 +69,12 @@ From our manufacturing unit in Chembur, we supply our products to different citi
       />
 
 
-      <section className="py-24 md:py-32 bg-background">
+      <section className="py-12 md:py-10 bg-background">
         <div className="container-luxe">
-          <div className="grid gap-16 lg:grid-cols-[1.25fr_0.85fr] items-start">
+          <div className="grid gap-12 lg:grid-cols-[1.25fr_0.85fr] items-start">
             <FadeUp>
               <div className="w-full mx-auto">
-                <div className="mb-8 text-center lg:text-left">
+                <div className="mb-2 text-center lg:text-left">
                   <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center justify-center lg:justify-start gap-3">
                     <span className="gold-line" /> Factory Tour
                   </p>
@@ -96,7 +96,7 @@ From our manufacturing unit in Chembur, we supply our products to different citi
                 <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
                   <span className="gold-line" /> Our Story
                 </p>
-                <h2 className="mt-5 font-display font-bold text-4xl md:text-5xl leading-tight">
+                <h2 className="mt-2 font-display font-bold text-4xl md:text-5xl leading-tight">
                   Apparel Craftmanship
                 </h2>
                 <p className="mt-4 text-muted-foreground leading-relaxed text-justify">
@@ -122,12 +122,12 @@ From our manufacturing unit in Chembur, we supply our products to different citi
         </div>
       </section>
 
-      <section className="py-24 bg-muted/40">
+      <section className="py-8 bg-muted/40">
         <div className="container-luxe">
-          <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3 mb-10">
+          <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3 mb-4">
             <span className="gold-line" /> Our Mission & Values
           </p>
-          <div className="grid gap-10 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-3">
             {[
               {
                 t: "Mission",
@@ -143,12 +143,12 @@ From our manufacturing unit in Chembur, we supply our products to different citi
               },
             ].map((c, i) => (
               <FadeUp key={c.t} delay={i * 100}>
-                <div className="h-full border border-border bg-white p-10">
+                <div className="h-full border border-border bg-white p-6">
                   <span className="font-display text-5xl text-gold">
                     0{i + 1}
                   </span>
-                  <h3 className="mt-5 font-display text-2xl">{c.t}</h3>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                  <h3 className="mt-2 font-display text-2xl">{c.t}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
                     {c.d}
                   </p>
                 </div>
@@ -159,17 +159,17 @@ From our manufacturing unit in Chembur, we supply our products to different citi
       </section>
 
       
-      <section className="py-24 md:py-32 bg-background">
+      <section className="py-6 md:py-10 bg-background">
         <div className="container-luxe">
           <FadeUp className="max-w-2xl">
             <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold flex items-center gap-3">
               <span className="gold-line" /> Milestones
             </p>
-            <h2 className="mt-5 font-display text-4xl md:text-5xl">
+            <h2 className="mt-2 font-display text-4xl md:text-5xl">
               A timeline of growth.
             </h2>
           </FadeUp>
-          <div className="mt-16 mx-auto w-full max-w-[1600px] rounded-[2rem] overflow-hidden shadow-2xl bg-white">
+          <div className="mt-3 mx-auto w-full max-w-[1600px] rounded-[2rem] overflow-hidden shadow-2xl bg-white">
             <picture>
               <source media="(min-width: 1024px)" srcSet={milestonelaptop} />
               <img
