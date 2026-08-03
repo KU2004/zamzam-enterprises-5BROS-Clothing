@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { type FormEvent, useEffect, useMemo, useState } from "react";
 import { type BlogPost, loadBlogs, saveBlogs } from "../lib/blogs";
 
 const AUTH_KEY = "5bros-admin-auth";
