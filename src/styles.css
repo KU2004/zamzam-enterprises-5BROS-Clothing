@@ -248,6 +248,14 @@ html, body {
   text-shadow: 0 0 12px rgba(255, 214, 77, 0.24);
 }
 
+.page-section-gap section:not(:first-child) {
+  padding-top: 2em !important;
+}
+
+.page-section-gap section {
+  padding-bottom: 2em !important;
+}
+
 @utility fade-up {
   opacity: 0;
   transform: translateY(24px);
