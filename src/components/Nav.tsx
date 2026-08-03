@@ -33,15 +33,16 @@ const blackNavPaths = [
   "/terms",
   "/shipping",
   "/privacy",
+  "/admin",
 ] as const;
 
 export function Nav() {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const [mobileProductsTapped, setMobileProductsTapped] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
   const path = location.pathname;
   const isWhyChoosePath = path === "/why-choose-us";
   const isBlackPath =
