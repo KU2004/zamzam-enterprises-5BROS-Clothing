@@ -684,7 +684,7 @@ export default function ProductPoloDetail() {
         keywords={`${product.title.toLowerCase()}, polo shirt manufacturing specifications, request quote polo garments`}
       />
 
-      <section className="pt-21 pb-16 bg-muted/30 border-b border-border">
+      <section className="pt-21 pb-6 bg-muted/30 border-b border-border">
         <div className="container-luxe">
           <p className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.32em] text-gold flex items-center gap-3">
             <span className="gold-line" /> Polo
