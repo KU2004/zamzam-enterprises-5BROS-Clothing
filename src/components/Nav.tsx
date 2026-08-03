@@ -9,6 +9,7 @@ const links = [
   { to: "/about", label: "About Us" },
   { to: "/why-choose-us", label: "Why Choose Us" },
   { to: "/products", label: "Products" },
+  { to: "/blog", label: "Blog" },
   { to: "/infrastructure", label: "Manufacturing" },
   { to: "/contact", label: "Contact Us" },
 ] as const;
@@ -25,6 +26,7 @@ const productSubLinks = [
 const blackNavPaths = [
   "/about",
   "/products",
+  "/blog",
   "/infrastructure",
   "/contact",
   "/faqs",
@@ -44,7 +46,8 @@ export function Nav() {
   const isWhyChoosePath = path === "/why-choose-us";
   const isBlackPath =
     blackNavPaths.includes(path as typeof blackNavPaths[number]) ||
-    path.startsWith("/products");
+    path.startsWith("/products") ||
+    path.startsWith("/blog");
   const isOpaque = scrolled || open;
   const showWhiteNav = isWhyChoosePath && !isOpaque;
   const isContactPage = path === "/contact";
@@ -84,7 +87,12 @@ export function Nav() {
           </Link>
         <nav className="hidden lg:flex items-center gap-8" style={{ fontFamily: 'Poppins, system-ui, sans-serif' }}>
           {links.map((l) => {
-            const active = path === l.to;
+            const active =
+              l.to === "/products"
+                ? path === l.to || path.startsWith("/products")
+                : l.to === "/blog"
+                ? path === l.to || path.startsWith("/blog")
+                : path === l.to;
             const linkTextClass = active
               ? "text-gold"
               : isBlackPath
