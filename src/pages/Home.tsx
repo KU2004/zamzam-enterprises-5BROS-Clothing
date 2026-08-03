@@ -422,7 +422,7 @@ export default function Home() {
       )}
 
       {/* OVERVIEW */}
-      <section id="about" className="pt-24 pb-28 md:pt-28 md:pb-36 bg-background">
+      <section id="about" className="py-[2em] bg-background">
         <div className="container-luxe grid gap-12 lg:grid-cols-2 items-center">
           <div>
             <FadeUp>
@@ -465,7 +465,7 @@ export default function Home() {
       </section>
 
       {/* PRODUCT CATEGORIES */}
-      <section id="products" className="py-28 md:py-36 bg-muted/40">
+      <section id="products" className="py-[2em] bg-muted/40">
         <div className="container-luxe">
           <FadeUp className="max-w-2xl">
             <p className="gold-label">
@@ -481,7 +481,7 @@ export default function Home() {
             </p>
           </FadeUp>
 
-          <div className="mt-16 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
             {products.map((p, i) => (
               <FadeUp key={p.name} delay={i * 80}>
                 <Link
@@ -519,7 +519,7 @@ export default function Home() {
       {/* FABRICS */}
       <section
         id="fabrics"
-        className="relative py-28 md:py-36 overflow-hidden"
+        className="relative py-[2em] overflow-hidden"
       >
 
 
@@ -541,7 +541,7 @@ export default function Home() {
               Premium knitted and woven fabrics developed for global brands.
             </p>
           </FadeUp>
-           <div className="mt-16">
+           <div className="mt-6">
   {/* Desktop */}
   <div className="hidden lg:block">
     <img
@@ -566,7 +566,7 @@ export default function Home() {
       </section>
 
       {/* PROCESS */}
-      <section id="process" className="relative py-16 md:py-20 bg-white text-black">
+      <section id="process" className="relative py-[2em] bg-white text-black">
         <div className="relative z-10 container-luxe">
           <FadeUp className="max-w-2xl">
             <p className="gold-label">
@@ -583,7 +583,7 @@ export default function Home() {
             </h2>
           </FadeUp>
 
-          <div className="mt-16">
+          <div className="mt-8">
             <div className="lg:hidden rounded-[2rem] bg-amber-50 p-3 sm:p-4">
               <img
                 src={processMobileImg}
@@ -608,7 +608,7 @@ export default function Home() {
       </section>
 
       {/* WHY US */}
-      <section id="whyus" className="py-28 md:py-36 bg-background">
+      <section id="whyus" className="py-[2em] bg-background">
         <div className="container-luxe">
           <FadeUp className="max-w-2xl">
             <p className="gold-label">
@@ -619,7 +619,7 @@ export default function Home() {
             </h2>
           </FadeUp>
 
-          <div className="mt-8 lg:mt-10">
+          <div className="mt-4 lg:mt-6">
             <div className="hidden lg:block">
               <img
                 src={whyChooseUsLaptop}
@@ -640,7 +640,7 @@ export default function Home() {
       </section>
 
       {/* MODELS SHOWCASE */}
-      <section id="visual-excellence" className="relative py-28 md:py-36 bg-amber-50 overflow-hidden">
+      <section id="visual-excellence" className="relative py-[2em] bg-amber-50 overflow-hidden">
         <div className="container-luxe relative z-10">
           <FadeUp className="max-w-2xl">
             <p className="gold-label">
@@ -650,7 +650,7 @@ export default function Home() {
           </FadeUp>
 
           {/* Video Grid */}
-          <div className="mt-14 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+          <div className="mt-6 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
             {videos.map((src, index) => (
               <FadeUp key={index} delay={index * 100}>
                 <div
@@ -729,7 +729,7 @@ export default function Home() {
       
       {/* BRANDS */}
       {/* Mobile: compact single-line logos (visible on mobile only) */}
-      <section id="brands-mobile" className="block lg:hidden pt-8 pb-12 bg-background border-b border-transparent">
+      <section id="brands-mobile" className="block lg:hidden py-[2em] bg-background border-b border-transparent">
         <div className="container-luxe">
           <div className="mb-6">
             <p className="gold-label">
@@ -749,14 +749,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="brands" className="hidden lg:block pt-16 pb-20 md:pt-24 md:pb-20 bg-background">
+      <section id="brands" className="hidden lg:block py-[2em] bg-background">
         <div className="container-luxe">
           <div className="max-w-3xl">
             <p className="gold-label">
               <span className="gold-line" /> Our Brands
             </p>
           </div>
-          <div className="mt-10 overflow-x-auto">
+          <div className="mt-6 overflow-x-auto">
             <div className="flex justify-center gap-10 items-center">
               <div className="shrink-0 h-36 w-72 flex items-center justify-center">
                 <img src={brand1} alt="Brand 1" className="max-h-full max-w-full object-contain" loading="lazy" />
@@ -768,8 +768,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="clients" className="overflow-hidden border-y border-border bg-muted/30 py-20">
-        <div className="container-luxe mb-10 flex items-center justify-between">
+      <section id="clients" className="overflow-hidden border-y border-border bg-muted/30 py-[2em]">
+        <div className="container-luxe mb-[2em] flex items-center justify-between">
           <p className="gold-label">
             <span className="gold-line" /> Featured Clients
           </p>
@@ -780,6 +780,7 @@ export default function Home() {
             View all
           </Link>
         </div>
+
         <div className="relative">
           <div className="hidden lg:block">
             <DesktopClientMarquee />
@@ -787,13 +788,18 @@ export default function Home() {
           <div className="block lg:hidden">
             <MobileClientMarquee />
           </div>
+<div className="container-luxe text-center mt-6 mb-8">
+  <p className="text-sm text-foreground max-w-4xl mx-auto text-justify">
+    <strong>Disclaimer:</strong> Trademarks and logos are displayed solely for portfolio purposes and remain the property of their respective owners. No endorsement is implied.
+  </p>
+</div>
         </div>
       </section>
 
       {/* Global presence section removed per request */}
 
       {/* CTA */}
-      <section id="factory-tour" className="py-28 bg-background">
+      <section id="factory-tour" className="py-[2em] bg-background">
         <div className="container-luxe text-center">
           <FadeUp>
             <p className="gold-label">
@@ -803,7 +809,7 @@ export default function Home() {
               Step inside the <span className="whitespace-nowrap">5BROS factory</span>.
             </h2>
           </FadeUp>
-          <div className="mt-10 flex justify-center px-4 sm:px-0">
+          <div className="mt-4 flex justify-center px-4 sm:px-0">
             <div
               className="w-full max-w-4xl aspect-4/5 sm:aspect-video rounded-[2rem] overflow-hidden shadow-2xl relative"
               onMouseDown={enableFactoryTourAudio}
@@ -823,7 +829,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="pb-24" />
+      <div className="pb-[2em]" />
     </div>
   );
 }
