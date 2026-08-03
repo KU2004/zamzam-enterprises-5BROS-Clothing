@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
 import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 import Home from "./pages/Home";
@@ -28,7 +28,64 @@ import { BackToTopButton } from "./components/BackToTopButton";
 import CountryLandingPage from "./pages/CountryLandingPage";
 import BlogPage from "./pages/BlogPage";
 import ExportLandingPagePremium from "./pages/ExportLandingPage";
+import AdminPanel from "./pages/AdminPanel";
 import NotFound from "./pages/NotFound";
+import { loadBlogs } from "./lib/blogs";
+
+function BlogLandingPage() {
+  const blogs = loadBlogs();
+  const defaultBlogs = [
+    {
+      id: "default-1",
+      title: "Best Clothing Manufacturer in India",
+      slug: "best-clothing-manufacturer-in-india",
+      excerpt: "What to prioritize when choosing a manufacturing partner for quality, certifications, capacity, and export readiness.",
+      content: "",
+      createdAt: "",
+    },
+    {
+      id: "default-2",
+      title: "OEM vs ODM Manufacturing",
+      slug: "oem-vs-odm-manufacturing",
+      excerpt: "Understand which apparel manufacturing model is right for your brand and production goals.",
+      content: "",
+      createdAt: "",
+    },
+    {
+      id: "default-3",
+      title: "Private Label Clothing Guide",
+      slug: "private-label-clothing-guide",
+      excerpt: "A practical roadmap for starting a private label clothing line with reliable manufacturing support.",
+      content: "",
+      createdAt: "",
+    },
+  ];
+  const featuredPosts = [...defaultBlogs, ...blogs].slice(0, 6);
+
+  return (
+    <div className="pt-40 pb-20 bg-muted/30 border-b border-border">
+      <div className="container-luxe">
+        <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold">Blog</p>
+        <h1 className="mt-6 font-display text-4xl md:text-6xl">Apparel Manufacturing Insights</h1>
+        <p className="mt-6 max-w-3xl text-lg text-muted-foreground">
+          Explore guides on private label development, OEM vs ODM selection, garment manufacturing, and sustainable apparel sourcing.
+        </p>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {featuredPosts.map((blog) => (
+            <div key={blog.id} className="rounded-[2rem] border border-border bg-card p-8 shadow-sm">
+              <h2 className="font-display text-2xl text-foreground">{blog.title}</h2>
+              <p className="mt-4 text-muted-foreground leading-8">{blog.excerpt}</p>
+              <Link to={`/blog/${blog.slug}`} className="mt-6 inline-flex text-gold">
+                Read article →
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function AppContent() {
   return (
@@ -79,10 +136,12 @@ function AppContent() {
           <Route path="/riyadh" element={<CountryLandingPage title="Clothing Manufacturer Riyadh" heading="Custom Apparel Supply for Riyadh" intro="From uniforms to lifestyle apparel, we support businesses in Riyadh with customized manufacturing and reliable delivery from India." keyword="clothing manufacturer riyadh" locale="en_SA" canonicalPath="/riyadh" section="Riyadh" highlights={["Custom textile sourcing", "Tailored production runs", "Corporate apparel", "Strong communication"]} />} />
           <Route path="/jeddah" element={<CountryLandingPage title="Clothing Manufacturer Jeddah" heading="Apparel Manufacturing for Jeddah" intro="We help brands in Jeddah source high-quality custom garments and uniforms through a streamlined manufacturing process." keyword="clothing manufacturer jeddah" locale="en_SA" canonicalPath="/jeddah" section="Jeddah" highlights={["Custom uniforms", "Bulk apparel", "Flexible lead times", "Quality control"]} />} />
           <Route path="/dammam" element={<CountryLandingPage title="Clothing Manufacturer Dammam" heading="Workwear and Uniform Manufacturing for Dammam" intro="Build tailored workwear and uniforms for Dammam with premium finishing and dependable production support from India." keyword="clothing manufacturer dammam" locale="en_SA" canonicalPath="/dammam" section="Dammam" highlights={["Industrial uniforms", "Standard and custom workwear", "OEM and private label", "Export support"]} />} />
-          <Route path="/blog" element={<div className="pt-40 pb-20 bg-muted/30 border-b border-border"><div className="container-luxe"><p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold">Blog</p><h1 className="mt-6 font-display text-4xl md:text-6xl">Apparel Manufacturing Insights</h1><p className="mt-6 max-w-3xl text-lg text-muted-foreground">Explore guides on private label development, OEM vs ODM selection, garment manufacturing, and sustainable apparel sourcing.</p><div className="mt-10 grid gap-6 md:grid-cols-2"><div className="rounded-[2rem] border border-border bg-card p-8 shadow-sm"><h2 className="font-display text-2xl text-foreground">Best Clothing Manufacturer in India</h2><p className="mt-4 text-muted-foreground leading-8">What to prioritize when choosing a manufacturing partner for quality, certifications, capacity, and export readiness.</p><a href="/blog/best-clothing-manufacturer-in-india" className="mt-6 inline-flex text-gold">Read article →</a></div><div className="rounded-[2rem] border border-border bg-card p-8 shadow-sm"><h2 className="font-display text-2xl text-foreground">OEM vs ODM Manufacturing</h2><p className="mt-4 text-muted-foreground leading-8">Understand which apparel manufacturing model is right for your brand and production goals.</p><a href="/blog/oem-vs-odm-manufacturing" className="mt-6 inline-flex text-gold">Read article →</a></div><div className="rounded-[2rem] border border-border bg-card p-8 shadow-sm"><h2 className="font-display text-2xl text-foreground">Private Label Clothing Guide</h2><p className="mt-4 text-muted-foreground leading-8">A practical roadmap for starting a private label clothing line with reliable manufacturing support.</p><a href="/blog/private-label-clothing-guide" className="mt-6 inline-flex text-gold">Read article →</a></div></div></div></div>} />
+          <Route path="/blog" element={<BlogLandingPage />} />
+          <Route path="/blog/:slug" element={<BlogPage title="Blog" heading="Blog" intro="" keyword="blog" canonicalPath="/blog" body={[]} />} />
           <Route path="/blog/private-label-clothing-guide" element={<BlogPage title="Private Label Clothing Guide" heading="Private Label Clothing Guide" intro="Learn how to launch a private label clothing line with the right manufacturer, development process, and production strategy." keyword="private label clothing guide" canonicalPath="/blog/private-label-clothing-guide" body={["Private label apparel lets you build a brand without owning a full factory. The model is attractive because it allows you to focus on branding, design, and customer relationships while your manufacturing partner handles production, quality control, and packaging.","When selecting a private label clothing manufacturer, evaluate fabric sourcing options, sampling speed, communication quality, MOQ flexibility, and export readiness. These factors often matter more than just the lowest price because they affect your launch timeline and ongoing profitability.","For new brands, it is wise to start with a small collection, validate demand, and then scale as you gather feedback. A flexible production partner can support that progression without forcing you into oversized orders too early.","At 5BROS Clothing, we work with fashion and retail brands that need dependable production support for basics, custom apparel, and branded collections. Our approach balances price competitiveness with quality, lead time reliability, and a clear communication structure."]} />} />
           <Route path="/blog/oem-vs-odm-manufacturing" element={<BlogPage title="OEM vs ODM Manufacturing" heading="OEM vs ODM Manufacturing" intro="Compare OEM and ODM apparel manufacturing to choose the right production model for your clothing business." keyword="oem vs odm manufacturing" canonicalPath="/blog/oem-vs-odm-manufacturing" body={["OEM and ODM are two common manufacturing models in the apparel industry. OEM means the manufacturer produces garments based on your specifications, while ODM provides a more turnkey model where the supplier may also develop the product concept and pattern.","If your business already has a clear design direction, an OEM relationship can be more efficient. You keep control of the styling, fit, and sourcing choices while the factory handles production and quality assurance.","ODM can be useful when you need faster product development and want a partner who can help shape the concept. It is especially relevant for brands that want to launch collections quickly without building a full internal development team.","The right choice depends on your goals, internal capability, and desired level of control. For many international buyers, a hybrid approach offers the best balance of flexibility and speed."]} />} />
           <Route path="/blog/best-clothing-manufacturer-in-india" element={<BlogPage title="Best Clothing Manufacturer in India" heading="Best Clothing Manufacturer in India" intro="Learn what makes a top garment manufacturer in India stand out for international buyers and private label brands." keyword="best clothing manufacturer in india" canonicalPath="/blog/best-clothing-manufacturer-in-india" body={["Choosing the best clothing manufacturer in India requires more than comparing product catalogs. Buyers should look at production capability, certifications, sample turnaround, compliance, communication, and the ability to handle both small and large production runs.","A strong manufacturing partner will be transparent about lead times, MOQ requirements, fabric sourcing, and the steps used to control quality. They should also be comfortable supporting export documentation and delivering products in a consistent and predictable way.","Brands also need a partner who can scale. A factory that works well for a pilot order should be able to support repeated production cycles as demand grows.","At 5BROS Clothing, our strength is combining premium apparel production with responsive service, export awareness, and product customization that supports both emerging labels and established brands."]} />} />
+          <Route path="/admin" element={<AdminPanel />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
