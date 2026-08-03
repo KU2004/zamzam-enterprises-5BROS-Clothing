@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Seo } from "../components/Seo";
+import { getBlogBySlug } from "../lib/blogs";
 
 interface BlogPageProps {
   title: string;
@@ -22,14 +23,23 @@ export default function BlogPage({
   section = "Blog",
   body,
 }: BlogPageProps) {
+  const params = useParams();
+  const slug = params.slug ?? "";
+  const savedBlog = slug ? getBlogBySlug(slug) : null;
+
+  const pageTitle = savedBlog?.title ?? title;
+  const pageHeading = savedBlog?.title ?? heading;
+  const pageIntro = savedBlog?.excerpt ?? intro;
+  const pageBody = savedBlog?.content ? savedBlog.content.split(/\n{2,}/).filter(Boolean) : body;
+
   return (
     <>
-      <Seo title={title} description={intro} canonicalPath={canonicalPath} keywords={keyword} locale={locale} section={section} />
+      <Seo title={pageTitle} description={pageIntro} canonicalPath={canonicalPath} keywords={keyword} locale={locale} section={section} />
       <section className="pt-40 pb-20 bg-muted/30 border-b border-border">
         <div className="container-luxe">
           <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold">{section}</p>
-          <h1 className="mt-6 font-display text-4xl md:text-6xl max-w-3xl">{heading}</h1>
-          <p className="mt-6 max-w-3xl text-lg text-muted-foreground">{intro}</p>
+          <h1 className="mt-6 font-display text-4xl md:text-6xl max-w-3xl">{pageHeading}</h1>
+          <p className="mt-6 max-w-3xl text-lg text-muted-foreground">{pageIntro}</p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link to="/contact" className="rounded-full bg-gold px-6 py-3 text-sm font-semibold text-charcoal">Request a Quote</Link>
             <Link to="/blog" className="rounded-full border border-border px-6 py-3 text-sm font-semibold">Back to Blog</Link>
@@ -39,7 +49,7 @@ export default function BlogPage({
       <section className="py-16 md:py-24 bg-background">
         <div className="container-luxe grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <article className="prose prose-neutral max-w-none text-muted-foreground">
-            {body.map((paragraph, index) => (
+            {pageBody.map((paragraph, index) => (
               <p key={index} className="mt-5 leading-8">{paragraph}</p>
             ))}
             <h2 className="mt-12 font-display text-2xl text-foreground">Why this matters for buyers</h2>
