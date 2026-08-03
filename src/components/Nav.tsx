@@ -139,7 +139,7 @@ export function Nav() {
         </button>
       </div>
 
-      {!isContactPage && (
+      {!isContactPage && !open && (
         <div className="fixed left-4 top-48 z-50 flex flex-col items-center gap-4" style={{ pointerEvents: 'auto' }}>
           <div className="relative group">
             <Link
