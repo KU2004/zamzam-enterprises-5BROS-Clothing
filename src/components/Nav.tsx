@@ -60,6 +60,12 @@ export function Nav() {
     setOpen(false);
   }, [path]);
 
+  useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent("navbar-state-changed", { detail: { isOpen: open } })
+    );
+  }, [open]);
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
