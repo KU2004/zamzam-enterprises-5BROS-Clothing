@@ -692,7 +692,7 @@ export default function ProductPoloDetail() {
         </div>
       </section>
 
-      <section className="pt-10 pb-20 px-4 sm:px-6 lg:px-8 bg-[radial-gradient(circle_at_top,rgba(255,215,0,0.08),rgba(255,255,255,0)_42%),#fcfaf6]">
+      <section className="pt-2 pb-20 px-4 sm:px-6 lg:px-8 bg-[radial-gradient(circle_at_top,rgba(255,215,0,0.08),rgba(255,255,255,0)_42%),#fcfaf6]">
         <div className="container-luxe">
           <div className="grid gap-6 xl:grid-cols-[minmax(0,auto)_minmax(0,640px)] xl:items-center xl:gap-x-14 xl:justify-center">
             <div className="mx-auto w-full max-w-full self-start lg:mx-0 lg:justify-self-start xl:justify-self-center">
@@ -706,7 +706,7 @@ export default function ProductPoloDetail() {
 
                   
 
-                  <div className="mt-8 rounded-[1.75rem] border border-border/60 bg-muted/30 p-6 shadow-[0_12px_30px_-18px_rgba(15,23,42,0.12)] min-w-0 overflow-hidden">
+                  <div className="mt-1 rounded-[1.75rem] border border-border/60 bg-muted/30 p-6 shadow-[0_12px_30px_-18px_rgba(15,23,42,0.12)] min-w-0 overflow-hidden">
                     <p className="mb-4 text-base font-semibold uppercase tracking-[0.18em] text-gold">Product details</p>
                     <div className="space-y-4 min-w-0">
                       {sharedTechnicalHighlights.map((highlight: any) => (
