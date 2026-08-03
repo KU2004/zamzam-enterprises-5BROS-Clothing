@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import logo from "../assets/logo.png";
 import logoWhite from "../assets/logowhite.png";
 
@@ -47,6 +47,7 @@ export function Nav() {
     path.startsWith("/products");
   const isOpaque = scrolled || open;
   const showWhiteNav = isWhyChoosePath && !isOpaque;
+  const isContactPage = path === "/contact";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -137,6 +138,24 @@ export function Nav() {
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
+
+      {!isContactPage && (
+        <div className="fixed left-4 top-48 z-50 flex flex-col items-center gap-4" style={{ pointerEvents: 'auto' }}>
+          <div className="relative group">
+            <Link
+              to="/contact"
+              className="rounded-full bg-gold p-3 text-charcoal shadow-lg hover:bg-gold-soft transition-all flex items-center justify-center"
+              aria-label="Enquire Now"
+            >
+              <Phone size={20} />
+            </Link>
+
+            <span className="absolute left-full ml-4 top-1/2 -translate-y-1/2 hidden items-center whitespace-nowrap rounded-full bg-white text-foreground px-4 py-2 text-sm font-medium shadow-md transition-all opacity-0 group-hover:flex group-hover:opacity-100">
+              Enquire Now
+            </span>
+          </div>
+        </div>
+      )}
 
       {open && (
         <div className="lg:hidden border-t border-border bg-white">
