@@ -92,6 +92,7 @@ const youtubeShortEmbedUrls: Record<number, string> = {
 export default function Home() {
   const [slide, setSlide] = useState(0);
   const [isSidenavOpen, setIsSidenavOpen] = useState(false);
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   // Thumbnails chosen from assets (distinct from product grid images)
   const thumbnails = [thumbnail1, roundneck7, thumbnail3, thumbnail4, thumbnail5, thumbnail6];
@@ -132,10 +133,17 @@ export default function Home() {
       setIsSidenavOpen(Boolean(customEvent.detail?.isOpen));
     };
 
+    const handleNavbarState = (event: Event) => {
+      const customEvent = event as CustomEvent<{ isOpen: boolean }>;
+      setIsNavbarOpen(Boolean(customEvent.detail?.isOpen));
+    };
+
     window.addEventListener("sidenav-state-changed", handleSidenavState as EventListener);
+    window.addEventListener("navbar-state-changed", handleNavbarState as EventListener);
 
     return () => {
       window.removeEventListener("sidenav-state-changed", handleSidenavState as EventListener);
+      window.removeEventListener("navbar-state-changed", handleNavbarState as EventListener);
     };
   }, []);
 
@@ -219,8 +227,8 @@ export default function Home() {
         type="button"
         onClick={() => window.dispatchEvent(new CustomEvent("toggle-sidenav"))}
         aria-label="Open navigation"
-        disabled={isSidenavOpen}
-        className={`fixed left-4 top-32 z-50 rounded-full border border-gold bg-gold p-3 text-charcoal shadow-lg transition ${isSidenavOpen ? "hidden" : "hover:bg-gold-soft"}`}
+        disabled={isSidenavOpen || isNavbarOpen}
+        className={`fixed left-4 top-32 z-50 rounded-full border border-gold bg-gold p-3 text-charcoal shadow-lg transition ${isSidenavOpen || isNavbarOpen ? "hidden" : "hover:bg-gold-soft"}`}
       >
         <Menu size={20} />
       </button>
