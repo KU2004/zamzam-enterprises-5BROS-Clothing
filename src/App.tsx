@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Link, Routes, Route, useLocation } from "react-router-dom";
 import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
+import { Seo } from "./components/Seo";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import WhyChooseUs from "./pages/WhyChooseUs";
@@ -63,27 +64,37 @@ function BlogLandingPage() {
   const featuredPosts = [...defaultBlogs, ...blogs].slice(0, 6);
 
   return (
-    <div className="pt-40 pb-20 bg-muted/30 border-b border-border">
-      <div className="container-luxe">
-        <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold">Blog</p>
-        <h1 className="mt-6 font-display text-4xl md:text-6xl">Apparel Manufacturing Insights</h1>
-        <p className="mt-6 max-w-3xl text-lg text-muted-foreground">
-          Explore guides on private label development, OEM vs ODM selection, garment manufacturing, and sustainable apparel sourcing.
-        </p>
+    <>
+      <Seo
+        title="Apparel Manufacturing Blog | OEM, ODM, Private Label & Sustainability"
+        description="Read expert articles on private label clothing, OEM vs ODM manufacturing, garment sourcing, and apparel production strategy."
+        canonicalPath="/blog"
+        keywords="apparel manufacturing blog, private label clothing guide, oem vs odm manufacturing, garment manufacturing guide"
+        locale="en_IN"
+        section="Blog"
+      />
+      <div className="pt-40 pb-20 bg-muted/30 border-b border-border">
+        <div className="container-luxe">
+          <p className="text-sm md:text-base uppercase tracking-[0.32em] text-gold">Blog</p>
+          <h1 className="mt-6 font-display text-4xl md:text-6xl">Apparel Manufacturing Insights</h1>
+          <p className="mt-6 max-w-3xl text-lg text-muted-foreground">
+            Explore guides on private label development, OEM vs ODM selection, garment manufacturing, and sustainable apparel sourcing.
+          </p>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {featuredPosts.map((blog) => (
-            <div key={blog.id} className="rounded-[2rem] border border-border bg-card p-8 shadow-sm">
-              <h2 className="font-display text-2xl text-foreground">{blog.title}</h2>
-              <p className="mt-4 text-muted-foreground leading-8">{blog.excerpt}</p>
-              <Link to={`/blog/${blog.slug}`} className="mt-6 inline-flex text-gold">
-                Read article →
-              </Link>
-            </div>
-          ))}
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {featuredPosts.map((blog) => (
+              <div key={blog.id} className="rounded-[2rem] border border-border bg-card p-8 shadow-sm">
+                <h2 className="font-display text-2xl text-foreground">{blog.title}</h2>
+                <p className="mt-4 text-muted-foreground leading-8">{blog.excerpt}</p>
+                <Link to={`/blog/${blog.slug}`} className="mt-6 inline-flex text-gold">
+                  Read article →
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
