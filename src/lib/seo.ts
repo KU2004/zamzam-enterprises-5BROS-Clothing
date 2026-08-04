@@ -421,6 +421,20 @@ export function getSchemaMarkup(pathname: string) {
     } as Record<string, unknown>);
   }
 
+  if (pathname === "/blog") {
+    extraSchemas.push({
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      name: config.title,
+      description: config.description,
+      url: getCanonicalUrl(pathname),
+      publisher: {
+        "@type": "Organization",
+        name: BUSINESS_NAME,
+      },
+    } as Record<string, unknown>);
+  }
+
   if (pathname.startsWith("/blog/")) {
     extraSchemas.push({
       "@context": "https://schema.org",
