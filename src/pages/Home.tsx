@@ -4,6 +4,16 @@ import { ArrowRight, Menu } from "lucide-react";
 import { FadeUp } from "../components/FadeUp";
 import { SideNav } from "../components/SideNav";
 import { Seo } from "../components/Seo";
+import {
+  Award,
+  CheckCircle2,
+  Globe2,
+  Headphones,
+  Package,
+  Shield,
+  Sparkles,
+  Truck,
+} from "lucide-react";
 import { DesktopClientMarquee } from "../components/DesktopClientMarquee";
 import { MobileClientMarquee } from "../components/MobileClientMarquee";
 import hero1 from "../assets/hero-1.jpg";
@@ -29,8 +39,7 @@ import pUni from "../assets/product-uniform.jpg";
 import pSport from "../assets/product-sports.jpg";
 import fabricLaptop from "../assets/fabric.png"
 import fabricMobile from "../assets/fabric1.png"
-import whyChooseUsLaptop from "../assets/whychooseuslaptop.png";
-import whyChooseUsMobile from "../assets/whychooseusmoblie.png";
+
 
 const eyeProduct = pRound5;
 const slides = [
@@ -78,6 +87,16 @@ const products = [
   { cat: "Sportswear", name: "Activewear", img: pSport, href: productRoutes.Sportswear },
 ];
 
+const why = [
+  { icon: Sparkles, title: "Premium Materials", desc: "Hand-picked yarns and certified fabrics." },
+  { icon: Package, title: "Low MOQ", desc: "Flexible order quantities for emerging brands." },
+  { icon: Award, title: "Private Label", desc: "Full OEM & ODM with your branding." },
+  { icon: Shield, title: "Apparel Customization", desc: "Tailored fabrics, trims, labels and finishes for your unique collection." },
+  { icon: Headphones, title: "Dedicated Manager", desc: "One point of contact, always." },
+  { icon: CheckCircle2, title: "Fast Turnaround", desc: "Pilot in weeks, scale in months." },
+  { icon: Globe2, title: "Export Ready", desc: "MSME, GST, DGFT & APEDA certified." },
+  { icon: Truck, title: "Global Shipping", desc: "Documentation and logistics handled end-to-end." },
+];
 
 const videos = ["", "", "", "", "", ""];
 const youtubeShortEmbedUrls: Record<number, string> = {
@@ -627,21 +646,21 @@ export default function Home() {
             </h2>
           </FadeUp>
 
-          <div className="mt-4 lg:mt-6">
-            <div className="hidden lg:block">
-              <img
-                src={whyChooseUsLaptop}
-                alt="Why Choose Us desktop overview"
-                className="w-full rounded-[1.5rem] border border-border object-cover shadow-sm"
-              />
-            </div>
-            <div className="block lg:hidden">
-              <img
-                src={whyChooseUsMobile}
-                alt="Why Choose Us mobile overview"
-                className="w-full rounded-[1.5rem] border border-border object-cover shadow-sm"
-              />
-            </div>
+          <div className="mt-14 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+            {why.map((w) => {
+              const Icon = w.icon;
+              return (
+                
+                  <div className="group h-full border border-border bg-white/60 backdrop-blur p-7 transition-all hover:border-gold hover:shadow-[0_20px_50px_-20px_rgba(212,175,55,0.4)]">
+                    <div className="text-gold transition-colors group-hover:text-charcoal">
+                      <Icon size={40} />
+                    </div>
+                    <h3 className="mt-5 font-display text-lg">{w.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{w.desc}</p>
+                  </div>
+                
+              );
+            })}
           </div>
 
         </div>
