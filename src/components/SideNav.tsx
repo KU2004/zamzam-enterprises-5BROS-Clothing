@@ -11,7 +11,7 @@ const navItems: NavItem[] = [
   { label: "Products", id: "products" },
   { label: "Fabrics", id: "fabrics" },
   { label: "Process", id: "process" },
-  { label: "Why Us", id: "whyus" },
+  { label: "Why Choose Us", id: "whyus" },
   { label: "Visual Excellence", id: "visual-excellence" },
   { label: "Brands", id: "brands" },
   { label: "Clients", id: "clients" },
