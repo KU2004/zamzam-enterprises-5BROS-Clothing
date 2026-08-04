@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Link, Routes, Route, useLocation } from "react-router-dom";
 import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 import Home from "./pages/Home";
@@ -88,13 +88,16 @@ function BlogLandingPage() {
 }
 
 function AppContent() {
+  const location = useLocation();
+  const hideShell = location.pathname === "/admin";
+
   return (
     <div className="flex flex-col min-h-screen">
       <ScrollToTop />
-      <Nav />
+      {!hideShell && <Nav />}
       <BackToTopButton />
 
-      <main className="flex-1 page-section-gap">
+      <main className={`flex-1 ${hideShell ? "" : "page-section-gap"}`}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/exportlandingpage" element={<ExportLandingPagePremium />} />
@@ -145,7 +148,7 @@ function AppContent() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      <Footer />
+      {!hideShell && <Footer />}
     </div>
   );
 }
