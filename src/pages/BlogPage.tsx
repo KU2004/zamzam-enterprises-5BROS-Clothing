@@ -52,14 +52,6 @@ export default function BlogPage({
             {pageBody.map((paragraph, index) => (
               <p key={index} className="mt-5 leading-8">{paragraph}</p>
             ))}
-            <h2 className="mt-12 font-display text-2xl text-foreground">Why this matters for buyers</h2>
-            <p className="mt-4 leading-8">
-              Buyers increasingly evaluate manufacturers on certifications, supply chain transparency, lead times, and flexibility. A strong SEO presence helps those buyers discover the right manufacturing partner before they ever make contact.
-            </p>
-            <h2 className="mt-12 font-display text-2xl text-foreground">Next steps</h2>
-            <p className="mt-4 leading-8">
-              If you are comparing factories for OEM, ODM, private label, or bulk production, request a quote so we can evaluate your requirements and recommend the best production route.
-            </p>
           </article>
           <aside className="rounded-[2rem] border border-border bg-card p-8 shadow-sm">
             <h3 className="font-display text-2xl text-foreground">Related topics</h3>
