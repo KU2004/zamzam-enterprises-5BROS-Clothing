@@ -1,4 +1,5 @@
 import { type FormEvent, useEffect, useMemo, useState } from "react";
+import { Nav } from "../components/Nav";
 import { type BlogPost, loadBlogs, saveBlogs } from "../lib/blogs";
 
 const AUTH_KEY = "5bros-admin-auth";
@@ -25,6 +26,8 @@ export default function AdminPanel() {
   const [content, setContent] = useState("");
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
   const [feedback, setFeedback] = useState("Use the admin credentials to manage your blog.");
+  const [loginAttempts, setLoginAttempts] = useState(0);
+  const [lockoutSeconds, setLockoutSeconds] = useState(0);
 
   useEffect(() => {
     const storedAuth = typeof window !== "undefined" ? window.localStorage.getItem(AUTH_KEY) : null;
@@ -51,16 +54,52 @@ export default function AdminPanel() {
     return content.trim();
   }, [content]);
 
+  useEffect(() => {
+    if (lockoutSeconds <= 0) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setLockoutSeconds((seconds) => seconds - 1);
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, [lockoutSeconds]);
+
+  useEffect(() => {
+    if (lockoutSeconds === 0 && loginAttempts >= 3) {
+      setLoginAttempts(0);
+      setFeedback("You can try logging in again.");
+    }
+  }, [lockoutSeconds, loginAttempts]);
+
   function handleLogin(event: FormEvent) {
     event.preventDefault();
+
+    if (lockoutSeconds > 0) {
+      return;
+    }
 
     if (username.trim() === DEFAULT_CREDENTIALS.username && password === DEFAULT_CREDENTIALS.password) {
       window.localStorage.setItem(AUTH_KEY, "true");
       setIsAuthenticated(true);
       setFeedback("Welcome back. You can add or edit your blog posts now.");
-    } else {
-      setFeedback("Invalid credentials. Try admin / admin123.");
+      setLoginAttempts(0);
+      setLockoutSeconds(0);
+      return;
     }
+
+    const nextAttempts = loginAttempts + 1;
+
+    if (nextAttempts >= 3) {
+      setLoginAttempts(3);
+      setLockoutSeconds(30);
+      setFeedback("Too many failed attempts. Please wait 30 seconds.");
+      return;
+    }
+
+    setLoginAttempts(nextAttempts);
+    setFeedback(`Invalid credentials. ${3 - nextAttempts} attempts remaining.`);
   }
 
   function handleLogout() {
@@ -100,48 +139,54 @@ export default function AdminPanel() {
 
   if (!isAuthenticated) {
     return (
-      <section className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.16),transparent_45%),linear-gradient(135deg,#09111b,#111827)] px-4 py-20 text-white">
-        <div className="mx-auto flex max-w-5xl flex-col gap-8 rounded-[2rem] border border-white/10 bg-black/30 p-8 shadow-2xl backdrop-blur md:flex-row md:items-center md:justify-between">
+      <section className="min-h-screen bg-white px-4 py-20 text-slate-900">
+        <div className="mx-auto flex max-w-5xl flex-col gap-8 rounded-[2rem] border border-slate-200 bg-slate-50 p-8 shadow-2xl md:flex-row md:items-center md:justify-between">
           <div className="max-w-xl">
             <p className="text-sm uppercase tracking-[0.3em] text-gold">Admin access</p>
             <h1 className="mt-4 font-display text-4xl md:text-5xl">Publish blog posts with ease</h1>
-            <p className="mt-5 text-lg text-slate-300">
+            <p className="mt-5 text-lg text-slate-950">
               Sign in to manage your blog, add a new article, and write fresh content for your audience.
             </p>
           </div>
 
-          <form className="w-full max-w-md rounded-[1.5rem] border border-white/10 bg-white/10 p-6 shadow-lg" onSubmit={handleLogin}>
+          <form className="w-full max-w-md rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-lg" onSubmit={handleLogin}>
             <h2 className="font-display text-2xl">Login</h2>
-            <p className="mt-2 text-sm text-slate-300">Access the dashboard to add and write blog content.</p>
+            <p className="mt-2 text-sm text-slate-950">Access the dashboard to add and write blog content.</p>
 
-            <label className="mt-5 block text-sm font-medium text-slate-200" htmlFor="username">
+            <label className="mt-5 block text-sm font-medium text-slate-700" htmlFor="username">
               Username
             </label>
             <input
               id="username"
-              className="mt-2 w-full rounded-xl border border-white/10 bg-slate-950/60 px-4 py-3 text-white outline-none ring-0"
+              className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-100 px-4 py-3 text-slate-950 outline-none ring-0"
               value={username}
               onChange={(event) => setUsername(event.target.value)}
               placeholder="Enter username"
             />
 
-            <label className="mt-4 block text-sm font-medium text-slate-200" htmlFor="password">
+            <label className="mt-4 block text-sm font-medium text-slate-700" htmlFor="password">
               Password
             </label>
             <input
               id="password"
               type="password"
-              className="mt-2 w-full rounded-xl border border-white/10 bg-slate-950/60 px-4 py-3 text-white outline-none ring-0"
+              className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-100 px-4 py-3 text-slate-950 outline-none ring-0"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               placeholder="Enter password"
             />
 
-            <button type="submit" className="mt-6 w-full rounded-full bg-gold px-4 py-3 font-semibold text-slate-950 transition hover:opacity-90">
+            <button
+              type="submit"
+              disabled={lockoutSeconds > 0}
+              className={`mt-6 w-full rounded-full bg-gold px-4 py-3 font-semibold text-slate-950 transition ${lockoutSeconds > 0 ? "cursor-not-allowed opacity-50" : "hover:opacity-90"}`}
+            >
               Sign in
             </button>
 
-            <p className="mt-4 text-sm text-slate-300">{feedback}</p>
+            <p className="mt-4 text-sm text-slate-950">
+              {lockoutSeconds > 0 ? `Too many failed attempts. Try again in ${lockoutSeconds} second${lockoutSeconds === 1 ? "" : "s"}.` : feedback}
+            </p>
           </form>
         </div>
       </section>
@@ -149,7 +194,8 @@ export default function AdminPanel() {
   }
 
   return (
-    <section className="min-h-screen bg-[linear-gradient(135deg,#f8f5ef_0%,#fefefe_100%)] px-4 py-16 text-slate-900">
+    <section className="min-h-screen bg-[linear-gradient(135deg,#f8f5ef_0%,#fefefe_100%)] px-4 py-22 text-slate-900">
+      <Nav />
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-4 rounded-[2rem] border border-slate-200 bg-white/80 p-8 shadow-lg backdrop-blur md:flex-row md:items-center md:justify-between">
           <div>
