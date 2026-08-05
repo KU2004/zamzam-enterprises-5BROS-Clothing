@@ -25,14 +25,17 @@ export default function AdminPanel() {
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
+  const [currentUser, setCurrentUser] = useState<string | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [feedback, setFeedback] = useState("Use the admin credentials to manage your blog.");
   const [loginAttempts, setLoginAttempts] = useState(0);
   const [lockoutSeconds, setLockoutSeconds] = useState(0);
 
   useEffect(() => {
     const storedAuth = typeof window !== "undefined" ? window.localStorage.getItem(AUTH_KEY) : null;
-    if (storedAuth === "true") {
+    if (storedAuth) {
       setIsAuthenticated(true);
+      setCurrentUser(storedAuth);
     }
 
     setBlogs(loadBlogs());
@@ -81,11 +84,15 @@ export default function AdminPanel() {
     }
 
     if (username.trim() === DEFAULT_CREDENTIALS.username && password === DEFAULT_CREDENTIALS.password) {
-      window.localStorage.setItem(AUTH_KEY, "true");
+      // store the logged in username so we can mark authorship of posts
+      const userToStore = username.trim() || DEFAULT_CREDENTIALS.username;
+      window.localStorage.setItem(AUTH_KEY, userToStore);
       setIsAuthenticated(true);
+      setCurrentUser(userToStore);
       setFeedback("Welcome back. You can add or edit your blog posts now.");
       setLoginAttempts(0);
       setLockoutSeconds(0);
+      setPassword("");
       return;
     }
 
@@ -105,8 +112,10 @@ export default function AdminPanel() {
   function handleLogout() {
     window.localStorage.removeItem(AUTH_KEY);
     setIsAuthenticated(false);
+    setCurrentUser(null);
     setUsername("");
     setPassword("");
+    setEditingId(null);
     setFeedback("You have been logged out. Sign in again when you are ready.");
   }
 
@@ -118,23 +127,67 @@ export default function AdminPanel() {
       return;
     }
 
-    const newBlog: BlogPost = {
-      id: `${Date.now()}`,
-      title: title.trim(),
-      slug: slug.trim() || buildSlug(title),
-      excerpt: excerpt.trim() || content.trim().slice(0, 140),
-      content: content.trim(),
-      createdAt: new Date().toISOString(),
-    };
+    const author = currentUser ?? (username.trim() || DEFAULT_CREDENTIALS.username);
 
-    const updatedBlogs = [newBlog, ...blogs];
-    setBlogs(updatedBlogs);
-    saveBlogs(updatedBlogs);
+    if (editingId) {
+      const updatedBlogs = blogs.map((b) =>
+        b.id === editingId
+          ? {
+              ...b,
+              title: title.trim(),
+              slug: slug.trim() || buildSlug(title),
+              excerpt: excerpt.trim() || content.trim().slice(0, 140),
+              content: content.trim(),
+            }
+          : b
+      );
+
+      setBlogs(updatedBlogs);
+      saveBlogs(updatedBlogs);
+      setFeedback(`Updated “${title.trim()}” successfully.`);
+      setEditingId(null);
+    } else {
+      const newBlog: BlogPost = {
+        id: `${Date.now()}`,
+        title: title.trim(),
+        slug: slug.trim() || buildSlug(title),
+        excerpt: excerpt.trim() || content.trim().slice(0, 140),
+        content: content.trim(),
+        createdAt: new Date().toISOString(),
+        author,
+      };
+
+      const updatedBlogs = [newBlog, ...blogs];
+      setBlogs(updatedBlogs);
+      saveBlogs(updatedBlogs);
+      setFeedback(`Saved “${newBlog.title}” successfully.`);
+    }
+
     setTitle("");
     setSlug("");
     setExcerpt("");
     setContent("");
-    setFeedback(`Saved “${newBlog.title}” successfully.`);
+  }
+
+  function handleEdit(blog: BlogPost) {
+    setTitle(blog.title);
+    setSlug(blog.slug);
+    setExcerpt(blog.excerpt);
+    setContent(blog.content);
+    setEditingId(blog.id);
+    setFeedback(`Editing “${blog.title}” — make changes and save.`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function handleDelete(blog: BlogPost) {
+    if (!confirm(`Delete “${blog.title}”? This cannot be undone.`)) {
+      return;
+    }
+
+    const updated = blogs.filter((b) => b.id !== blog.id);
+    setBlogs(updated);
+    saveBlogs(updated);
+    setFeedback(`Deleted “${blog.title}”.`);
   }
 
   if (!isAuthenticated) {
@@ -312,6 +365,17 @@ export default function AdminPanel() {
                       <h4 className="font-semibold text-slate-900">{blog.title}</h4>
                       <p className="mt-2 text-sm text-slate-600">{blog.excerpt}</p>
                       <p className="mt-3 text-xs uppercase tracking-[0.25em] text-slate-400">/{blog.slug}</p>
+                      <p className="mt-3 text-xs text-slate-500">Author: {blog.author ?? "—"}</p>
+                      {blog.author && blog.author === currentUser ? (
+                        <div className="mt-3 flex gap-2">
+                          <button type="button" onClick={() => handleEdit(blog)} className="rounded-full border border-slate-300 px-3 py-1 text-sm font-semibold text-slate-700 hover:border-gold hover:text-gold">
+                            Edit
+                          </button>
+                          <button type="button" onClick={() => handleDelete(blog)} className="rounded-full border border-red-200 px-3 py-1 text-sm font-semibold text-red-600 hover:bg-red-50">
+                            Delete
+                          </button>
+                        </div>
+                      ) : null}
                     </div>
                   ))
                 )}
