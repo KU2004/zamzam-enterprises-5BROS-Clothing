@@ -3,25 +3,17 @@ import { FadeUp } from "../components/FadeUp";
 import { Seo } from "../components/Seo";
 
 import polo1 from "../assets/polo1.jpeg";
-import polo2 from "../assets/polo2.jpeg";
-import polo3 from "../assets/polo3.jpeg";
-import polo4 from "../assets/polo4.jpeg";
 import polo5 from "../assets/polo5.jpeg";
-import polo6 from "../assets/polo6.jpeg";
 import polo7 from "../assets/polo7.jpeg";
 import polo10 from "../assets/polo12.jpeg";
 import polo11 from "../assets/polo11p3.jpeg";
 
 const photos = [
-  { frontImage: polo7, name: "Classic Piqué Polo" },
-  { frontImage: polo10, name: "Premium Dress Polo" },
-  { frontImage: polo11, imageClassName: "object-cover object-top", name: "Street-Style Polo" },
-                          { frontImage: polo1,imageClassName: "object-cover object-top scale-[1.12]", name: "Classic Work Polo" },
-  { frontImage: polo2,imageClassName: "object-cover object-top scale-[1.12]", name: "Retail Signature Polo" },
-  { frontImage: polo3,imageClassName: "object-cover object-top scale-[1.12]", name: "Custom Event Polo" },
-  { frontImage: polo4, imageClassName: "object-cover object-top scale-[1.12]", name: "Signature Premium Polo" },
-  { frontImage: polo5, name: "Contemporary Polo" },
-  { frontImage: polo6, name: "Statement Polo" },
+  { id: 1, frontImage: polo7, name: "Classic Piqué Polo" },
+  { id: 2, frontImage: polo10, name: "Premium Dress Polo" },
+  { id: 3, frontImage: polo11, imageClassName: "object-cover object-top", name: "Street-Style Polo" },
+  { id: 4, frontImage: polo1, imageClassName: "object-cover object-top scale-[1.12]", name: "Classic Work Polo" },
+  { id: 8, frontImage: polo5, name: "Contemporary Polo" },
 ];
 
 export default function ProductsPolo() {
@@ -44,9 +36,9 @@ export default function ProductsPolo() {
                 <FadeUp key={index} delay={index * 120}>
                   <div>
                     <Link
-                      to={`/products/polo/details/${index + 1}`}
-                      aria-label={`View details for Polo photo ${index + 1}`}
-                      className="block overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-500"
+                      to={`/products/polo/details/${src.id}`}
+                      aria-label={`View details for ${src.name}`}
+                      className="block overflow-hidden rounded-1s border border-border bg-card shadow-sm transition-all duration-500"
                     >
                       <div className="relative w-full overflow-hidden bg-[#A9A9A9] h-96 sm:h-112">
                         <img
@@ -67,8 +59,8 @@ export default function ProductsPolo() {
             {photos.map((src, index) => (
               <Link
                 key={index}
-                to={`/products/polo/details/${index + 1}`}
-                aria-label={`View details for Polo photo ${index + 1}`}
+                to={`/products/polo/details/${src.id}`}
+                aria-label={`View details for ${src.name}`}
                 className="block"
               >
                 <div className="overflow-hidden rounded-3xl border border-border bg-card">
