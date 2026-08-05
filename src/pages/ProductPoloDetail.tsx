@@ -19,12 +19,12 @@ import polo12p3 from "../assets/polo12p3.jpeg";
 const sharedTechnicalHighlights = [
   { title: "Fabric", value: "Cotton Piqué (96% Cotton, 4% Spandex)" },
   { title: "GSM", value: "210-220" },
-  { title: "Colour", value: "As per Request" },
-  { title: "Sizes", value: "As per Request" },
   { title: "MOQ", value: "1000 pieces each colour" },
+  { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
 ];
 
 
+const activeProductIds = [1, 2, 3, 4, 8];
 
 const productVariants = [
   {
@@ -32,12 +32,7 @@ const productVariants = [
     title: "Classic Piqué Polo",
     subtitle: "Structured collar and premium finish for smart-casual and corporate wear.",
     image: polo7p3,
-    technicalHighlights: [
-      { title: "Fabric options", value: "ITS Fabric Cotton Piqué (96% Cotton, 4% Spandex), cotton-poly blends, and performance mixes" },
-      { title: "Fit range", value: "Classic, slim, and relaxed silhouettes" },
-      { title: "Customization", value: "Embroidery, screen print, woven labels, and patches" },
-      { title: "MOQ", value: "Flexible production runs for starter and bulk orders" },
-    ],
+    technicalHighlights: sharedTechnicalHighlights,
     benefits: [
       "Ideal for corporate uniforms, hospitality teams, and retail merchandise",
       "Premium stitch quality with strong collar and placket structure",
@@ -56,10 +51,10 @@ const productVariants = [
     subtitle: "A sharper option for executive wear, hospitality, and formal branding.",
     image: polo12p2,
     technicalHighlights: [
-      { title: "Fabric options", value: "High-count cotton and polished blends" },
-      { title: "Fit range", value: "Tailored and refined profiles" },
-      { title: "Customization", value: "Embroidery, jacquard, and premium labels" },
-      { title: "MOQ", value: "Flexible production for premium apparel programs" },
+      { title: "Fabric", value: "Double Cloth Jacq" },
+      { title: "GSM", value: "280" },
+      { title: "MOQ", value: "500 pieces each colour" },
+      { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
     ],
     benefits: [
       "Elevated look for client-facing teams",
@@ -79,10 +74,10 @@ const productVariants = [
     subtitle: "Casual yet polished for lifestyle collections and brand campaigns.",
     image: polo11p5,
     technicalHighlights: [
-      { title: "Fabric options", value: "Soft cotton and easy-care blends" },
-      { title: "Fit range", value: "Relaxed and casual silhouettes" },
-      { title: "Customization", value: "Screen print, patches, and label applications" },
-      { title: "MOQ", value: "Ideal for launch collections and promotions" },
+      { title: "Fabric", value: "Spun Polyester (Waffle)" },
+      { title: "GSM", value: "210-220" },
+      { title: "MOQ", value: "1000 pieces each colour" },
+      { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
     ],
     benefits: [
       "Great for fashion-forward retail launches",
@@ -102,21 +97,10 @@ const productVariants = [
     subtitle: "Durable and professional for uniforms, training, and field teams.",
     image: polo1,
     technicalHighlights: [
-      { title: "Fabric options", value: "Durable cotton-rich and blended fabrics" },
-      { title: "Fit range", value: "Practical and comfortable profiles" },
-      { title: "Customization", value: "Chest branding, name patches, and workwear labels" },
-      { title: "MOQ", value: "Built for dependable repeat orders" },
-    ],
-    benefits: [
-      "Reliable for workwear and institutional uniforms",
-      "Strong wear performance through repeated use",
-      "Easy to brand and maintain across teams",
-      "Supports operational consistency at scale",
-    ],
-    detailCards: [
-      { title: "Work-ready durability", body: "Designed to handle regular wear while maintaining a tidy professional shape." },
-      { title: "Team identification", body: "Add logos, names, and departments for a clean team presentation." },
-      { title: "Operational support", body: "We help coordinate multi-size runs and consolidated shipments." },
+      { title: "Fabric", value: "Knitted Cotton 100%" },
+      { title: "GSM", value: "210-220" },
+      { title: "MOQ", value: "300 pieces each colour" },
+      { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
     ],
   },
   {
@@ -127,19 +111,8 @@ const productVariants = [
     technicalHighlights: [
       { title: "Fabric options", value: "Soft cotton and premium woven blends" },
       { title: "Fit range", value: "Everyday and easy-fit options" },
-      { title: "Customization", value: "Embroidery, print, and label finishing" },
       { title: "MOQ", value: "Flexible for retail pilots and seasonal stock" },
-    ],
-    benefits: [
-      "Great for stores, gift sets, and promotional bundles",
-      "Comfortable and easy to wear daily",
-      "Excellent for private label and co-branded collections",
-      "Consistent quality across repeat orders",
-    ],
-    detailCards: [
-      { title: "Retail-ready finish", body: "Creates a premium impression for shelf display and customer experience." },
-      { title: "Flexible branding", body: "Supports both understated and prominent placement for your brand." },
-      { title: "Inventory planning", body: "We accommodate staged deliveries for seasonal launches and replenishment." },
+      { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
     ],
   },
   {
@@ -148,21 +121,10 @@ const productVariants = [
     subtitle: "A versatile option for events, giveaways, and brand activations.",
     image: polo3,
     technicalHighlights: [
-      { title: "Fabric options", value: "Soft, printable fabrics and cotton blends" },
+      { title: "Fabric", value: "Soft, printable fabrics and cotton blends" },
       { title: "Fit range", value: "Classic and semi-relaxed profiles" },
-      { title: "Customization", value: "Custom prints, patches, and branding accents" },
       { title: "MOQ", value: "Perfect for event kits and short-run campaigns" },
-    ],
-    benefits: [
-      "Ideal for corporate events and promotional campaigns",
-      "Easy to personalize for different audiences",
-      "Strong visual impact with branded finishing",
-      "Supports quick turnaround for campaign deadlines",
-    ],
-    detailCards: [
-      { title: "Event-friendly design", body: "A practical and professional style that works across many event formats." },
-      { title: "Brand storytelling", body: "Custom graphics and color choices help highlight your campaign message." },
-      { title: "Quick response", body: "We support rapid approval and delivery for short-turnaround orders." },
+      { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
     ],
   },
   {
@@ -173,19 +135,8 @@ const productVariants = [
     technicalHighlights: [
       { title: "Fabric options", value: "Premium knit constructions and soft cotton blends" },
       { title: "Fit range", value: "Classic and easy-fit silhouettes" },
-      { title: "Customization", value: "Embroidery, woven labels, and tonal branding" },
       { title: "MOQ", value: "Flexible runs for launch and replenishment orders" },
-    ],
-    benefits: [
-      "Great for premium retail collections",
-      "Comfortable everyday wear with a polished finish",
-      "Strong brand presentation with subtle detailing",
-      "Reliable for repeat orders and seasonal updates",
-    ],
-    detailCards: [
-      { title: "Premium finish", body: "A polished, premium look suitable for branded retail collections." },
-      { title: "Brand consistency", body: "Supports understated logos and refined finishing for premium presentation." },
-      { title: "Production support", body: "We help coordinate sampling, bulk production, and shipment planning." },
+      { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
     ],
   },
   {
@@ -194,10 +145,10 @@ const productVariants = [
     subtitle: "Modern styling with clean lines for fashion-led and promotional programs.",
     image: polo5,
     technicalHighlights: [
-      { title: "Fabric options", value: "Soft cotton and contemporary performance blends" },
-      { title: "Fit range", value: "Modern and relaxed profiles" },
-      { title: "Customization", value: "Print, embroidery, and patch branding" },
-      { title: "MOQ", value: "Suitable for small-batch and larger campaign orders" },
+      { title: "Fabric", value: "Polyester Loopknit" },
+      { title: "GSM", value: "210-220" },
+      { title: "MOQ", value: "1000 pieces each colour" },
+      { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
     ],
     benefits: [
       "Excellent for trend-focused collections",
@@ -217,21 +168,10 @@ const productVariants = [
     subtitle: "A bold option for branded apparel, team uniforms, and fashion-forward campaigns.",
     image: polo6,
     technicalHighlights: [
-      { title: "Fabric options", value: "Textured knits and versatile blended fabrics" },
+      { title: "Fabric", value: "Textured knits and versatile blended fabrics" },
       { title: "Fit range", value: "Structured and relaxed options" },
-      { title: "Customization", value: "Large-scale branding, patches, and embroidery" },
       { title: "MOQ", value: "Flexible for both prototyping and full runs" },
-    ],
-    benefits: [
-      "Bold aesthetic for standout apparel programs",
-      "Reliable structure and finish for repeated wear",
-      "Great for uniforms and brand activations",
-      "Supports scalable production with consistent quality",
-    ],
-    detailCards: [
-      { title: "Visual impact", body: "A statement style that elevates branded apparel and event uniforms." },
-      { title: "Customization depth", body: "Ideal for strong logos, patches, and signature design details." },
-      { title: "Production flexibility", body: "We support development from concept samples through full-scale production." },
+      { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
     ],
   },
 ];
@@ -241,6 +181,9 @@ function Gallery({ product }: { product: any }) {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [transitionDirection, setTransitionDirection] = useState<"left" | "right" | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [isMouseDown, setIsMouseDown] = useState(false);
+  const [mouseStartX, setMouseStartX] = useState<number | null>(null);
+  const mouseDraggedRef = useRef(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [lightboxScale, setLightboxScale] = useState(1);
   const [isPanning, setIsPanning] = useState(false);
@@ -262,7 +205,10 @@ const images = useMemo(() => {
       return [polo12p2, polo12p3];
 
     case 3:
-      return [polo11p5, polo11p4, polo11];
+      return [polo11, polo11p4, polo11p5];
+
+    case 4:
+      return [polo1, polo2, polo3, polo4];
 
     default:
       return [product.image];
@@ -387,6 +333,42 @@ const images = useMemo(() => {
     setTouchStartX(null);
   };
 
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsMouseDown(true);
+    setMouseStartX(e.clientX);
+    mouseDraggedRef.current = false;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isMouseDown || mouseStartX === null) return;
+    const delta = e.clientX - mouseStartX;
+    if (Math.abs(delta) > 10) {
+      mouseDraggedRef.current = true;
+    }
+  };
+
+  const handleMouseUp = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isMouseDown || mouseStartX === null) {
+      setIsMouseDown(false);
+      setMouseStartX(null);
+      return;
+    }
+
+    const endX = e.clientX;
+    const delta = endX - mouseStartX;
+
+    if (delta > 50) prev();
+    if (delta < -50) next();
+
+    setIsMouseDown(false);
+    setMouseStartX(null);
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isMouseDown) return;
+    handleMouseUp(e);
+  };
+
   const handleLightboxWheel = (e: React.WheelEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const cursorX = ((e.clientX - rect.left) / rect.width) * 100;
@@ -494,6 +476,10 @@ const images = useMemo(() => {
 
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
       >
         <div
           ref={galleryStageRef}
@@ -509,8 +495,12 @@ const images = useMemo(() => {
               key={images[selectedImage]}
               src={images[selectedImage]}
               alt={`${product.title} image ${selectedImage + 1}`}
-              className="max-h-[78vh] w-auto max-w-[92%] sm:max-w-[92%] lg:max-w-[93%] object-contain transition-transform duration-300 transform-gpu backface-hidden"
-              onClick={() => setIsLightboxOpen(true)}
+              className="max-h-[88vh] w-full max-w-full object-contain transition-transform duration-300 transform-gpu backface-hidden"
+              onClick={() => {
+                if (!mouseDraggedRef.current) {
+                  setIsLightboxOpen(true);
+                }
+              }}
               style={{
                 display: "block",
                 transform: "translate3d(0, 0, 0)",
@@ -549,50 +539,6 @@ const images = useMemo(() => {
           )}
 
           <div className="pointer-events-none absolute inset-0 bg-transparent" />
-
-          <div className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-charcoal shadow-[0_8px_24px_rgba(0,0,0,0.10)] backdrop-blur">
-            {selectedImage + 1} / {images.length}
-          </div>
-
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                prev();
-              }}
-              aria-label="Previous image"
-              className="hidden md:flex absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-black/5 bg-white/90 p-3 text-charcoal shadow-[0_10px_28px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-all duration-200 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 md:opacity-0 md:group-hover:opacity-100"
-            >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                next();
-              }}
-              aria-label="Next image"
-              className="hidden md:flex absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-black/5 bg-white/90 p-3 text-charcoal shadow-[0_10px_28px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-all duration-200 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 md:opacity-0 md:group-hover:opacity-100"
-            >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsLightboxOpen(true);
-            }}
-            aria-label="Open image viewer"
-            className="absolute right-4 top-4 rounded-full border border-black/5 bg-white/90 p-2.5 text-charcoal shadow-[0_8px_24px_rgba(0,0,0,0.10)] transition hover:-translate-y-0.5 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M21 21L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2" />
-            </svg>
-          </button>
         </div>
       </div>
 
@@ -607,27 +553,9 @@ const images = useMemo(() => {
               ✕
             </button>
 
-            <div className="absolute left-4 top-4 z-10 rounded-full bg-white/90 px-3 py-1 text-[13px] font-semibold uppercase tracking-[0.18em] text-charcoal shadow-lg">
-              {selectedImage + 1} / {images.length}
-            </div>
-
             {images.length > 1 && (
               <>
-                <button
-                  onClick={() => prev()}
-                  aria-label="Previous"
-                  className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/15 bg-black/70 p-3 text-white shadow-[0_16px_40px_rgba(0,0,0,0.22)] transition hover:scale-105"
-                >
-                  ‹
-                </button>
-
-                <button
-                  onClick={() => next()}
-                  aria-label="Next"
-                  className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/15 bg-black/70 p-3 text-white shadow-[0_16px_40px_rgba(0,0,0,0.22)] transition hover:scale-105"
-                >
-                  ›
-                </button>
+            
               </>
             )}
 
@@ -646,16 +574,14 @@ const images = useMemo(() => {
               <img
                 src={images[selectedImage]}
                 alt={`${product.title} enlarged view`}
-                className="max-h-full w-auto object-contain"
+                className="max-h-full w-full max-w-full object-contain"
                 draggable={false}
                 style={{
                   transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${lightboxScale})`,
                   transformOrigin: `${zoomOrigin.x}% ${zoomOrigin.y}%`,
                 }}
               />
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/60 px-4 py-2 text-xs font-medium text-white backdrop-blur-sm pointer-events-none">
-                Use scroll to zoom
-              </div>
+
             </div>
           </div>
         </div>
@@ -673,7 +599,9 @@ export default function ProductPoloDetail() {
     return <Navigate to="/products/polo" replace />;
   }
 
-  const relatedProducts = productVariants.filter((item) => item.id !== product.id).slice(0, 4);
+  const relatedProducts = productVariants
+    .filter((item) => activeProductIds.includes(item.id) && item.id !== product.id)
+    .slice(0, 4);
 
   return (
     <>
@@ -684,17 +612,11 @@ export default function ProductPoloDetail() {
         keywords={`${product.title.toLowerCase()}, polo shirt manufacturing specifications, request quote polo garments`}
       />
 
-      <section className="pt-21 pb-6 bg-muted/30 border-b border-border">
-        <div className="container-luxe">
-          <p className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.32em] text-gold flex items-center gap-3">
-            <span className="gold-line" /> Polo
-          </p>
-        </div>
-      </section>
 
-      <section className="pt-2 pb-20 px-4 sm:px-6 lg:px-8 bg-[radial-gradient(circle_at_top,rgba(255,215,0,0.08),rgba(255,255,255,0)_42%),#fcfaf6]">
+
+      <section className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-[radial-gradient(circle_at_top,rgba(255,215,0,0.08),rgba(255,255,255,0)_42%),#fcfaf6]">
         <div className="container-luxe">
-          <div className="grid gap-6 xl:grid-cols-[minmax(0,auto)_minmax(0,640px)] xl:items-center xl:gap-x-14 xl:justify-center">
+          <div className="grid gap-6 xl:grid-cols-[minmax(0,auto)_minmax(0,760px)] xl:items-center xl:gap-x-14 xl:justify-center">
             <div className="mx-auto w-full max-w-full self-start lg:mx-0 lg:justify-self-start xl:justify-self-center">
               <Gallery product={product} />
             </div>
@@ -709,19 +631,16 @@ export default function ProductPoloDetail() {
                   <div className="mt-1 rounded-[1.75rem] border border-border/60 bg-muted/30 p-6 shadow-[0_12px_30px_-18px_rgba(15,23,42,0.12)] min-w-0 overflow-hidden">
                     <p className="mb-4 text-base font-semibold uppercase tracking-[0.18em] text-gold">Product details</p>
                     <div className="space-y-4 min-w-0">
-                      {sharedTechnicalHighlights.map((highlight: any) => (
+                      {product.technicalHighlights.map((highlight: any) => (
                         <p key={highlight.title} className="m-0 text-left">
                           <span className="block text-[1.05rem] font-semibold text-foreground">{highlight.title}</span>
-                          <span className="mt-1 block text-sm leading-6 text-gray-600 whitespace-normal wrap-break-word">{highlight.value}</span>
+                          <span className="mt-1 block text-sm leading-6 text-black whitespace-normal wrap-break-word">{highlight.value}</span>
                         </p>
                       ))}
                     </div>
                   </div>
 
-                  <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/30 px-2.5 py-2 text-sm text-gray-700 shadow-[0_6px_18px_-12px_rgba(15,23,42,0.12)]">
-                    <span className="inline-flex h-2.5 w-2.5 rounded-full bg-gold" />
-                    5BROS Verified Manufacturing
-                  </div>
+
 
                   <div className="mt-7 flex flex-wrap gap-2 sm:gap-3">
                     <Link to="/contact" className="inline-flex h-13 min-w-55 items-center justify-center rounded-[0.95rem] bg-charcoal px-6 py-3 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-charcoal/90 hover:shadow-[0_10px_24px_-12px_rgba(15,23,42,0.35)]">
