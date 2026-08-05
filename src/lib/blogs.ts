@@ -5,6 +5,7 @@ export interface BlogPost {
   excerpt: string;
   content: string;
   createdAt: string;
+  author?: string;
 }
 
 export const BLOGS_STORAGE_KEY = "5bros-admin-blogs";
