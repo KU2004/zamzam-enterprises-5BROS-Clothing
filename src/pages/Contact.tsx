@@ -447,7 +447,9 @@ export default function Contact({
   const [sent, setSent] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [selectedPhoneCountry, setSelectedPhoneCountry] =
-    useState<(typeof phoneCountries)[number] | null>(null);
+    useState<(typeof phoneCountries)[number] | null>(
+      () => phoneCountries.find((country) => country.value === "+91") ?? null,
+    );
   const [countrySearch, setCountrySearch] = useState("");
   const [countryPopoverOpen, setCountryPopoverOpen] = useState(false);
   const [messageText, setMessageText] = useState("");
@@ -585,12 +587,12 @@ export default function Contact({
                   Phone Number *
                 </span>
                 <div className="mt-2 flex gap-0 min-w-0">
-                  <div className="flex items-center gap-6 min-w-0">
+                  <div className="flex items-center gap-2 sm:gap-4 md:gap-6 min-w-0">
                     <Popover open={countryPopoverOpen} onOpenChange={setCountryPopoverOpen}>
                       <PopoverTrigger asChild>
                         <button
                           type="button"
-                          className="flex items-center gap-0 border border-gray-300 rounded-l-md px-1 md:px-1 lg:px-3 h-12 bg-white w-36 md:w-28 lg:w-auto lg:min-w-0 lg:max-w-none text-left text-xs lg:text-base text-gray-700"
+                          className="flex items-center gap-0 border border-gray-300 rounded-l-md px-1 sm:px-2 md:px-1 lg:px-3 h-12 bg-white w-20 sm:w-24 md:w-28 lg:w-auto lg:min-w-0 lg:max-w-none text-left text-[10px] sm:text-[11px] md:text-[12px] lg:text-base text-gray-700"
                         >
                           {selectedFlag ? (
                             <img
@@ -662,7 +664,7 @@ export default function Contact({
                     type="tel"
                     placeholder="81234 56789"
                     required
-                    className="flex-1 min-w-0 border border-l-0 border-gray-300 rounded-r-md h-12 px-2 lg:px-4 text-base lg:text-lg text-gray-700 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
+                    className="flex-1 min-w-0 border border-l-0 border-gray-300 rounded-r-md h-12 px-2 lg:px-4 text-base sm:text-base lg:text-lg text-gray-700 placeholder:text-gray-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition"
                   />
                 </div>
               </label>
