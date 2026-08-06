@@ -758,7 +758,9 @@ export default function Contact({
                   className="mt-2 flex items-start gap-3 text-base text-gray-700 font-semibold hover:text-[#173d4b]/80 transition wrap-break-word"
                 >
                   <MapPin size={16} className="mt-0.5 text-[#1d2b4f] shrink-0" /> 
-                    <span>{CONTACT.addressFull}</span>
+                    <span className="whitespace-pre-line md:whitespace-normal">
+                      {CONTACT.addressFull}
+                    </span>
                 </a>
               </div>
               <div>
