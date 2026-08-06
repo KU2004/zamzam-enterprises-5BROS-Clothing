@@ -16,11 +16,14 @@ import polo11p5 from "../assets/polo11p5.jpeg";
 import polo12p2 from "../assets/polo12p2.jpeg";
 import polo12p3 from "../assets/polo12p3.jpeg";
 
+const genericTechnicalNote =
+  "We offer custom fabric, color and sizing options.\nPlease share your bulk requirements via our contact page for a tailored quote.";
+
 const sharedTechnicalHighlights = [
   { title: "Fabric", value: "Cotton Piqué (96% Cotton, 4% Spandex)" },
   { title: "GSM", value: "210-220" },
   { title: "MOQ", value: "1000 pieces each colour" },
-  { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
+  { title: "", value: genericTechnicalNote },
 ];
 
 
@@ -54,7 +57,7 @@ const productVariants = [
       { title: "Fabric", value: "Double Cloth Jacq" },
       { title: "GSM", value: "280" },
       { title: "MOQ", value: "500 pieces each colour" },
-      { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
+      { title: "", value: genericTechnicalNote },
     ],
     benefits: [
       "Elevated look for client-facing teams",
@@ -77,7 +80,7 @@ const productVariants = [
       { title: "Fabric", value: "Spun Polyester (Waffle)" },
       { title: "GSM", value: "210-220" },
       { title: "MOQ", value: "1000 pieces each colour" },
-      { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
+      { title: "", value: genericTechnicalNote },
     ],
     benefits: [
       "Great for fashion-forward retail launches",
@@ -100,7 +103,7 @@ const productVariants = [
       { title: "Fabric", value: "Knitted Cotton 100%" },
       { title: "GSM", value: "210-220" },
       { title: "MOQ", value: "300 pieces each colour" },
-      { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
+      { title: "", value: genericTechnicalNote },
     ],
   },
   {
@@ -112,7 +115,7 @@ const productVariants = [
       { title: "Fabric options", value: "Soft cotton and premium woven blends" },
       { title: "Fit range", value: "Everyday and easy-fit options" },
       { title: "MOQ", value: "Flexible for retail pilots and seasonal stock" },
-      { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
+      { title: "", value: genericTechnicalNote },
     ],
   },
   {
@@ -124,7 +127,7 @@ const productVariants = [
       { title: "Fabric", value: "Soft, printable fabrics and cotton blends" },
       { title: "Fit range", value: "Classic and semi-relaxed profiles" },
       { title: "MOQ", value: "Perfect for event kits and short-run campaigns" },
-      { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
+      { title: "", value: genericTechnicalNote },
     ],
   },
   {
@@ -136,7 +139,7 @@ const productVariants = [
       { title: "Fabric options", value: "Premium knit constructions and soft cotton blends" },
       { title: "Fit range", value: "Classic and easy-fit silhouettes" },
       { title: "MOQ", value: "Flexible runs for launch and replenishment orders" },
-      { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
+      { title: "", value: genericTechnicalNote },
     ],
   },
   {
@@ -148,7 +151,7 @@ const productVariants = [
       { title: "Fabric", value: "Polyester Loopknit" },
       { title: "GSM", value: "210-220" },
       { title: "MOQ", value: "1000 pieces each colour" },
-      { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
+      { title: "", value: genericTechnicalNote },
     ],
     benefits: [
       "Excellent for trend-focused collections",
@@ -171,7 +174,7 @@ const productVariants = [
       { title: "Fabric", value: "Textured knits and versatile blended fabrics" },
       { title: "Fit range", value: "Structured and relaxed options" },
       { title: "MOQ", value: "Flexible for both prototyping and full runs" },
-      { title: "", value: "We offer complete flexibility for your brand. This product can be customized in terms of color, fabric, and specific sizing. Please mention your requirements in the contact us for custom bulk patterns." },
+      { title: "", value: genericTechnicalNote },
     ],
   },
 ];
@@ -632,9 +635,18 @@ export default function ProductPoloDetail() {
                     <p className="mb-4 text-base font-semibold uppercase tracking-[0.18em] text-gold">Product details</p>
                     <div className="space-y-4 min-w-0">
                       {product.technicalHighlights.map((highlight: any) => (
-                        <p key={highlight.title} className="m-0 text-left">
-                          <span className="block text-[1.05rem] font-semibold text-foreground">{highlight.title}</span>
-                          <span className="mt-1 block text-sm leading-6 text-black whitespace-normal wrap-break-word">{highlight.value}</span>
+                        <p key={highlight.title || highlight.value} className="m-0 text-left">
+                          {highlight.title ? (
+                            <span className="block text-[1.05rem] font-semibold text-foreground">
+                              {highlight.title}: <span className="font-normal text-foreground">{highlight.value}</span>
+                            </span>
+                          ) : (
+                            highlight.value.split(/\r?\n/).map((line: string, lineIndex: number) => (
+                              <span key={lineIndex} className="block text-base leading-7 text-black whitespace-normal wrap-break-word">
+                                {line}
+                              </span>
+                            ))
+                          )}
                         </p>
                       ))}
                     </div>
