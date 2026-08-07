@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { Seo } from "../components/Seo";
+import Seo from "../components/Seo";
 
 import polo1 from "../assets/polo1.jpeg";
 import polo2 from "../assets/polo2.jpeg";
 import polo3 from "../assets/polo3.jpeg";
 import polo4 from "../assets/polo4.jpeg";
-import polo5 from "../assets/polo5.jpeg";
+import polo5 from "../assets/polo13p2.jpeg";
+import polo13p3 from "../assets/polo13p3.jpeg";
 import polo6 from "../assets/polo6.jpeg";
 import polo11 from "../assets/polo11.jpeg";
 import polo7p3 from "../assets/polo7p3.jpeg";
@@ -148,8 +149,8 @@ const productVariants = [
     subtitle: "Modern styling with clean lines for fashion-led and promotional programs.",
     image: polo5,
     technicalHighlights: [
-      { title: "Fabric", value: "Polyester Loopknit" },
-      { title: "GSM", value: "210-220" },
+      { title: "Fabric", value: "Imported Jacquard" },
+      { title: "GSM", value: "230" },
       { title: "MOQ", value: "1000 pieces each colour" },
       { title: "", value: genericTechnicalNote },
     ],
@@ -213,6 +214,9 @@ const images = useMemo(() => {
     case 4:
       return [polo1, polo2, polo3, polo4];
 
+    case 8:
+      return [polo5, polo13p3];
+
     default:
       return [product.image];
   }
@@ -266,16 +270,22 @@ const images = useMemo(() => {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (!isLightboxOpen) return;
+      const target = e.target as HTMLElement | null;
+      if (target && ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName)) {
+        return;
+      }
+
       if (e.key === "ArrowLeft") {
         e.preventDefault();
         prev();
       }
+
       if (e.key === "ArrowRight") {
         e.preventDefault();
         next();
       }
-      if (e.key === "Escape") {
+
+      if (e.key === "Escape" && isLightboxOpen) {
         e.preventDefault();
         setIsLightboxOpen(false);
       }
