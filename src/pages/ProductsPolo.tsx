@@ -3,7 +3,7 @@ import { FadeUp } from "../components/FadeUp";
 import { Seo } from "../components/Seo";
 
 import polo1 from "../assets/polo1.jpeg";
-import polo5 from "../assets/polo5.jpeg";
+import polo5 from "../assets/polo13.jpeg";
 import polo7 from "../assets/polo7.jpeg";
 import polo10 from "../assets/polo12.jpeg";
 import polo11 from "../assets/polo11p3.jpeg";
