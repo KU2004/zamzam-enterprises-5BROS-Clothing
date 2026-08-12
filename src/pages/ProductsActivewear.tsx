@@ -2,25 +2,30 @@ import { Link } from "react-router-dom";
 import { FadeUp } from "../components/FadeUp";
 import { Seo } from "../components/Seo";
 
-import sports1Bg from "../assets/sports1.jpeg";
-import sports2Bg from "../assets/sports2.jpeg";
-import sports4Bg from "../assets/sports4.jpeg";
+import custom1 from "../assets/custom1.jpeg";
+import custom2Bg from "../assets/custom2-bg.png";
+import custom3Bg from "../assets/custom3-bg.png";
+import custom4Bg from "../assets/custom4-bg.png";
+import custom7Bg from "../assets/custom7-bg.png";
+import custom9Bg from "../assets/custom9-bg.png";
 
 const photos = [
-  { frontImage: sports1Bg, imageClassName: "object-cover object-center scale-[1.0]" },
-  { frontImage: sports2Bg, imageClassName: "object-cover object-center scale-[1.01]" },
-  { frontImage: sports4Bg, imageClassName: "object-cover object-center scale-[1.0]" },
+  { frontImage: custom1, imageClassName: "object-cover object-center scale-[1.12]" },
+  { frontImage: custom2Bg},
+  { frontImage: custom3Bg, imageClassName: "object-cover object-center scale-[1.0]" },
+  { frontImage: custom4Bg, imageClassName: "object-cover object-center scale-[1.12]" },  { frontImage: custom7Bg, imageClassName: "object-cover object-center scale-[1.12]" },
+  { frontImage: custom9Bg, imageClassName: "object-cover object-center scale-[1.22]" },
 ];
 
-export default function ProductsActivewear() {
+export default function ProductsCustomLabel() {
 
   return (
     <>
-      <Seo title="Sportswear Manufacturer India | Performance Activewear" description="Custom performance activewear manufacturing for teams, gyms, wellness brands, and retail distribution with flexible production runs." canonicalPath="/products/activewear" keywords="sportswear manufacturer india, activewear manufacturer, gym wear manufacturer, performance clothing supplier" />
+      <Seo title="Private Label Clothing Manufacturer India | OEM & ODM" description="Build your apparel brand with our OEM, ODM, and private label manufacturing services for uniforms, workwear, and fashion basics." canonicalPath="/products/custom-label" keywords="private label clothing manufacturer, oem clothing manufacturer, odm clothing manufacturer, custom label apparel manufacturer" />
       <section className="pt-40 pb-16 bg-muted/30 border-b border-border">
         <div className="container-luxe">
           <p className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.32em] text-gold flex items-center gap-3">
-            <span className="gold-line" /> Activewear
+            <span className="gold-line" /> Custom Label
           </p>
         </div>
       </section>
@@ -33,14 +38,14 @@ export default function ProductsActivewear() {
                 <FadeUp key={index} delay={index * 120}>
                   <div>
                     <Link
-                      to={`/products/activewear/details/${index + 1}`}
-                      aria-label={`View details for Activewear photo ${index + 1}`}
+                      to={`/products/custom-label/details/${index + 1}`}
+                      aria-label={`View details for Custom Label photo ${index + 1}`}
                       className="block overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-500"
                     >
                       <div className="relative w-full overflow-hidden bg-[#A9A9A9] h-80 sm:h-96">
                         <img
                           src={src.frontImage}
-                          alt={`Activewear ${index + 1}`}
+                          alt={`Custom Label ${index + 1}`}
                           loading="lazy"
                           className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
                         />
@@ -56,15 +61,15 @@ export default function ProductsActivewear() {
             {photos.map((src, index) => (
               <Link
                 key={index}
-                to={`/products/activewear/details/${index + 1}`}
-                aria-label={`View details for Activewear photo ${index + 1}`}
+                to={`/products/custom-label/details/${index + 1}`}
+                aria-label={`View details for Custom Label photo ${index + 1}`}
                 className="block"
               >
                 <div className="overflow-hidden rounded-3xl border border-border bg-card">
                   <div className="relative w-full overflow-hidden bg-[#A9A9A9] aspect-2/3">
                     <img
                       src={src.frontImage}
-                      alt={`Activewear ${index + 1}`}
+                      alt={`Custom Label ${index + 1}`}
                       loading="lazy"
                       className={`absolute inset-0 w-full h-full object-contain object-center ${src.imageClassName ?? ""}`}
                     />
