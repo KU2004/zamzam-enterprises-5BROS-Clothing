@@ -3,36 +3,34 @@ import ProductDetailPage from "../components/ProductDetailPage";
 
 import custom1 from "../assets/custom1.jpeg";
 import custom1p2 from "../assets/custom1p2.png";
-import custom2Bg from "../assets/custom2-bg.png";
+import custom2Bg from "../assets/custom2.jpeg";
 import custom2p2 from "../assets/custom2p2.png";
-import custom3Bg from "../assets/custom3-bg.png";
+import custom3Bg from "../assets/custom3.jpeg";
 import custom3p2 from "../assets/custom3p2.png";
-import custom4Bg from "../assets/custom4-bg.png";
+import custom4Bg from "../assets/custom4.jpeg";
+import custom5Bg from "../assets/custom5.jpeg";
 import custom4p2 from "../assets/custom4p2.png";
-import custom5Bg from "../assets/custom5-bg.png";
-import custom5p2 from "../assets/custom5p2.png";
-import custom6Bg from "../assets/custom6-bg.png";
-import custom6p2 from "../assets/custom6p2.png";
 import custom7Bg from "../assets/custom7-bg.png";
 import custom7p2 from "../assets/custom7p2.png";
-import custom8Bg from "../assets/custom8-bg.png";
-import custom8p2 from "../assets/custom8p2.png";
 import custom9Bg from "../assets/custom9-bg.png";
 import custom9p2 from "../assets/custom9p2.png";
+
+const genericTechnicalNote =
+  "We offer custom fabric, color and sizing options.\nPlease share your bulk requirements via our contact page for a tailored quote.";
 
 const productVariants = [
   {
     id: 1,
     title: "Classic Custom Tee",
     subtitle: "Premium base for private label collections with excellent print and embroidery compatibility.",
-    image: custom1,
-    imageP2: custom1p2,
+    image: custom1p2,
+    imageP2: custom1,
     bgImage: custom4Bg,
     technicalHighlights: [
-      { title: "Fabric options", value: "Balanced quality at retail-competitive price points" },
-      { title: "Fit range", value: "Popular sizes and silhouettes for mass appeal" },
-      { title: "Customization", value: "Full custom labeling and retail packaging" },
-      { title: "MOQ", value: "Ideal for retail pilot and rollout programs" },
+      { title: "Fabric", value: "Cotton Pique 48/52" },
+      { title: "GSM", value: "220-230" },
+      { title: "MOQ", value: "1000 pieces" },
+      { title: "", value: genericTechnicalNote },
     ],
     benefits: [
       "Ideal for retail brands and private label programs",
@@ -50,14 +48,14 @@ const productVariants = [
     id: 2,
     title: "OEM Fashion Basics",
     subtitle: "Versatile blanks for fashion retailers looking to build their own private label collections.",
-    image: custom2Bg,
-    imageP2: custom2p2,
-    bgImage: custom5Bg,
+    image: custom2p2,
+    imageP2: custom2Bg,
+    bgImage: custom2Bg,
     technicalHighlights: [
-      { title: "Fabric options", value: "Premium cotton and performance blends" },
-      { title: "Fit range", value: "Multiple size and fit options" },
-      { title: "Customization", value: "Full custom labeling and packaging support" },
-      { title: "MOQ", value: "Flexible for retail collections" },
+      { title: "Fabric", value: "Sap Mitty (Polyester)" },
+      { title: "GSM", value: "200-210" },
+      { title: "MOQ", value: "1000 pieces" },
+      { title: "", value: genericTechnicalNote },
     ],
     benefits: [
       "Perfect for fashion brands building their lineup",
@@ -75,14 +73,14 @@ const productVariants = [
     id: 3,
     title: "Luxury Label Blank",
     subtitle: "Ultra-premium blanks for luxury and high-end private label fashion collections.",
-    image: custom3Bg,
-    imageP2: custom3p2,
+    image: custom3p2,
+    imageP2: custom3Bg,
     bgImage: custom3Bg,
     technicalHighlights: [
-      { title: "Fabric options", value: "Premium cotton blends with enhanced softness" },
-      { title: "Fit range", value: "Contemporary and tailored options" },
-      { title: "Customization", value: "Embroidery, woven labels, and custom tags" },
-      { title: "MOQ", value: "Flexible for brand development" },
+      { title: "Fabric", value: "Spun-polyester" },
+      { title: "GSM", value: "200-210" },
+      { title: "MOQ", value: "1000 pieces" },
+      { title: "", value: genericTechnicalNote },
     ],
     benefits: [
       "Exceptional quality for premium brands",
@@ -102,12 +100,13 @@ const productVariants = [
     subtitle: "Tailored for retailers wanting to introduce their own branded apparel lines to customers.",
     image: custom4Bg,
     imageP2: custom4p2,
-    bgImage: custom6Bg,
+    imageP3: custom5Bg,
+    bgImage: custom5Bg,
     technicalHighlights: [
-      { title: "Fabric options", value: "Balanced quality at retail-competitive price points" },
-      { title: "Fit range", value: "Popular sizes and silhouettes for mass appeal" },
-      { title: "Customization", value: "Full custom labeling and retail packaging" },
-      { title: "MOQ", value: "Ideal for retail pilot and rollout programs" },
+      { title: "Fabric", value: "Sap Mitty (Polyester)" },
+      { title: "GSM", value: "200-210" },
+      { title: "MOQ", value: "1000 pieces" },
+      { title: "", value: genericTechnicalNote },
     ],
     benefits: [
       "Perfect entry point for retail brands",
@@ -125,14 +124,14 @@ const productVariants = [
     id: 5,
     title: "Fashion Forward Label",
     subtitle: "Contemporary blanks for style-focused private label and fashion retail brands.",
-    image: custom7Bg,
-    imageP2: custom7p2,
+    image: custom7p2,
+    imageP2: custom7Bg,
     bgImage: custom7Bg,
     technicalHighlights: [
-      { title: "Fabric options", value: "Organic and recycled content materials" },
-      { title: "Fit range", value: "Classic and contemporary profiles" },
-      { title: "Customization", value: "Eco-friendly labels and sustainable packaging" },
-      { title: "MOQ", value: "Flexible for sustainable brand launches" },
+      { title: "Fabric", value: "Spun-polyester" },
+      { title: "GSM", value: "200-210" },
+      { title: "MOQ", value: "1000 pieces" },
+      { title: "", value: genericTechnicalNote },
     ],
     benefits: [
       "Ideal for eco-conscious brands",
@@ -150,14 +149,14 @@ const productVariants = [
     id: 6,
     title: "Luxury Label Blank",
     subtitle: "Ultra-premium blanks for luxury and high-end private label fashion collections.",
-    image: custom9Bg,
-    imageP2: custom9p2,
+    image: custom9p2,
+    imageP2: custom9Bg,
     bgImage: custom9Bg,
     technicalHighlights: [
-      { title: "Fabric options", value: "Heavy-weight cotton and durable blends" },
-      { title: "Fit range", value: "Practical and professional profiles" },
-      { title: "Customization", value: "Corporate logos, department tags, and professional labels" },
-      { title: "MOQ", value: "Built for corporate programs" },
+      { title: "Fabric", value: "Sap Mitty (Polyester)" },
+      { title: "GSM", value: "200-210" },
+      { title: "MOQ", value: "1000 pieces" },
+      { title: "", value: genericTechnicalNote },
     ],
     benefits: [
       "Ideal for corporate uniform brands",
@@ -170,82 +169,7 @@ const productVariants = [
       { title: "Corporate branding", body: "Support for large-scale corporate logos and professional labeling." },
       { title: "Bulk coordination", body: "Expertise in multi-site corporate rollouts and consistent sizing." },
     ],
-  },
-  {
-    id: 7,
-    title: "Sustainable Label Collection",
-    subtitle: "Eco-conscious private label options for brands focused on sustainable fashion.",
-    image: custom5Bg,
-    imageP2: custom5p2,
-    bgImage: custom7Bg,
-    technicalHighlights: [
-      { title: "Fabric options", value: "Modern blends with contemporary drape" },
-      { title: "Fit range", value: "Trendy and fashion-forward silhouettes" },
-      { title: "Customization", value: "Custom printing, patches, and brand details" },
-      { title: "MOQ", value: "Flexible for seasonal fashion launches" },
-    ],
-    benefits: [
-      "Perfect for trend-focused brands",
-      "Contemporary aesthetic for modern retail",
-      "Supports seasonal collection releases",
-      "Fast development for fashion trends",
-    ],
-    detailCards: [
-      { title: "Fashion-forward design", body: "Contemporary fit and fabric choices that support current fashion trends and consumer preferences." },
-      { title: "Creative branding", body: "Full support for custom graphics, placement, and branded finishing touches." },
-      { title: "Seasonal agility", body: "Short lead times and responsive production for seasonal fashion updates." },
-    ],
-  },
-  {
-    id: 8,
-    title: "Professional Grade Blank",
-    subtitle: "Durable workwear blanks perfect for corporate and professional private label programs.",
-    image: custom6Bg,
-    imageP2: custom6p2,
-    bgImage: custom8Bg,
-    technicalHighlights: [
-      { title: "Fabric options", value: "Moisture-wicking and performance blends" },
-      { title: "Fit range", value: "Athletic and performance-oriented profiles" },
-      { title: "Customization", value: "Technical printing and performance labeling" },
-      { title: "MOQ", value: "Flexible for athletic brand launches" },
-    ],
-    benefits: [
-      "Ideal for fitness and athletic brands",
-      "Technical performance capabilities",
-      "Support for active lifestyle positioning",
-      "Premium appeal for athletes",
-    ],
-    detailCards: [
-      { title: "Performance engineered", body: "Technical fabric and construction designed for athletic performance and active lifestyles." },
-      { title: "Active branding", body: "Support for technical graphics and performance labeling suited to athletic brands." },
-      { title: "Quality assurance", body: "Rigorous testing ensures performance promises are met through production." },
-    ],
-  },
-  {
-    id: 9,
-    title: "Premium Performance Blank",
-    subtitle: "Technical blanks for active lifestyle and performance-focused private label brands.",
-    image: custom8Bg,
-    imageP2: custom8p2,
-    bgImage: custom9Bg,
-    technicalHighlights: [
-      { title: "Fabric options", value: "Luxury fibers and premium constructions" },
-      { title: "Fit range", value: "Refined and tailored luxury profiles" },
-      { title: "Customization", value: "Luxury labeling, embroidery, and premium packaging" },
-      { title: "MOQ", value: "Flexible for luxury brand development" },
-    ],
-    benefits: [
-      "Supports ultra-premium positioning",
-      "Exceptional quality and softness",
-      "Luxury aesthetic for high-end retail",
-      "Premium consumer appeal",
-    ],
-    detailCards: [
-      { title: "Luxury quality", body: "Premium fiber selection and meticulous construction for ultra-luxury brand positioning." },
-      { title: "Luxury finishing", body: "Support for premium labeling, luxury packaging, and exclusive presentation." },
-      { title: "Boutique production", body: "Small-batch, high-attention production suited to luxury brand requirements." },
-    ],
-  },
+  }
 ];
 
 export default function ProductCustomLabelDetail() {
