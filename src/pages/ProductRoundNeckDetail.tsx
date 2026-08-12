@@ -2,6 +2,17 @@ import { Navigate, useParams } from "react-router-dom";
 import ProductDetailPage from "../components/ProductDetailPage";
 
 import roundneck2 from "../assets/roundneck2.jpeg";
+import roundneck2p3 from "../assets/roundneck2p3.jpeg";
+import roundneck2p4 from "../assets/roundneck2p4.jpeg";
+import roundneck2p5 from "../assets/roundneck2p5.jpeg";
+import roundneck4p3 from "../assets/roundneck4p3.jpeg";
+import roundneck4p4 from "../assets/roundneck4p4.jpeg";
+import roundneck5p3 from "../assets/roundneck5p3.jpeg";
+import roundneck5p4 from "../assets/roundneck5p4.jpeg";
+import roundneck7p3 from "../assets/roundneck7p3.jpeg";
+import roundneck7p4 from "../assets/roundneck7p4.jpeg";
+import roundneck3p3 from "../assets/roundneck3p3.png";
+import roundneck3p4 from "../assets/roundneck3p4.jpeg";
 import roundneck3 from "../assets/roundneck3.jpeg";
 import roundneck4 from "../assets/roundneck4.jpeg";
 import roundneck5 from "../assets/roundneck5.jpeg";
@@ -16,6 +27,7 @@ const productVariants = [
     title: "Luxe Core Round Neck",
     subtitle: "Luxury-quality round neck designed for premium branded collections and refined silhouettes.",
     image: roundneck4,
+    images: [roundneck4p4, roundneck4p3],
     technicalHighlights: [
       { title: "Fabric", value: "100% Cotton" },
       { title: "GSM", value: "170-180" },
@@ -39,6 +51,7 @@ const productVariants = [
     title: "Everyday Essential Round Neck",
     subtitle: "Soft, easy-wear round neck built for daily comfort and broad appeal across retail lines.",
     image: roundneck5,
+    images: [roundneck5p4, roundneck5p3],
     technicalHighlights: [
       { title: "Fabric", value: "100% Cotton" },
       { title: "GSM", value: "170-180" },
@@ -62,6 +75,7 @@ const productVariants = [
     title: "Heritage Textured Round Neck",
     subtitle: "Vintage-inspired round neck with rich texture and premium details for lifestyle collections.",
     image: roundneck2,
+    images: [roundneck2p4, roundneck2p5, roundneck2p3],
     technicalHighlights: [
       { title: "Fabric", value: "Polyester Lycra" },
       { title: "GSM", value: "200-220" },
@@ -85,6 +99,7 @@ const productVariants = [
     title: "Sculpted Slim Round Neck",
     subtitle: "Contemporary slim-fit round neck crafted for sleek silhouettes and modern fashion brands.",
     image: roundneck3,
+    images: [roundneck3p4, roundneck3p3],
     technicalHighlights: [
       { title: "Fabric", value: "Imported Scuba Sued" },
       { title: "GSM", value: "250" },
@@ -108,6 +123,7 @@ const productVariants = [
     title: "Performance Round Neck",
     subtitle: "Premium polyester jacquard round neck engineered for active lifestyle and fashion collections.",
     image: roundneck7,
+    images: [roundneck7p3, roundneck7p4],
     technicalHighlights: [
       { title: "Fabric", value: "Polyester Jacq." },
       { title: "GSM", value: "220-230" },
