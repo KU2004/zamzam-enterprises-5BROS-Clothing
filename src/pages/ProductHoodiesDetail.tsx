@@ -2,13 +2,19 @@ import { Navigate, useParams } from "react-router-dom";
 import ProductDetailPage from "../components/ProductDetailPage";
 
 import hoodies1Bg from "../assets/hoodies1.jpeg";
-import hoodies1p2 from "../assets/hoodies1p2.png";
 import hoodies2Bg from "../assets/hoodies2.jpeg";
-import hoodies2p2 from "../assets/hoodies2p2.png";
 import hoodies3Bg from "../assets/hoodies3.jpeg";
-import hoodies3p2 from "../assets/hoodies3p2.png";
 import hoodies4Bg from "../assets/hoodies4.jpeg";
-import hoodies4p2 from "../assets/hoodies4p2.png";
+
+const genericTechnicalNote =
+  "We offer custom fabric, color and sizing options.\nPlease share your bulk requirements via our contact page for a tailored quote.";
+
+const commonTechnicalHighlights = [
+  { title: "Fabric", value: "Fleece Two Thread & Three Thread" },
+  { title: "GSM", value: "280-300" },
+  { title: "MOQ", value: "500 pieces each colour" },
+  { title: "", value: genericTechnicalNote },
+];
 
 const productVariants = [
   {
@@ -16,13 +22,8 @@ const productVariants = [
     title: "Classic Fleece Hoodie",
     subtitle: "Premium fleece construction perfect for casual wear, retail, and branded merchandise.",
     image: hoodies1Bg,
-    imageP2: hoodies1p2,
-    technicalHighlights: [
-      { title: "Fabric options", value: "Premium fleece, cotton-poly blends, and performance fabrics" },
-      { title: "Fit range", value: "Classic, slim, and relaxed silhouettes" },
-      { title: "Customization", value: "Embroidery, screen print, custom labels, and patches" },
-      { title: "MOQ", value: "Flexible production runs for starter and bulk orders" },
-    ],
+
+    technicalHighlights: commonTechnicalHighlights,
     benefits: [
       "Ideal for corporate uniforms, retail stores, and lifestyle brands",
       "Premium quality fleece with excellent durability",
@@ -40,14 +41,9 @@ const productVariants = [
     title: "Modern Slim Hoodie",
     subtitle: "Contemporary tapered silhouette suited for fashion-forward collections and premium branding.",
     image: hoodies2Bg,
-    imageP2: hoodies2p2,
-    bgImage: hoodies2Bg,
-    technicalHighlights: [
-      { title: "Fabric options", value: "Lightweight premium fleece and high-quality blends" },
-      { title: "Fit range", value: "Slim and tailored profiles" },
-      { title: "Customization", body: "Monogram detailing, chenille badges, and embroidery" },
-      { title: "MOQ", value: "Flexible sampling and scalable production" },
-    ],
+
+
+    technicalHighlights: commonTechnicalHighlights,
     benefits: [
       "Perfect for retail-ready seasonal collections",
       "Clean contemporary lines and refined presentation",
@@ -65,14 +61,9 @@ const productVariants = [
     title: "Performance Sweatshirt",
     subtitle: "Technical fleece with advanced moisture management for activewear and training programs.",
     image: hoodies3Bg,
-    imageP2: hoodies3p2,
-    bgImage: hoodies3Bg,
-    technicalHighlights: [
-      { title: "Fabric options", value: "Performance fleece blends with moisture-wicking properties" },
-      { title: "Fit range", value: "Comfort-focused and athletic silhouettes" },
-      { title: "Customization", value: "Heat transfer, screen print, and woven labels" },
-      { title: "MOQ", value: "Flexible runs for team collections and promotional programs" },
-    ],
+
+
+    technicalHighlights: commonTechnicalHighlights,
     benefits: [
       "Comfortable for active use and casual everyday wear",
       "Maintains clean finish during repeated wear",
@@ -90,14 +81,8 @@ const productVariants = [
     title: "Premium Dress Hoodie",
     subtitle: "Elevated fleece option for executive wear, hospitality programs, and formal branding.",
     image: hoodies4Bg,
-    imageP2: hoodies4p2,
-    bgImage: hoodies4Bg,
-    technicalHighlights: [
-      { title: "Fabric options", value: "High-quality premium fleece and refined blends" },
-      { title: "Fit range", value: "Tailored and refined profiles" },
-      { title: "Customization", value: "Embroidery, jacquard details, and premium labels" },
-      { title: "MOQ", value: "Flexible production for premium apparel programs" },
-    ],
+
+    technicalHighlights: commonTechnicalHighlights,
     benefits: [
       "Elevated look for client-facing and executive teams",
       "Smart finishing for refined presentation",
