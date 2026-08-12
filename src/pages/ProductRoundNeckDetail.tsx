@@ -7,6 +7,9 @@ import roundneck4 from "../assets/roundneck4.jpeg";
 import roundneck5 from "../assets/roundneck5.jpeg";
 import roundneck7 from "../assets/roundneck7.jpeg";
 
+const genericTechnicalNote =
+  "We offer custom fabric, color and sizing options.\nPlease share your bulk requirements via our contact page for a tailored quote.";
+
 const productVariants = [
   {
     id: 1,
@@ -16,9 +19,8 @@ const productVariants = [
     technicalHighlights: [
       { title: "Fabric", value: "100% Cotton" },
       { title: "GSM", value: "170-180" },
-      { title: "Colour", value: "As per Request" },
-      { title: "Sizes", value: "As per Request" },
       { title: "MOQ", value: "1000 pieces each colour" },
+      { title: "", value: genericTechnicalNote },
     ],
     benefits: [
       "Premium positioning for luxury brands",
@@ -40,9 +42,8 @@ const productVariants = [
     technicalHighlights: [
       { title: "Fabric", value: "100% Cotton" },
       { title: "GSM", value: "170-180" },
-      { title: "Colour", value: "As per Request" },
-      { title: "Sizes", value: "As per Request" },
       { title: "MOQ", value: "1000 pieces each colour" },
+      { title: "", value: genericTechnicalNote },
     ],
     benefits: [
       "Perfect for casual retail and distribution",
@@ -64,9 +65,8 @@ const productVariants = [
     technicalHighlights: [
       { title: "Fabric", value: "Polyester Lycra" },
       { title: "GSM", value: "200-220" },
-      { title: "Colour", value: "As per Request" },
-      { title: "Sizes", value: "As per Request" },
       { title: "MOQ", value: "200 pieces each colour" },
+      { title: "", value: genericTechnicalNote },
     ],
     benefits: [
       "Perfect for vintage and heritage brands",
@@ -88,9 +88,8 @@ const productVariants = [
     technicalHighlights: [
       { title: "Fabric", value: "Imported Scuba Sued" },
       { title: "GSM", value: "250" },
-      { title: "Colour", value: "As per Request" },
-      { title: "Sizes", value: "As per Request" },
       { title: "MOQ", value: "200 pieces each colour" },
+      { title: "", value: genericTechnicalNote },
     ],
     benefits: [
       "Perfect for contemporary fashion collections",
@@ -112,9 +111,8 @@ const productVariants = [
     technicalHighlights: [
       { title: "Fabric", value: "Polyester Jacq." },
       { title: "GSM", value: "220-230" },
-      { title: "Colour", value: "As per Request" },
-      { title: "Sizes", value: "As per Request" },
       { title: "MOQ", value: "200 pieces each colour" },
+      { title: "", value: genericTechnicalNote },
     ],
     benefits: [
       "Comfortable for active lifestyle wear",
