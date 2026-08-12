@@ -1,131 +1,127 @@
-import { useState, type MouseEvent } from "react";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { FadeUp } from "../components/FadeUp";
-import { Seo } from "../components/Seo";
+import { Navigate, useParams } from "react-router-dom";
+import ProductDetailPage from "../components/ProductDetailPage";
 
-import oversized1Bg from "../assets/oversized1.jpeg";
-import oversized1p2 from "../assets/oversized1p2.png";
-import oversized2Bg from "../assets/oversized2.jpeg";
-import oversized2p2 from "../assets/oversized2p2.png";
-import oversized3Bg from "../assets/oversized3.jpeg";
-import oversized3p2 from "../assets/oversized3p2.png";
-import oversized4Bg from "../assets/oversized4.jpeg";
-import oversized4p2 from "../assets/oversized4p2.png";
-import oversized5Bg from "../assets/oversized5.jpeg";
-import oversized5p2 from "../assets/oversized5p2.png";
+import oversized1Bg from "../assets/oversized6p2.jpeg";
+import oversized1p2 from "../assets/oversized6p4.png";
+import oversized1p3 from "../assets/oversized6p3.png";
+import oversized1Listing from "../assets/oversized6.jpeg";
+import oversized2Bg from "../assets/oversized7.jpeg";
+import oversized2p2 from "../assets/oversized7p2.jpeg";
+import oversized2Listing from "../assets/oversized2.jpeg";
+import oversized3Bg from "../assets/oversized8p3.jpeg";
+import oversized3p2 from "../assets/oversized8p2.jpeg";
+import oversized3Listing from "../assets/oversized8.jpeg";
 
-const photos = [
-  { frontImage: oversized1Bg, hoverImage: oversized1p2 },
-  { frontImage: oversized2Bg, hoverImage: oversized2p2 },
-  { frontImage: oversized3Bg, hoverImage: oversized3p2 },
-  { frontImage: oversized4Bg, hoverImage: oversized4p2 },
-  { frontImage: oversized5Bg, hoverImage: oversized5p2 },
+
+const genericTechnicalNote =
+  "We offer custom fabric, color and sizing options.\nPlease share your bulk requirements via our contact page for a tailored quote.";
+
+
+const productVariants = [
+  {
+    id: 1,
+    title: "Classic Oversized Tee",
+    subtitle: "Relaxed, comfortable fit perfect for streetwear collections and casual retail.",
+    listingImage: oversized1Listing,
+    image: oversized1Bg,
+    imageP2: oversized1p2,
+    imageP3: oversized1p3,
+    technicalHighlights: [
+      { title: "Fabric", value: "French Cotton-Poly Blends" },
+      { title: "GSM", value: "200-210" },
+      { title: "MOQ", value: "500 pieces each colour" },
+      { title: "", value: genericTechnicalNote },
+    ],
+    benefits: [
+      "Ideal for streetwear brands and fashion retailers",
+      "Comfortable relaxed fit with modern aesthetic",
+      "Brand-ready finishing for merchandise programs",
+      "Fast sampling and flexible production support",
+    ],
+    detailCards: [
+      { title: "Oversized construction", body: "Engineered oversized silhouette with quality construction for professional streetwear presentation." },
+      { title: "Color and branding", body: "Choose from a wide color palette and add your logo with screen print, embroidery, or custom finishing." },
+      { title: "Production flexibility", body: "We support low-volume testing as well as larger retail orders without quality compromise." },
+    ],
+  },
+  {
+    id: 2,
+    title: "Modern Drop Shoulder Tee",
+    subtitle: "Contemporary drop shoulder styling suited for fashion-forward collections and trend-focused brands.",
+    listingImage: oversized2Listing,
+    image: oversized2Bg,
+    imageP2: oversized2p2,
+    technicalHighlights: [
+      { title: "Fabric", value: "LoopKnit Cotton" },
+      { title: "GSM", value: "240-260" },
+      { title: "MOQ", value: "500 pieces each colour" },
+      { title: "", value: genericTechnicalNote },
+    ],
+    benefits: [
+      "Perfect for contemporary fashion collections",
+      "On-trend drop shoulder silhouette",
+      "Great for premium streetwear brands",
+      "Reliable repeat orders with consistent finishing",
+    ],
+    detailCards: [
+      { title: "Contemporary design", body: "Modern drop shoulder construction with quality finishing for fashion-forward brand positioning." },
+      { title: "Branding details", body: "Add custom logos, graphic placement, or premium embroidery for elevated branding." },
+      { title: "Delivery support", body: "We coordinate sampling, bulk production, and export-ready packaging for your collections." },
+    ],
+  },
+  {
+    id: 3,
+    title: "Performance Oversized Shirt",
+    subtitle: "Technical oversized wear with breathability for active and lifestyle collections.",
+    listingImage: oversized3Listing,
+    image: oversized3Bg,
+    imageP2: oversized3p2,
+
+    technicalHighlights: [
+      { title: "Fabric", value: "Imported Scuba Rib" },
+      { title: "GSM", value: "250-270" },
+      { title: "MOQ", value: "500 pieces each colour" },
+      { title: "", value: genericTechnicalNote },
+    ],
+    benefits: [
+      "Comfortable for active lifestyle wear",
+      "Maintains finish during repeated use",
+      "Ideal for sports lifestyle and wellness brands",
+      "Supports bulk supply with reliable lead times",
+    ],
+    detailCards: [
+      { title: "Technical performance", body: "Performance fabrics designed for comfort and breathability with oversized styling." },
+      { title: "Lifestyle appeal", body: "Available in trending colors for lifestyle and wellness brand collections." },
+      { title: "Scalable production", body: "Suitable for both pilot programs and larger seasonal collection orders." },
+    ],
+  },
+  
+
 ];
 
-export default function ProductsOversized() {
-  const [hovered, setHovered] = useState<number | null>(null);
-  const [mobileTapped, setMobileTapped] = useState<number | null>(null);
+export default function ProductOversizedDetail() {
+  const { photoId } = useParams();
+  const normalizedId = Number(photoId);
+  const product = productVariants.find((item) => item.id === normalizedId);
 
-  const handleMobileTapToggle = (index: number, event: MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
+  if (!product) {
+    return <Navigate to="/products/oversized" replace />;
+  }
 
-    if (mobileTapped === index) {
-      window.location.assign(`/products/oversized/details/${index + 1}`);
-      return;
-    }
-
-    setMobileTapped(index);
-  };
+  const relatedProducts = productVariants.filter((item) => item.id !== product.id).slice(0, 4);
 
   return (
-    <>
-      <Seo title="Oversized Clothing Manufacturer India | Streetwear Apparel" description="Order oversized apparel with premium fabrics, custom labels, and low MOQ manufacturing for modern streetwear and retail collections." canonicalPath="/products/oversized" keywords="oversized clothing manufacturer, oversized t shirt manufacturer, streetwear manufacturer india" />
-      <section className="pt-40 pb-16 bg-muted/30 border-b border-border">
-        <div className="container-luxe">
-          <p className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.32em] text-gold flex items-center gap-3">
-            <span className="gold-line" /> Oversized
-          </p>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container-luxe">
-          <div className="hidden md:block">
-            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-              {photos.map((src, index) => (
-                <FadeUp key={index} delay={index * 120}>
-                  <div>
-                    <Link
-                      to={`/products/oversized/details/${index + 1}`}
-                      aria-label={`View details for Oversized photo ${index + 1}`}
-                      className="block overflow-hidden rounded-3xl transition-all duration-500"
-                      onMouseEnter={() => setHovered(index)}
-                      onMouseLeave={() => setHovered(null)}
-                    >
-                      <div className="relative w-full overflow-hidden h-80 sm:h-96 bg-transparent">
-                        <motion.img
-                          src={src.frontImage}
-                          alt={`Oversized ${index + 1}`}
-                          loading="lazy"
-                          initial={{ opacity: 1, scale: 1 }}
-                          animate={hovered === index ? { opacity: 0, scale: 1.03 } : { opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.45, ease: "easeInOut" }}
-                          className={`absolute inset-0 w-full h-full object-contain object-center ${index === 0 || index === 4 ? "scale-[1.12]" : ""}`}
-                        />
-                        <motion.img
-                          src={src.hoverImage}
-                          alt={`Oversized ${index + 1} hover`}
-                          loading="lazy"
-                          initial={{ opacity: 0, scale: 1 }}
-                          animate={hovered === index ? { opacity: 1, scale: 1.03 } : { opacity: 0, scale: 1 }}
-                          transition={{ duration: 0.45, ease: "easeInOut" }}
-                          className={`absolute inset-0 w-full h-full object-contain object-center ${index === 0 || index === 4 ? "scale-[1.12]" : ""}`}
-                        />
-                      </div>
-                    </Link>
-                  </div>
-                </FadeUp>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 md:hidden">
-            {photos.map((src, index) => (
-              <Link
-                key={index}
-                to={`/products/oversized/details/${index + 1}`}
-                aria-label={`View details for Oversized photo ${index + 1}`}
-                className="block"
-                onClick={(event) => handleMobileTapToggle(index, event)}
-              >
-                <div className="overflow-hidden rounded-3xl">
-                  <div className="relative w-full overflow-hidden aspect-2/3 bg-transparent">
-                    <motion.img
-                      src={src.frontImage}
-                      alt={`Oversized ${index + 1}`}
-                      loading="lazy"
-                      initial={{ opacity: 1, scale: 1 }}
-                      animate={mobileTapped === index ? { opacity: 0, scale: 1.03 } : { opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.45, ease: "easeInOut" }}
-                      className={`absolute inset-0 w-full h-full object-contain object-center ${index === 0 || index === 4 ? "scale-[1.12]" : ""}`}
-                    />
-                    <motion.img
-                      src={src.hoverImage}
-                      alt={`Oversized ${index + 1} hover`}
-                      loading="lazy"
-                      initial={{ opacity: 0, scale: 1 }}
-                      animate={mobileTapped === index ? { opacity: 1, scale: 1.03 } : { opacity: 0, scale: 1 }}
-                      transition={{ duration: 0.45, ease: "easeInOut" }}
-                      className={`absolute inset-0 w-full h-full object-contain object-center ${index === 0 || index === 4 ? "scale-[1.12]" : ""}`}
-                    />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
+    <ProductDetailPage
+      product={product}
+      relatedProducts={relatedProducts}
+      seoTitle={`${product.title} | Technical Details & Quote`}
+      seoDescription={`${product.subtitle} Explore the product details, customization options, and request a quote for this oversized style.`}
+      canonicalPath={`/products/oversized/details/${product.id}`}
+      seoKeywords={`${product.title.toLowerCase()}, oversized clothing manufacturing, streetwear apparel, request quote oversized`}
+      collectionPath="/products/oversized"
+      collectionLabel="oversized"
+      relatedHeading="Explore more oversized options"
+      relatedLinkText="View full collection"
+    />
   );
 }
