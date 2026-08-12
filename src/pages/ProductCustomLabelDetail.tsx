@@ -98,8 +98,8 @@ const productVariants = [
     id: 4,
     title: "Retail Launch Apparel",
     subtitle: "Tailored for retailers wanting to introduce their own branded apparel lines to customers.",
-    image: custom4Bg,
-    imageP2: custom4p2,
+    image: custom4p2,
+    imageP2: custom4Bg,
     imageP3: custom5Bg,
     bgImage: custom5Bg,
     technicalHighlights: [
