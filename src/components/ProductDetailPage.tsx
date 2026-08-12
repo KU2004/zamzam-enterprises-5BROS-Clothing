@@ -40,12 +40,9 @@ function Gallery({ product }: { product: any }) {
       return product.images.filter(Boolean) as string[];
     }
 
-    if (product.imageP2) {
-      return [product.image, product.imageP2].filter(Boolean) as string[];
-    }
-
-    return [product.image].filter(Boolean) as string[];
-  }, [product.image, product.imageP2, product.images]);
+    const imageCandidates = [product.image, product.imageP2, product.imageP3];
+    return imageCandidates.filter(Boolean) as string[];
+  }, [product.image, product.imageP2, product.imageP3, product.images]);
 
   useEffect(() => {
     const preloadImages = [...images, ...(images.length > 1 ? [images[(selectedImage + 1) % images.length]] : [])];
@@ -462,7 +459,7 @@ export default function ProductDetailPage({
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {relatedProducts.map((item) => (
                 <Link key={item.id} to={`/products/${collectionLabel}/details/${item.id}`} className="group overflow-hidden rounded-4xl border border-border bg-background transition hover:-translate-y-1 hover:shadow-lg">
-                  <img src={item.image} alt={item.title} className="h-64 w-full object-contain object-center p-4 transition duration-300" loading="lazy" />
+                  <img src={item.listingImage || item.image} alt={item.title} className="h-64 w-full object-contain object-center p-4 transition duration-300" loading="lazy" />
                 </Link>
               ))}
             </div>
