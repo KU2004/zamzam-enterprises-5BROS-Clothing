@@ -24,7 +24,6 @@ import brand1 from "../assets/brand1.png";
 import brand3 from "../assets/brand3.png";
 import pRound from "../assets/product-roundneck.jpg";
 import pRound5 from "../assets/roundneck5.jpeg";
-import processImg from "../assets/Process.png";
 import processMobileImg from "../assets/Processmoblie.png";
 import pPolo from "../assets/product-polo.jpg";
 import pOver from "../assets/product-oversized.jpg";
@@ -37,8 +36,16 @@ import thumbnail3 from "../assets/sports5.jpeg";
 import thumbnail5 from "../assets/oversized1.jpeg";
 import pUni from "../assets/product-uniform.jpg";
 import pSport from "../assets/product-sports.jpg";
-import fabricLaptop from "../assets/fabric.png"
-import fabricMobile from "../assets/fabric1.png"
+import fabricLaptop from "../assets/fabric.png";
+import fabricMobile from "../assets/fabric1.png";
+import process1 from "../assets/Process1.png";
+import process2 from "../assets/Process2.png";
+import process3 from "../assets/Process3.png";
+import process4 from "../assets/Process4.png";
+import process5 from "../assets/Process5.png";
+import process6 from "../assets/Process6.png";
+import process7 from "../assets/Process7.png";
+import process8 from "../assets/Process8.png";
 
 
 const eyeProduct = pRound5;
@@ -96,6 +103,17 @@ const why = [
   { icon: CheckCircle2, title: "Fast Turnaround", desc: "Pilot in weeks, scale in months." },
   { icon: Globe2, title: "Export Ready", desc: "MSME, GST, DGFT & APEDA certified." },
   { icon: Truck, title: "Global Shipping", desc: "Documentation and logistics handled end-to-end." },
+];
+
+const processSteps = [
+  { src: process1, alt: "Process stage 1" },
+  { src: process2, alt: "Process stage 2" },
+  { src: process3, alt: "Process stage 3" },
+  { src: process4, alt: "Process stage 4" },
+  { src: process5, alt: "Process stage 5" },
+  { src: process6, alt: "Process stage 6" },
+  { src: process7, alt: "Process stage 7" },
+  { src: process8, alt: "Process stage 8" },
 ];
 
 const videos = ["", "", "", "", "", ""];
@@ -620,15 +638,21 @@ export default function Home() {
               />
             </div>
 
-            <div className="hidden lg:block">
-              <div className="relative aspect-video max-h-[80vh] lg:max-h-[90vh] overflow-hidden rounded-[2rem] border border-border bg-white/60">
-                <img
-                  src={processImg}
-                  alt="Manufacturing process"
-                  className="h-full w-full object-cover object-center"
-                  loading="lazy"
-                />
-              </div>
+            <div className="hidden lg:grid lg:grid-cols-4 lg:gap-5">
+              {processSteps.map((step, index) => (
+                <FadeUp key={index} delay={index * 70}>
+                  <div className="process-step-card group flex h-full flex-col overflow-hidden rounded-[2rem] border border-border bg-white shadow-[0_20px_50px_-28px_rgba(15,23,42,0.18)] transition-transform duration-700 ease-out hover:-translate-y-1 hover:shadow-[0_28px_80px_-30px_rgba(15,23,42,0.24)]">
+                    <div className="process-step-image flex h-full items-center justify-center overflow-hidden rounded-[1.75rem] bg-white p-3">
+                      <img
+                        src={step.src}
+                        alt={step.alt}
+                        className="block h-full w-full rounded-[1.25rem] object-contain transition duration-700 ease-out group-hover:scale-[1.03]"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                </FadeUp>
+              ))}
             </div>
           </div>
         </div>
