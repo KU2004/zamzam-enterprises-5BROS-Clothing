@@ -66,7 +66,7 @@ const productVariants = [
     ],
   },
   {
-    id: 4,
+    id: 3,
     title: "Lightweight Training Top",
     subtitle: "Minimal design for maximum mobility and a clean athletic aesthetic.",
     image: sports4Bg,
