@@ -2,10 +2,12 @@ import { FadeUp } from "../components/FadeUp";
 import { Seo } from "../components/Seo";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import cutting from "../assets/infra-cutting.jpg";
+import cutting from "../assets/infra-cutting.png";
+import packing from "../assets/packing.png";
 import printing from "../assets/infra-printing.jpg";
-import embroidery from "../assets/infra-embroidery.jpg";
-import stitching from "../assets/infra-stitching.jpg";
+import embroidery from "../assets/infra-embroidery.png";
+import stitching from "../assets/infra-stitching.png";
+import finishing from "../assets/finishing.png";
 import hero4 from "../assets/hero-4.jpg";
 import logoAepc from "../assets/aepc.png";
 import dgft from "../assets/dgft.png";
@@ -47,12 +49,12 @@ const units = [
   {
     t: "Finishing Section",
     d: "Trimming, ironing and final inspection for export-grade presentation.",
-    img: hero4,
+    img: finishing,
   },
   {
     t: "Packing & Warehouse",
     d: "Polybag, hangtag, carton and barcoding ready for global dispatch.",
-    img: hero4,
+    img: packing,
   },
 ];
 
@@ -101,12 +103,12 @@ export default function Infrastructure() {
               <div
                 className={`grid gap-10 lg:grid-cols-2 items-center ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}
               >
-                <div className="relative aspect-4/3 overflow-hidden">
+                <div className="relative aspect-4/3 overflow-hidden bg-muted/20">
                   <img
                     src={u.img}
                     alt={u.t}
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-1500 hover:scale-105"
+                    className="h-full w-full object-contain transition-transform duration-1500 hover:scale-[1.02]"
                   />
                 </div>
                 <div>
