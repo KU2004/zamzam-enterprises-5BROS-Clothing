@@ -28,8 +28,10 @@ import gEnergyLogo from "../assets/g-energy.png";
 const units = [
   {
     t: "Cutting Unit",
-    d: "Computerised cutting tables with pattern precision down to the millimetre.",
+    d: "Fabric cutting and pattern preparation for consistent garment production.",
     img: cutting,
+    video: "https://www.youtube.com/embed/jQ52Ydu5MNs?si=l0lODjqjIfSCLijx",
+    videoId: "jQ52Ydu5MNs",
   },
   {
     t: "Printing Unit",
@@ -45,11 +47,16 @@ const units = [
     t: "Stitching Unit",
     d: "Rows of high-speed industrial sewing stations operated by skilled artisans.",
     img: stitching,
+    video: "https://www.youtube.com/embed/1l1LkB_R0ns?si=tsbMaOjPgzpUk5Kt",
+    videoId: "1l1LkB_R0ns",
+
   },
   {
     t: "Finishing Section",
     d: "Trimming, ironing and final inspection for export-grade presentation.",
     img: finishing,
+    video: "https://www.youtube.com/embed/CpZQBxhOPhY?si=tvjl4vs3bk6ayu6Q",
+    videoId: "CpZQBxhOPhY",
   },
   {
     t: "Packing & Warehouse",
@@ -57,6 +64,7 @@ const units = [
     img: packing,
   },
 ];
+
 
 const clients = [
   { name: "g-energy", logo: gEnergyLogo },
@@ -104,12 +112,23 @@ export default function Infrastructure() {
                 className={`grid gap-10 lg:grid-cols-2 items-center ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}
               >
                 <div className="relative aspect-4/3 overflow-hidden bg-muted/20">
-                  <img
-                    src={u.img}
-                    alt={u.t}
-                    loading="lazy"
-                    className="h-full w-full object-contain transition-transform duration-1500 hover:scale-[1.02]"
-                  />
+                  {u.video ? (
+                    <iframe
+                      src={`${u.video}&autoplay=1&mute=1&loop=1&playlist=${u.videoId}&vq=hd720&start=0`}
+                      title={u.t}
+                      className="h-full w-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <img
+                      src={u.img}
+                      alt={u.t}
+                      loading="lazy"
+                      className="h-full w-full object-contain transition-transform duration-1500 hover:scale-[1.02]"
+                    />
+                  )}
                 </div>
                 <div>
                   <span className="font-display text-6xl text-gold/30">
