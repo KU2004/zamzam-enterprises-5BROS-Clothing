@@ -11,7 +11,7 @@ import roundneck5p3 from "../assets/roundneck5p3.jpeg";
 import roundneck5p4 from "../assets/roundneck5p4.jpeg";
 import roundneck7p3 from "../assets/roundneck7p3.jpeg";
 import roundneck7p4 from "../assets/roundneck7p4.jpeg";
-import roundneck3p3 from "../assets/roundneck3p3.png";
+import roundneck3p3 from "../assets/roundneck3p3.jpeg";
 import roundneck3p4 from "../assets/roundneck3p4.jpeg";
 import roundneck3 from "../assets/roundneck3.jpeg";
 import roundneck4 from "../assets/roundneck4.jpeg";
@@ -75,7 +75,7 @@ const productVariants = [
     title: "Heritage Textured Round Neck",
     subtitle: "Vintage-inspired round neck with rich texture and premium details for lifestyle collections.",
     image: roundneck2,
-    images: [roundneck2p4, roundneck2p5, roundneck2p3],
+    images: [roundneck2p3, roundneck2p4, roundneck2p5],
     technicalHighlights: [
       { title: "Fabric", value: "Polyester Lycra" },
       { title: "GSM", value: "200-220" },
@@ -99,7 +99,7 @@ const productVariants = [
     title: "Sculpted Slim Round Neck",
     subtitle: "Contemporary slim-fit round neck crafted for sleek silhouettes and modern fashion brands.",
     image: roundneck3,
-    images: [roundneck3p4, roundneck3p3],
+    images: [roundneck3p3, roundneck3p4],
     technicalHighlights: [
       { title: "Fabric", value: "Imported Scuba Sued" },
       { title: "GSM", value: "250" },
