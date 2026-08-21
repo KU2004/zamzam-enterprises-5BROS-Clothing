@@ -55,8 +55,6 @@ const units = [
     t: "Finishing Section",
     d: "Trimming, ironing and final inspection for export-grade presentation.",
     img: finishing,
-    video: "https://www.youtube.com/embed/CpZQBxhOPhY?si=tvjl4vs3bk6ayu6Q",
-    videoId: "CpZQBxhOPhY",
   },
   {
     t: "Packing & Warehouse",
