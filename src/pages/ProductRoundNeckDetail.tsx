@@ -123,7 +123,7 @@ const productVariants = [
     title: "Performance Round Neck",
     subtitle: "Premium polyester jacquard round neck engineered for active lifestyle and fashion collections.",
     image: roundneck7,
-    images: [roundneck7p3, roundneck7p4],
+    images: [roundneck7p4, roundneck7p3],
     technicalHighlights: [
       { title: "Fabric", value: "Polyester Jacq." },
       { title: "GSM", value: "220-230" },
